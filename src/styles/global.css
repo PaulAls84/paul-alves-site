@@ -418,5 +418,9 @@ footer { background: var(--navy-2); color: rgba(255,255,255,.7); padding: 64px 0
   .projects-grid { grid-template-columns: 1fr; }
   .blog-grid, .blog-full-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
-  .cta-row .btn { flex: 1; }
+  /* Boutons hero empilés en pleine largeur sur mobile :
+     évite le numéro de téléphone qui se coupe sur 2 lignes */
+  .cta-row { flex-direction: column; }
+  .cta-row .btn { width: 100%; }
+  .hero-tel { white-space: nowrap; }
 }
