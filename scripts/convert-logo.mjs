@@ -25,9 +25,16 @@ async function main() {
     }
   }
 
-  const transparent = sharp(data, {
+  // Recadre au plus près du contenu (supprime les marges transparentes parasites)
+  const trimmed = await sharp(data, {
     raw: { width: info.width, height: info.height, channels: 4 },
-  }).resize({ width: 600, withoutEnlargement: true })
+  })
+    .trim({ threshold: 5 })
+    .toBuffer({ resolveWithObject: true })
+
+  const transparent = sharp(trimmed.data, {
+    raw: { width: trimmed.info.width, height: trimmed.info.height, channels: 4 },
+  }).resize({ width: 800, withoutEnlargement: true })
 
   for (let q = 90; q >= 30; q -= 5) {
     await transparent.clone().webp({ quality: q, effort: 6, alphaQuality: 100 }).toFile(OUT)
