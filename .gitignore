@@ -6,3 +6,8 @@ dist/
 .env.local
 .DS_Store
 *.log
+
+# Sources de design (fichiers PNG/AI/PSD bruts à la racine)
+/Logo-*.png
+/Logo-*.psd
+/Logo-*.ai

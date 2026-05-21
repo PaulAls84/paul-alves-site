@@ -45,30 +45,7 @@ a { color: inherit; text-decoration: none; }
   display: inline-flex; align-items: center; gap: 14px;
   color: var(--ink);
 }
-.brand img { height: 56px; width: auto; display: block; }
-/* Wordmark : crop de la partie texte du logo-full.png (998×659) */
-/* Le texte "PAUL ALVES" est dans les 65-88% du bas de l'image  */
-.brand-wordmark {
-  display: block;
-  width: 224px;
-  height: 30px;
-  overflow: hidden;
-  position: relative;
-  flex-shrink: 0;
-}
-.brand-wordmark::after {
-  content: '';
-  display: block;
-  position: absolute;
-  top: -98px;          /* décalage : 65% de 151px (hauteur scaled) */
-  left: 0;
-  width: 224px;
-  height: 152px;       /* hauteur totale scaled : 659 × (224/998) */
-  background-image: url('/assets/logo-full.png');
-  background-size: 224px auto;
-  background-repeat: no-repeat;
-  background-position: top left;
-}
+.brand img { height: 48px; width: auto; display: block; }
 .nav-links { display: flex; gap: 36px; align-items: center; }
 .nav-mobile-ctas { display: none; } /* masqué sur desktop */
 .hero-tel { display: inline-flex; align-items: center; gap: 8px; }
