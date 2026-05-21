@@ -1,0 +1,47 @@
+---
+const projects = [
+  {
+    img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80',
+    title: 'Site vitrine',
+    desc: 'Design moderne & responsive',
+    href: '#',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80',
+    title: 'SEO technique',
+    desc: 'Audit & optimisation complète',
+    href: '#',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80',
+    title: 'SEO Local',
+    desc: 'Fiche Google & visibilité locale',
+    href: '#',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=600&q=80',
+    title: 'Site e-commerce',
+    desc: 'Boutique en ligne performante',
+    href: '#',
+  },
+]
+---
+
+<section id="realisations" class="projects">
+  <div class="wrap">
+    <p class="section-eyebrow">Réalisations</p>
+    <h2 class="section-title">Quelques projets récents</h2>
+    <div class="projects-grid">
+      {projects.map(p => (
+        <a href={p.href} class="project">
+          <div class="project-img">
+            <img src={p.img} alt={p.title} width="300" height="315" />
+          </div>
+          <h4>{p.title}</h4>
+          <p>{p.desc}</p>
+          <span class="project-link">Voir le projet &nbsp;→</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

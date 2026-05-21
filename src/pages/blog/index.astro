@@ -1,0 +1,93 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import Nav from '../../components/Nav.astro'
+import Footer from '../../components/Footer.astro'
+import Newsletter from '../../components/Newsletter.astro'
+
+import { createReader } from '@keystatic/core/reader'
+import keystaticConfig from '../../../keystatic.config'
+
+let posts: any[] = []
+try {
+  const reader = createReader(process.cwd(), keystaticConfig)
+  const slugs = await reader.collections.blog.list()
+  const entries = await Promise.all(
+    slugs.map(async (slug) => {
+      const entry = await reader.collections.blog.read(slug)
+      return entry ? { slug, ...entry } : null
+    })
+  )
+  posts = entries
+    .filter(Boolean)
+    .sort((a, b) =>
+      new Date(b!.publishedAt ?? 0).getTime() - new Date(a!.publishedAt ?? 0).getTime()
+    )
+    .map(p => ({
+      slug: p!.slug,
+      title: typeof p!.title === 'object' ? (p!.title as any).value ?? '' : p!.title ?? '',
+      description: p!.description ?? '',
+      publishedAt: p!.publishedAt ?? '',
+      category: p!.category ?? '',
+      image: p!.image ?? '',
+    }))
+} catch {
+  // No posts yet
+}
+
+function formatDate(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString('fr-FR', {
+    day: 'numeric', month: 'long', year: 'numeric'
+  })
+}
+---
+
+<Layout
+  title="Blog — Paul Alves · Développeur Web & Consultant SEO"
+  description="Conseils SEO, développement web et stratégie digitale par Paul Alves."
+>
+  <Nav currentPath="/blog" />
+
+  <section class="blog-hero">
+    <div class="wrap">
+      <p class="eyebrow" style="text-align:left; margin-bottom: 12px;">Blog</p>
+      <h1>Articles &amp; <span style="color: var(--gold)">Conseils</span></h1>
+      <p>SEO, développement web, performance et stratégie digitale.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      {posts.length === 0 ? (
+        <div style="text-align: center; padding: 48px 0; color: var(--muted);">
+          <p style="font-size: 18px;">Aucun article pour le moment.</p>
+          <p>
+            <a href="/keystatic" style="color: var(--gold);">Publier le premier article →</a>
+          </p>
+        </div>
+      ) : (
+        <div class="blog-full-grid">
+          {posts.map(post => (
+            <a href={`/blog/${post.slug}`} class="blog-card">
+              <div class="blog-card-img">
+                {post.image
+                  ? <img src={post.image} alt={post.title} width="400" height="225" />
+                  : <img src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?w=600&q=80" alt={post.title} width="400" height="225" />
+                }
+              </div>
+              <div class="blog-card-meta">
+                {post.category && <span class="blog-cat">{post.category}</span>}
+                <span class="blog-date">{formatDate(post.publishedAt)}</span>
+              </div>
+              <h3>{post.title}</h3>
+              <p>{post.description}</p>
+              <span class="blog-link">Lire l'article &nbsp;→</span>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <Newsletter />
+  <Footer />
+</Layout>

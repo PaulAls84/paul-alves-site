@@ -1,0 +1,67 @@
+---
+---
+
+<section class="testimonials">
+  <div class="wrap">
+    <p class="section-eyebrow">Témoignages</p>
+    <h2 class="section-title">Ils me font confiance</h2>
+    <div class="testi-grid" id="testiGrid"></div>
+    <div class="dots" id="dots">
+      <button class="dot active" data-slide="0" aria-label="Page 1"></button>
+      <button class="dot" data-slide="1" aria-label="Page 2"></button>
+      <button class="dot" data-slide="2" aria-label="Page 3"></button>
+    </div>
+  </div>
+</section>
+
+<script>
+  const testimonials = [
+    [
+      { quote: "Paul a créé notre site web et optimisé notre référencement. Résultat : plus de visibilité et plus de clients. Je recommande !", name: "Sophie Martin", role: "Fondatrice, Bloom Studio", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&q=80" },
+      { quote: "Grâce à son audit SEO, nous avons doublé notre trafic en 3 mois. Professionnel et à l'écoute.", name: "Thomas Bernard", role: "CEO, Agence B7", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&q=80" },
+      { quote: "Un vrai partenaire digital. Paul comprend nos besoins et propose toujours les meilleures solutions.", name: "Julie Durand", role: "Responsable Marketing, Orium", img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&q=80" },
+    ],
+    [
+      { quote: "Une refonte complète menée avec rigueur et créativité. Notre nouveau site convertit deux fois mieux.", name: "Marc Lefèvre", role: "Directeur, Cabinet Lefèvre", img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&q=80" },
+      { quote: "Paul a transformé notre stratégie SEO. Plus de leads qualifiés, moins de budget pub. Magique.", name: "Camille Roux", role: "Co-fondatrice, Atelier Roux", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&q=80" },
+      { quote: "Disponible, pédagogue et orienté résultats. Un vrai plaisir de travailler avec lui sur la durée.", name: "Antoine Petit", role: "Gérant, Boutique Petit", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=120&q=80" },
+    ],
+    [
+      { quote: "Performances techniques au top, page speed parfait. Le SEO suit naturellement.", name: "Léa Moreau", role: "CMO, Studio Moreau", img: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=120&q=80" },
+      { quote: "Site e-commerce livré dans les délais et au-dessus de mes attentes. Bravo Paul.", name: "Nicolas Garcia", role: "Fondateur, Maison Garcia", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=120&q=80" },
+      { quote: "Conseil SEO précis et actionnable. On a vu les résultats dès le premier mois.", name: "Émilie Dubois", role: "Resp. Digital, Groupe Dubois", img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&q=80" },
+    ],
+  ]
+
+  const grid = document.getElementById('testiGrid')!
+
+  function render(index: number) {
+    grid.style.opacity = '0'
+    setTimeout(() => {
+      grid.innerHTML = testimonials[index].map(t => `
+        <div class="testi">
+          <div class="quote-mark">"</div>
+          <p class="quote">${t.quote}</p>
+          <div class="testi-author">
+            <img src="${t.img}" alt="${t.name}" />
+            <div>
+              <div class="author-name">${t.name}</div>
+              <div class="author-role">${t.role}</div>
+            </div>
+          </div>
+        </div>
+      `).join('')
+      grid.style.opacity = '1'
+    }, 200)
+  }
+
+  render(0)
+
+  document.querySelectorAll('.dot').forEach(dot => {
+    dot.addEventListener('click', () => {
+      document.querySelectorAll('.dot').forEach(d => d.classList.remove('active'))
+      dot.classList.add('active')
+      render(parseInt((dot as HTMLElement).dataset.slide || '0', 10))
+    })
+  })
+</script>

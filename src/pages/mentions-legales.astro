@@ -1,0 +1,104 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+---
+
+<Layout
+  title="Mentions légales — Paul Alves"
+  description="Mentions légales du site paul-alves.fr — informations légales et éditoriales."
+>
+  <Nav />
+
+  <section style="padding: 80px 0 120px;">
+    <div class="wrap" style="max-width: 760px;">
+      <p class="eyebrow" style="text-align:left;">Légal</p>
+      <h1 style="margin-bottom: 48px;">Mentions légales</h1>
+
+      <div class="legal-content">
+
+        <h2>1. Éditeur du site</h2>
+        <p>
+          Le site <strong>paul-alves.fr</strong> est édité par :<br />
+          <strong>Paul Alves</strong> — Entrepreneur individuel (EI)<br />
+          SIREN : 801&nbsp;633&nbsp;033<br />
+          Adresse : 3 rue des Longues Raies, 02200 Soissons, France<br />
+          Email : <a href="mailto:hello@paul-alves.fr">hello@paul-alves.fr</a><br />
+          Téléphone : <a href="tel:+33656666684">06 56 66 66 84</a>
+        </p>
+
+        <h2>2. Directeur de la publication</h2>
+        <p>Paul Alves</p>
+
+        <h2>3. Hébergeur</h2>
+        <p>
+          <strong>Hostinger International Ltd.</strong><br />
+          61 Lordou Vironos Street,<br />
+          6023 Larnaca, Chypre<br />
+          Site : <a href="https://www.hostinger.fr" target="_blank" rel="noopener">www.hostinger.fr</a>
+        </p>
+
+        <h2>4. Propriété intellectuelle</h2>
+        <p>
+          L'ensemble du contenu de ce site (textes, images, graphismes, logo, icônes, etc.)
+          est la propriété exclusive de Paul Alves, sauf mention contraire.
+          Toute reproduction, distribution, modification ou utilisation sans autorisation
+          préalable et écrite est strictement interdite.
+        </p>
+
+        <h2>5. Données personnelles</h2>
+        <p>
+          Les informations relatives à la collecte et au traitement des données personnelles
+          sont détaillées dans notre <a href="/politique-confidentialite">Politique de confidentialité</a>.
+        </p>
+
+        <h2>6. Cookies</h2>
+        <p>
+          Ce site utilise Google Analytics pour mesurer l'audience. Ces cookies sont
+          soumis à votre consentement conformément au RGPD. Vous pouvez à tout moment
+          modifier vos préférences via le lien <a href="#" data-cookie-prefs>Gérer les cookies</a>
+          présent dans le pied de page.
+        </p>
+
+        <h2>7. Limitation de responsabilité</h2>
+        <p>
+          Paul Alves s'efforce d'assurer l'exactitude des informations publiées sur ce site.
+          Toutefois, il ne saurait être tenu responsable des erreurs, omissions ou de
+          l'indisponibilité des informations et services. Les liens hypertextes présents
+          sur ce site peuvent renvoyer vers des sites tiers dont Paul Alves ne maîtrise
+          pas le contenu.
+        </p>
+
+        <h2>8. Droit applicable</h2>
+        <p>
+          Les présentes mentions légales sont soumises au droit français. En cas de litige,
+          les tribunaux français seront seuls compétents.
+        </p>
+
+        <p style="margin-top: 48px; font-size: 13px; color: var(--muted);">
+          Dernière mise à jour : mai 2026
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .legal-content h2 {
+    font-family: var(--serif);
+    font-size: 20px;
+    color: var(--navy);
+    margin: 40px 0 12px;
+  }
+  .legal-content p {
+    line-height: 1.8;
+    color: var(--ink-2);
+    margin-bottom: 16px;
+  }
+  .legal-content a {
+    color: var(--gold);
+    text-decoration: underline;
+  }
+</style>

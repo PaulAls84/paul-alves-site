@@ -1,0 +1,560 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import Testimonials from '../components/Testimonials.astro'
+import CTABand from '../components/CTABand.astro'
+import Footer from '../components/Footer.astro'
+
+const stack = [
+  'WordPress', 'WooCommerce', 'Elementor', 'Kadence', 'Gutenberg',
+  'Rank Math', 'Yoast SEO', 'WP Rocket', 'Imagify', 'Google Search Console',
+  'Google Analytics', 'PageSpeed Insights', 'Ahrefs', 'Semrush',
+  'HTML / CSS', 'JavaScript', 'PHP', 'Git', 'Astro',
+]
+
+const values = [
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>`,
+    title: 'Performance avant tout',
+    desc: 'Un site lent, c\'est du chiffre d\'affaires perdu. J\'optimise chaque projet pour qu\'il soit rapide, fluide et bien positionné.',
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>`,
+    title: 'SEO ancré dans l\'expérience',
+    desc: 'J\'ai appris le référencement à la dure, en gérant un vrai site avec un vrai trafic. Pas de la théorie — du concret qui fonctionne.',
+  },
+  {
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+    title: 'Partenaire, pas prestataire',
+    desc: 'Je m\'implique dans votre réussite comme si c\'était mon propre business. Réactivité, transparence et résultats mesurables.',
+  },
+]
+---
+
+<Layout
+  title="À propos — Paul Alves | Développeur WordPress & Consultant SEO"
+  description="De nosamisleschiens.fr et 1 million de visiteurs à consultant WordPress & SEO : découvrez le parcours de Paul Alves, freelance basé à Soissons."
+>
+  <Nav currentPath="/a-propos" />
+
+  <!-- ── Hero ─────────────────────────────────── -->
+  <section class="about-hero">
+    <div class="wrap">
+      <div class="about-hero-grid">
+        <div class="about-hero-text">
+          <p class="eyebrow">À propos</p>
+          <h1>De blogueur à <span class="accent">1 million de visiteurs</span>, puis consultant pour les entreprises</h1>
+          <p class="lede">
+            Je ne suis pas devenu expert en WordPress et en SEO dans une école.
+            Je l'ai appris en construisant un site qui a attiré plus d'un million de visiteurs
+            et en faisant du référencement ma principale source de revenus.
+          </p>
+          <div class="hero-ctas">
+            <a
+              href="#"
+              data-cal-link="paul-alves/audit-offert"
+              data-cal-namespace="audit-offert"
+              data-cal-config='{"layout":"month_view"}'
+              class="btn btn-gold"
+            >
+              Réserver un appel gratuit →
+            </a>
+            <a href="tel:+33656666684" class="btn btn-outline hero-tel">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              06 56 66 66 84
+            </a>
+          </div>
+        </div>
+        <div class="about-hero-photo">
+          <div class="photo-frame">
+            <img
+              src="/assets/photo-paul.png"
+              alt="Paul Alves — Développeur WordPress & Consultant SEO à Soissons"
+              width="420" height="500"
+            />
+          </div>
+          <div class="photo-badge">
+            <span class="badge-num">+1M</span>
+            <span class="badge-label">visiteurs<br/>organiques</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Timeline ──────────────────────────────── -->
+  <section class="timeline-section">
+    <div class="wrap">
+      <p class="section-eyebrow">Mon parcours</p>
+      <h2 class="section-title">Une histoire vraie, bâtie sur les <span class="accent">résultats</span></h2>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="tl-marker">
+            <span class="tl-year">2012</span>
+          </div>
+          <div class="tl-card">
+            <div class="tl-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <h3>Le premier pas dans le web</h3>
+            <p>
+              Passionné par les chiens, je lance <strong>nosamisleschiens.fr</strong> — un blog dédié au monde canin.
+              Zéro budget, zéro formation : juste de la curiosité, une connexion internet et une envie de créer.
+              Ce projet est mon premier terrain d'apprentissage du web, du contenu et du référencement.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="tl-marker">
+            <span class="tl-year">2012–<br/>2019</span>
+          </div>
+          <div class="tl-card">
+            <div class="tl-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+              </svg>
+            </div>
+            <h3>L'école du SEO grandeur nature</h3>
+            <p>
+              Pendant sept ans, je teste, j'analyse, j'échoue et je recommence. J'apprends le SEO
+              <em>par la pratique</em> : recherche de mots-clés, optimisation on-page, maillage interne,
+              acquisition de backlinks, vitesse de chargement… Chaque article publié est une expérience.
+              Chaque hausse dans Google, une validation.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item tl-highlight">
+          <div class="tl-marker">
+            <span class="tl-year">2019–<br/>2020</span>
+          </div>
+          <div class="tl-card">
+            <div class="tl-icon tl-icon--gold">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M3 20h18M5 17V9M9 17V5M13 17v-7M17 17V7"/>
+              </svg>
+            </div>
+            <h3>+1 000 000 de visiteurs — la preuve par les chiffres</h3>
+            <p>
+              nosamisleschiens.fr franchit le cap du <strong>million de visiteurs organiques</strong>.
+              Le site devient ma principale source de revenus grâce à la monétisation publicitaire et aux
+              partenariats. Ce n'est plus un hobby — c'est une vraie activité digitale, entièrement
+              construite sur du trafic SEO sans budget publicitaire.
+            </p>
+            <div class="tl-stat-row">
+              <div class="tl-stat">
+                <span class="tl-stat-num">+1M</span>
+                <span class="tl-stat-label">visiteurs/an</span>
+              </div>
+              <div class="tl-stat">
+                <span class="tl-stat-num">100%</span>
+                <span class="tl-stat-label">trafic organique</span>
+              </div>
+              <div class="tl-stat">
+                <span class="tl-stat-num">0€</span>
+                <span class="tl-stat-label">budget pub</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="tl-marker">
+            <span class="tl-year">2025</span>
+          </div>
+          <div class="tl-card">
+            <div class="tl-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
+              </svg>
+            </div>
+            <h3>Formation développeur WordPress — OpenClassrooms</h3>
+            <p>
+              Fort de mon expérience terrain, je structure mes compétences techniques avec une formation
+              certifiante de <strong>développeur WordPress sur OpenClassrooms</strong>. Je maîtrise désormais
+              l'ensemble de la chaîne : architecture, développement sur mesure, performances et intégration SEO.
+              La théorie rejoint la pratique.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="tl-marker">
+            <span class="tl-year">Aujourd'hui</span>
+          </div>
+          <div class="tl-card">
+            <div class="tl-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <h3>Consultant WordPress & SEO pour les entreprises</h3>
+            <p>
+              J'accompagne désormais les <strong>PME et les entrepreneurs solo</strong> qui veulent une
+              présence web qui génère de vrais résultats : plus de trafic, plus de leads, plus de clients.
+              Ce que j'ai appris en construisant mon propre trafic, je le mets maintenant au service de
+              vos objectifs — avec la rigueur d'un développeur et l'instinct d'un référenceur.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Valeurs ───────────────────────────────── -->
+  <section class="values-section">
+    <div class="wrap">
+      <p class="section-eyebrow">Ma philosophie</p>
+      <h2 class="section-title">Ce qui guide <span class="accent">chaque projet</span></h2>
+      <div class="values-grid">
+        {values.map(v => (
+          <div class="value-card">
+            <div class="value-icon" set:html={v.icon} />
+            <h3>{v.title}</h3>
+            <p>{v.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Stack ─────────────────────────────────── -->
+  <section class="stack-section">
+    <div class="wrap">
+      <p class="section-eyebrow">Mes outils</p>
+      <h2 class="section-title">Stack & <span class="accent">compétences</span></h2>
+      <div class="stack-tags">
+        {stack.map(s => <span class="stack-tag">{s}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <Testimonials />
+  <CTABand />
+  <Footer />
+</Layout>
+
+<script>
+  (function(C: any, A: string, L: string) {
+    const p = (a: any, ar: any) => a.q.push(ar)
+    const d = (C as any).document
+    ;(C as any).Cal = (C as any).Cal || function() {
+      const cal = (C as any).Cal
+      const ar = arguments as any
+      if (!cal.loaded) {
+        cal.ns = {}; cal.q = cal.q || []
+        d.head.appendChild(d.createElement('script')).src = A
+        cal.loaded = true
+      }
+      if (ar[0] === L) {
+        const api: any = function() { p(api, arguments) }
+        const namespace = ar[1]
+        api.q = api.q || []
+        typeof namespace === 'string' ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar)
+        return
+      }
+      p(cal, ar)
+    }
+  })(window, 'https://app.cal.eu/embed/embed.js', 'init')
+  ;(window as any).Cal('init', 'audit-offert', { origin: 'https://cal.eu' })
+</script>
+
+<style>
+  /* ── Hero ─────────────────────────────────────── */
+  .about-hero {
+    background: var(--navy);
+    padding: 100px 0 80px;
+  }
+  .about-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 64px;
+    align-items: center;
+  }
+  .about-hero .eyebrow {
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .about-hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  .about-hero .lede {
+    color: rgba(255,255,255,.78);
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 520px;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* Photo */
+  .about-hero-photo {
+    position: relative;
+  }
+  .photo-frame {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 3px solid rgba(212,164,74,.35);
+  }
+  .photo-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+  .photo-badge {
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    background: var(--gold);
+    color: #fff;
+    border-radius: 16px;
+    padding: 16px 22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 8px 32px rgba(212,164,74,.4);
+  }
+  .badge-num {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .badge-label {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.3;
+    opacity: .92;
+  }
+
+  /* ── Timeline ─────────────────────────────────── */
+  .timeline-section {
+    padding: 100px 0;
+    background: #fff;
+  }
+  .timeline {
+    margin-top: 64px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 72px;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold), var(--line));
+  }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 144px 1fr;
+    gap: 32px;
+    padding-bottom: 48px;
+    position: relative;
+  }
+  .tl-marker {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 24px;
+    position: relative;
+  }
+  .tl-marker::after {
+    content: '';
+    position: absolute;
+    right: -5px;
+    top: 6px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 2px var(--gold);
+  }
+  .tl-year {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--navy);
+    text-align: right;
+    line-height: 1.3;
+    padding-top: 2px;
+  }
+  .tl-card {
+    background: var(--cream);
+    border-radius: 16px;
+    padding: 28px 32px;
+    border: 1px solid var(--line);
+    transition: box-shadow .2s;
+  }
+  .tl-card:hover { box-shadow: 0 8px 32px rgba(10,29,54,.07); }
+  .tl-icon {
+    width: 44px; height: 44px;
+    background: #fff;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--navy);
+    margin-bottom: 16px;
+    border: 1px solid var(--line);
+  }
+  .tl-icon--gold {
+    background: var(--gold);
+    color: #fff;
+    border-color: var(--gold);
+  }
+  .tl-card h3 {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+  .tl-card p {
+    color: var(--ink-2);
+    line-height: 1.75;
+    font-size: 15px;
+    margin: 0;
+  }
+
+  /* Étape mise en avant */
+  .tl-highlight .tl-card {
+    background: var(--navy);
+    border-color: var(--navy);
+  }
+  .tl-highlight .tl-card h3 { color: #fff; }
+  .tl-highlight .tl-card p { color: rgba(255,255,255,.8); }
+  .tl-highlight .tl-icon { background: var(--gold); color: #fff; border-color: var(--gold); }
+
+  /* Stats dans la timeline */
+  .tl-stat-row {
+    display: flex;
+    gap: 28px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,.15);
+  }
+  .tl-stat-num {
+    display: block;
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .tl-stat-label {
+    display: block;
+    font-size: 12px;
+    color: rgba(255,255,255,.65);
+    margin-top: 4px;
+  }
+
+  /* ── Valeurs ──────────────────────────────────── */
+  .values-section {
+    padding: 100px 0;
+    background: var(--cream);
+  }
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 56px;
+  }
+  .value-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px;
+    border: 1px solid var(--line);
+  }
+  .value-icon {
+    width: 48px; height: 48px;
+    background: var(--navy);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .value-card h3 {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+  .value-card p {
+    font-size: 14px;
+    color: var(--ink-2);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* ── Stack ────────────────────────────────────── */
+  .stack-section {
+    padding: 80px 0 100px;
+    background: #fff;
+  }
+  .stack-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 48px;
+  }
+  .stack-tag {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    padding: 8px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--navy);
+    transition: background .15s, border-color .15s;
+    cursor: default;
+  }
+  .stack-tag:hover {
+    background: var(--navy);
+    color: #fff;
+    border-color: var(--navy);
+  }
+
+  /* ── Responsive ───────────────────────────────── */
+  @media (max-width: 900px) {
+    .about-hero-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .about-hero-photo { max-width: 400px; margin: 0 auto; }
+    .timeline::before { left: 20px; }
+    .timeline-item { grid-template-columns: 1fr; gap: 12px; }
+    .tl-marker { justify-content: flex-start; padding-right: 0; padding-left: 40px; }
+    .tl-marker::after { left: 14px; right: auto; }
+    .tl-year { text-align: left; }
+    .values-grid { grid-template-columns: 1fr; }
+    .tl-stat-row { gap: 20px; }
+  }
+  @media (max-width: 600px) {
+    .hero-ctas { flex-direction: column; }
+    .photo-badge { left: 50%; transform: translateX(-50%); bottom: -24px; }
+    .about-hero-photo { padding-bottom: 40px; }
+    .tl-stat-row { flex-wrap: wrap; gap: 16px; }
+  }
+</style>

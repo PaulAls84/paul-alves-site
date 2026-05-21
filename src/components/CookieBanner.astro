@@ -1,0 +1,358 @@
+---
+// Bannière de consentement RGPD conforme CNIL :
+// - "Tout accepter" et "Tout refuser" au même niveau visuel
+// - Lien "Personnaliser" pour le détail
+// - Choix mémorisé en localStorage
+// - Google Consent Mode v2 (denied par défaut, mis à jour selon le choix)
+---
+
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Gestion des cookies" hidden>
+  <div class="cb-inner">
+
+    <!-- Vue principale -->
+    <div class="cb-main" id="cbMain">
+      <div class="cb-text">
+        <h3>🍪 Vous prenez un cookie ?</h3>
+        <p>
+          Ce site utilise des cookies de mesure d'audience (Google Analytics) pour comprendre
+          comment vous l'utilisez et l'améliorer. Vous pouvez accepter, refuser ou personnaliser.
+        </p>
+      </div>
+      <div class="cb-actions">
+        <button type="button" class="cb-btn cb-btn-link" data-cb="customize">Personnaliser</button>
+        <button type="button" class="cb-btn cb-btn-ghost" data-cb="refuse">Tout refuser</button>
+        <button type="button" class="cb-btn cb-btn-gold" data-cb="accept">Tout accepter</button>
+      </div>
+    </div>
+
+    <!-- Vue personnalisée -->
+    <div class="cb-customize" id="cbCustomize" hidden>
+      <div class="cb-text">
+        <h3>Personnaliser mes préférences</h3>
+        <p>Activez seulement les catégories de cookies que vous souhaitez autoriser.</p>
+      </div>
+
+      <div class="cb-category">
+        <div class="cb-cat-head">
+          <span class="cb-cat-name">Cookies essentiels</span>
+          <span class="cb-cat-status">Toujours actifs</span>
+        </div>
+        <p class="cb-cat-desc">Nécessaires au bon fonctionnement du site (navigation, sécurité). Ils ne peuvent pas être désactivés.</p>
+      </div>
+
+      <div class="cb-category">
+        <div class="cb-cat-head">
+          <span class="cb-cat-name">Mesure d'audience (Google Analytics)</span>
+          <label class="cb-switch">
+            <input type="checkbox" id="cbAnalytics" />
+            <span class="cb-slider"></span>
+          </label>
+        </div>
+        <p class="cb-cat-desc">Nous aide à comprendre comment les visiteurs utilisent le site (pages vues, sources de trafic, etc.) pour l'améliorer. Données anonymisées.</p>
+      </div>
+
+      <div class="cb-actions cb-actions-end">
+        <button type="button" class="cb-btn cb-btn-link" data-cb="back">← Retour</button>
+        <button type="button" class="cb-btn cb-btn-gold" data-cb="save">Enregistrer mes choix</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Lien flottant pour rouvrir la bannière depuis n'importe quelle page -->
+<button id="cookie-reopen" class="cookie-reopen" aria-label="Gérer les cookies" hidden>
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/>
+    <circle cx="8.5" cy="8.5" r=".5"/><circle cx="16.5" cy="13.5" r=".5"/>
+    <circle cx="11.5" cy="15.5" r=".5"/>
+  </svg>
+</button>
+
+<script>
+  const STORAGE_KEY = 'pa-cookie-consent-v1'
+  type Consent = { analytics: boolean; timestamp: number }
+
+  const banner   = document.getElementById('cookie-banner')!
+  const mainView = document.getElementById('cbMain')!
+  const customView = document.getElementById('cbCustomize')!
+  const analyticsToggle = document.getElementById('cbAnalytics') as HTMLInputElement
+  const reopenBtn = document.getElementById('cookie-reopen')!
+
+  function getStored(): Consent | null {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY)
+      return raw ? JSON.parse(raw) : null
+    } catch { return null }
+  }
+
+  function save(consent: Consent) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(consent))
+    applyConsent(consent)
+    hideBanner()
+  }
+
+  function applyConsent(consent: Consent) {
+    // Google Consent Mode v2
+    const gtag = (window as any).gtag
+    if (typeof gtag === 'function') {
+      gtag('consent', 'update', {
+        analytics_storage: consent.analytics ? 'granted' : 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+      })
+    }
+  }
+
+  function showBanner() {
+    banner.hidden = false
+    reopenBtn.hidden = true
+    // S'assurer d'être en vue principale
+    mainView.hidden = false
+    customView.hidden = true
+  }
+
+  function hideBanner() {
+    banner.hidden = true
+    reopenBtn.hidden = false
+  }
+
+  function showCustomize() {
+    const stored = getStored()
+    if (stored) analyticsToggle.checked = stored.analytics
+    mainView.hidden = true
+    customView.hidden = false
+  }
+
+  function backToMain() {
+    customView.hidden = true
+    mainView.hidden = false
+  }
+
+  // ── Gestion des clics ───────────────────────────
+  banner.querySelectorAll<HTMLButtonElement>('[data-cb]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const action = btn.dataset.cb
+      const now = Date.now()
+      switch (action) {
+        case 'accept':    save({ analytics: true,  timestamp: now }); break
+        case 'refuse':    save({ analytics: false, timestamp: now }); break
+        case 'customize': showCustomize(); break
+        case 'back':      backToMain(); break
+        case 'save':
+          save({ analytics: analyticsToggle.checked, timestamp: now })
+          break
+      }
+    })
+  })
+
+  reopenBtn.addEventListener('click', () => showBanner())
+
+  // Lien dans le footer ou menu : <a href="#" data-cookie-prefs>
+  document.querySelectorAll<HTMLElement>('[data-cookie-prefs]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault()
+      showBanner()
+    })
+  })
+
+  // ── Init ─────────────────────────────────────────
+  const stored = getStored()
+  if (stored) {
+    applyConsent(stored)
+    reopenBtn.hidden = false
+  } else {
+    showBanner()
+  }
+</script>
+
+<style>
+  /* ── Bannière ──────────────────────────────────── */
+  .cookie-banner {
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    z-index: 1000;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: 0 16px 56px rgba(10, 29, 54, .18);
+    padding: 24px;
+    max-width: 720px;
+    margin: 0 auto;
+    animation: cb-slide-up .35s cubic-bezier(.4, 0, .2, 1);
+  }
+  @keyframes cb-slide-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .cb-text h3 {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    color: var(--navy);
+    margin: 0 0 8px;
+  }
+  .cb-text p {
+    font-size: 13.5px;
+    color: var(--ink-2);
+    line-height: 1.6;
+    margin: 0;
+  }
+  .cb-text a {
+    color: var(--gold);
+    text-decoration: underline;
+  }
+
+  .cb-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .cb-actions-end { justify-content: flex-end; }
+
+  /* Boutons */
+  .cb-btn {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .cb-btn-link {
+    background: transparent;
+    color: var(--ink-2);
+    text-decoration: underline;
+    padding: 10px 8px;
+  }
+  .cb-btn-link:hover { color: var(--navy); }
+
+  .cb-btn-ghost {
+    background: transparent;
+    color: var(--navy);
+    border-color: var(--line);
+  }
+  .cb-btn-ghost:hover { background: var(--cream); border-color: var(--navy); }
+
+  .cb-btn-gold {
+    background: var(--gold);
+    color: #fff;
+    border-color: var(--gold);
+  }
+  .cb-btn-gold:hover { background: var(--gold-2); border-color: var(--gold-2); }
+
+  /* ── Vue customize ─────────────────────────────── */
+  .cb-customize { display: flex; flex-direction: column; gap: 16px; }
+
+  /* L'attribut [hidden] doit toujours gagner sur display:flex */
+  [hidden] { display: none !important; }
+
+  .cb-category {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 16px;
+    background: var(--cream);
+  }
+  .cb-cat-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+  .cb-cat-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .cb-cat-status {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--muted);
+    background: #fff;
+    padding: 4px 10px;
+    border-radius: 100px;
+    border: 1px solid var(--line);
+  }
+  .cb-cat-desc {
+    font-size: 12.5px;
+    color: var(--ink-2);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Switch */
+  .cb-switch {
+    position: relative;
+    display: inline-block;
+    width: 42px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+  .cb-switch input { opacity: 0; width: 0; height: 0; }
+  .cb-slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background: #cbd2d9;
+    border-radius: 24px;
+    transition: background .2s;
+  }
+  .cb-slider::before {
+    position: absolute;
+    content: "";
+    height: 18px; width: 18px;
+    left: 3px; top: 3px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform .2s;
+  }
+  .cb-switch input:checked + .cb-slider { background: var(--gold); }
+  .cb-switch input:checked + .cb-slider::before { transform: translateX(18px); }
+  .cb-switch input:focus-visible + .cb-slider { box-shadow: 0 0 0 3px rgba(212,164,74,.3); }
+
+  /* ── Bouton flottant pour rouvrir ─────────────── */
+  .cookie-reopen {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 90;
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid var(--line);
+    color: var(--ink-2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(10, 29, 54, .12);
+    transition: all .15s;
+  }
+  .cookie-reopen:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+    transform: scale(1.06);
+  }
+
+  /* Sur mobile, décaler le bouton pour ne pas chevaucher la mobile-bar */
+  @media (max-width: 980px) {
+    .cookie-reopen { bottom: 100px; }
+    .cb-actions { justify-content: flex-end; }
+    .cb-btn { flex: 1 0 auto; }
+    .cb-btn-link { flex: 1 1 100%; text-align: center; }
+  }
+  @media (max-width: 560px) {
+    .cookie-banner { padding: 20px; bottom: 8px; left: 8px; right: 8px; }
+    .cb-cat-head { flex-direction: column; align-items: flex-start; gap: 8px; }
+  }
+</style>

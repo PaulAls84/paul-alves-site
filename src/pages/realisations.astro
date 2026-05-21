@@ -1,0 +1,414 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import CTABand from '../components/CTABand.astro'
+import Footer from '../components/Footer.astro'
+
+// ── Projets placeholder — à remplacer par les vraies réalisations ──
+const projects = [
+  {
+    img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
+    category: 'Site vitrine',
+    title: 'Cabinet de conseil — Site vitrine',
+    desc: 'Refonte complète du site institutionnel avec un design épuré, des performances optimisées et une stratégie SEO locale pour attirer des clients qualifiés.',
+    tags: ['WordPress', 'Kadence', 'Rank Math', 'WP Rocket'],
+    result: '+180% de trafic organique en 4 mois',
+    href: '#',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80',
+    category: 'E-commerce',
+    title: 'Boutique en ligne — WooCommerce',
+    desc: 'Création d\'une boutique e-commerce sur mesure avec paiement Stripe, gestion des stocks et tunnel d\'achat optimisé pour la conversion.',
+    tags: ['WooCommerce', 'Elementor', 'Stripe', 'Imagify'],
+    result: 'Score PageSpeed 94/100',
+    href: '#',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
+    category: 'Audit SEO',
+    title: 'Startup SaaS — Audit & optimisation SEO',
+    desc: 'Audit SEO technique complet, refonte de l\'architecture des URLs, optimisation on-page et stratégie de contenu pour un site SaaS B2B.',
+    tags: ['SEO Technique', 'Google Search Console', 'Ahrefs', 'Schema.org'],
+    result: 'Top 3 Google sur 12 mots-clés cibles',
+    href: '#',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=800&q=80',
+    category: 'Refonte',
+    title: 'Restaurant — Refonte & SEO local',
+    desc: 'Refonte du site existant, optimisation de la fiche Google My Business et stratégie SEO local pour dominer les résultats sur Soissons.',
+    tags: ['WordPress', 'SEO Local', 'Google Business', 'Rank Math'],
+    result: '+3 positions moyennes sur Google Maps',
+    href: '#',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80',
+    category: 'Performance',
+    title: 'PME BTP — Optimisation performances',
+    desc: 'Diagnostic complet des performances, optimisation des images, mise en cache avancée et migration vers un hébergement dédié.',
+    tags: ['WP Rocket', 'Imagify', 'CDN Cloudflare', 'LiteSpeed'],
+    result: 'Chargement : 4,1s → 0,9s',
+    href: '#',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1432888622747-4eb9a8f2c294?w=800&q=80',
+    category: 'Maintenance',
+    title: 'Cabinet médical — Maintenance & sécurité',
+    desc: 'Mise en place d\'un contrat de maintenance mensuelle avec sauvegardes automatiques, mises à jour et monitoring de sécurité 24/7.',
+    tags: ['Wordfence', 'UpdraftPlus', 'Monitoring', 'SSL'],
+    result: '0 incident depuis 18 mois',
+    href: '#',
+  },
+]
+
+const categories = ['Tous', 'Site vitrine', 'E-commerce', 'Audit SEO', 'Refonte', 'Performance', 'Maintenance']
+---
+
+<Layout
+  title="Réalisations — Paul Alves | Projets WordPress & SEO"
+  description="Découvrez les projets WordPress réalisés par Paul Alves : sites vitrines, e-commerce, audits SEO et optimisations de performances pour des PME et entrepreneurs."
+>
+  <Nav currentPath="/realisations" />
+
+  <!-- ── Hero ─────────────────────────────────── -->
+  <section class="real-hero">
+    <div class="wrap">
+      <p class="eyebrow">Réalisations</p>
+      <h1>Des projets concrets,<br />des <span class="accent">résultats mesurables</span></h1>
+      <p class="lede">
+        Chaque projet est unique. Voici quelques exemples de ce que j'ai accompli
+        pour des PME et des entrepreneurs — avec les chiffres qui prouvent l'impact.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Grille projets ─────────────────────────── -->
+  <section class="projects-section">
+    <div class="wrap">
+
+      <!-- Filtres -->
+      <div class="filters" id="filters">
+        {categories.map((cat, i) => (
+          <button
+            class={`filter-btn${i === 0 ? ' active' : ''}`}
+            data-filter={cat}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <!-- Grille -->
+      <div class="real-grid" id="projectsGrid">
+        {projects.map(p => (
+          <article class="real-card" data-category={p.category}>
+            <a href={p.href} class="real-card-img-wrap">
+              <img src={p.img} alt={p.title} width="600" height="380" loading="lazy" />
+              <span class="real-card-category">{p.category}</span>
+            </a>
+            <div class="real-card-body">
+              <h3><a href={p.href}>{p.title}</a></h3>
+              <p>{p.desc}</p>
+              <div class="real-card-tags">
+                {p.tags.map(t => <span class="real-tag">{t}</span>)}
+              </div>
+              <div class="real-card-result">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>
+                </svg>
+                {p.result}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- Note placeholder -->
+      <div class="placeholder-note">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/>
+        </svg>
+        Ces réalisations sont des exemples illustratifs. Les vrais projets seront ajoutés prochainement.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Stats rapides ──────────────────────────── -->
+  <section class="real-stats">
+    <div class="wrap">
+      <div class="real-stats-grid">
+        <div class="real-stat">
+          <span class="real-stat-num">50+</span>
+          <span class="real-stat-label">Projets livrés</span>
+        </div>
+        <div class="real-stat">
+          <span class="real-stat-num">40+</span>
+          <span class="real-stat-label">Clients satisfaits</span>
+        </div>
+        <div class="real-stat">
+          <span class="real-stat-num">5+</span>
+          <span class="real-stat-label">Années d'expérience</span>
+        </div>
+        <div class="real-stat">
+          <span class="real-stat-num">100%</span>
+          <span class="real-stat-label">Projets livrés dans les délais</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTABand />
+  <Footer />
+</Layout>
+
+<script>
+  // Filtre catégories
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn')
+  const cards = document.querySelectorAll<HTMLElement>('.real-card')
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'))
+      btn.classList.add('active')
+
+      const filter = btn.dataset.filter
+      cards.forEach(card => {
+        const match = filter === 'Tous' || card.dataset.category === filter
+        card.style.display = match ? '' : 'none'
+      })
+    })
+  })
+</script>
+
+<script>
+  // Cal.com
+  ;(function(C: any, A: string, L: string) {
+    const p = (a: any, ar: any) => a.q.push(ar)
+    const d = (C as any).document
+    ;(C as any).Cal = (C as any).Cal || function() {
+      const cal = (C as any).Cal
+      const ar = arguments as any
+      if (!cal.loaded) {
+        cal.ns = {}; cal.q = cal.q || []
+        d.head.appendChild(d.createElement('script')).src = A
+        cal.loaded = true
+      }
+      if (ar[0] === L) {
+        const api: any = function() { p(api, arguments) }
+        const namespace = ar[1]
+        api.q = api.q || []
+        typeof namespace === 'string' ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar)
+        return
+      }
+      p(cal, ar)
+    }
+  })(window, 'https://app.cal.eu/embed/embed.js', 'init')
+  ;(window as any).Cal('init', 'audit-offert', { origin: 'https://cal.eu' })
+</script>
+
+<style>
+  /* ── Hero ─────────────────────────────────────── */
+  .real-hero {
+    background: var(--navy);
+    padding: 100px 0 72px;
+    text-align: center;
+  }
+  .real-hero .eyebrow {
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .real-hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  .real-hero .lede {
+    color: rgba(255,255,255,.75);
+    font-size: 17px;
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ── Section ──────────────────────────────────── */
+  .projects-section {
+    padding: 80px 0 60px;
+    background: #fff;
+  }
+
+  /* ── Filtres ──────────────────────────────────── */
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 48px;
+  }
+  .filter-btn {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    padding: 8px 18px;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-2);
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .filter-btn:hover { border-color: var(--navy); color: var(--navy); }
+  .filter-btn.active {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: #fff;
+  }
+
+  /* ── Grille ───────────────────────────────────── */
+  .real-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .real-card {
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow .2s, transform .2s;
+  }
+  .real-card:hover {
+    box-shadow: 0 16px 48px rgba(10,29,54,.1);
+    transform: translateY(-4px);
+  }
+  .real-card-img-wrap {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 16/10;
+  }
+  .real-card-img-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform .4s ease;
+  }
+  .real-card:hover .real-card-img-wrap img { transform: scale(1.04); }
+  .real-card-category {
+    position: absolute;
+    top: 14px; left: 14px;
+    background: var(--gold);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+  .real-card-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+  }
+  .real-card-body h3 {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    color: var(--navy);
+    margin: 0;
+    line-height: 1.3;
+  }
+  .real-card-body h3 a { color: inherit; }
+  .real-card-body h3 a:hover { color: var(--gold); }
+  .real-card-body p {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.65;
+    margin: 0;
+    flex: 1;
+  }
+  .real-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .real-tag {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    padding: 3px 10px;
+    font-size: 11px;
+    color: var(--ink-2);
+  }
+  .real-card-result {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gold);
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+  }
+  .real-card-result svg { flex-shrink: 0; }
+
+  /* Note placeholder */
+  .placeholder-note {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 40px;
+    padding: 14px 20px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .placeholder-note svg { flex-shrink: 0; color: var(--gold); }
+
+  /* ── Stats ────────────────────────────────────── */
+  .real-stats {
+    background: var(--navy);
+    padding: 64px 0;
+  }
+  .real-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    text-align: center;
+  }
+  .real-stat-num {
+    display: block;
+    font-family: var(--serif);
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .real-stat-label {
+    display: block;
+    font-size: 13px;
+    color: rgba(255,255,255,.7);
+    margin-top: 8px;
+  }
+
+  /* ── Responsive ───────────────────────────────── */
+  @media (max-width: 900px) {
+    .real-grid { grid-template-columns: repeat(2, 1fr); }
+    .real-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 36px; }
+  }
+  @media (max-width: 560px) {
+    .real-grid { grid-template-columns: 1fr; }
+    .real-stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .filters { gap: 6px; }
+  }
+</style>

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /keystatic/
+Disallow: /api/
+
+Sitemap: https://paul-alves.fr/sitemap-index.xml

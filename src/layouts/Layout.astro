@@ -1,0 +1,118 @@
+---
+import '../styles/global.css'
+import MobileBar from '../components/MobileBar.astro'
+import CookieBanner from '../components/CookieBanner.astro'
+
+interface Props {
+  title?: string
+  description?: string
+  image?: string
+  schema?: string
+}
+
+const {
+  title = 'Paul Alves — Développeur Web & Consultant SEO à Soissons',
+  description = "J'aide les entreprises à se développer en ligne grâce à des sites web sur mesure, rapides et optimisés pour le SEO.",
+  image = '/assets/hero-visual.png',
+  schema,
+} = Astro.props
+
+const gaId  = import.meta.env.PUBLIC_GA_MEASUREMENT_ID
+const gscId = import.meta.env.PUBLIC_GSC_VERIFICATION
+
+const siteURL    = 'https://paul-alves.fr'
+const canonicalURL = new URL(Astro.url.pathname, siteURL).href
+const imageURL     = new URL(image, siteURL).href
+
+const localBusinessSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Paul Alves",
+  "jobTitle": "Développeur Web & Consultant SEO",
+  "url": siteURL,
+  "email": "hello@paul-alves.fr",
+  "telephone": "+33656666684",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "3 rue des Longues Raies",
+    "postalCode": "02200",
+    "addressLocality": "Soissons",
+    "addressCountry": "FR"
+  },
+  "areaServed": "France",
+  "sameAs": [
+    "https://linkedin.com/in/paul-alves"
+  ]
+})
+---
+
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalURL} />
+  <link rel="icon" type="image/png" href="/assets/logo-mark.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={imageURL} />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={imageURL} />
+
+  <meta name="robots" content="index, follow" />
+
+  <!-- Google Search Console vérification -->
+  {gscId && <meta name="google-site-verification" content={gscId} />}
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" />
+
+  <!-- Schema.org LocalBusiness (toutes les pages) -->
+  <script type="application/ld+json" set:html={localBusinessSchema} />
+
+  <!-- Schema.org page-specific (articles, etc.) -->
+  {schema && <script type="application/ld+json" set:html={schema} />}
+
+  <!-- Google tag (gtag.js) avec Consent Mode v2 — denied par défaut -->
+  {gaId && (
+    <>
+      <script define:vars={{ gaId }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        // Consent Mode v2 : tout refusé par défaut, mis à jour après accord utilisateur
+        gtag('consent', 'default', {
+          ad_storage:           'denied',
+          ad_user_data:         'denied',
+          ad_personalization:   'denied',
+          analytics_storage:    'denied',
+          functionality_storage:'granted',
+          security_storage:     'granted',
+          wait_for_update:      500,
+        });
+        gtag('js', new Date());
+        gtag('config', gaId, { anonymize_ip: true });
+      </script>
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+    </>
+  )}
+</head>
+<body>
+  <slot />
+  <MobileBar />
+  <CookieBanner />
+</body>
+</html>

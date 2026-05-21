@@ -1,0 +1,70 @@
+---
+---
+
+<section class="newsletter">
+  <div class="wrap">
+    <p class="section-eyebrow">Newsletter</p>
+    <h2 class="section-title">
+      Conseils SEO &amp; Web directement dans votre <span class="accent">boîte mail</span>
+    </h2>
+    <div class="newsletter-inner">
+      <p>
+        Rejoignez + de 500 abonnés qui reçoivent chaque semaine mes meilleurs conseils
+        en développement web et référencement naturel.
+      </p>
+
+      <form class="newsletter-form" id="newsletterForm" novalidate>
+        <input type="email" name="email" placeholder="Votre adresse email" required autocomplete="email" />
+        <button type="submit" class="btn btn-gold">
+          <span class="btn-label">S'inscrire gratuitement</span>
+          <span class="btn-loading" style="display:none">Inscription…</span>
+        </button>
+      </form>
+      <p class="newsletter-notice" id="newsletterMsg" style="display:none; margin-top: 12px; font-size: 14px;"></p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('newsletterForm') as HTMLFormElement
+  const msg  = document.getElementById('newsletterMsg') as HTMLElement
+  const btnLabel   = form?.querySelector('.btn-label') as HTMLElement
+  const btnLoading = form?.querySelector('.btn-loading') as HTMLElement
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const email = (form.elements.namedItem('email') as HTMLInputElement).value.trim()
+    if (!email) return
+
+    btnLabel.style.display   = 'none'
+    btnLoading.style.display = 'inline'
+    form.querySelector('button')!.disabled = true
+
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+      const data = await res.json()
+
+      msg.style.display = 'block'
+      if (res.ok) {
+        msg.style.color = '#2d7a3a'
+        msg.textContent = '✓ Merci ! Vous êtes bien inscrit à la newsletter.'
+        form.reset()
+      } else {
+        msg.style.color = '#c0392b'
+        msg.textContent = data.error ?? 'Une erreur est survenue. Réessayez.'
+      }
+    } catch {
+      msg.style.display = 'block'
+      msg.style.color   = '#c0392b'
+      msg.textContent   = 'Erreur réseau. Vérifiez votre connexion.'
+    } finally {
+      btnLabel.style.display   = 'inline'
+      btnLoading.style.display = 'none'
+      form.querySelector('button')!.disabled = false
+    }
+  })
+</script>
