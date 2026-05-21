@@ -39,13 +39,13 @@ a { color: inherit; text-decoration: none; }
 .nav.scrolled { border-color: var(--line); box-shadow: 0 1px 0 rgba(0,0,0,.02); }
 .nav-inner {
   display: flex; align-items: center; justify-content: space-between;
-  height: 78px;
+  height: 96px;
 }
 .brand {
   display: inline-flex; align-items: center; gap: 14px;
   color: var(--ink);
 }
-.brand img { height: 48px; width: auto; display: block; }
+.brand img { height: 75px; width: auto; display: block; }
 .nav-links { display: flex; gap: 36px; align-items: center; }
 .nav-mobile-ctas { display: none; } /* masqué sur desktop */
 .hero-tel { display: inline-flex; align-items: center; gap: 8px; }
@@ -288,31 +288,13 @@ footer { background: var(--navy-2); color: rgba(255,255,255,.7); padding: 64px 0
   gap: 48px; margin-bottom: 44px;
 }
 .footer-brand {
-  display: inline-flex; align-items: center; gap: 14px;
+  display: inline-flex; align-items: center;
   margin-bottom: 16px;
 }
-.footer-brand img { height: 38px; width: auto; display: block; }
-/* Wordmark footer : même crop, filtré en blanc */
-.footer-wordmark {
-  display: block;
-  width: 194px;
-  height: 26px;
-  overflow: hidden;
-  position: relative;
-  flex-shrink: 0;
-}
-.footer-wordmark::after {
-  content: '';
-  display: block;
-  position: absolute;
-  top: -85px;
-  left: 0;
-  width: 194px;
-  height: 131px;
-  background-image: url('/assets/logo-full.png');
-  background-size: 194px auto;
-  background-repeat: no-repeat;
-  background-position: top left;
+/* Logo footer : on inverse le bleu en blanc (le gold deviendra blanc aussi
+   mais reste lisible — on garde une identité monochrome propre sur fond navy) */
+.footer-brand img {
+  height: 70px; width: auto; display: block;
   filter: brightness(0) invert(1);
 }
 .footer-col p { font-size: 13.5px; line-height: 1.7; margin: 8px 0; }
@@ -408,7 +390,7 @@ footer { background: var(--navy-2); color: rgba(255,255,255,.7); padding: 64px 0
   .nav-links { display: none; }
   .nav-links.open {
     display: flex; flex-direction: column; gap: 0;
-    position: absolute; top: 78px; left: 0; right: 0;
+    position: absolute; top: 96px; left: 0; right: 0;
     background: #fff; border-top: 1px solid var(--line);
     padding: 12px 32px 20px;
   }
