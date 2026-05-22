@@ -1,0 +1,211 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+
+import { createReader } from '@keystatic/core/reader'
+import keystaticConfig from '../../keystatic.config'
+
+// Récupère la liste des articles de blog publiés
+let posts: { slug: string; title: string; category: string; publishedAt: string }[] = []
+try {
+  const reader = createReader(process.cwd(), keystaticConfig)
+  const slugs = await reader.collections.blog.list()
+  const entries = await Promise.all(
+    slugs.map(async (slug) => {
+      const entry = await reader.collections.blog.read(slug)
+      return entry ? { slug, ...entry } : null
+    })
+  )
+  posts = entries
+    .filter(Boolean)
+    .map((p: any) => ({
+      slug: p.slug,
+      title: typeof p.title === 'object' ? p.title.value ?? '' : p.title ?? '',
+      category: p.category ?? '',
+      publishedAt: p.publishedAt ?? '',
+    }))
+    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
+} catch {}
+
+const sections = [
+  {
+    title: 'Pages principales',
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
+    links: [
+      { href: '/', label: 'Accueil', desc: 'Présentation, services, témoignages' },
+      { href: '/services', label: 'Services', desc: '6 prestations WordPress & SEO avec tarifs' },
+      { href: '/a-propos', label: 'À propos', desc: 'Mon parcours et ma philosophie' },
+      { href: '/realisations', label: 'Réalisations', desc: 'Projets clients et résultats' },
+      { href: '/contact', label: 'Contact', desc: 'Formulaire, coordonnées, prise de rendez-vous' },
+    ],
+  },
+  {
+    title: 'Blog',
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`,
+    links: [
+      { href: '/blog', label: 'Accueil du blog', desc: 'Tous les articles' },
+      ...posts.map(p => ({
+        href: `/blog/${p.slug}`,
+        label: p.title,
+        desc: p.category,
+      })),
+    ],
+  },
+  {
+    title: 'Légal & informations',
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+    links: [
+      { href: '/mentions-legales', label: 'Mentions légales', desc: 'Éditeur, hébergeur, SIREN' },
+      { href: '/politique-confidentialite', label: 'Politique de confidentialité', desc: 'RGPD, cookies, vos droits' },
+      { href: '/plan-du-site', label: 'Plan du site', desc: 'La page que vous lisez actuellement' },
+    ],
+  },
+]
+---
+
+<Layout
+  title="Plan du site — Paul Alves"
+  description="Vue d'ensemble de toutes les pages du site paul-alves.fr — accueil, services, à propos, réalisations, blog, contact et pages légales."
+>
+  <Nav />
+
+  <section class="sitemap-hero">
+    <div class="wrap">
+      <p class="eyebrow" style="text-align:left;">Navigation</p>
+      <h1>Plan du site</h1>
+      <p class="lede">
+        Toutes les pages du site, organisées par thématique. Pour le sitemap XML utilisé
+        par les moteurs de recherche, voir
+        <a href="/sitemap-index.xml">sitemap-index.xml</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="sitemap-body">
+    <div class="wrap">
+      <div class="sitemap-grid">
+        {sections.map(s => (
+          <div class="sitemap-section">
+            <div class="sm-head">
+              <div class="sm-icon" set:html={s.icon} />
+              <h2>{s.title}</h2>
+            </div>
+            <ul class="sm-list">
+              {s.links.map(l => (
+                <li>
+                  <a href={l.href}>
+                    <span class="sm-label">{l.label}</span>
+                    {l.desc && <span class="sm-desc">{l.desc}</span>}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .sitemap-hero {
+    background: var(--cream);
+    padding: 80px 0 56px;
+    border-bottom: 1px solid var(--line);
+  }
+  .sitemap-hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    color: var(--navy);
+    margin-bottom: 14px;
+  }
+  .sitemap-hero .lede {
+    color: var(--ink-2);
+    font-size: 16px;
+    max-width: 580px;
+    margin: 0;
+    line-height: 1.7;
+  }
+  .sitemap-hero a {
+    color: var(--gold);
+    text-decoration: underline;
+  }
+
+  .sitemap-body {
+    padding: 72px 0 100px;
+    background: #fff;
+  }
+
+  .sitemap-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .sitemap-section {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 28px;
+  }
+
+  .sm-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .sm-icon {
+    width: 40px; height: 40px;
+    background: var(--navy);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .sm-head h2 {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    color: var(--navy);
+    margin: 0;
+  }
+
+  .sm-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .sm-list a {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background .15s, color .15s;
+  }
+  .sm-list a:hover { background: #fff; }
+  .sm-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .sm-list a:hover .sm-label { color: var(--gold); }
+  .sm-desc {
+    display: block;
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  @media (max-width: 900px) {
+    .sitemap-grid { grid-template-columns: 1fr; }
+  }
+</style>
