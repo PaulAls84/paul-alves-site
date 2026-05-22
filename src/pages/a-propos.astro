@@ -68,12 +68,29 @@ const values = [
           </div>
         </div>
         <div class="about-hero-photo">
-          <div class="photo-frame">
-            <img
-              src="/assets/photo-paul.png"
-              alt="Paul Alves — Développeur WordPress & Consultant SEO à Soissons"
-              width="420" height="500"
-            />
+          <!-- Mockup d'écran avec scroll interne du screenshot du site canin -->
+          <div class="browser-mockup">
+            <div class="browser-bar">
+              <span class="browser-dot"></span>
+              <span class="browser-dot"></span>
+              <span class="browser-dot"></span>
+              <span class="browser-url">nosamisleschiens.fr</span>
+            </div>
+            <div class="browser-scroll" tabindex="0" aria-label="Aperçu du site nosamisleschiens.fr (faites défiler pour explorer)">
+              <img
+                src="/assets/nosamisleschiens-screenshot.webp"
+                alt="Capture d'écran du blog nosamisleschiens.fr — site canin lancé par Paul en 2012"
+                width="800" height="7731"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="browser-hint" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+              </svg>
+              Faites défiler pour explorer
+            </div>
           </div>
           <div class="photo-badge">
             <span class="badge-num">+1M</span>
@@ -308,21 +325,87 @@ const values = [
     flex-wrap: wrap;
   }
 
-  /* Photo */
+  /* Mockup navigateur avec scroll interne */
   .about-hero-photo {
     position: relative;
   }
-  .photo-frame {
-    border-radius: 20px;
+  .browser-mockup {
+    background: #fff;
+    border-radius: 16px;
     overflow: hidden;
-    border: 3px solid rgba(212,164,74,.35);
+    border: 1px solid rgba(212,164,74,.4);
+    box-shadow: 0 20px 60px -10px rgba(0,0,0,.5);
   }
-  .photo-frame img {
+  .browser-bar {
+    background: #e8e6e0;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid #d9d5cc;
+  }
+  .browser-dot {
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    background: #b8b3a8;
+    flex-shrink: 0;
+  }
+  .browser-dot:nth-child(1) { background: #fc615d; }
+  .browser-dot:nth-child(2) { background: #fdbe40; }
+  .browser-dot:nth-child(3) { background: #34c84a; }
+  .browser-url {
+    flex: 1;
+    background: #fff;
+    border-radius: 6px;
+    padding: 4px 12px;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 11px;
+    color: var(--ink-2);
+    text-align: center;
+    margin-left: 8px;
+  }
+  .browser-scroll {
+    height: 520px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    background: #fff;
+    /* Scrollbar gold sur navy */
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold) transparent;
+  }
+  .browser-scroll::-webkit-scrollbar { width: 6px; }
+  .browser-scroll::-webkit-scrollbar-track { background: rgba(0,0,0,.05); }
+  .browser-scroll::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+  .browser-scroll::-webkit-scrollbar-thumb:hover { background: var(--gold-2); }
+  .browser-scroll img {
     width: 100%;
     height: auto;
     display: block;
-    object-fit: cover;
   }
+  .browser-scroll:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: -2px;
+  }
+  .browser-hint {
+    background: var(--navy);
+    color: rgba(255,255,255,.6);
+    font-size: 11px;
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    letter-spacing: .02em;
+  }
+  .browser-hint svg {
+    animation: bounceY 1.4s ease-in-out infinite;
+  }
+  @keyframes bounceY {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(3px); }
+  }
+
   .photo-badge {
     position: absolute;
     bottom: -20px;
@@ -335,6 +418,7 @@ const values = [
     align-items: center;
     gap: 12px;
     box-shadow: 0 8px 32px rgba(212,164,74,.4);
+    z-index: 2;
   }
   .badge-num {
     font-family: var(--serif);
