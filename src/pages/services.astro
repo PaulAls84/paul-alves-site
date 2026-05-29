@@ -98,11 +98,52 @@ const steps = [
   { num: '03', title: 'Réalisation', desc: 'Développement itératif avec des points d\'avancement réguliers pour valider ensemble chaque étape.' },
   { num: '04', title: 'Livraison', desc: 'Mise en ligne, formation à l\'administration et support post-lancement inclus.' },
 ]
+
+const faqs = [
+  {
+    q: 'Combien coûte la création d\'un site WordPress ?',
+    a: 'La création d\'un site WordPress sur mesure démarre à 1 500€ pour un site vitrine. Le tarif varie selon la complexité, le nombre de pages et les fonctionnalités souhaitées (e-commerce, formulaires avancés, animations…). Je fournis un devis détaillé et transparent sous 24h après notre premier échange.',
+  },
+  {
+    q: 'Combien de temps faut-il pour créer un site web ?',
+    a: 'La durée moyenne est de 2 à 4 semaines pour un site vitrine, et de 2 à 3 semaines pour une refonte. Le planning précis est défini dès la proposition commerciale avec des jalons clairs pour valider chaque étape ensemble. Une optimisation SEO ou de performances peut être réalisée en 3 à 5 jours.',
+  },
+  {
+    q: 'Travaillez-vous avec des clients en dehors de Soissons ?',
+    a: 'Absolument. J\'interviens partout en France. Le travail s\'effectue majoritairement à distance via des outils collaboratifs (visioconférence, partage d\'écran, espaces de travail partagés). Je me déplace ponctuellement si le projet le justifie.',
+  },
+  {
+    q: 'Proposez-vous une maintenance après la création du site ?',
+    a: 'Oui. Je propose une formule de maintenance mensuelle à 150€/mois qui inclut les mises à jour WordPress et plugins, les sauvegardes hebdomadaires, le monitoring de disponibilité 24h/24, les corrections de bugs et un support technique prioritaire avec rapport mensuel.',
+  },
+  {
+    q: 'Mon site existant peut-il être repris et amélioré ?',
+    a: 'Oui, je propose une prestation de refonte de site existant à partir de 1 200€. Elle inclut un audit complet de l\'existant, un nouveau design, la migration sécurisée du contenu, l\'amélioration de l\'UX et la configuration des redirections 301 pour préserver votre référencement.',
+  },
+  {
+    q: 'Quel est votre délai de réponse ?',
+    a: 'Je m\'engage à répondre à toutes les demandes dans les 24h en semaine. Vous pouvez également réserver directement un appel de découverte gratuit via mon calendrier en ligne pour convenir d\'un créneau qui vous convient.',
+  },
+]
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": f.a,
+    },
+  })),
+})
 ---
 
 <Layout
   title="Services WordPress & SEO — Paul Alves"
   description="Création de site WordPress, refonte, optimisation SEO, performances et maintenance. Des solutions sur mesure à partir de 400€. Basé à Soissons, disponible partout en France."
+  schema={faqSchema}
 >
   <Nav currentPath="/services" />
 
@@ -213,6 +254,29 @@ const steps = [
             <h3>{step.title}</h3>
             <p>{step.desc}</p>
           </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section" id="faq">
+    <div class="wrap">
+      <p class="section-eyebrow">FAQ</p>
+      <h2 class="section-title">Questions <span class="accent">fréquentes</span></h2>
+      <div class="faq-list">
+        {faqs.map((f, i) => (
+          <details class="faq-item" name="faq">
+            <summary class="faq-question">
+              <span>{f.q}</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>{f.a}</p>
+            </div>
+          </details>
         ))}
       </div>
     </div>
@@ -452,6 +516,64 @@ const steps = [
     color: var(--ink-2);
     line-height: 1.65;
     margin: 0;
+  }
+
+  /* ── FAQ ──────────────────────────────────────── */
+  .faq-section {
+    padding: 100px 0;
+    background: #fff;
+  }
+  .faq-list {
+    margin-top: 56px;
+    max-width: 780px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+  }
+  .faq-item:first-child {
+    border-top: 1px solid var(--line);
+  }
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 0;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--navy);
+    list-style: none;
+    user-select: none;
+    transition: color .15s;
+  }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question:hover { color: var(--gold); }
+  .faq-icon {
+    flex-shrink: 0;
+    color: var(--gold);
+    transition: transform .25s ease;
+  }
+  .faq-item[open] .faq-icon {
+    transform: rotate(180deg);
+  }
+  .faq-item[open] .faq-question {
+    color: var(--gold);
+  }
+  .faq-answer {
+    padding: 0 0 22px;
+  }
+  .faq-answer p {
+    color: var(--ink-2);
+    font-size: 15px;
+    line-height: 1.75;
+    margin: 0;
+    max-width: 680px;
   }
 
   /* ── Responsive ───────────────────────────────── */

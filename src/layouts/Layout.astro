@@ -8,6 +8,10 @@ interface Props {
   description?: string
   image?: string
   schema?: string
+  ogType?: 'website' | 'article'
+  publishedAt?: string
+  author?: string
+  section?: string
 }
 
 const {
@@ -15,6 +19,10 @@ const {
   description = "J'aide les entreprises à se développer en ligne grâce à des sites web sur mesure, rapides et optimisés pour le SEO.",
   image = '/assets/hero-visual.png',
   schema,
+  ogType = 'website',
+  publishedAt,
+  author = 'Paul Alves',
+  section,
 } = Astro.props
 
 const gaId  = import.meta.env.PUBLIC_GA_MEASUREMENT_ID
@@ -26,23 +34,80 @@ const imageURL     = new URL(image, siteURL).href
 
 const localBusinessSchema = JSON.stringify({
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": ["LocalBusiness", "ProfessionalService"],
   "name": "Paul Alves",
-  "jobTitle": "Développeur Web & Consultant SEO",
+  "description": "Développeur Web & Consultant SEO freelance basé à Soissons. Création de sites WordPress sur mesure, refonte, optimisation SEO et performances. Disponible partout en France.",
   "url": siteURL,
+  "logo": `${siteURL}/assets/logo-full.png`,
+  "image": `${siteURL}/assets/photo-paul.png`,
   "email": "hello@paul-alves.fr",
   "telephone": "+33656666684",
+  "priceRange": "€€",
+  "currenciesAccepted": "EUR",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "3 rue des Longues Raies",
     "postalCode": "02200",
     "addressLocality": "Soissons",
+    "addressRegion": "Hauts-de-France",
     "addressCountry": "FR"
   },
-  "areaServed": "France",
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 49.3814,
+    "longitude": 3.3236
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "France"
+  },
+  "knowsAbout": [
+    "WordPress", "WooCommerce", "SEO", "Référencement naturel",
+    "Création de site web", "Optimisation des performances web",
+    "Core Web Vitals", "Google Search Console", "Marketing de contenu"
+  ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    }
+  ],
   "sameAs": [
     "https://linkedin.com/in/paul-alves"
   ]
+})
+
+const personSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Paul Alves",
+  "jobTitle": "Développeur Web & Consultant SEO",
+  "description": "Freelance spécialisé WordPress et SEO. A généré plus d'un million de visiteurs organiques sur son propre blog avant d'accompagner les entreprises dans leur développement web et leur référencement.",
+  "url": siteURL,
+  "image": `${siteURL}/assets/photo-paul.png`,
+  "email": "hello@paul-alves.fr",
+  "telephone": "+33656666684",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Soissons",
+    "addressRegion": "Hauts-de-France",
+    "addressCountry": "FR"
+  },
+  "knowsAbout": [
+    "WordPress", "WooCommerce", "SEO", "Référencement naturel",
+    "Création de site web", "Optimisation des performances web",
+    "Core Web Vitals", "Google Search Console", "Marketing de contenu"
+  ],
+  "sameAs": [
+    "https://linkedin.com/in/paul-alves"
+  ],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Paul Alves",
+    "url": siteURL
+  }
 })
 ---
 
@@ -60,15 +125,22 @@ const localBusinessSchema = JSON.stringify({
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content={imageURL} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:url" content={canonicalURL} />
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content={ogType} />
   <meta property="og:locale" content="fr_FR" />
+  <meta property="og:site_name" content="Paul Alves" />
+  {ogType === 'article' && publishedAt && <meta property="article:published_time" content={publishedAt} />}
+  {ogType === 'article' && <meta property="article:author" content={author} />}
+  {ogType === 'article' && section && <meta property="article:section" content={section} />}
 
   <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={imageURL} />
+  <meta name="twitter:site" content="@paul_alves" />
 
   <meta name="robots" content="index, follow" />
 
@@ -80,10 +152,11 @@ const localBusinessSchema = JSON.stringify({
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" />
 
-  <!-- Schema.org LocalBusiness (toutes les pages) -->
+  <!-- Schema.org — LocalBusiness + Person (toutes les pages) -->
   <script type="application/ld+json" set:html={localBusinessSchema} />
+  <script type="application/ld+json" set:html={personSchema} />
 
-  <!-- Schema.org page-specific (articles, etc.) -->
+  <!-- Schema.org — spécifique à la page (Article, FAQ, etc.) -->
   {schema && <script type="application/ld+json" set:html={schema} />}
 
   <!-- Google tag (gtag.js) avec Consent Mode v2 — denied par défaut -->
