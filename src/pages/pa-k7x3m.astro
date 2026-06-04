@@ -1,9 +1,20 @@
 ---
 import QRCode from 'qrcode'
 
-const vcardURL = 'https://paul-alves.fr/paul-alves.vcf'
+// vCard encodée directement dans le QR — iOS/Android proposent d'ajouter le contact immédiatement
+const vcardData = `BEGIN:VCARD
+VERSION:3.0
+FN:Paul Alves
+N:Alves;Paul;;;
+TITLE:Développeur Web & Consultant SEO
+ORG:Paul Alves
+EMAIL;TYPE=INTERNET,PREF:hello@paul-alves.fr
+TEL;TYPE=CELL,PREF:+33656666684
+URL:https://paul-alves.fr
+ADR;TYPE=WORK:;;3 rue des Longues Raies;Soissons;;02200;France
+END:VCARD`
 
-const qrSVG = await QRCode.toString(vcardURL, {
+const qrSVG = await QRCode.toString(vcardData, {
   type: 'svg',
   margin: 2,
   color: { dark: '#0a1d36', light: '#ffffff' },
@@ -17,7 +28,7 @@ const qrSVG = await QRCode.toString(vcardURL, {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>QR Code — Paul Alves</title>
+  <title>Paul Alves — Contact</title>
   <meta name="robots" content="noindex, nofollow" />
   <link rel="icon" type="image/png" href="/assets/logo-mark.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
