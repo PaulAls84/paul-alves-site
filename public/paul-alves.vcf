@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Paul Alves
+N:Alves;Paul;;;
+TITLE:Développeur Web & Consultant SEO
+ORG:Paul Alves
+EMAIL;TYPE=INTERNET,PREF:hello@paul-alves.fr
+TEL;TYPE=CELL,PREF:+33656666684
+URL:https://paul-alves.fr
+ADR;TYPE=WORK:;;3 rue des Longues Raies;Soissons;;02200;France
+SOCIALPROFILE;TYPE=linkedin:https://linkedin.com/in/paul-alves
+END:VCARD

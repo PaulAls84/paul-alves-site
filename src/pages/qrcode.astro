@@ -1,0 +1,218 @@
+---
+import QRCode from 'qrcode'
+
+const vcardURL = 'https://paul-alves.fr/paul-alves.vcf'
+
+const qrSVG = await QRCode.toString(vcardURL, {
+  type: 'svg',
+  margin: 2,
+  color: { dark: '#0a1d36', light: '#ffffff' },
+  errorCorrectionLevel: 'M',
+  width: 300,
+})
+---
+
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QR Code — Paul Alves</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="/assets/logo-mark.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" />
+</head>
+<body>
+
+<main>
+  <div class="card">
+    <div class="header">
+      <img src="/assets/logo-mark.png" alt="Logo Paul Alves" class="logo" />
+      <div>
+        <h1>Paul Alves</h1>
+        <p class="subtitle">Développeur Web &amp; Consultant SEO</p>
+      </div>
+    </div>
+
+    <div class="qr-wrap">
+      <Fragment set:html={qrSVG} />
+    </div>
+
+    <p class="hint">Scannez pour enregistrer le contact</p>
+
+    <div class="infos">
+      <a href="tel:+33656666684" class="info-row">
+        <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.4a2 2 0 0 1 2-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </span>
+        06 56 66 66 84
+      </a>
+      <a href="mailto:hello@paul-alves.fr" class="info-row">
+        <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </span>
+        hello@paul-alves.fr
+      </a>
+      <a href="https://paul-alves.fr" class="info-row">
+        <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </span>
+        paul-alves.fr
+      </a>
+      <a href="https://linkedin.com/in/paul-alves" class="info-row" target="_blank" rel="noopener">
+        <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+        </span>
+        linkedin.com/in/paul-alves
+      </a>
+    </div>
+
+    <a href="/paul-alves.vcf" download="Paul-Alves.vcf" class="btn-download">
+      Télécharger la fiche contact
+    </a>
+  </div>
+</main>
+
+</body>
+</html>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #f3eee5;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  main {
+    width: 100%;
+    padding: 24px 16px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 36px 32px 32px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 32px rgba(10, 29, 54, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .logo {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  h1 {
+    margin: 0;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #0a1d36;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    margin: 4px 0 0;
+    font-size: 13px;
+    color: #6b7a8d;
+    line-height: 1.4;
+  }
+
+  .qr-wrap {
+    width: 220px;
+    height: 220px;
+    padding: 12px;
+    border: 2px solid #e6e0d4;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .qr-wrap :global(svg) {
+    width: 196px !important;
+    height: 196px !important;
+    display: block;
+  }
+
+  .hint {
+    margin: -12px 0 0;
+    font-size: 12px;
+    color: #6b7a8d;
+    letter-spacing: 0.02em;
+  }
+
+  .infos {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border-top: 1px solid #e6e0d4;
+    padding-top: 20px;
+  }
+
+  .info-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #243a55;
+    text-decoration: none;
+    transition: background .15s ease;
+  }
+
+  .info-row:hover { background: #faf7f2; }
+
+  .icon {
+    width: 32px;
+    height: 32px;
+    background: #f3eee5;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #d4a44a;
+  }
+
+  .btn-download {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #0a1d36;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 14px 24px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background .15s ease;
+  }
+
+  .btn-download:hover { background: #0e2542; }
+</style>
