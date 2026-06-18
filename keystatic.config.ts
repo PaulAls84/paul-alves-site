@@ -1,7 +1,10 @@
 import { config, collection, fields } from '@keystatic/core'
 
 export default config({
-  storage: { kind: 'local' },
+  storage: {
+    kind: 'github',
+    repo: 'PaulAls84/paul-alves-site',
+  },
   ui: {
     brand: {
       name: 'Paul Alves — Studio',
