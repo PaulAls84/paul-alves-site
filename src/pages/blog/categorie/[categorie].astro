@@ -47,12 +47,12 @@ function formatDate(dateStr: string) {
       <CategoryNav categories={categories} active={activeSlug} />
 
       <div class="blog-full-grid">
-        {posts.map((post) => (
+        {posts.map((post, i) => (
           <a href={`/${post.slug}`} class="blog-card">
             <div class="blog-card-img">
               {post.image
-                ? <img src={post.image} alt={post.title} width="400" height="225" loading="lazy" decoding="async" />
-                : <img src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?w=600&q=80" alt={post.title} width="400" height="225" loading="lazy" decoding="async" />
+                ? <img src={post.image} alt={post.title} width="400" height="225" loading={i < 2 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : undefined} decoding="async" />
+                : <img src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?w=600&q=80" alt={post.title} width="400" height="225" loading={i < 2 ? 'eager' : 'lazy'} decoding="async" />
               }
             </div>
             <div class="blog-card-meta">
