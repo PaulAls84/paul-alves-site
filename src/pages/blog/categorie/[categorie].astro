@@ -51,8 +51,8 @@ function formatDate(dateStr: string) {
           <a href={`/${post.slug}`} class="blog-card">
             <div class="blog-card-img">
               {post.image
-                ? <img src={post.image} alt={post.title} width="400" height="225" />
-                : <img src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?w=600&q=80" alt={post.title} width="400" height="225" />
+                ? <img src={post.image} alt={post.title} width="400" height="225" loading="lazy" decoding="async" />
+                : <img src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?w=600&q=80" alt={post.title} width="400" height="225" loading="lazy" decoding="async" />
               }
             </div>
             <div class="blog-card-meta">
