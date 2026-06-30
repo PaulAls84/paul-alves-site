@@ -1,6 +1,6 @@
 # Routine de rédaction automatique d'articles
 
-Cette routine publie **un article de blog par semaine** (lundi 8h) de façon
+Cette routine publie **un article de blog tous les 3 jours** (8h) de façon
 autonome, à partir d'un backlog de sujets validés SEO.
 
 ## Procédure exécutée à chaque run
