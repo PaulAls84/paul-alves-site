@@ -11,6 +11,7 @@ import BlogPreview from '../components/BlogPreview.astro'
 import Newsletter from '../components/Newsletter.astro'
 import CTABand from '../components/CTABand.astro'
 import Footer from '../components/Footer.astro'
+import CalLoader from '../components/CalLoader.astro'
 
 import { createReader } from '@keystatic/core/reader'
 import keystaticConfig from '../../keystatic.config'
@@ -65,33 +66,4 @@ try {
 </Layout>
 
 <!-- Cal.com embed -->
-<script>
-  (function(C: any, A: string, L: string) {
-    const p = (a: any, ar: any) => a.q.push(ar)
-    const d = (C as any).document
-    ;(C as any).Cal = (C as any).Cal || function() {
-      const cal = (C as any).Cal
-      const ar = arguments as any
-      if (!cal.loaded) {
-        cal.ns = {}; cal.q = cal.q || []
-        d.head.appendChild(d.createElement('script')).src = A
-        cal.loaded = true
-      }
-      if (ar[0] === L) {
-        const api: any = function() { p(api, arguments) }
-        const namespace = ar[1]
-        api.q = api.q || []
-        typeof namespace === 'string' ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar)
-        return
-      }
-      p(cal, ar)
-    }
-  })(window, 'https://app.cal.eu/embed/embed.js', 'init')
-
-  ;(window as any).Cal('init', 'audit-offert', { origin: 'https://cal.eu' })
-  ;(window as any).Cal.ns['audit-offert']('ui', {
-    styles: { branding: { brandColor: '#d4a44a' } },
-    hideEventTypeDetails: false,
-    layout: 'month_view',
-  })
-</script>
+<CalLoader />

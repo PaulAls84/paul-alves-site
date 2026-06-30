@@ -1,0 +1,47 @@
+---
+// Charge l'embed Cal.com (~450 Ko) à la PREMIÈRE interaction de l'utilisateur
+// (scroll, mouvement, touch, clavier) plutôt qu'au chargement de la page.
+// → Sort le JS du chemin critique (gain FCP/LCP mobile) sans rien changer au
+//   fonctionnement des boutons [data-cal-link] : au moment où l'utilisateur
+//   atteint un bouton, il a déjà interagi, donc Cal est prêt et la popup s'ouvre.
+// Filet de sécurité : chargement après 5 s même sans interaction.
+---
+<script>
+  ;(() => {
+    let loaded = false
+    function initCal() {
+      if (loaded) return
+      loaded = true
+      ;(function (C: any, A: string, L: string) {
+        const p = (a: any, ar: any) => a.q.push(ar)
+        const d = C.document
+        C.Cal = C.Cal || function () {
+          const cal = C.Cal
+          const ar = arguments as any
+          if (!cal.loaded) {
+            cal.ns = {}; cal.q = cal.q || []
+            d.head.appendChild(d.createElement('script')).src = A
+            cal.loaded = true
+          }
+          if (ar[0] === L) {
+            const api: any = function () { p(api, arguments) }
+            const namespace = ar[1]
+            api.q = api.q || []
+            typeof namespace === 'string' ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar)
+            return
+          }
+          p(cal, ar)
+        }
+      })(window, 'https://app.cal.eu/embed/embed.js', 'init')
+      ;(window as any).Cal('init', 'audit-offert', { origin: 'https://cal.eu' })
+    }
+
+    const events = ['pointerdown', 'touchstart', 'keydown', 'scroll', 'mousemove'] as const
+    const onFirst = () => {
+      initCal()
+      events.forEach((e) => window.removeEventListener(e, onFirst))
+    }
+    events.forEach((e) => window.addEventListener(e, onFirst, { once: true, passive: true } as any))
+    setTimeout(initCal, 5000)
+  })()
+</script>

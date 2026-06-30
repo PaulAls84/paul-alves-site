@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro'
 import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
+import CalLoader from '../components/CalLoader.astro'
 
 const sujets = [
   'Création de site WordPress',
@@ -183,59 +184,7 @@ const sujets = [
   <Footer />
 </Layout>
 
-<script>
-  // ── Cal.com ──────────────────────────────────────
-  ;(function(C: any, A: string, L: string) {
-    const p = (a: any, ar: any) => a.q.push(ar)
-    const d = (C as any).document
-    ;(C as any).Cal = (C as any).Cal || function() {
-      const cal = (C as any).Cal; const ar = arguments as any
-      if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement('script')).src = A; cal.loaded = true }
-      if (ar[0] === L) { const api: any = function() { p(api, arguments) }; const ns = ar[1]; api.q = api.q || []; typeof ns === 'string' ? (cal.ns[ns] = api) && p(api, ar) : p(cal, ar); return }
-      p(cal, ar)
-    }
-  })(window, 'https://app.cal.eu/embed/embed.js', 'init')
-  ;(window as any).Cal('init', 'audit-offert', { origin: 'https://cal.eu' })
-
-  // ── Formulaire ───────────────────────────────────
-  const form    = document.getElementById('contactForm') as HTMLFormElement
-  const btn     = document.getElementById('submitBtn') as HTMLButtonElement
-  const msgBox  = document.getElementById('formMsg') as HTMLElement
-
-  function setMsg(text: string, type: 'success' | 'error') {
-    msgBox.textContent = text
-    msgBox.className = `form-msg form-msg--${type}`
-  }
-
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault()
-    btn.disabled = true
-    btn.textContent = 'Envoi en cours…'
-    msgBox.className = 'form-msg'
-    msgBox.textContent = ''
-
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(Object.fromEntries(new FormData(form))),
-      })
-      const json = await res.json()
-
-      if (res.ok && json.success) {
-        setMsg('✓ Message envoyé ! Je vous réponds sous 24h.', 'success')
-        form.reset()
-      } else {
-        setMsg(json.error ?? 'Une erreur est survenue. Réessayez.', 'error')
-      }
-    } catch {
-      setMsg('Problème réseau. Vérifiez votre connexion et réessayez.', 'error')
-    } finally {
-      btn.disabled = false
-      btn.innerHTML = `<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Envoyer le message`
-    }
-  })
-</script>
+<CalLoader />
 
 <style>
   /* ── Hero ─────────────────────────────────────── */
