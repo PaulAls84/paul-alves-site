@@ -132,7 +132,7 @@ def render(title: str, category: str, out: str) -> None:
 
     # Signature
     d.text((90, H - 130), "paul-alves.fr", font=sans_sm, fill=GOLD)
-    d.text((90, H - 95), "Développeur Web & Consultant SEO — Bordeaux",
+    d.text((90, H - 95), "Développeur Web & Consultant SEO — Soissons",
            font=sans_sm, fill=MUTED)
 
     img.save(out, "JPEG", quality=88)
