@@ -21,8 +21,12 @@ try {
   const slugs = await reader.collections.blog.list()
   const entries = await Promise.all(
     slugs.map(async (slug) => {
-      const entry = await reader.collections.blog.read(slug)
-      return entry ? { slug, ...entry } : null
+      try {
+        const entry = await reader.collections.blog.read(slug)
+        return entry ? { slug, ...entry } : null
+      } catch {
+        return null // un article corrompu ne doit pas faire tomber tout le blog
+      }
     })
   )
   posts = entries
