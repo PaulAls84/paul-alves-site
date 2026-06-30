@@ -71,7 +71,7 @@ function formatDate(dateStr: string) {
       ) : (
         <div class="blog-full-grid">
           {posts.map(post => (
-            <a href={`/blog/${post.slug}`} class="blog-card">
+            <a href={`/${post.slug}`} class="blog-card">
               <div class="blog-card-img">
                 {post.image
                   ? <img src={post.image} alt={post.title} width="400" height="225" />

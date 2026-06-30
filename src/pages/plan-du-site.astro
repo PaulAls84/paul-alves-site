@@ -50,7 +50,7 @@ const sections = [
     links: [
       { href: '/blog', label: 'Accueil du blog', desc: 'Tous les articles' },
       ...posts.map(p => ({
-        href: `/blog/${p.slug}`,
+        href: `/${p.slug}`,
         label: p.title,
         desc: p.category,
       })),

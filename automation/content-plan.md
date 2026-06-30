@@ -14,14 +14,6 @@ Données de volume : Google Ads Keyword Planner (France, FR), relevé 2026-06-30
 
 ## File d'attente
 
-### 1. Créer un site WordPress
-- **status:** todo
-- **slug:** creer-un-site-wordpress
-- **mot-clé principal:** créer un site wordpress (1000/mois, concurrence faible)
-- **catégorie:** WordPress
-- **angle:** guide étape par étape (nom de domaine, hébergement, installation, thème, pages essentielles, mise en ligne). Très gros volume, intention « débutant ».
-- **maillage interne suggéré:** pourquoi-choisir-wordpress, meilleur-plugin-wordpress
-
 ### 2. Prix d'un site WordPress
 - **status:** todo
 - **slug:** prix-site-wordpress
@@ -65,6 +57,11 @@ Données de volume : Google Ads Keyword Planner (France, FR), relevé 2026-06-30
 ---
 
 ## Publiés
+
+### Créer un site WordPress
+- **status:** done — 2026-06-30
+- **slug:** creer-un-site-wordpress
+- **mot-clé principal:** créer un site wordpress (1000/mois, concurrence faible)
 
 ### Maintenance WordPress
 - **status:** done — 2026-06-30
