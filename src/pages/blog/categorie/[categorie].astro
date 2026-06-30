@@ -1,0 +1,73 @@
+---
+import Layout from '../../../layouts/Layout.astro'
+import Nav from '../../../components/Nav.astro'
+import Footer from '../../../components/Footer.astro'
+import Newsletter from '../../../components/Newsletter.astro'
+import CategoryNav from '../../../components/CategoryNav.astro'
+import { listPosts, categorySlug, distinctCategories } from '../../../lib/blog'
+
+export async function getStaticPaths() {
+  const posts = await listPosts()
+  const categories = distinctCategories(posts)
+  return categories.map((cat) => ({
+    params: { categorie: categorySlug(cat) },
+    props: { categoryName: cat, categories },
+  }))
+}
+
+const { categoryName, categories } = Astro.props
+const activeSlug = categorySlug(categoryName)
+
+const allPosts = await listPosts()
+const posts = allPosts.filter((p) => categorySlug(p.category) === activeSlug)
+
+function formatDate(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString('fr-FR', {
+    day: 'numeric', month: 'long', year: 'numeric',
+  })
+}
+---
+
+<Layout
+  title={`${categoryName} — Articles & Conseils | Paul Alves`}
+  description={`Tous les articles de la catégorie ${categoryName} : conseils, guides et bonnes pratiques par Paul Alves.`}
+>
+  <Nav currentPath="/blog" />
+
+  <section class="blog-hero">
+    <div class="wrap">
+      <p class="eyebrow" style="text-align:left; margin-bottom: 12px;">Catégorie</p>
+      <h1>{categoryName}</h1>
+      <p>Tous les articles de la catégorie {categoryName}.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <CategoryNav categories={categories} active={activeSlug} />
+
+      <div class="blog-full-grid">
+        {posts.map((post) => (
+          <a href={`/${post.slug}`} class="blog-card">
+            <div class="blog-card-img">
+              {post.image
+                ? <img src={post.image} alt={post.title} width="400" height="225" />
+                : <img src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?w=600&q=80" alt={post.title} width="400" height="225" />
+              }
+            </div>
+            <div class="blog-card-meta">
+              {post.category && <span class="blog-cat">{post.category}</span>}
+              <span class="blog-date">{formatDate(post.publishedAt)}</span>
+            </div>
+            <h3>{post.title}</h3>
+            <p>{post.description}</p>
+            <span class="blog-link">Lire l'article &nbsp;→</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Newsletter />
+  <Footer />
+</Layout>

@@ -21,7 +21,20 @@ export default config({
         title: fields.slug({ name: { label: 'Titre' } }),
         description: fields.text({ label: 'Description', multiline: true }),
         publishedAt: fields.date({ label: 'Date de publication' }),
-        category: fields.text({ label: 'Catégorie (ex: SEO, Dev Web)' }),
+        featured: fields.checkbox({
+          label: 'Mettre en avant sur la page d’accueil',
+          defaultValue: false,
+        }),
+        category: fields.select({
+          label: 'Catégorie',
+          options: [
+            { label: 'WordPress', value: 'WordPress' },
+            { label: 'SEO', value: 'SEO' },
+            { label: 'Plugins', value: 'Plugins' },
+            { label: 'Maintenance', value: 'Maintenance' },
+          ],
+          defaultValue: 'WordPress',
+        }),
         image: fields.image({
           label: 'Image de couverture',
           directory: 'public/images/blog',

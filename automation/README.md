@@ -17,7 +17,12 @@ autonome, à partir d'un backlog de sujets validés SEO.
 3. **Rédiger l'article** dans `src/content/blog/<slug>/index.mdoc`, au format
    exact des articles existants :
    - Frontmatter YAML : `title` (avec `[2026]`), `description`, `publishedAt`
-     (date du jour), `category`, `image: /images/blog/<slug>.jpg`.
+     (date du jour), `featured: false`, `category`, `image: /images/blog/<slug>.jpg`.
+   - **`category` doit être l'une des valeurs de la liste fixe** (champ select
+     Keystatic) : `WordPress`, `SEO`, `Plugins` ou `Maintenance`. Toute autre
+     valeur serait invalide. Utiliser la catégorie indiquée dans le backlog.
+   - **`featured: false`** par défaut : la mise en avant sur la page d'accueil est
+     un choix éditorial manuel de Paul (il coche la case dans Keystatic).
    - **RÈGLE YAML CRITIQUE** : toute valeur contenant `:`, `"`, `[`, `]` ou
      commençant par un caractère spécial **doit être entre guillemets doubles**.
      Une frontmatter invalide casse la lecture de l'article. (La lecture du site

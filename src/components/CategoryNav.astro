@@ -1,0 +1,57 @@
+---
+import { categorySlug } from '../lib/blog'
+
+interface Props {
+  categories: string[]
+  /** Slug de la catégorie active, ou null sur la page « Tous les articles ». */
+  active?: string | null
+}
+
+const { categories, active = null } = Astro.props
+---
+
+<nav class="cat-nav" aria-label="Catégories du blog">
+  <a href="/blog" class={`cat-chip ${active === null ? 'is-active' : ''}`}>Tous</a>
+  {categories.map((cat) => {
+    const slug = categorySlug(cat)
+    return (
+      <a
+        href={`/blog/categorie/${slug}/`}
+        class={`cat-chip ${active === slug ? 'is-active' : ''}`}
+      >
+        {cat}
+      </a>
+    )
+  })}
+</nav>
+
+<style>
+  .cat-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 0 40px;
+  }
+  .cat-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: #fff;
+    color: var(--ink-2);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color .15s, background .15s, border-color .15s;
+  }
+  .cat-chip:hover {
+    color: var(--navy);
+    border-color: var(--navy);
+  }
+  .cat-chip.is-active {
+    background: var(--navy);
+    color: #fff;
+    border-color: var(--navy);
+  }
+</style>
