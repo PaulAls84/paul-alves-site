@@ -28,9 +28,9 @@ autonome, à partir d'un backlog de sujets validés SEO.
      `## FAQ` (3-4 questions en gras). Cible : 1200-1800 mots, ton pro et direct,
      français. S'inspirer du style des articles déjà publiés.
    - **Maillage interne** : insérer 1-2 liens vers les articles suggérés dans
-     l'entrée du backlog. URL canonique en production (Vercel) =
-     `https://www.paul-alves.fr/blog/<slug>/` (le domaine sert le déploiement
-     Vercel ; l'apex redirige vers `www` ; les articles sont sous `/blog/`).
+     l'entrée du backlog. Les articles sont servis à la **racine** (style
+     WordPress) : `https://paul-alves.fr/<slug>/` (et NON `/blog/<slug>/`).
+     La page `/blog/` reste la liste des articles.
 
 4. **Générer la couverture** :
    ```
