@@ -36,6 +36,14 @@ autonome, à partir d'un backlog de sujets validés SEO.
      l'entrée du backlog. Les articles sont servis à la **racine** (style
      WordPress) : `https://paul-alves.fr/<slug>/` (et NON `/blog/<slug>/`).
      La page `/blog/` reste la liste des articles.
+   - **Affiliation (monétisation)** : si l'entrée du backlog porte
+     `monétisation: affiliation`, consulter la section « Affiliation » de
+     `content-plan.md`. Pour chaque service cité dont le lien affilié est
+     renseigné (≠ `<À REMPLIR>`), le lier avec `rel="sponsored nofollow"`, et
+     ajouter la **mention de transparence** indiquée au début de l'article.
+     Si un lien vaut `<À REMPLIR>`, citer le service **sans lien** (ne JAMAIS
+     inventer ni deviner un lien affilié). Rester honnête et factuel dans les
+     comparatifs (vrais points forts/faibles, pas de survente).
 
 4. **Générer la couverture** :
    ```
