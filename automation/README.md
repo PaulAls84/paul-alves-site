@@ -45,8 +45,13 @@ autonome, à partir d'un backlog de sujets validés SEO.
 
 6. **Vérifier puis publier** :
    - Idéalement, lancer `npm run build` pour confirmer que le site compile.
-   - Committer les fichiers (article + image + content-plan.md) et **pousser sur
-     `main`**. Vercel rebuild et met l'article en ligne automatiquement.
+   - **N'ajouter QUE les fichiers de l'article** (jamais `git add -A`/`git add .` :
+     un autre travail en cours dans le dossier serait embarqué par erreur) :
+     ```
+     git add src/content/blog/<slug>/ public/images/blog/<slug>.jpg automation/content-plan.md
+     ```
+   - Committer et **pousser sur `main`**. Vercel rebuild et met l'article en ligne
+     automatiquement (le repo doit rester PUBLIC, cf. plan Vercel Hobby).
    - Message de commit : `Blog : <titre> (routine auto)`.
 
 ## Réalimenter le backlog
