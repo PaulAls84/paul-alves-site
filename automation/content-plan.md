@@ -120,14 +120,51 @@ affiliés du tableau ci-dessous (attribut `rel="sponsored nofollow"`) et ajoute 
 n'invente jamais de lien affilié). Paul doit s'inscrire lui-même aux programmes et
 coller ses liens ici.
 
-| Service | Lien affilié | Programme |
+Légende : ⭐ = correspond à un article déjà publié ou au backlog (monétise tout de suite) · 🔁 = commission récurrente.
+
+**Hébergement** (commission one-shot, gros panier)
+| Service | Lien affilié | Note |
 |---|---|---|
-| Hostinger | `<À REMPLIR>` | hostinger.fr → programme d'affiliation |
-| o2switch | `<À REMPLIR>` | o2switch → affiliation |
-| OVHcloud | `<À REMPLIR>` | OVH → programme partenaire |
-| PlanetHoster | `<À REMPLIR>` | PlanetHoster → affiliation |
-| Divi / Elegant Themes | `<À REMPLIR>` | elegantthemes.com → affiliate |
-| Astra | `<À REMPLIR>` | wpastra.com → affiliate |
+| Hostinger ⭐ | `<À REMPLIR>` | déjà client, bon programme FR |
+| o2switch ⭐ | `<À REMPLIR>` | hébergeur FR très apprécié |
+| OVHcloud ⭐ | `<À REMPLIR>` | leader FR |
+| Infomaniak ⭐ | `<À REMPLIR>` | FR/Suisse, éco-responsable |
+| PlanetHoster | `<À REMPLIR>` | FR/Canada |
+| Kinsta 🔁 | `<À REMPLIR>` | managed premium, grosse commission |
+| Cloudways 🔁 | `<À REMPLIR>` | cloud infogéré, récurrent |
+
+**Builders & thèmes** (correspond au comparatif thèmes + création)
+| Service | Lien affilié | Note |
+|---|---|---|
+| Elementor Pro ⭐🔁 | `<À REMPLIR>` | builder n°1, récurrent |
+| Divi / Elegant Themes ⭐ | `<À REMPLIR>` | très populaire |
+| Astra ⭐🔁 | `<À REMPLIR>` | thème léger, récurrent |
+| GeneratePress | `<À REMPLIR>` | thème dev, performant |
+
+**Performance** (correspond à ton article « optimiser la vitesse »)
+| Service | Lien affilié | Note |
+|---|---|---|
+| WP Rocket ⭐🔁 | `<À REMPLIR>` | cache n°1, FR, **top priorité** |
+| Imagify ⭐🔁 | `<À REMPLIR>` | optim images, FR (même éditeur que WP Rocket) |
+
+**SEO** (ton cœur de métier + articles SEO)
+| Service | Lien affilié | Note |
+|---|---|---|
+| Rank Math Pro ⭐🔁 | `<À REMPLIR>` | plugin SEO, récurrent |
+| SEOPress ⭐🔁 | `<À REMPLIR>` | plugin SEO **français** |
+| Semrush 🔁 | `<À REMPLIR>` | outil SEO, bonne commission |
+
+**Sauvegarde & sécurité** (correspond aux articles maintenance/sauvegarde)
+| Service | Lien affilié | Note |
+|---|---|---|
+| UpdraftPlus ⭐🔁 | `<À REMPLIR>` | sauvegarde n°1 |
+| Solid Security (ex-iThemes) 🔁 | `<À REMPLIR>` | sécurité |
+
+**Email / marketing**
+| Service | Lien affilié | Note |
+|---|---|---|
+| Systeme.io ⭐🔁 | `<À REMPLIR>` | **déjà utilisé sur le site**, 40 % récurrent |
+| Brevo (ex-Sendinblue) 🔁 | `<À REMPLIR>` | emailing FR |
 
 **Mention de transparence à insérer** (au début des articles avec liens affiliés) :
 > *Cet article contient des liens affiliés. Si vous souscrivez via l'un d'eux, je peux percevoir une commission, sans surcoût pour vous.*
