@@ -20,6 +20,12 @@ export default defineConfig({
   // deviennent automatiquement des fonctions serverless sur Vercel.
   output: 'static',
 
+  // Inline le CSS dans le HTML : supprime la requête CSS render-blocking
+  // (gain FCP/LCP sur mobile). Le CSS du site est léger (~19 Ko, ~5 Ko gzippé).
+  build: {
+    inlineStylesheets: 'always',
+  },
+
   adapter: vercel({
     webAnalytics: { enabled: false }, // GA4 suffit
   }),
