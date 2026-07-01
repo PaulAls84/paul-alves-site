@@ -8,7 +8,8 @@ import CalLoader from '../components/CalLoader.astro'
 import { createReader } from '@keystatic/core/reader'
 import keystaticConfig from '../../keystatic.config'
 import Markdoc from '@markdoc/markdoc'
-import { categorySlug } from '../lib/blog'
+import { categorySlug, webpCover } from '../lib/blog'
+import { injectInternalLinks, getArticleRefs } from '../lib/internal-links'
 
 export async function getStaticPaths() {
   try {
@@ -31,7 +32,11 @@ try {
   if (post?.content) {
     const { node } = await post.content()
     const transformed = Markdoc.transform(node)
-    renderedContent = Markdoc.renderers.html(transformed)
+    // Maillage interne automatique : max 3 liens contextuels vers d'autres
+    // articles, sur leurs ancres (mots-clés définis dans Keystatic).
+    const articleRefs = await getArticleRefs(reader)
+    const linked = injectInternalLinks(transformed, slug!, articleRefs, 3)
+    renderedContent = Markdoc.renderers.html(linked)
   }
 } catch {
   return Astro.redirect('/blog')
@@ -105,7 +110,7 @@ const articleSchema = JSON.stringify({
 ---
 
 <Layout
-  title={`${title} — Paul Alves`}
+  title={title}
   description={post.description ?? ''}
   image={post.image ?? '/assets/hero-visual.png'}
   schema={articleSchema}
@@ -118,7 +123,7 @@ const articleSchema = JSON.stringify({
   <section class="article-hero">
     {post.image && (
       <div class="hero-bg">
-        <img src={post.image} alt="" role="presentation" width="1200" height="630" fetchpriority="high" decoding="async" />
+        <img src={webpCover(post.image)} alt="" role="presentation" width="1200" height="630" fetchpriority="high" decoding="async" />
       </div>
     )}
     <div class="hero-overlay" />
@@ -226,7 +231,7 @@ const articleSchema = JSON.stringify({
     </div>
 
     <div class="article-footer-nav">
-      <a href="/blog" class="btn btn-outline" style="font-size: 13px; padding: 10px 18px;">
+      <a href="/blog/" class="btn btn-outline" style="font-size: 13px; padding: 10px 18px;">
         ← Tous les articles
       </a>
       <a
@@ -250,10 +255,10 @@ const articleSchema = JSON.stringify({
         <h2 class="section-title">Articles <span class="accent">similaires</span></h2>
         <div class="related-grid">
           {relatedPosts.map(p => (
-            <a href={`/${p.slug}`} class="related-card">
+            <a href={`/${p.slug}/`} class="related-card">
               <div class="related-card-img">
                 {p.image
-                  ? <img src={p.image} alt={p.title} width="400" height="220" loading="lazy" />
+                  ? <img src={webpCover(p.image)} alt={p.title} width="400" height="220" loading="lazy" />
                   : <div class="related-card-placeholder" />
                 }
               </div>

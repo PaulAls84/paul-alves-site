@@ -31,6 +31,13 @@ export default defineConfig({
   // deviennent automatiquement des fonctions serverless sur Vercel.
   output: 'static',
 
+  // Force le slash final sur toutes les URL. L'adaptateur Vercel écrit alors
+  // `trailingSlash: true` dans la config de sortie → Vercel redirige (308)
+  // `/page` vers `/page/`. Évite que chaque page soit servie en 200 sous deux
+  // URL (avec/sans slash), ce qui créait des titres/descriptions "dupliqués".
+  // Les canonicals pointaient déjà vers la version avec slash : c'est cohérent.
+  trailingSlash: 'always',
+
   // Inline le CSS dans le HTML : supprime la requête CSS render-blocking
   // (gain FCP/LCP sur mobile). Le CSS du site est léger (~19 Ko, ~5 Ko gzippé).
   build: {

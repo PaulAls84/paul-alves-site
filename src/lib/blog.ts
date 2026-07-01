@@ -11,6 +11,16 @@ export type Post = {
   featured: boolean
 }
 
+/**
+ * Version WebP d'une couverture, pour l'AFFICHAGE (`<img>`).
+ * Chaque couverture `.jpg` a un jumeau `.webp` (plus léger). On garde le
+ * `.jpg` d'origine pour l'og:image / les données structurées, car les
+ * aperçus sociaux (Facebook, WhatsApp…) sont plus fiables en JPG/PNG.
+ */
+export function webpCover(src: string): string {
+  return src ? src.replace(/\.(jpe?g|png)$/i, '.webp') : src
+}
+
 /** Slug d'URL d'une catégorie (ex. "WordPress" -> "wordpress"). */
 export function categorySlug(name: string): string {
   return (name ?? '')

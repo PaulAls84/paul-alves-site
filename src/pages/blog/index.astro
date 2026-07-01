@@ -7,7 +7,7 @@ import CategoryNav from '../../components/CategoryNav.astro'
 
 import { createReader } from '@keystatic/core/reader'
 import keystaticConfig from '../../../keystatic.config'
-import { distinctCategories } from '../../lib/blog'
+import { distinctCategories, webpCover } from '../../lib/blog'
 
 let posts: any[] = []
 try {
@@ -77,10 +77,10 @@ const categories = distinctCategories(posts as any)
         <CategoryNav categories={categories} active={null} />
         <div class="blog-full-grid">
           {posts.map((post, i) => (
-            <a href={`/${post.slug}`} class="blog-card">
+            <a href={`/${post.slug}/`} class="blog-card">
               <div class="blog-card-img">
                 {post.image
-                  ? <img src={post.image} alt={post.title} width="400" height="225" loading={i < 2 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : undefined} decoding="async" />
+                  ? <img src={webpCover(post.image)} alt={post.title} width="400" height="225" loading={i < 2 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : undefined} decoding="async" />
                   : <img src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?w=600&q=80" alt={post.title} width="400" height="225" loading={i < 2 ? 'eager' : 'lazy'} decoding="async" />
                 }
               </div>

@@ -40,6 +40,14 @@ export default config({
           directory: 'public/images/blog',
           publicPath: '/images/blog/',
         }),
+        anchors: fields.array(fields.text({ label: 'Ancre / mot-clé' }), {
+          label: 'Ancres pour le maillage interne',
+          description:
+            'Mots-clés qui, lorsqu’ils apparaissent dans un AUTRE article, ' +
+            'deviennent automatiquement un lien vers celui-ci. ' +
+            'Ex : « SEO WordPress », « référencement ». 2 à 4 ancres suffisent.',
+          itemLabel: (props) => props.value || 'Ancre vide',
+        }),
         content: fields.markdoc({ label: 'Contenu' }),
       },
     }),

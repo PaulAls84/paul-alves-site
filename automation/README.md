@@ -17,7 +17,8 @@ autonome, à partir d'un backlog de sujets validés SEO.
 3. **Rédiger l'article** dans `src/content/blog/<slug>/index.mdoc`, au format
    exact des articles existants :
    - Frontmatter YAML : `title` (avec `[2026]`), `description`, `publishedAt`
-     (date du jour), `featured: false`, `category`, `image: /images/blog/<slug>.jpg`.
+     (date du jour), `featured: false`, `category`, `image: /images/blog/<slug>.jpg`,
+     `anchors` (voir « Maillage interne » ci-dessous).
    - **`category` doit être l'une des valeurs de la liste fixe** (champ select
      Keystatic) : `WordPress`, `SEO`, `Plugins` ou `Maintenance`. Toute autre
      valeur serait invalide. Utiliser la catégorie indiquée dans le backlog.
@@ -32,9 +33,23 @@ autonome, à partir d'un backlog de sujets validés SEO.
      listes, au moins un tableau si pertinent, citations `>`, `## Conclusion`,
      `## FAQ` (3-4 questions en gras). Cible : 1200-1800 mots, ton pro et direct,
      français. S'inspirer du style des articles déjà publiés.
-   - **Maillage interne** : insérer 1-2 liens vers les articles suggérés dans
-     l'entrée du backlog. Les articles sont servis à la **racine** (style
-     WordPress) : `https://paul-alves.fr/<slug>/` (et NON `/blog/<slug>/`).
+   - **Maillage interne** : le maillage est désormais **automatique au build**
+     (`src/lib/internal-links.ts`) — il transforme les mots-clés d'un article
+     apparaissant dans les autres en liens (max 3/article). Pour que le nouvel
+     article **reçoive** des liens entrants, remplir son champ `anchors` dans la
+     frontmatter YAML : 2 à 4 mots-clés/phrases distinctifs, en privilégiant
+     1-2 phrases longues (« vitesse de votre site WordPress ») + 1-2 mots-clés
+     forts et non génériques (ex. `SEO`, `plugins`, `sauvegarde` selon le sujet).
+     Éviter le mot seul « WordPress » (trop fréquent → sur-maillage).
+     Exemple YAML :
+     ```
+     anchors:
+       - hébergement WordPress
+       - hébergeur
+     ```
+     Des liens éditoriaux manuels dans le corps restent possibles en plus (ils
+     ne seront pas doublés par l'auto). Les articles sont servis à la **racine**
+     (style WordPress) : `https://paul-alves.fr/<slug>/` (et NON `/blog/<slug>/`).
      La page `/blog/` reste la liste des articles.
    - **Affiliation (monétisation)** : si l'entrée du backlog porte
      `monétisation: affiliation`, consulter la section « Affiliation » de
@@ -52,6 +67,10 @@ autonome, à partir d'un backlog de sujets validés SEO.
    Si `OPENAI_API_KEY` est défini dans l'environnement, l'image de fond est
    générée par IA puis habillée à la charte ; sinon une couverture charte est
    produite localement. Dans les deux cas un fichier valide est créé.
+   Le script génère **deux fichiers** : `<slug>.jpg` (og:image / réseaux sociaux)
+   **et** `<slug>.webp` (version légère affichée sur le site). La frontmatter
+   garde `image: /images/blog/<slug>.jpg` ; l'affichage bascule automatiquement
+   sur le `.webp` via le helper `webpCover`. **Committer les deux fichiers.**
 
 5. **Mettre à jour le backlog** : passer l'entrée de `status: todo` à
    `status: done — <date>` et la déplacer dans la section « Publiés ».
@@ -61,7 +80,7 @@ autonome, à partir d'un backlog de sujets validés SEO.
    - **N'ajouter QUE les fichiers de l'article** (jamais `git add -A`/`git add .` :
      un autre travail en cours dans le dossier serait embarqué par erreur) :
      ```
-     git add src/content/blog/<slug>/ public/images/blog/<slug>.jpg automation/content-plan.md
+     git add src/content/blog/<slug>/ public/images/blog/<slug>.jpg public/images/blog/<slug>.webp automation/content-plan.md
      ```
    - Committer et **pousser sur `main`**. Vercel rebuild et met l'article en ligne
      automatiquement (le repo doit rester PUBLIC, cf. plan Vercel Hobby).

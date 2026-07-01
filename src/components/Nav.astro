@@ -13,11 +13,11 @@ const { currentPath = '/' } = Astro.props
 
     <nav class="nav-links" id="navLinks">
       <a href="/#accueil" class={currentPath === '/' ? 'active' : ''}>Accueil</a>
-      <a href="/services" class={currentPath === '/services' ? 'active' : ''}>Services</a>
-      <a href="/a-propos" class={currentPath === '/a-propos' ? 'active' : ''}>À propos</a>
-      <a href="/realisations" class={currentPath === '/realisations' ? 'active' : ''}>Réalisations</a>
-      <a href="/blog" class={currentPath.startsWith('/blog') ? 'active' : ''}>Blog</a>
-      <a href="/contact" class={currentPath === '/contact' ? 'active' : ''}>Contact</a>
+      <a href="/services/" class={currentPath === '/services' ? 'active' : ''}>Services</a>
+      <a href="/a-propos/" class={currentPath === '/a-propos' ? 'active' : ''}>À propos</a>
+      <a href="/realisations/" class={currentPath === '/realisations' ? 'active' : ''}>Réalisations</a>
+      <a href="/blog/" class={currentPath.startsWith('/blog') ? 'active' : ''}>Blog</a>
+      <a href="/contact/" class={currentPath === '/contact' ? 'active' : ''}>Contact</a>
       <div class="nav-mobile-ctas">
         <a
           href="#"

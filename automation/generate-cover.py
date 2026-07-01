@@ -135,8 +135,13 @@ def render(title: str, category: str, out: str) -> None:
     d.text((90, H - 95), "Développeur Web & Consultant SEO — Soissons",
            font=sans_sm, fill=MUTED)
 
+    # JPG : sert d'og:image / donnée structurée (aperçus sociaux fiables en JPG).
     img.save(out, "JPEG", quality=88)
-    print(f"[cover] OK {out} ({W}x{H})")
+    # WebP : version légère utilisée pour l'AFFICHAGE sur le site (helper webpCover).
+    import os as _os
+    webp_out = _os.path.splitext(out)[0] + ".webp"
+    img.save(webp_out, "WEBP", quality=80)
+    print(f"[cover] OK {out} + {webp_out} ({W}x{H})")
 
 
 if __name__ == "__main__":
