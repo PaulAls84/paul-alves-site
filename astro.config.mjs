@@ -6,6 +6,17 @@ import vercel from '@astrojs/vercel'
 
 export default defineConfig({
   site: 'https://paul-alves.fr',
+
+  // Derrière le proxy Vercel, Astro n'utilise le vrai host (X-Forwarded-Host)
+  // que si le domaine est déclaré ici. Sans ça, request.url retombe sur
+  // "localhost" → Keystatic génère un mauvais redirect_uri OAuth (500/erreur GitHub).
+  security: {
+    allowedDomains: [
+      { hostname: 'paul-alves.fr', protocol: 'https' },
+      { hostname: 'www.paul-alves.fr', protocol: 'https' },
+    ],
+  },
+
   integrations: [react(), keystatic(), sitemap()],
 
   // Les articles sont servis à la racine (/<slug>/), comme l'ancien WordPress.
