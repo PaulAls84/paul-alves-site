@@ -14,14 +14,6 @@ Données de volume : Google Ads Keyword Planner (France, FR), relevé 2026-06-30
 
 ## File d'attente
 
-### 2. Prix d'un site WordPress
-- **status:** todo
-- **slug:** prix-site-wordpress
-- **mot-clé principal:** wordpress prix / prix site wordpress (390 + 110/mois, concurrence moyenne)
-- **catégorie:** WordPress
-- **angle:** combien coûte réellement un site WordPress en 2026 (vitrine, e-commerce, sur-mesure ; postes de coût : domaine, hébergement, thème, plugins, prestation). Forte intention commerciale.
-- **maillage interne suggéré:** pourquoi-choisir-wordpress, maintenance-wordpress
-
 ### 3. WordPress ou Wix : que choisir
 - **status:** todo
 - **slug:** wordpress-ou-wix
@@ -172,6 +164,11 @@ Légende : ⭐ = correspond à un article déjà publié ou au backlog (monétis
 ---
 
 ## Publiés
+
+### Prix d'un site WordPress
+- **status:** done — 2026-07-03
+- **slug:** prix-site-wordpress
+- **mot-clé principal:** wordpress prix / prix site wordpress (390 + 110/mois, concurrence moyenne)
 
 ### Créer un site WordPress
 - **status:** done — 2026-06-30
