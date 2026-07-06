@@ -14,14 +14,6 @@ Données de volume : Google Ads Keyword Planner (France, FR), relevé 2026-06-30
 
 ## File d'attente
 
-### 3. WordPress ou Wix : que choisir
-- **status:** todo
-- **slug:** wordpress-ou-wix
-- **mot-clé principal:** wix ou wordpress / wordpress ou wix (210 + 90/mois, concurrence faible)
-- **catégorie:** WordPress
-- **angle:** comparatif décisionnel honnête (liberté, SEO, coût, évolutivité, courbe d'apprentissage) avec tableau. Intention « choix de plateforme ».
-- **maillage interne suggéré:** pourquoi-choisir-wordpress, seo-wordpress
-
 ### 4. Sauvegarde WordPress
 - **status:** todo
 - **slug:** sauvegarde-wordpress
@@ -164,6 +156,11 @@ Légende : ⭐ = correspond à un article déjà publié ou au backlog (monétis
 ---
 
 ## Publiés
+
+### WordPress ou Wix : que choisir
+- **status:** done — 2026-07-06
+- **slug:** wordpress-ou-wix
+- **mot-clé principal:** wix ou wordpress / wordpress ou wix (210 + 90/mois, concurrence faible)
 
 ### Prix d'un site WordPress
 - **status:** done — 2026-07-03
