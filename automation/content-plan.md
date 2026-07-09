@@ -14,14 +14,6 @@ Données de volume : Google Ads Keyword Planner (France, FR), relevé 2026-06-30
 
 ## File d'attente
 
-### 4. Sauvegarde WordPress
-- **status:** todo
-- **slug:** sauvegarde-wordpress
-- **mot-clé principal:** sauvegarde wordpress / sauvegarde site wordpress (170/mois, concurrence faible)
-- **catégorie:** Maintenance
-- **angle:** pourquoi et comment sauvegarder (fréquence, externalisation, plugins, restauration testée). Complète l'article maintenance.
-- **maillage interne suggéré:** maintenance-wordpress
-
 ### 5. Refonte de site WordPress
 - **status:** todo
 - **slug:** refonte-site-wordpress
@@ -156,6 +148,11 @@ Légende : ⭐ = correspond à un article déjà publié ou au backlog (monétis
 ---
 
 ## Publiés
+
+### Sauvegarde WordPress
+- **status:** done — 2026-07-09
+- **slug:** sauvegarde-wordpress
+- **mot-clé principal:** sauvegarde wordpress / sauvegarde site wordpress (170/mois, concurrence faible)
 
 ### WordPress ou Wix : que choisir
 - **status:** done — 2026-07-06

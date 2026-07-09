@@ -1,0 +1,128 @@
+---
+title: "Sauvegarde WordPress : le guide complet pour ne jamais perdre son site [2026]"
+description: "Pourquoi, quand et comment sauvegarder un site WordPress : fréquence, externalisation, meilleurs plugins et restauration testée. Le filet de sécurité indispensable."
+publishedAt: '2026-07-09'
+category: Maintenance
+image: /images/blog/sauvegarde-wordpress.jpg
+anchors:
+  - sauvegarde de votre site WordPress
+  - restaurer une sauvegarde
+  - sauvegarde externalisée
+  - sauvegarde automatique
+---
+
+Il existe deux catégories de propriétaires de sites WordPress : ceux qui font des sauvegardes, et ceux qui vont commencer à en faire. Le déclic arrive presque toujours après une catastrophe — un piratage, une mise à jour qui casse tout, une manipulation malheureuse — et la découverte, ce jour-là, qu'aucune copie récente n'existe. Des mois de travail partis en quelques secondes. La sauvegarde WordPress n'est pas une option technique réservée aux experts : c'est l'assurance la plus rentable que vous puissiez souscrire pour votre site. Voici comment la mettre en place sérieusement, une fois pour toutes.
+
+## Pourquoi sauvegarder son site WordPress n'est jamais optionnel
+
+### Un site vit dans un environnement hostile
+
+Un site WordPress est un logiciel connecté en permanence à Internet, exposé aux tentatives de piratage, aux bugs de mise à jour et aux défaillances de serveur. Chaque extension installée, chaque mise à jour appliquée, chaque intervention manuelle est une occasion pour quelque chose de mal tourner. La question n'est pas de savoir *si* un incident se produira, mais *quand*. Une sauvegarde récente transforme alors une catastrophe en simple contretemps de quelques minutes.
+
+### Ce que vous perdez réellement sans sauvegarde
+
+On imagine souvent qu'il ne s'agit que de « pages ». En réalité, un site sans sauvegarde qui disparaît emporte avec lui votre positionnement dans Google, vos commandes en cours si vous vendez en ligne, vos comptes clients, vos articles de blog et parfois des années de contenu. La valeur d'un site ne se mesure pas à son coût de création, mais à tout ce qu'il a accumulé depuis. C'est exactement ce capital qu'une sauvegarde protège.
+
+> Une sauvegarde n'a jamais coûté aussi peu que le jour où l'on en a eu besoin.
+
+### L'illusion de la sauvegarde de l'hébergeur
+
+« Mon hébergeur fait des sauvegardes » est la phrase qui précède le plus grand nombre de mauvaises surprises. Beaucoup d'hébergeurs proposent effectivement des sauvegardes, mais souvent en option payante, avec une fréquence limitée, une rétention courte, et une restauration lente ou facturée. Surtout, ces copies sont stockées sur la même infrastructure que votre site : si le serveur tombe, elles tombent avec lui. La sauvegarde de l'hébergeur est un filet de secours appréciable, jamais votre stratégie principale.
+
+## Que faut-il vraiment sauvegarder ?
+
+Un site WordPress complet se compose de deux blocs distincts, et une sauvegarde valable doit couvrir les deux.
+
+### Les fichiers
+
+Ce sont vos thèmes, vos extensions, vos fichiers de configuration et surtout le dossier des médias (`wp-content/uploads`) qui contient toutes vos images et documents. C'est souvent le bloc le plus volumineux d'un site.
+
+### La base de données
+
+C'est le cerveau du site : elle stocke vos articles, vos pages, vos réglages, vos comptes utilisateurs, vos commentaires et, pour une boutique, vos commandes et vos clients. Un site restauré sans sa base de données est une coquille vide.
+
+| Élément | Ce qu'il contient | Sauvegarde indispensable |
+|---------|-------------------|--------------------------|
+| Base de données | Articles, pages, réglages, commandes, comptes | Oui, en priorité |
+| Dossier uploads | Images, PDF, médias | Oui |
+| Thème et extensions | Apparence et fonctionnalités | Oui |
+| Cœur de WordPress | Fichiers du CMS | Réinstallable, moins critique |
+
+## Les trois règles d'une sauvegarde fiable
+
+Une sauvegarde qui existe n'est pas forcément une sauvegarde qui protège. Trois principes séparent une vraie stratégie d'une fausse tranquillité.
+
+### 1. La régularité et l'automatisation
+
+Une sauvegarde manuelle que l'on pense à lancer « de temps en temps » est vouée à l'oubli. La seule sauvegarde qui tient dans la durée est la **sauvegarde automatique**, planifiée sans intervention. La fréquence doit correspondre à votre rythme de publication : quotidienne pour une boutique ou un site très actif, hebdomadaire pour un site vitrine peu modifié. La règle est simple : ne jamais accepter de perdre plus de travail que ce que couvre l'intervalle entre deux sauvegardes.
+
+### 2. L'externalisation
+
+Une sauvegarde stockée sur le même serveur que le site ne sert à rien le jour où ce serveur est compromis ou détruit. Une **sauvegarde externalisée** est copiée ailleurs : un cloud comme Google Drive, Dropbox ou Amazon S3, ou un espace de stockage distant. C'est le principe de la règle 3-2-1 des professionnels : trois copies, sur deux supports différents, dont une hors site.
+
+### 3. La restauration testée
+
+C'est le point le plus négligé et le plus décisif. Une sauvegarde n'a de valeur que si vous êtes capable de la **restaurer**. Une archive corrompue, incomplète ou impossible à réimporter ne vaut rien le jour de l'incident. Tester au moins une fois la restauration — idéalement sur un environnement de préproduction — est la seule façon de savoir que votre filet de sécurité tiendra.
+
+> Une sauvegarde que vous n'avez jamais su restaurer n'est pas une sauvegarde, c'est un espoir.
+
+## Comment sauvegarder concrètement son site WordPress
+
+### La méthode simple : un plugin dédié
+
+Pour la grande majorité des sites, un plugin de sauvegarde est la solution la plus fiable et la plus accessible. Ces extensions automatisent l'ensemble du processus : planification, envoi vers un stockage externe, et restauration en un clic. Les références du domaine sont éprouvées :
+
+- **UpdraftPlus** : le plus populaire, sauvegarde automatique vers de nombreux clouds, restauration simple, version gratuite déjà très complète.
+- **BackWPup** : robuste et gratuit, apprécié pour la sauvegarde vers des espaces distants.
+- **Duplicator** : particulièrement pratique pour cloner ou migrer un site en plus de le sauvegarder.
+
+Le réflexe à adopter : installer le plugin, configurer une planification automatique, connecter un stockage externe (Drive, Dropbox…), puis vérifier qu'une première sauvegarde s'exécute et se restaure correctement.
+
+### La méthode manuelle : pour les utilisateurs avancés
+
+Il reste possible de sauvegarder à la main : télécharger les fichiers via FTP et exporter la base de données depuis l'interface de gestion de l'hébergeur (souvent via phpMyAdmin). Cette méthode donne un contrôle total mais exige de la rigueur et des compétences techniques. Surtout, étant manuelle, elle souffre du même défaut que toute tâche que l'on doit penser à faire : l'oubli. Elle convient comme complément ponctuel, rarement comme stratégie unique.
+
+### La méthode déléguée : le contrat de maintenance
+
+Sauvegarder fait partie des piliers de la [maintenance WordPress](/maintenance-wordpress/). Confier cette responsabilité à un professionnel, dans le cadre d'un contrat de maintenance, revient à externaliser à la fois la sauvegarde régulière, sa vérification et la restauration en cas de pépin. Pour un site professionnel dont l'indisponibilité coûte cher, c'est souvent le meilleur rapport tranquillité/prix.
+
+## À quelle fréquence sauvegarder ?
+
+La bonne fréquence dépend d'une seule question : combien de temps de travail êtes-vous prêt à perdre ?
+
+| Type de site | Fréquence recommandée |
+|--------------|------------------------|
+| Boutique WooCommerce, site à commandes | Quotidienne, voire en temps réel |
+| Blog ou site publiant plusieurs fois par semaine | Quotidienne à hebdomadaire |
+| Site vitrine rarement modifié | Hebdomadaire |
+| Avant toute mise à jour ou intervention | Systématiquement, à la demande |
+
+La règle d'or, quel que soit le site : **sauvegarder avant toute mise à jour** du cœur, d'un thème ou d'une extension. C'est précisément le moment où un site casse, et une copie fraîche permet de revenir en arrière en quelques minutes.
+
+## Les erreurs de sauvegarde les plus courantes
+
+- **Compter uniquement sur l'hébergeur** sans jamais vérifier ce qu'il sauvegarde réellement.
+- **Stocker les sauvegardes sur le serveur du site**, donc les perdre en même temps que lui.
+- **Ne jamais tester la restauration** et découvrir le jour J que l'archive est inexploitable.
+- **Oublier la base de données** et ne sauvegarder que les fichiers, ou l'inverse.
+- **Une rétention trop courte** : si un piratage passe inaperçu deux semaines, une sauvegarde de trois jours ne vous ramène qu'à un site déjà infecté.
+
+Éviter ces cinq pièges suffit à placer votre site dans le très petit club des sites réellement protégés.
+
+## Conclusion
+
+La sauvegarde WordPress est la mesure de protection la plus simple à mettre en place et la plus douloureuse à négliger. Automatisez-la, externalisez-la, et surtout testez sa restauration : ces trois réflexes transforment n'importe quel incident — piratage, bug, fausse manipulation — en simple parenthèse de quelques minutes. Le meilleur moment pour configurer une sauvegarde fiable, c'est aujourd'hui, tant que tout va bien. Le pire moment pour y penser, c'est le lendemain de la catastrophe. Faites de la sauvegarde le socle de votre [maintenance WordPress](/maintenance-wordpress/), et vous ne connaîtrez plus jamais la peur de tout perdre.
+
+## FAQ
+
+**À quelle fréquence dois-je sauvegarder mon site WordPress ?**
+Cela dépend de votre activité : quotidienne pour une boutique ou un site très actif, hebdomadaire pour un site vitrine peu modifié. Dans tous les cas, sauvegardez systématiquement avant chaque mise à jour ou intervention technique.
+
+**La sauvegarde de mon hébergeur suffit-elle ?**
+Elle constitue un filet de secours utile, mais rarement une stratégie suffisante : fréquence limitée, rétention courte, restauration parfois payante, et surtout copies stockées sur la même infrastructure que le site. Doublez-la toujours d'une sauvegarde externalisée que vous maîtrisez.
+
+**Quel est le meilleur plugin de sauvegarde WordPress ?**
+UpdraftPlus est la référence la plus répandue pour son automatisation, sa compatibilité avec de nombreux stockages cloud et sa restauration simple. BackWPup et Duplicator sont d'excellentes alternatives selon vos besoins, notamment pour la migration.
+
+**Comment restaurer un site à partir d'une sauvegarde ?**
+Avec un plugin comme UpdraftPlus, la restauration se fait en quelques clics depuis l'interface, en sélectionnant l'archive à réimporter. En méthode manuelle, il faut réimporter les fichiers par FTP et la base de données via phpMyAdmin. Dans les deux cas, testez la procédure au moins une fois avant d'en avoir réellement besoin.
