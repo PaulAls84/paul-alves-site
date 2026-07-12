@@ -14,14 +14,6 @@ Données de volume : Google Ads Keyword Planner (France, FR), relevé 2026-06-30
 
 ## File d'attente
 
-### 5. Refonte de site WordPress
-- **status:** todo
-- **slug:** refonte-site-wordpress
-- **mot-clé principal:** refonte wordpress / refonte site wordpress (140 + 110/mois, concurrence faible)
-- **catégorie:** WordPress
-- **angle:** quand et comment refondre un site WordPress sans perdre son SEO (audit, redirections, migration de contenu). Forte intention commerciale (service).
-- **maillage interne suggéré:** seo-wordpress, optimiser-vitesse-site-wordpress
-
 ### 6. Sécuriser son site WordPress
 - **status:** todo
 - **slug:** securiser-site-wordpress
@@ -148,6 +140,11 @@ Légende : ⭐ = correspond à un article déjà publié ou au backlog (monétis
 ---
 
 ## Publiés
+
+### Refonte de site WordPress
+- **status:** done — 2026-07-12
+- **slug:** refonte-site-wordpress
+- **mot-clé principal:** refonte wordpress / refonte site wordpress (140 + 110/mois, concurrence faible)
 
 ### Sauvegarde WordPress
 - **status:** done — 2026-07-09
