@@ -14,14 +14,6 @@ Données de volume : Google Ads Keyword Planner (France, FR), relevé 2026-06-30
 
 ## File d'attente
 
-### 6. Sécuriser son site WordPress
-- **status:** todo
-- **slug:** securiser-site-wordpress
-- **mot-clé principal:** sécuriser site wordpress / sécuriser wordpress (~180/mois cumulé, concurrence faible)
-- **catégorie:** Maintenance
-- **angle:** guide des bonnes pratiques de sécurité (mises à jour, mots de passe, pare-feu, limitation des connexions, SSL, plugins de sécurité). Complète l'article maintenance.
-- **maillage interne suggéré:** maintenance-wordpress
-
 ### 7. Hébergement WordPress : comment bien choisir
 - **status:** todo
 - **slug:** hebergement-wordpress
@@ -140,6 +132,11 @@ Légende : ⭐ = correspond à un article déjà publié ou au backlog (monétis
 ---
 
 ## Publiés
+
+### Sécuriser son site WordPress
+- **status:** done — 2026-07-15
+- **slug:** securiser-site-wordpress
+- **mot-clé principal:** sécuriser site wordpress / sécuriser wordpress (~180/mois cumulé, concurrence faible)
 
 ### Refonte de site WordPress
 - **status:** done — 2026-07-12
