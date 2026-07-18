@@ -14,15 +14,6 @@ Données de volume : Google Ads Keyword Planner (France, FR), relevé 2026-06-30
 
 ## File d'attente
 
-### 7. Hébergement WordPress : comment bien choisir
-- **status:** todo
-- **slug:** hebergement-wordpress
-- **mot-clé principal:** hébergement wordpress / hébergeur wordpress (8100/mois, concurrence faible) — TRÈS gros volume
-- **catégorie:** WordPress
-- **angle:** guide pour choisir son hébergement (mutualisé vs cloud vs infogéré, critères : performance, support FR, prix, sauvegardes) avec recommandations par profil.
-- **monétisation:** affiliation hébergeur
-- **maillage interne suggéré:** creer-un-site-wordpress, optimiser-vitesse-site-wordpress
-
 ### 8. Meilleur hébergeur WordPress : le comparatif [2026]
 - **status:** todo
 - **slug:** meilleur-hebergeur-wordpress
@@ -132,6 +123,11 @@ Légende : ⭐ = correspond à un article déjà publié ou au backlog (monétis
 ---
 
 ## Publiés
+
+### Hébergement WordPress : comment bien choisir
+- **status:** done — 2026-07-18
+- **slug:** hebergement-wordpress
+- **mot-clé principal:** hébergement wordpress / hébergeur wordpress (8100/mois, concurrence faible) — TRÈS gros volume
 
 ### Sécuriser son site WordPress
 - **status:** done — 2026-07-15
