@@ -14,15 +14,6 @@ Données de volume : Google Ads Keyword Planner (France, FR), relevé 2026-06-30
 
 ## File d'attente
 
-### 8. Meilleur hébergeur WordPress : le comparatif [2026]
-- **status:** todo
-- **slug:** meilleur-hebergeur-wordpress
-- **mot-clé principal:** meilleur hébergeur wordpress / meilleur hébergement wordpress (720/mois, concurrence faible)
-- **catégorie:** WordPress
-- **angle:** comparatif des meilleurs hébergeurs (Hostinger, o2switch, OVHcloud, PlanetHoster…) avec tableau (prix, perf, support, points forts/faibles) et recommandation par profil. **Article phare de monétisation.**
-- **monétisation:** 💰 affiliation hébergeur (liens affiliés + mention de transparence obligatoire)
-- **maillage interne suggéré:** hebergement-wordpress, creer-un-site-wordpress
-
 ### 9. Hébergement WooCommerce : quel hébergeur pour sa boutique
 - **status:** todo
 - **slug:** hebergement-woocommerce
@@ -123,6 +114,11 @@ Légende : ⭐ = correspond à un article déjà publié ou au backlog (monétis
 ---
 
 ## Publiés
+
+### Meilleur hébergeur WordPress : le comparatif [2026]
+- **status:** done — 2026-07-21
+- **slug:** meilleur-hebergeur-wordpress
+- **mot-clé principal:** meilleur hébergeur wordpress / meilleur hébergement wordpress (720/mois, concurrence faible) — article phare de monétisation (affiliation hébergeur)
 
 ### Hébergement WordPress : comment bien choisir
 - **status:** done — 2026-07-18
