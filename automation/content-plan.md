@@ -14,15 +14,6 @@ Données de volume : Google Ads Keyword Planner (France, FR), relevé 2026-06-30
 
 ## File d'attente
 
-### 9. Hébergement WooCommerce : quel hébergeur pour sa boutique
-- **status:** todo
-- **slug:** hebergement-woocommerce
-- **mot-clé principal:** hébergement woocommerce (390/mois, concurrence faible)
-- **catégorie:** WordPress
-- **angle:** spécificités de l'hébergement e-commerce (ressources, SSL, montée en charge, sauvegardes), recommandations.
-- **monétisation:** affiliation hébergeur
-- **maillage interne suggéré:** hebergement-wordpress, meilleur-hebergeur-wordpress
-
 ### 10. Meilleur thème WordPress : le comparatif [2026]
 - **status:** todo
 - **slug:** meilleur-theme-wordpress
@@ -114,6 +105,11 @@ Légende : ⭐ = correspond à un article déjà publié ou au backlog (monétis
 ---
 
 ## Publiés
+
+### Hébergement WooCommerce : quel hébergeur pour sa boutique
+- **status:** done — 2026-07-24
+- **slug:** hebergement-woocommerce
+- **mot-clé principal:** hébergement woocommerce (390/mois, concurrence faible) — affiliation hébergeur
 
 ### Meilleur hébergeur WordPress : le comparatif [2026]
 - **status:** done — 2026-07-21
