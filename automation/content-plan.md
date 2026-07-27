@@ -14,15 +14,6 @@ Données de volume : Google Ads Keyword Planner (France, FR), relevé 2026-06-30
 
 ## File d'attente
 
-### 10. Meilleur thème WordPress : le comparatif [2026]
-- **status:** todo
-- **slug:** meilleur-theme-wordpress
-- **mot-clé principal:** meilleur thème wordpress (170/mois) + thème wordpress gratuit (880/mois)
-- **catégorie:** WordPress
-- **angle:** comparatif des meilleurs thèmes gratuits et premium (Astra, GeneratePress, Kadence, Divi…) par usage et performance.
-- **monétisation:** affiliation thème (Divi / Elegant Themes, Astra Pro)
-- **maillage interne suggéré:** creer-un-site-wordpress, optimiser-vitesse-site-wordpress
-
 ### 11. Créer une boutique en ligne avec WooCommerce
 - **status:** todo
 - **slug:** creer-boutique-woocommerce
@@ -105,6 +96,11 @@ Légende : ⭐ = correspond à un article déjà publié ou au backlog (monétis
 ---
 
 ## Publiés
+
+### Meilleur thème WordPress : le comparatif [2026]
+- **status:** done — 2026-07-27
+- **slug:** meilleur-theme-wordpress
+- **mot-clé principal:** meilleur thème wordpress (170/mois) + thème wordpress gratuit (880/mois) — affiliation thème
 
 ### Hébergement WooCommerce : quel hébergeur pour sa boutique
 - **status:** done — 2026-07-24
