@@ -89,12 +89,13 @@ try {
   }))
 } catch { /* pas d'articles similaires */ }
 
-const articleSchema = JSON.stringify({
+const articleData = {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": title,
   "description": post.description ?? '',
   "datePublished": post.publishedAt ?? '',
+  "dateModified": post.updatedAt ?? post.publishedAt ?? '',
   "url": `https://paul-alves.fr/${slug}`,
   "author": {
     "@type": "Person",
@@ -106,13 +107,38 @@ const articleSchema = JSON.stringify({
     "name": "Paul Alves",
     "url": "https://paul-alves.fr"
   }
-})
+}
+
+// Schema FAQPage : extrait les paires question/réponse de la section "## FAQ"
+// (format éditorial : **Question ?** suivie de sa réponse dans le même paragraphe).
+const stripTags = (s: string) => s.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()
+const faqSection = renderedContent.match(/<h2[^>]*>\s*FAQ\s*<\/h2>([\s\S]*?)(?=<h2|$)/)
+const faqItems: { q: string; a: string }[] = []
+if (faqSection) {
+  for (const m of faqSection[1].matchAll(/<p><strong>([\s\S]+?)<\/strong>\s*([\s\S]*?)<\/p>/g)) {
+    const q = stripTags(m[1])
+    const a = stripTags(m[2])
+    if (q && a) faqItems.push({ q, a })
+  }
+}
+
+const faqData = faqItems.length > 0 && {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(({ q, a }) => ({
+    "@type": "Question",
+    "name": q,
+    "acceptedAnswer": { "@type": "Answer", "text": a }
+  }))
+}
+
+const articleSchema = JSON.stringify(faqData ? [articleData, faqData] : articleData)
 ---
 
 <Layout
   title={title}
   description={post.description ?? ''}
-  image={post.image ?? '/assets/hero-visual.png'}
+  image={post.image ?? '/assets/og-home.jpg'}
   schema={articleSchema}
   ogType="article"
   publishedAt={post.publishedAt ?? undefined}

@@ -21,6 +21,10 @@ export default config({
         title: fields.slug({ name: { label: 'Titre' } }),
         description: fields.text({ label: 'Description', multiline: true }),
         publishedAt: fields.date({ label: 'Date de publication' }),
+        updatedAt: fields.date({
+          label: 'Date de mise à jour',
+          description: 'À renseigner lors d’une mise à jour substantielle (alimente dateModified du schema Article).',
+        }),
         featured: fields.checkbox({
           label: 'Mettre en avant sur la page d’accueil',
           defaultValue: false,

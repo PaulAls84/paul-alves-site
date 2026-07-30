@@ -1,0 +1,116 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+---
+
+<Layout
+  title="Page introuvable (erreur 404) — Paul Alves"
+  description="La page que vous cherchez n'existe pas ou a été déplacée. Retrouvez les services, le blog et le contact de Paul Alves, développeur web & consultant SEO."
+>
+  <Nav />
+
+  <section class="nf-hero">
+    <div class="wrap">
+      <p class="eyebrow" style="text-align:left;">Erreur 404</p>
+      <h1>Cette page n'existe pas (ou plus)</h1>
+      <p class="lede">
+        Le lien que vous avez suivi est peut-être cassé, ou la page a été déplacée.
+        Pas de panique : tout le reste du site fonctionne très bien.
+      </p>
+      <div class="nf-actions">
+        <a href="/" class="btn btn-gold">Retour à l'accueil</a>
+        <a href="/plan-du-site/" class="btn btn-outline">Voir le plan du site</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="nf-links">
+    <div class="wrap">
+      <h2>Vous cherchiez peut-être…</h2>
+      <ul class="nf-list">
+        <li><a href="/services/"><span class="nf-label">Services</span><span class="nf-desc">Création de site, refonte, SEO, maintenance — avec tarifs</span></a></li>
+        <li><a href="/realisations/"><span class="nf-label">Réalisations</span><span class="nf-desc">Projets clients et résultats obtenus</span></a></li>
+        <li><a href="/blog/"><span class="nf-label">Blog</span><span class="nf-desc">Guides WordPress, SEO, hébergement et maintenance</span></a></li>
+        <li><a href="/a-propos/"><span class="nf-label">À propos</span><span class="nf-desc">Mon parcours et ma façon de travailler</span></a></li>
+        <li><a href="/contact/"><span class="nf-label">Contact</span><span class="nf-desc">Une question, un projet ? Parlons-en</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .nf-hero {
+    background: var(--cream);
+    padding: 100px 0 64px;
+    border-bottom: 1px solid var(--line);
+  }
+  .nf-hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    color: var(--navy);
+    margin-bottom: 14px;
+  }
+  .nf-hero .lede {
+    color: var(--ink-2);
+    font-size: 16px;
+    max-width: 580px;
+    margin: 0 0 28px;
+    line-height: 1.7;
+  }
+  .nf-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .nf-links {
+    padding: 64px 0 100px;
+    background: #fff;
+  }
+  .nf-links h2 {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    color: var(--navy);
+    margin-bottom: 20px;
+  }
+  .nf-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    max-width: 760px;
+  }
+  .nf-list a {
+    display: block;
+    padding: 14px 16px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background .15s, border-color .15s;
+  }
+  .nf-list a:hover {
+    background: var(--cream);
+    border-color: var(--gold);
+  }
+  .nf-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .nf-desc {
+    display: block;
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  @media (max-width: 640px) {
+    .nf-list { grid-template-columns: 1fr; }
+  }
+</style>

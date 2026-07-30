@@ -12,7 +12,7 @@
     <!-- Vue principale -->
     <div class="cb-main" id="cbMain">
       <div class="cb-text">
-        <h3>🍪 Vous prenez un cookie ?</h3>
+        <p class="cb-title">🍪 Vous prenez un cookie ?</p>
         <p>
           Ce site utilise des cookies de mesure d'audience (Google Analytics) pour comprendre
           comment vous l'utilisez et l'améliorer. Vous pouvez accepter, refuser ou personnaliser.
@@ -28,7 +28,7 @@
     <!-- Vue personnalisée -->
     <div class="cb-customize" id="cbCustomize" hidden>
       <div class="cb-text">
-        <h3>Personnaliser mes préférences</h3>
+        <p class="cb-title">Personnaliser mes préférences</p>
         <p>Activez seulement les catégories de cookies que vous souhaitez autoriser.</p>
       </div>
 
@@ -189,7 +189,7 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  .cb-text h3 {
+  .cb-text .cb-title {
     font-family: var(--serif);
     font-size: 1.05rem;
     color: var(--navy);

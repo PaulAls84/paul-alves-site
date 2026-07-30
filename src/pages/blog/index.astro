@@ -81,7 +81,7 @@ const categories = distinctCategories(posts as any)
               <div class="blog-card-img">
                 {post.image
                   ? <img src={webpCover(post.image)} alt={post.title} width="400" height="225" loading={i < 2 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : undefined} decoding="async" />
-                  : <img src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?w=600&q=80" alt={post.title} width="400" height="225" loading={i < 2 ? 'eager' : 'lazy'} decoding="async" />
+                  : <img src="/images/stock/photo-1432821596592-e2c18b78144f.webp" alt={post.title} width="400" height="225" loading={i < 2 ? 'eager' : 'lazy'} decoding="async" />
                 }
               </div>
               <div class="blog-card-meta">
