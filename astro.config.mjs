@@ -17,12 +17,20 @@ export default defineConfig({
     ],
   },
 
-  integrations: [react(), keystatic(), sitemap()],
+  integrations: [
+    react(),
+    keystatic(),
+    // /qrcode/ est en noindex : la laisser dans le sitemap ferait remonter
+    // "Envoyée mais noindex" dans Search Console.
+    sitemap({ filter: (page) => !page.includes('/qrcode/') }),
+  ],
 
   // Les articles sont servis à la racine (/<slug>/), comme l'ancien WordPress.
   // On redirige (301) les anciennes URL /blog/<slug> vers la racine.
   redirects: {
     '/blog/[slug]': '/[slug]',
+    // URL conventionnelle testée par la plupart des outils SEO.
+    '/sitemap.xml': { destination: '/sitemap-index.xml', status: 301 },
   },
 
   // Mode "hybride" : toutes les pages sont statiques par défaut.
