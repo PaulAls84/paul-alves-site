@@ -1,0 +1,140 @@
+---
+title: "Créer une boutique en ligne avec WooCommerce : le guide pas à pas [2026]"
+description: "Installation, fiches produits, paiement, livraison, mise en ligne : le guide complet pour créer une boutique en ligne avec WooCommerce en 2026, étape par étape."
+publishedAt: '2026-07-30'
+featured: false
+category: WordPress
+image: /images/blog/creer-boutique-woocommerce.jpg
+anchors:
+  - boutique en ligne avec WooCommerce
+  - créer une boutique en ligne
+  - WooCommerce
+  - fiches produits
+---
+
+Vous avez des produits à vendre et vous ne voulez pas louer votre boutique à une plateforme qui prélève une commission sur chaque commande. WooCommerce répond exactement à ce besoin : c'est une extension gratuite qui transforme un site WordPress en véritable boutique en ligne, sans abonnement mensuel imposé et sans limite de catalogue. En contrepartie, c'est vous qui assemblez les pièces — et c'est là que beaucoup de projets s'égarent, entre extensions inutiles et tunnel de paiement mal réglé. Ce guide déroule les étapes dans le bon ordre, de l'installation à la première commande, pour que votre boutique soit en ligne et opérationnelle sans détour inutile.
+
+## Ce qu'il faut avoir avant de commencer
+
+WooCommerce s'installe en quelques minutes, mais une boutique repose sur un socle qu'il vaut mieux poser correctement dès le départ.
+
+- **Un site WordPress fonctionnel**, avec un nom de domaine et un hébergement. Si vous partez de zéro, la marche à suivre est détaillée dans mon guide pour [créer un site WordPress](/creer-un-site-wordpress/).
+- **Un hébergement dimensionné pour l'e-commerce** : une boutique sollicite le serveur bien plus qu'un site vitrine, car le panier et le paiement ne peuvent pas être mis en cache. Le sujet mérite à lui seul un choix réfléchi, que je détaille dans l'article sur l'[hébergement WooCommerce](/hebergement-woocommerce/).
+- **Un certificat SSL actif** (HTTPS). Ce n'est pas une option : aucun prestataire de paiement sérieux n'acceptera d'encaisser sur un site non chiffré.
+- **Vos informations légales** : statut d'entreprise, numéro SIRET, conditions générales de vente, politique de confidentialité. Vendre en ligne engage juridiquement.
+- **Vos éléments produits** : photos correctes, descriptions, prix, poids et dimensions si vous expédiez.
+
+> Une boutique qui ouvre sans CGV, sans SSL et sans hébergement dimensionné ouvre deux fois : la première pour de faux, la seconde pour de vrai.
+
+## Étape 1 : installer et configurer WooCommerce
+
+Depuis l'administration WordPress, rendez-vous dans **Extensions → Ajouter une extension**, recherchez WooCommerce, installez puis activez. Un assistant de configuration se lance automatiquement et couvre l'essentiel.
+
+Il vous demande successivement l'**adresse de votre boutique** (elle sert au calcul des taxes et des frais de port), le **secteur d'activité**, le **type de produits** que vous vendez (physiques, numériques, services), puis quelques **détails d'activité**. Prenez le temps de répondre précisément : ces réponses conditionnent les réglages par défaut.
+
+À la fin de l'assistant, WooCommerce crée automatiquement les pages indispensables : **Boutique**, **Panier**, **Validation de commande** et **Mon compte**. Vérifiez leur présence dans **Pages** — si l'une manque, vous la recréerez depuis **WooCommerce → État → Outils**.
+
+### Les réglages à ne pas négliger
+
+Dans **WooCommerce → Réglages**, quelques onglets méritent une attention particulière :
+
+- **Général** : devise (€), position du symbole, zones de vente autorisées. Limitez-vous d'abord aux pays que vous savez livrer.
+- **Produits** : unités de poids et de dimensions, gestion du stock, seuil d'alerte de rupture.
+- **Taxes** : activez le calcul automatique si vous êtes assujetti à la TVA, et renseignez vos taux. En cas de doute sur votre régime, faites valider ce point par votre comptable.
+- **Comptes et confidentialité** : autorisez la commande sans création de compte. Chaque friction ajoutée au tunnel coûte des ventes.
+
+## Étape 2 : choisir un thème adapté à la vente
+
+WooCommerce fonctionne avec n'importe quel thème WordPress, mais tous ne gèrent pas correctement les pages boutique. Deux approches se distinguent.
+
+La première consiste à utiliser un **thème léger et compatible WooCommerce** — Astra, GeneratePress, Kadence ou le thème officiel Storefront — puis à le personnaliser. Ces thèmes sont rapides, sobres, et intègrent nativement les gabarits de boutique.
+
+La seconde consiste à partir d'un **thème e-commerce plus complet**, livré avec des démos de boutique prêtes à importer. C'est plus rapide visuellement, souvent plus lourd techniquement.
+
+Mon conseil : sur une boutique, privilégiez la légèreté. Chaque milliseconde compte quand le visiteur a un panier ouvert.
+
+| Approche | Avantages | Limites |
+|----------|-----------|---------|
+| Thème léger + personnalisation | Rapide, sobre, évolutif | Demande un peu de mise en forme |
+| Thème e-commerce à démos | Résultat visuel immédiat | Plus lourd, moins souple à long terme |
+| Thème gratuit Storefront | Officiel, 100 % compatible | Design très neutre |
+
+## Étape 3 : créer ses fiches produits
+
+C'est le cœur de la boutique. Direction **Produits → Ajouter**.
+
+Chaque fiche comporte un **titre**, une **description longue** (les arguments, l'usage, les détails), une **description courte** (le résumé affiché près du prix) et une **image principale** complétée d'une **galerie**. Dans le bloc « Données produit », vous réglez ensuite :
+
+- **Le type de produit** : *simple* pour un article unique, *variable* si le produit existe en plusieurs tailles ou couleurs, *virtuel* pour un service sans expédition, *téléchargeable* pour un fichier.
+- **Le prix**, et éventuellement un prix promotionnel avec dates de validité.
+- **L'inventaire** : référence (UGS), gestion du stock, quantité disponible.
+- **L'expédition** : poids et dimensions, indispensables si vos frais de port sont calculés au réel.
+- **Les produits liés** : ventes croisées et montées en gamme, un levier de panier moyen souvent oublié.
+
+Organisez enfin votre catalogue avec des **catégories** claires et peu nombreuses, et réservez les **étiquettes** aux caractéristiques transversales. Une arborescence lisible aide autant vos visiteurs que Google.
+
+> Une fiche produit qui ne dit pas quoi, pour qui et pourquoi ne vend pas. Le prix ne suffit jamais à convaincre.
+
+Côté images : compressez systématiquement vos photos produits avant l'envoi. Ce sont les fichiers les plus lourds d'une boutique et la première cause de lenteur.
+
+## Étape 4 : configurer les paiements
+
+Dans **WooCommerce → Réglages → Paiements**, activez les moyens de paiement voulus.
+
+Le duo le plus courant en France associe **Stripe** (cartes bancaires, Apple Pay, Google Pay) et **PayPal**. Stripe s'installe via son extension officielle et se connecte en quelques clics ; ses frais tournent autour de 1,5 % + 0,25 € pour une carte européenne. PayPal rassure une partie des acheteurs, avec des frais légèrement supérieurs.
+
+Vous pouvez aussi activer le **virement bancaire** ou le **paiement à la livraison**, utiles pour certains modèles de vente, ainsi que les solutions de votre banque si elle propose un module WooCommerce.
+
+Trois points de vigilance :
+
+1. **Testez chaque moyen de paiement en mode test** avant l'ouverture, puis refaites une commande réelle de bout en bout.
+2. **Vérifiez les e-mails transactionnels** : confirmation de commande, expédition, facture. Ils partent depuis WordPress et finissent parfois en spam — une extension SMTP règle le problème.
+3. **N'accumulez pas les passerelles** : deux moyens de paiement bien réglés valent mieux que six approximatifs.
+
+## Étape 5 : régler la livraison
+
+Dans **Réglages → Expédition**, WooCommerce raisonne par **zones**. Créez une zone par ensemble géographique (France métropolitaine, Union européenne, reste du monde) et attribuez-lui ses méthodes :
+
+- **Tarif forfaitaire** : un montant fixe, simple et lisible.
+- **Livraison gratuite**, éventuellement conditionnée à un montant minimum de commande — un excellent levier de panier moyen.
+- **Retrait sur place**, si vous avez un point de vente.
+
+Pour des frais calculés au réel par transporteur (Colissimo, Mondial Relay, Chronopost), il faudra une extension dédiée. Commencez simple : un forfait clair convertit souvent mieux qu'un calcul exact mais opaque.
+
+## Étape 6 : vérifier avant la mise en ligne
+
+Avant d'annoncer l'ouverture, déroulez cette liste :
+
+- Passer une **commande complète** en conditions réelles, du produit au paiement.
+- Contrôler l'affichage sur **mobile** : la majorité de vos visiteurs achèteront depuis leur téléphone.
+- Vérifier la présence des **mentions légales, CGV et politique de confidentialité**.
+- Tester la boutique en **navigation privée**, pour voir ce que voit un visiteur non connecté.
+- Activer des **sauvegardes automatiques quotidiennes** : sur une boutique, une sauvegarde perdue, ce sont des commandes perdues.
+- Mesurer le **temps de chargement** des pages produits et du panier.
+- Installer un **suivi analytique** et la conversion, sans quoi vous piloterez à l'aveugle.
+
+## Les erreurs les plus fréquentes
+
+- **Empiler les extensions** : chaque plugin ajoute des requêtes. Sur WooCommerce, la sobriété est une performance.
+- **Négliger les photos produits** : mal cadrées ou non compressées, elles plombent à la fois la conversion et la vitesse.
+- **Compliquer le tunnel** : compte obligatoire, champs superflus, étapes multiples — autant de paniers abandonnés.
+- **Oublier les frais de port** dans le calcul de marge, et vendre à perte sans le savoir.
+- **Lancer sans avoir testé un vrai paiement**, et découvrir le problème sur la première commande d'un client.
+
+## Conclusion
+
+Créer une boutique en ligne avec WooCommerce n'a rien d'inaccessible, à condition d'avancer dans l'ordre : un socle WordPress sain et un hébergement dimensionné, l'extension installée et configurée sans précipitation, un thème léger, des fiches produits soignées, deux moyens de paiement testés, des règles de livraison lisibles, puis une vérification complète avant l'ouverture. La force de WooCommerce, c'est de vous laisser propriétaire de votre boutique, de vos données et de vos marges, sans commission prélevée sur chaque vente. Sa contrepartie, c'est que la qualité du résultat dépend de vos choix techniques. Restez sobre sur les extensions, exigeant sur la vitesse et rigoureux sur les tests : une boutique simple qui fonctionne parfaitement vendra toujours plus qu'une boutique sophistiquée qui plante au moment de payer.
+
+## FAQ
+
+**WooCommerce est-il vraiment gratuit ?**
+L'extension WooCommerce est gratuite et le restera. Les coûts d'une boutique viennent d'ailleurs : l'hébergement, le nom de domaine, éventuellement un thème premium, et les extensions payantes que vous ajoutez selon vos besoins (transporteurs, abonnements, réservations). S'ajoutent les frais des prestataires de paiement, prélevés sur chaque transaction. Une petite boutique peut démarrer avec l'hébergement, le domaine et des outils gratuits.
+
+**Combien de produits WooCommerce peut-il gérer ?**
+Il n'y a pas de limite fonctionnelle : des boutiques WooCommerce gèrent plusieurs dizaines de milliers de références. La contrainte réelle est le serveur. Au-delà de quelques milliers de produits, ou avec beaucoup de variations, il faut un hébergement puissant, une base de données bien optimisée et un cache correctement configuré pour rester rapide.
+
+**Faut-il savoir coder pour créer une boutique WooCommerce ?**
+Non. L'installation, la configuration, les produits, les paiements et la livraison se règlent entièrement depuis l'interface WordPress. Savoir coder devient utile pour des personnalisations poussées — modifier le tunnel de commande, créer un affichage produit spécifique — mais une boutique complète et professionnelle se monte sans écrire une ligne de code.
+
+**Combien de temps faut-il pour ouvrir une boutique WooCommerce ?**
+L'installation technique et la configuration de base prennent une journée. Le vrai travail, c'est le contenu : photographier les produits, rédiger les fiches, définir les règles de livraison, préparer les mentions légales. Comptez une à trois semaines pour un lancement propre avec un catalogue de quelques dizaines de références, en travaillant à temps partiel dessus.

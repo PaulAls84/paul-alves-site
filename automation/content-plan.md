@@ -14,15 +14,6 @@ Données de volume : Google Ads Keyword Planner (France, FR), relevé 2026-06-30
 
 ## File d'attente
 
-### 11. Créer une boutique en ligne avec WooCommerce
-- **status:** todo
-- **slug:** creer-boutique-woocommerce
-- **mot-clé principal:** boutique en ligne wordpress (140/mois) + woocommerce boutique (90/mois)
-- **catégorie:** WordPress
-- **angle:** guide pas à pas (installation WooCommerce, produits, paiement, livraison, mise en ligne).
-- **monétisation:** affiliation hébergeur/thème e-commerce (secondaire)
-- **maillage interne suggéré:** creer-un-site-wordpress, hebergement-woocommerce
-
 ### 12. Migrer son site WordPress (sans perdre son SEO)
 - **status:** todo
 - **slug:** migrer-site-wordpress
@@ -96,6 +87,11 @@ Légende : ⭐ = correspond à un article déjà publié ou au backlog (monétis
 ---
 
 ## Publiés
+
+### Créer une boutique en ligne avec WooCommerce : le guide pas à pas [2026]
+- **status:** done — 2026-07-30
+- **slug:** creer-boutique-woocommerce
+- **mot-clé principal:** boutique en ligne wordpress (140/mois) + woocommerce boutique (90/mois)
 
 ### Meilleur thème WordPress : le comparatif [2026]
 - **status:** done — 2026-07-27
