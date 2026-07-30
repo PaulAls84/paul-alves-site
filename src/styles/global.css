@@ -373,6 +373,40 @@ footer { background: var(--navy-2); color: rgba(255,255,255,.7); padding: 64px 0
 .article-content pre code { background: none; padding: 0; }
 .article-content img { border-radius: 6px; margin: 2em 0; }
 
+/* Tableaux : conteneur défilant (mobile) + mise en forme */
+.article-content .table-scroll {
+  margin: 2em 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.article-content table {
+  width: 100%;
+  min-width: 560px; /* en dessous, le conteneur défile au lieu d'écraser les colonnes */
+  border-collapse: collapse;
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+.article-content th,
+.article-content td {
+  padding: 12px 16px;
+  text-align: left;
+  vertical-align: top;
+}
+.article-content thead th {
+  background: var(--navy);
+  color: #fff;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  white-space: nowrap;
+}
+.article-content tbody tr:nth-child(even) { background: var(--cream); }
+.article-content tbody tr + tr td { border-top: 1px solid var(--line); }
+.article-content td:first-child { font-weight: 600; color: var(--ink); }
+
 /* ============ RESPONSIVE ============ */
 @media (max-width: 980px) {
   .hero-grid, .about-grid { grid-template-columns: 1fr; gap: 40px; }
