@@ -37,6 +37,11 @@ try {
     const articleRefs = await getArticleRefs(reader)
     const linked = injectInternalLinks(transformed, slug!, articleRefs, 3)
     renderedContent = Markdoc.renderers.html(linked)
+    // Conteneur défilant autour des tableaux : évite le débordement
+    // horizontal de la page sur mobile (le tableau défile, pas la page).
+    renderedContent = renderedContent
+      .replace(/<table([^>]*)>/g, '<div class="table-scroll"><table$1>')
+      .replace(/<\/table>/g, '</table></div>')
   }
 } catch {
   return Astro.redirect('/blog')
@@ -372,7 +377,7 @@ const articleSchema = JSON.stringify(faqData ? [articleData, faqData] : articleD
     padding: 0;
   }
   .article-layout.no-toc {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     max-width: 820px;
   }
 
@@ -434,7 +439,9 @@ const articleSchema = JSON.stringify(faqData ? [articleData, faqData] : articleD
   /* ── Responsive ────────────────────────────────── */
   @media (max-width: 960px) {
     .article-layout {
-      grid-template-columns: 1fr;
+      /* minmax(0, 1fr) : sans le minimum 0, la colonne s'élargit à la
+         largeur minimale des tableaux et fait déborder la page. */
+      grid-template-columns: minmax(0, 1fr);
       padding: 40px 20px;
       gap: 0;
     }
