@@ -1,0 +1,142 @@
+---
+title: "Migrer son site WordPress sans perdre son SEO : le guide complet [2026]"
+description: "Changer d'hébergeur ou de nom de domaine sans casser son référencement : préparation, transfert, redirections 301 et vérifications post-migration, étape par étape."
+publishedAt: '2026-08-03'
+category: Maintenance
+image: /images/blog/migrer-site-wordpress.jpg
+anchors:
+  - migrer son site WordPress
+  - migration WordPress
+  - changer d'hébergeur
+  - redirections 301
+---
+
+*Cet article contient des liens affiliés. Si vous souscrivez via l'un d'eux, je peux percevoir une commission, sans surcoût pour vous.*
+
+Un site lent, un support injoignable, une facture qui double au renouvellement, ou simplement un changement de nom : les raisons de migrer un site WordPress ne manquent pas. Ce qui manque, en revanche, c'est souvent la méthode. Et une migration bâclée se paie cash : pages en erreur 404, chute de trafic organique pendant des semaines, formulaires morts, images disparues. La bonne nouvelle, c'est qu'une migration WordPress n'a rien d'une opération à haut risque — à condition de la traiter comme un déménagement préparé, pas comme un copier-coller improvisé un vendredi soir. Voici la procédure complète, dans l'ordre, pour changer d'hébergeur ou de domaine sans perdre une miette de référencement.
+
+## Pourquoi et quand migrer son site WordPress
+
+### Les trois motifs de migration
+
+Une migration répond presque toujours à l'un de ces trois besoins :
+
+- **Changer d'hébergeur** : c'est le cas le plus fréquent. Le site est lent, le serveur tombe régulièrement, le support ne répond plus, ou le tarif de renouvellement n'a plus aucun rapport avec le prix d'appel.
+- **Changer de nom de domaine** : rebranding, changement de raison sociale, passage d'un `.com` à un `.fr`, ou abandon d'un nom mal choisi.
+- **Changer d'environnement** : passer d'un site de développement local ou d'une préproduction vers le serveur définitif, typiquement à la fin d'une [refonte de site WordPress](/refonte-site-wordpress/).
+
+Ces trois scénarios partagent la même mécanique, mais le second — le changement de domaine — est de loin le plus sensible pour le SEO : c'est le seul où les URL vues par Google changent réellement.
+
+### Le bon moment pour migrer
+
+Choisissez une période de faible trafic : idéalement un début de semaine en heures creuses, jamais un vendredi soir ni la veille d'une grosse opération commerciale. Vous voulez être disponible dans les 48 h qui suivent pour corriger ce qui doit l'être. Évitez aussi de cumuler les changements : migrer **et** refondre le design **et** modifier l'arborescence en même temps rend tout diagnostic impossible si le trafic bouge.
+
+> Une migration réussie, c'est une migration dont vos visiteurs ne se rendent jamais compte.
+
+## Avant de migrer : la checklist de préparation
+
+### 1. Une sauvegarde complète et testée
+
+C'est le point de non-retour. Avant toute manipulation, réalisez une [sauvegarde WordPress](/sauvegarde-wordpress/) complète : fichiers **et** base de données, stockée ailleurs que sur le serveur d'origine. Et surtout, vérifiez qu'elle est exploitable. Une archive corrompue découverte en pleine migration transforme un déménagement en sinistre.
+
+### 2. Un inventaire de l'existant
+
+Prenez cinq minutes pour noter ce qui devra être vérifié après la bascule :
+
+| À relever avant | Pourquoi |
+|---|---|
+| Version de PHP et de WordPress | Éviter une incompatibilité sur le nouveau serveur |
+| Liste des extensions actives | Repérer immédiatement ce qui ne se réactive pas |
+| Nombre d'URL indexées (Search Console) | Point de comparaison après migration |
+| Trafic et positions moyennes sur 30 jours | Détecter une vraie chute d'un simple bruit statistique |
+| Formulaires, paiements, connexions API | Ce sont eux qui cassent le plus souvent en silence |
+
+### 3. Un nouvel hébergement prêt
+
+Le nouveau serveur doit être opérationnel **avant** de toucher au site actuel. Vérifiez la version de PHP proposée, l'espace disque, la présence de certificats SSL gratuits et de sauvegardes automatiques. Si vous n'avez pas encore arrêté votre choix, le comparatif des [meilleurs hébergeurs WordPress](/meilleur-hebergeur-wordpress/) détaille les critères qui comptent vraiment — performance réelle, support en français et surtout prix de renouvellement.
+
+### 4. Baisser le TTL du DNS
+
+Détail technique, effet majeur : 24 à 48 h avant la migration, réduisez le TTL de vos enregistrements DNS (par exemple à 300 secondes). La propagation du changement d'adresse IP se fera alors en quelques minutes au lieu de plusieurs heures, ce qui raccourcit d'autant la période où certains visiteurs voient l'ancien site et d'autres le nouveau.
+
+## Migrer vers un nouvel hébergeur : la procédure
+
+### La méthode simple : un plugin de migration
+
+Pour la grande majorité des sites, une extension dédiée fait le travail proprement, sans FTP ni ligne de commande. Les références du domaine sont éprouvées :
+
+- **Duplicator** : crée un paquet complet (fichiers + base) et un installeur à déposer sur le nouveau serveur. Très fiable, y compris sur des sites volumineux.
+- **All-in-One WP Migration** : le plus simple d'usage, export/import en un fichier — attention à la limite de taille de la version gratuite.
+- **UpdraftPlus** (option Migrator) : pratique si vous utilisez déjà ce plugin pour vos sauvegardes.
+
+Beaucoup d'hébergeurs proposent aussi une **migration gratuite assurée par leur équipe** : c'est souvent l'option la plus sûre et la moins chronophage. Demandez systématiquement, cela fait partie des services d'accueil chez la plupart des acteurs sérieux.
+
+### La méthode manuelle
+
+Elle reste utile sur les gros sites ou les configurations particulières. Le déroulé est toujours le même :
+
+1. Télécharger l'intégralité des fichiers du site par FTP (ou SFTP).
+2. Exporter la base de données via phpMyAdmin, au format `.sql`.
+3. Créer une base de données vide sur le nouvel hébergement, puis y importer le fichier.
+4. Téléverser les fichiers sur le nouveau serveur.
+5. Mettre à jour `wp-config.php` avec les nouveaux identifiants de base de données.
+6. Tester le site via un fichier `hosts` local ou une URL temporaire, **avant** de basculer les DNS.
+
+Cette étape de test avant bascule est la clé : elle permet de découvrir les problèmes pendant que l'ancien site tourne encore.
+
+### La bascule DNS
+
+Une fois le site validé sur le nouveau serveur, modifiez l'enregistrement A (ou les serveurs de noms) chez votre registrar. Comptez de quelques minutes à quelques heures selon le TTL. Pendant cette fenêtre, **ne publiez rien et ne modifiez rien** : les visiteurs peuvent encore atterrir sur l'ancienne installation, et toute modification faite là serait perdue. Conservez l'ancien hébergement actif au moins une à deux semaines : c'est votre plan B.
+
+## Changer de nom de domaine sans perdre son référencement
+
+C'est ici que se joue la vraie partie SEO. Quand les URL changent, Google doit comprendre que chaque ancienne page a une nouvelle adresse — et qu'il doit y transférer l'autorité accumulée.
+
+### Les redirections 301, pierre angulaire
+
+Une **redirection 301** signale un déplacement *permanent*. Elle envoie le visiteur vers la nouvelle URL et transmet à Google l'essentiel du « jus » de référencement de l'ancienne page. Trois règles non négociables :
+
+- **Une redirection par page**, de l'ancienne URL vers son équivalent exact. Pas de renvoi massif vers la page d'accueil : Google traite ces redirections comme des pages introuvables déguisées, et l'autorité se perd.
+- **Jamais de chaînes de redirections** (A → B → C). Redirigez directement vers la destination finale.
+- **Des redirections maintenues durablement** : au minimum un an, idéalement en permanence. Elles se mettent en place via le fichier `.htaccess`, la configuration serveur, ou une extension comme Redirection.
+
+> Une migration de domaine sans plan de redirections, c'est un déménagement sans laisser d'adresse : le courrier n'arrive plus, et personne ne vous cherche longtemps.
+
+### Mettre à jour l'intérieur du site
+
+Changer l'adresse ne suffit pas : l'ancien nom de domaine est écrit partout dans la base de données — liens internes, images, réglages. Utilisez un outil de recherche-remplacement conçu pour WordPress (l'extension Better Search Replace, ou l'option intégrée à Duplicator) plutôt qu'un remplacement SQL brut, qui casserait les données sérialisées des thèmes et extensions. Vérifiez ensuite que les URL du site dans **Réglages → Général** pointent bien vers le nouveau domaine.
+
+### Prévenir Google
+
+Dans la Search Console, déclarez le nouveau domaine comme propriété, puis utilisez l'**outil de changement d'adresse** pour signaler officiellement la migration. Soumettez le nouveau sitemap XML et laissez l'ancienne propriété en place quelques mois pour suivre la désindexation progressive des anciennes URL.
+
+## Après la migration : les vérifications qui évitent les mauvaises surprises
+
+Les 48 premières heures déterminent si la migration passe inaperçue ou vous coûte du trafic. Passez en revue :
+
+- **Le certificat SSL** : le site répond bien en `https://`, sans contenu mixte.
+- **Les redirections** : testez à la main une dizaine d'URL parmi les plus visitées, puis lancez un crawl (Screaming Frog, ou l'outil de votre choix) pour repérer les 404 restantes.
+- **Le `robots.txt` et les balises `noindex`** : c'est l'erreur classique du site de préproduction copié tel quel, qui arrive en ligne interdit à l'indexation. Vérifiez que la case « Demander aux moteurs de recherche de ne pas indexer ce site » est bien décochée.
+- **Les formulaires et les emails** : envoyez un test réel. Un formulaire silencieux peut passer inaperçu des semaines.
+- **Les performances** : nouveau serveur, nouveau cache. Reconfigurez votre extension de cache et vérifiez les temps de chargement.
+- **Search Console et analytics** : surveillez la couverture d'indexation et le trafic sur 30 jours. Une légère fluctuation est normale ; une chute franche et durable signale un problème de redirections.
+
+Une fois ces points validés, reprenez le rythme habituel de la [maintenance WordPress](/maintenance-wordpress/) : mises à jour, sauvegardes automatiques, surveillance. La migration n'est qu'une étape — l'entretien, lui, ne s'arrête jamais.
+
+## Conclusion
+
+Migrer un site WordPress n'est pas risqué en soi : c'est l'improvisation qui l'est. Une sauvegarde testée, un nouvel hébergement validé avant bascule, un plan de redirections 301 page à page et une série de vérifications méthodiques suffisent à rendre l'opération totalement transparente pour vos visiteurs comme pour Google. Prenez le temps de préparer, migrez en heures creuses, gardez l'ancien hébergement quelques jours en filet de sécurité — et votre site repartira sur de meilleures fondations sans perdre une position. Si l'enjeu est trop élevé pour tenter l'opération seul, faire réaliser la migration par un professionnel reste l'investissement le plus rentable face au coût d'un référencement à reconstruire.
+
+## FAQ
+
+**Combien de temps prend une migration WordPress ?**
+Le transfert technique prend généralement de une à trois heures pour un site standard, auxquelles s'ajoute la propagation DNS (de quelques minutes à 24 h selon le TTL). Comptez une demi-journée au total, plus quelques jours de surveillance active après la bascule.
+
+**Vais-je perdre mon référencement en changeant d'hébergeur ?**
+Non, si l'opération est bien menée. Un changement d'hébergeur ne modifie pas vos URL : Google ne voit qu'un changement d'adresse IP. Le seul vrai risque est une indisponibilité prolongée du site pendant la bascule, que l'on évite en testant le site sur le nouveau serveur avant de toucher aux DNS.
+
+**Faut-il conserver l'ancien hébergement après la migration ?**
+Oui, au moins une à deux semaines. Tant que la propagation DNS n'est pas terminée et que toutes les vérifications ne sont pas faites, l'ancien serveur reste votre solution de repli immédiate en cas de problème.
+
+**Quelle différence entre une redirection 301 et une 302 ?**
+La 301 indique un déplacement permanent et transfère l'autorité SEO vers la nouvelle URL : c'est celle à utiliser lors d'une migration. La 302 signale un déplacement temporaire et ne transmet pas ce bénéfice — l'employer par erreur revient à repartir de zéro sur les nouvelles pages.

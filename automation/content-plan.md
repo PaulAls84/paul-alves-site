@@ -14,14 +14,7 @@ Données de volume : Google Ads Keyword Planner (France, FR), relevé 2026-06-30
 
 ## File d'attente
 
-### 12. Migrer son site WordPress (sans perdre son SEO)
-- **status:** todo
-- **slug:** migrer-site-wordpress
-- **mot-clé principal:** migrer site wordpress / migration site wordpress (90/mois, concurrence moyenne)
-- **catégorie:** Maintenance
-- **angle:** migrer un site WP vers un autre hébergeur ou domaine sans casser le référencement (sauvegarde, transfert, redirections 301, vérifications).
-- **monétisation:** affiliation hébergeur (hébergeur cible de la migration)
-- **maillage interne suggéré:** sauvegarde-wordpress, hebergement-wordpress
+*(vide — backlog à réalimenter : relancer une analyse de mots-clés Cuik / Search Console)*
 
 ---
 
@@ -87,6 +80,11 @@ Légende : ⭐ = correspond à un article déjà publié ou au backlog (monétis
 ---
 
 ## Publiés
+
+### Migrer son site WordPress sans perdre son SEO : le guide complet [2026]
+- **status:** done — 2026-08-03
+- **slug:** migrer-site-wordpress
+- **mot-clé principal:** migrer site wordpress / migration site wordpress (90/mois, concurrence moyenne) — affiliation hébergeur
 
 ### Créer une boutique en ligne avec WooCommerce : le guide pas à pas [2026]
 - **status:** done — 2026-07-30
