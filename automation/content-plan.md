@@ -14,7 +14,75 @@ Données de volume : Google Ads Keyword Planner (France, FR), relevé 2026-06-30
 
 ## File d'attente
 
-*(vide — backlog à réalimenter : relancer une analyse de mots-clés Cuik / Search Console)*
+Volumes : estimations à valider au Keyword Planner (France, FR) au prochain relevé.
+
+### 13. Site WordPress piraté : que faire (et comment l'éviter)
+- **status:** todo
+- **slug:** site-wordpress-pirate
+- **mot-clé principal:** site wordpress piraté / wordpress hacké (volume à valider, concurrence faible)
+- **catégorie:** Maintenance
+- **angle:** guide d'urgence étape par étape (diagnostic, nettoyage, restauration, durcissement), illustré par de vrais cas clients de nettoyage. Sujet à forte intention : le lecteur est en détresse et cherche un pro.
+- **monétisation:** affiliation sécurité (Solid Security)
+- **maillage interne suggéré:** securiser-site-wordpress, sauvegarde-wordpress
+
+### 14. Elementor ou Gutenberg : quel éditeur choisir
+- **status:** todo
+- **slug:** elementor-ou-gutenberg
+- **mot-clé principal:** elementor ou gutenberg / elementor avis (volume à valider, concurrence moyenne)
+- **catégorie:** WordPress
+- **angle:** comparatif d'artisan — Paul construit avec les deux ; performances réelles mesurées, cas d'usage par profil. Mentionner l'expérience directe dans l'article.
+- **monétisation:** affiliation builder (Elementor Pro)
+- **maillage interne suggéré:** creer-un-site-wordpress, meilleur-theme-wordpress
+
+### 15. Rank Math ou Yoast : quel plugin SEO pour WordPress
+- **status:** todo
+- **slug:** rank-math-ou-yoast
+- **mot-clé principal:** yoast ou rank math / plugin seo wordpress (volume à valider, concurrence moyenne)
+- **catégorie:** Plugins
+- **angle:** cœur de métier de Paul — comparatif honnête + configuration recommandée pas à pas, avec SEOPress en alternative française.
+- **monétisation:** affiliation SEO (Rank Math Pro, SEOPress)
+- **maillage interne suggéré:** seo-wordpress, meilleur-plugin-wordpress
+
+### 16. WP Rocket : avis et guide de configuration
+- **status:** todo
+- **slug:** wp-rocket-avis
+- **mot-clé principal:** wp rocket avis / wp rocket (volume à valider, concurrence moyenne)
+- **catégorie:** Plugins
+- **angle:** avis d'utilisateur réel avec avant/après mesuré sur un vrai site (captures PageSpeed = preuve d'expérience directe), puis réglages recommandés section par section.
+- **monétisation:** affiliation performance (WP Rocket — top priorité du plan)
+- **maillage interne suggéré:** optimiser-vitesse-site-wordpress
+
+### 17. WordPress ou Shopify : que choisir pour vendre en ligne
+- **status:** todo
+- **slug:** wordpress-ou-shopify
+- **mot-clé principal:** shopify ou wordpress / woocommerce ou shopify (volume à valider, concurrence moyenne)
+- **catégorie:** WordPress
+- **angle:** symétrique e-commerce de wordpress-ou-wix : coûts réels, liberté vs simplicité, par profil de vendeur.
+- **maillage interne suggéré:** creer-boutique-woocommerce, hebergement-woocommerce
+
+### 18. Mettre à jour WordPress sans rien casser
+- **status:** todo
+- **slug:** mise-a-jour-wordpress
+- **mot-clé principal:** mise à jour wordpress (volume à valider, concurrence faible)
+- **catégorie:** Maintenance
+- **angle:** procédure pro (sauvegarde, staging, ordre des mises à jour, rollback) — argumentaire naturel pour les forfaits maintenance.
+- **maillage interne suggéré:** maintenance-wordpress, sauvegarde-wordpress
+
+### 19. RGPD et WordPress : mettre son site en conformité
+- **status:** todo
+- **slug:** rgpd-wordpress
+- **mot-clé principal:** rgpd wordpress / bandeau cookies wordpress (volume à valider, concurrence faible)
+- **catégorie:** WordPress
+- **angle:** spécificité française peu concurrentielle — checklist concrète : bandeau cookies, formulaires, mentions légales, registre. Ton pratique, pas juridique.
+- **maillage interne suggéré:** creer-un-site-wordpress, maintenance-wordpress
+
+### 20. Référencement local : faire apparaître son entreprise sur Google
+- **status:** todo
+- **slug:** referencement-local
+- **mot-clé principal:** référencement local / google my business (volume à valider, concurrence moyenne)
+- **catégorie:** SEO
+- **angle:** guide pour TPE/artisans (cible clientèle de Paul) : fiche Google Business Profile, avis, pages locales, cas clients à l'appui.
+- **maillage interne suggéré:** seo-wordpress, prix-site-wordpress
 
 ---
 
