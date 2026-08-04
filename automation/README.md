@@ -54,10 +54,14 @@ autonome, à partir d'un backlog de sujets validés SEO.
    - **Affiliation (monétisation)** : si l'entrée du backlog porte
      `monétisation: affiliation`, consulter la section « Affiliation » de
      `content-plan.md`. Pour chaque service cité dont le lien affilié est
-     renseigné (≠ `<À REMPLIR>`), le lier avec `rel="sponsored nofollow"`, et
-     ajouter la **mention de transparence** indiquée au début de l'article.
+     renseigné (≠ `<À REMPLIR>`), le lier avec `rel="sponsored nofollow"`.
+     La **mention de transparence** ne s'ajoute que si l'article contient au
+     moins un vrai lien affilié — jamais « préventivement ».
      Si un lien vaut `<À REMPLIR>`, citer le service **sans lien** (ne JAMAIS
-     inventer ni deviner un lien affilié). Rester honnête et factuel dans les
+     inventer ni deviner un lien affilié).
+     **Quand Paul remplit ses liens affiliés** : repasser sur les articles déjà
+     publiés qui portent la mention « peut contenir des liens affiliés »,
+     insérer les liens et remettre la mention affirmative « contient ». Rester honnête et factuel dans les
      comparatifs (vrais points forts/faibles, pas de survente).
 
 4. **Générer la couverture** :

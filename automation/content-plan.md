@@ -74,7 +74,9 @@ Légende : ⭐ = correspond à un article déjà publié ou au backlog (monétis
 | Systeme.io ⭐🔁 | `<À REMPLIR>` | **déjà utilisé sur le site**, 40 % récurrent |
 | Brevo (ex-Sendinblue) 🔁 | `<À REMPLIR>` | emailing FR |
 
-**Mention de transparence à insérer** (au début des articles avec liens affiliés) :
+**Mention de transparence à insérer** — UNIQUEMENT si l'article contient au
+moins un vrai lien affilié (≠ `<À REMPLIR>`). Un article qui cite des services
+sans lien affilié ne porte PAS de mention :
 > *Cet article contient des liens affiliés. Si vous souscrivez via l'un d'eux, je peux percevoir une commission, sans surcoût pour vous.*
 
 ---
