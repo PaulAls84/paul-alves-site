@@ -16,15 +16,6 @@ Données de volume : Google Ads Keyword Planner (France, FR), relevé 2026-06-30
 
 Volumes : estimations à valider au Keyword Planner (France, FR) au prochain relevé.
 
-### 13. Site WordPress piraté : que faire (et comment l'éviter)
-- **status:** todo
-- **slug:** site-wordpress-pirate
-- **mot-clé principal:** site wordpress piraté / wordpress hacké (volume à valider, concurrence faible)
-- **catégorie:** Maintenance
-- **angle:** guide d'urgence étape par étape (diagnostic, nettoyage, restauration, durcissement), illustré par de vrais cas clients de nettoyage. Sujet à forte intention : le lecteur est en détresse et cherche un pro.
-- **monétisation:** affiliation sécurité (Solid Security)
-- **maillage interne suggéré:** securiser-site-wordpress, sauvegarde-wordpress
-
 ### 14. Elementor ou Gutenberg : quel éditeur choisir
 - **status:** todo
 - **slug:** elementor-ou-gutenberg
@@ -150,6 +141,11 @@ sans lien affilié ne porte PAS de mention :
 ---
 
 ## Publiés
+
+### Site WordPress piraté : que faire (et comment l'éviter) [2026]
+- **status:** done — 2026-08-06
+- **slug:** site-wordpress-pirate
+- **mot-clé principal:** site wordpress piraté / wordpress hacké (volume à valider, concurrence faible) — services de sécurité cités sans lien (affiliation non renseignée)
 
 ### Migrer son site WordPress sans perdre son SEO : le guide complet [2026]
 - **status:** done — 2026-08-03

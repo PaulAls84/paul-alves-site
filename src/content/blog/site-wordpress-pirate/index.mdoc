@@ -1,0 +1,131 @@
+---
+title: "Site WordPress piraté : que faire (et comment l'éviter) [2026]"
+description: "Redirections suspectes, alerte Google, pages inconnues : la procédure d'urgence complète pour diagnostiquer, nettoyer et sécuriser un site WordPress piraté."
+publishedAt: '2026-08-06'
+featured: false
+category: Maintenance
+image: /images/blog/site-wordpress-pirate.jpg
+anchors:
+  - site WordPress piraté
+  - site piraté
+  - malware
+  - nettoyer un site WordPress
+---
+
+Vous tapez l'adresse de votre site et vous atterrissez sur une page de pharmacie en ligne. Ou Google affiche un bandeau rouge « Ce site peut être piraté ». Ou votre hébergeur vous écrit qu'il a suspendu votre compte pour envoi massif de spam. Dans tous les cas, le constat est le même et la sensation aussi : votre outil de travail vous a échappé, et vous ne savez pas par où commencer. Bonne nouvelle : une infection WordPress se traite. Dans l'immense majorité des cas, il ne s'agit pas d'une attaque ciblée mais d'un script automatisé qui a exploité une faille connue — donc d'un problème documenté, avec une procédure de résolution éprouvée. Voici cette procédure, dans l'ordre où il faut l'appliquer, sans y passer trois semaines.
+
+## Reconnaître un site WordPress piraté
+
+### Les signaux qui ne trompent pas
+
+Certains symptômes sont sans ambiguïté et doivent déclencher une intervention immédiate :
+
+- **Des redirections** : vos visiteurs (souvent uniquement ceux qui viennent de Google, ou uniquement sur mobile) atterrissent sur un site tiers
+- **Des pages inconnues indexées** : une recherche `site:votredomaine.fr` sur Google fait remonter des dizaines d'URL que vous n'avez jamais créées
+- **Un avertissement Google** : bandeau rouge dans les résultats, ou alerte « Problèmes de sécurité » dans la Search Console
+- **Un compte administrateur que vous n'avez pas créé** dans Utilisateurs, souvent avec un pseudo aléatoire
+- **Un mail de votre hébergeur** signalant du spam sortant, une consommation CPU anormale ou une suspension
+
+### Les signaux discrets
+
+Les infections les plus rentables pour l'attaquant sont celles qui passent inaperçues. Méfiez-vous d'un ralentissement soudain, de fichiers récemment modifiés à des dates où personne n'a touché au site, d'un `wp-config.php` ou d'un `.htaccess` dont la taille a changé, ou de publicités qui apparaissent uniquement pour les visiteurs non connectés. Un scan avec une extension de sécurité (Wordfence, Sucuri, Solid Security) confirme ou infirme en quelques minutes.
+
+> Le pire piratage n'est pas celui qui défigure votre page d'accueil : c'est celui qui reste invisible pendant six mois.
+
+## La procédure d'urgence en 7 étapes
+
+### 1. Mettre le site hors ligne
+
+Avant tout, arrêtez l'hémorragie. Activez le mode maintenance ou, mieux, coupez temporairement l'accès public depuis votre hébergeur. Cela protège vos visiteurs, limite le spam sortant et évite que Google n'aggrave votre pénalité en continuant de crawler des pages infectées.
+
+### 2. Sauvegarder l'état actuel
+
+Cela paraît contre-intuitif de sauvegarder un site infecté, mais c'est indispensable : cette copie sert de pièce à conviction pour comprendre l'origine de l'attaque, et de filet si le nettoyage casse quelque chose. Copiez les fichiers **et** la base de données, en les étiquetant clairement comme infectés.
+
+### 3. Changer tous les mots de passe
+
+Tous, sans exception : comptes administrateurs WordPress, accès FTP/SFTP, base de données, panneau de l'hébergeur, et compte email associé. Un attaquant qui garde un accès valide réinfectera le site dans les heures suivant votre nettoyage — c'est la cause n°1 des « re-piratages ».
+
+Profitez-en pour supprimer les comptes administrateurs illégitimes et invalider toutes les sessions actives.
+
+### 4. Identifier l'ampleur de l'infection
+
+Trois endroits concentrent l'immense majorité des injections :
+
+| Zone | Ce qu'on y trouve | Comment vérifier |
+|---|---|---|
+| Fichiers du cœur | Fichiers modifiés ou ajoutés dans `wp-admin`, `wp-includes` | Comparaison avec une archive officielle de WordPress |
+| Thème et extensions | Code obscurci (`base64`, `eval`), fichiers PHP dans `/uploads` | Scan de sécurité + inspection des dates de modification |
+| Base de données | Scripts injectés dans les articles, options `siteurl` modifiées, utilisateurs fantômes | Recherche de `<script` et d'iframes dans les tables `posts` et `options` |
+
+Un fichier PHP présent dans `wp-content/uploads` est presque toujours malveillant : ce dossier ne devrait contenir que des médias.
+
+### 5. Nettoyer
+
+Deux stratégies, selon votre situation.
+
+**La restauration** — si vous disposez d'une [sauvegarde de votre site WordPress](/sauvegarde-wordpress/) antérieure à l'infection et que vous savez la dater, c'est la voie la plus rapide et la plus sûre. Restaurez, puis passez directement à l'étape 6. Attention : restaurer une sauvegarde postérieure à l'intrusion ne fait que réinstaller le problème.
+
+**Le nettoyage manuel** — sans sauvegarde exploitable, il faut reconstruire proprement :
+
+1. Réinstaller le cœur de WordPress depuis une archive officielle (en écrasant `wp-admin` et `wp-includes`, jamais `wp-content`)
+2. Supprimer puis réinstaller le thème et toutes les extensions depuis leurs sources officielles
+3. Nettoyer manuellement `wp-config.php` et `.htaccess` en les comparant à leurs versions standard
+4. Purger `wp-content/uploads` de tout fichier exécutable
+5. Passer la base de données au crible : utilisateurs inconnus, scripts injectés, contenu de la table `options`
+
+C'est l'étape la plus longue et la plus technique. Si le doute subsiste sur un seul fichier, mieux vaut faire appel à un professionnel : une porte dérobée oubliée annule tout le travail.
+
+### 6. Vérifier et refermer les portes
+
+Relancez un scan complet, puis contrôlez que le site fonctionne normalement en navigation privée, depuis un mobile et depuis un résultat Google (certaines infections ne se déclenchent que dans ces contextes). Mettez à jour **tout** : cœur, thème, extensions, et la version de PHP côté hébergeur.
+
+### 7. Demander la levée de la pénalité Google
+
+Si Google a signalé votre site, ouvrez la Search Console, section « Problèmes de sécurité », et demandez un examen une fois le nettoyage terminé. Le retour à la normale prend généralement de quelques jours à deux semaines. Surveillez ensuite vos positions : une infection prolongée laisse souvent des traces sur le référencement, notamment via les pages spam indexées, qu'il faudra faire désindexer.
+
+## Comment on entre chez vous (et comment fermer)
+
+### Les trois portes d'entrée réelles
+
+Dans la pratique, presque tous les piratages tiennent à trois causes :
+
+- **Une extension ou un thème obsolète**, dont la faille est publique et déjà corrigée dans la version que vous n'avez pas installée
+- **Un mot de passe faible ou réutilisé**, cassé par force brute ou récupéré dans une fuite de données sur un autre service
+- **Un composant « nulled »**, c'est-à-dire une version piratée d'un plugin premium, quasi systématiquement livrée avec une porte dérobée
+
+Le point commun : aucune de ces causes ne relève de la fatalité technique. Ce sont des décisions — reporter une mise à jour, réutiliser un mot de passe, télécharger un thème payant gratuitement.
+
+### Le plan de prévention minimal
+
+Après le nettoyage vient la partie qui évite de tout recommencer dans six mois. L'essentiel de la démarche est détaillé dans le guide pour [sécuriser son site WordPress](/securiser-site-wordpress/), mais retenez au minimum ces cinq points :
+
+1. **Mises à jour appliquées sous quelques jours**, pas quelques mois
+2. **Double authentification** sur tous les comptes administrateurs
+3. **Limitation des tentatives de connexion** pour neutraliser la force brute
+4. **Sauvegardes automatiques et externalisées**, dont vous avez testé la restauration au moins une fois
+5. **Une extension de sécurité** avec pare-feu et scan planifié — une seule, pas trois
+
+> Un nettoyage sans durcissement, c'est repeindre une porte qu'on laisse ouverte.
+
+### Faut-il externaliser ?
+
+Un nettoyage complet représente facilement une journée de travail pour quelqu'un qui sait où chercher — bien davantage pour quelqu'un qui découvre. Et le risque d'une porte dérobée oubliée est réel : c'est ce qui explique les sites « nettoyés » trois fois de suite. Si votre site génère du chiffre d'affaires, ou si vous n'êtes pas certain de savoir lire un fichier PHP, l'intervention d'un professionnel est plus économique qu'elle n'en a l'air. Un contrat de maintenance, lui, déplace le problème en amont : mises à jour suivies, sauvegardes vérifiées, surveillance active.
+
+## Conclusion
+
+Un site WordPress piraté n'est pas une fatalité, mais il exige de la méthode et de la rigueur dans l'ordre des opérations : couper l'accès, sauvegarder l'état infecté, changer tous les identifiants, cartographier l'infection, nettoyer ou restaurer, vérifier, puis demander la levée de la pénalité Google. L'erreur la plus coûteuse consiste à nettoyer les symptômes sans changer les accès ni corriger la faille d'origine — le site est alors réinfecté en quelques heures. Et une fois le calme revenu, la vraie question n'est plus « comment réparer ? » mais « pourquoi était-ce possible ? ». Des mises à jour appliquées à temps, une double authentification et des sauvegardes externalisées testées coûtent quelques dizaines d'euros par an. Un piratage, lui, se compte en jours d'indisponibilité, en référencement perdu et en confiance entamée.
+
+## FAQ
+
+**Combien de temps faut-il pour nettoyer un site WordPress piraté ?**
+Avec une sauvegarde saine et datée, la restauration prend souvent moins d'une heure. Sans sauvegarde, comptez une demi-journée à une journée complète pour un nettoyage manuel sérieux, vérification et durcissement inclus. Les cas complexes (multisite, e-commerce, infection ancienne) peuvent demander davantage.
+
+**Puis-je nettoyer mon site moi-même ?**
+Oui, si vous êtes à l'aise avec l'accès FTP, les fichiers PHP et la base de données, et si vous suivez la procédure sans en sauter d'étape. Le point critique est l'exhaustivité : une seule porte dérobée oubliée suffit à tout recommencer. En cas de doute, ou si le site est stratégique pour votre activité, faites appel à un professionnel.
+
+**Mon référencement est-il définitivement perdu ?**
+Non, dans la grande majorité des cas. Après nettoyage et demande d'examen dans la Search Console, la pénalité est levée en quelques jours à deux semaines. La perte de positions se résorbe généralement sur quelques semaines, à condition que l'infection n'ait pas duré des mois et que les pages spam indexées soient bien désindexées.
+
+**Une extension de sécurité aurait-elle empêché le piratage ?**
+Souvent, mais pas toujours. Un pare-feu bloque une large part des attaques automatisées, et le scan planifié détecte une infection tôt. En revanche, il ne compense ni une extension jamais mise à jour, ni un mot de passe administrateur réutilisé, ni un plugin piraté installé volontairement. La sécurité repose sur plusieurs couches complémentaires.
