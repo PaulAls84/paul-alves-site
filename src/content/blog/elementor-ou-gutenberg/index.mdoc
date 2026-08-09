@@ -1,0 +1,110 @@
+---
+title: "Elementor ou Gutenberg : quel éditeur choisir [2026]"
+description: "Elementor ou Gutenberg : le comparatif d'un artisan qui construit avec les deux. Performances réelles, coût, liberté de design et recommandation par profil de projet."
+publishedAt: '2026-08-09'
+featured: false
+category: WordPress
+image: /images/blog/elementor-ou-gutenberg.jpg
+anchors:
+  - Elementor
+  - Gutenberg
+  - éditeur de blocs
+  - constructeur de pages
+---
+
+C'est probablement la première vraie décision technique que vous prendrez sur votre site : avec quoi allez-vous construire vos pages ? D'un côté, **Gutenberg**, l'éditeur natif de WordPress, gratuit, intégré, de plus en plus puissant. De l'autre, **Elementor**, le constructeur visuel le plus installé au monde, qui promet de tout dessiner à la souris sans jamais toucher au code. Les deux camps ont leurs militants, et le débat tourne souvent au réflexe idéologique : « Elementor, c'est lourd » contre « Gutenberg, c'est limité ». Ce n'est ni l'un ni l'autre. Je construis des sites avec les deux depuis des années, et le choix se joue rarement sur la technique pure : il dépend de qui va gérer le site après la mise en ligne, du niveau de design attendu et du budget de maintenance. Voici les vraies différences, sans militantisme.
+
+## Elementor et Gutenberg : deux philosophies opposées
+
+### Gutenberg, l'éditeur natif de WordPress
+
+Gutenberg est l'éditeur intégré à WordPress depuis 2018. Il découpe le contenu en **blocs** — un paragraphe, une image, un bouton, une colonne — que l'on empile et paramètre dans une interface épurée. Depuis l'arrivée du *Full Site Editing*, il ne sert plus seulement à éditer des articles : il permet aussi de composer l'en-tête, le pied de page et les gabarits du site entier.
+
+Sa force tient en un mot : **natif**. Aucune extension à installer, aucun abonnement, aucune dépendance externe. Le code produit est du HTML propre, très proche de ce que WordPress génère nativement.
+
+### Elementor, le constructeur visuel
+
+Elementor est un **constructeur de pages** : une couche visuelle qui se superpose à WordPress. Vous glissez des « widgets » sur un canevas, vous ajustez marges, couleurs et animations dans un panneau latéral, et vous voyez le rendu final en direct, exactement tel qu'il s'affichera.
+
+Sa force, c'est la **liberté de design immédiate**. Ce qui demande du CSS ou un thème bien pensé avec Gutenberg se règle ici en trois clics. La version gratuite couvre déjà beaucoup de besoins ; Elementor Pro ajoute le constructeur de thème (en-têtes, pieds de page, gabarits d'articles), les formulaires, les widgets WooCommerce et le contenu dynamique.
+
+> Gutenberg vous demande de composer avec ce que WordPress sait faire. Elementor vous laisse dessiner ce que vous voulez, et vous facture ça en poids de page.
+
+## Le comparatif point par point
+
+| Critère | Gutenberg | Elementor |
+|---|---|---|
+| Prix | Gratuit (natif) | Gratuit / Pro ~60-90 €/an |
+| Courbe d'apprentissage | Moyenne, logique « blocs » | Rapide et visuelle |
+| Liberté de design | Bonne, dépend du thème | Très élevée, sans code |
+| Poids de page | Léger | Plus lourd (CSS/JS additionnels) |
+| Dépendance | Aucune | Forte (désinstaller casse les mises en page) |
+| Édition mobile | Correcte | Réglages responsive fins par appareil |
+| Évolution | Suit le cœur de WordPress | Dépend de l'éditeur |
+
+### Performance : l'écart est réel, mais pas rédhibitoire
+
+C'est le reproche le plus fréquent fait à Elementor, et il est fondé : le constructeur charge ses propres feuilles de style et scripts sur chaque page. Sur des pages équivalentes — même contenu, même hébergement, même thème léger —, l'écart que je constate en pratique tourne autour de **200 à 400 Ko de ressources supplémentaires** et de quelques dixièmes de seconde sur le rendu initial. Ce n'est pas anodin, mais ce n'est pas non plus une condamnation.
+
+Trois précisions honnêtes :
+
+- Elementor a nettement progressé (chargement conditionnel des widgets, suppression du DOM superflu, styles optimisés). Un site Elementor de 2026 est bien plus léger qu'un site Elementor de 2021.
+- Un bon cache et un hébergement correct effacent une grande partie de l'écart perçu par le visiteur.
+- Un site Gutenberg mal fait — images non compressées, dix plugins de blocs empilés — sera plus lent qu'un site Elementor bien optimisé.
+
+Autrement dit : l'éditeur est un facteur parmi d'autres. Si la performance est votre obsession, lisez mon guide pour [optimiser la vitesse de votre site WordPress](/optimiser-vitesse-site-wordpress/) : vous y gagnerez plus qu'en changeant d'éditeur.
+
+### Le coût réel sur trois ans
+
+Gutenberg est gratuit, définitivement. Elementor gratuit l'est aussi, mais la plupart des projets professionnels finissent sur Elementor Pro (formulaires et constructeur de thème sont difficilement contournables). Comptez **60 à 90 € par an et par site**, soit 200 à 270 € sur trois ans. Ce n'est pas cher payé si cela vous fait gagner dix heures de mise en page — c'est cher payé pour un blog de dix articles.
+
+### La dépendance : le point qu'on sous-estime
+
+C'est le critère le plus important à mes yeux, et le moins discuté. Les mises en page Elementor sont stockées sous forme de données propres à l'extension. Si vous désactivez Elementor un jour, vos pages ne redeviennent pas de simples paragraphes : elles se disloquent. Il faut alors les refaire, une par une.
+
+Gutenberg, lui, produit du HTML standard commenté. Changez de thème, désactivez une extension de blocs : votre contenu reste lisible et récupérable. Sur un site destiné à vivre dix ans, cette différence pèse lourd.
+
+> Choisir Elementor, c'est accepter un mariage. Choisir Gutenberg, c'est rester propriétaire de son contenu.
+
+## Ce que je constate en conditions réelles
+
+Sur les projets que je livre, la répartition est assez nette.
+
+**Ce que les clients gèrent réellement après la livraison.** Une personne non technique qui doit publier un article ou modifier un texte s'en sort mieux avec Gutenberg : l'interface est sobre et il y a peu de façons de casser quelque chose. Sur Elementor, la même personne déplace involontairement une section, dérègle une marge, et m'appelle. La puissance a un prix : la surface d'erreur.
+
+**Le temps de construction.** Pour une page d'accueil un peu travaillée — sections en quinconce, superpositions, arrière-plans, appels à l'action —, Elementor me fait gagner un temps considérable. Le même rendu sous Gutenberg demande soit un thème très bien conçu, soit du CSS personnalisé.
+
+**La maintenance dans la durée.** Les sites Gutenberg vieillissent mieux. Une mise à jour majeure de WordPress ne les inquiète pas, puisqu'ils utilisent le cœur du système. Les sites Elementor exigent une vigilance supplémentaire : il faut suivre les mises à jour du constructeur, tester avant de valider, et parfois attendre un correctif. Rien d'ingérable, mais c'est du temps à budgéter.
+
+**Le rôle du thème.** Un point souvent oublié : avec Gutenberg, votre thème fait la moitié du travail de design. Un thème moderne et bien pensé rend l'éditeur natif largement suffisant, alors qu'un thème pauvre le fait paraître limité. Le choix se prépare donc en amont — j'en parle en détail dans mon [comparatif des meilleurs thèmes WordPress](/meilleur-theme-wordpress/).
+
+## Alors, Elementor ou Gutenberg ?
+
+Voici ma recommandation par profil, sans langue de bois.
+
+- **Blog, site vitrine simple, budget serré** → Gutenberg. Gratuit, léger, durable, et amplement suffisant avec un bon thème.
+- **Site professionnel au design ambitieux, livré à un client** → Elementor Pro, à condition de prévoir la formation et la maintenance qui vont avec.
+- **Vous êtes seul aux commandes et vous n'aimez pas le code** → Elementor. Le confort visuel vaut son abonnement.
+- **Projet destiné à durer, avec plusieurs rédacteurs** → Gutenberg. Moins de dépendance, moins de risques de casse.
+- **Boutique WooCommerce** → les deux fonctionnent ; Elementor Pro apporte des widgets produits pratiques, Gutenberg reste plus léger sur des catalogues volumineux.
+- **Vous hésitez encore** → commencez avec Gutenberg. Vous pourrez toujours ajouter Elementor plus tard ; l'inverse est beaucoup plus douloureux.
+
+Un dernier point : ne cumulez pas. Un thème lourd, plus Elementor, plus trois extensions de blocs, c'est la recette d'un site poussif. Choisissez une approche et tenez-la. Si vous démarrez de zéro, la marche à suivre complète est dans mon guide pour [créer un site WordPress](/creer-un-site-wordpress/).
+
+## Conclusion
+
+Il n'y a pas de bon et de mauvais camp. Gutenberg est l'avenir du cœur de WordPress : gratuit, léger, durable, et de plus en plus capable — c'est le choix par défaut raisonnable pour la majorité des projets. Elementor reste imbattable pour dessiner vite un design ambitieux sans écrire une ligne de code, au prix d'un abonnement, de quelques centaines de kilo-octets et d'une dépendance réelle. Posez-vous les trois bonnes questions : qui va gérer le site au quotidien, quel niveau de design est attendu, et combien de temps ce site doit-il vivre ? Les réponses désigneront l'éditeur toutes seules. Et si vous vous trompez, ce n'est pas fatal — c'est juste plus facile d'aller de Gutenberg vers Elementor que le contraire.
+
+## FAQ
+
+**Elementor ralentit-il vraiment un site WordPress ?**
+Oui, un peu : le constructeur charge des ressources supplémentaires, de l'ordre de quelques centaines de kilo-octets par page. En pratique, cet écart devient marginal avec un bon hébergement, un cache correct et des images compressées. Un site Elementor bien optimisé passe sans difficulté les Core Web Vitals ; un site Gutenberg négligé peut très bien les échouer.
+
+**Peut-on utiliser Elementor et Gutenberg sur le même site ?**
+Techniquement oui : WordPress vous laisse choisir l'éditeur page par page. C'est même une stratégie viable — Elementor pour les quelques pages de vente très travaillées, Gutenberg pour les articles de blog. Le risque est la cohérence visuelle et la charge mentale pour la personne qui gère le site : il faut alors documenter clairement qui édite quoi et avec quel outil.
+
+**Que se passe-t-il si je désactive Elementor ?**
+Vos pages construites avec Elementor s'affichent en vrac : le contenu brut reste présent mais la mise en page disparaît. Il faut les reconstruire manuellement. C'est la principale contrepartie du confort qu'offre le constructeur, et la raison pour laquelle il vaut mieux trancher dès le départ plutôt que de migrer plus tard.
+
+**Gutenberg suffit-il pour un site professionnel ?**
+Dans la grande majorité des cas, oui — à condition de l'associer à un thème moderne compatible Full Site Editing. Les blocs natifs couvrent désormais colonnes, superpositions, arrière-plans et modèles réutilisables. La limite se situe sur les designs très typés (animations complexes, mises en page hors-normes), où Elementor garde une longueur d'avance.

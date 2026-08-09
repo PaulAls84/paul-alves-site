@@ -16,15 +16,6 @@ Données de volume : Google Ads Keyword Planner (France, FR), relevé 2026-06-30
 
 Volumes : estimations à valider au Keyword Planner (France, FR) au prochain relevé.
 
-### 14. Elementor ou Gutenberg : quel éditeur choisir
-- **status:** todo
-- **slug:** elementor-ou-gutenberg
-- **mot-clé principal:** elementor ou gutenberg / elementor avis (volume à valider, concurrence moyenne)
-- **catégorie:** WordPress
-- **angle:** comparatif d'artisan — Paul construit avec les deux ; performances réelles mesurées, cas d'usage par profil. Mentionner l'expérience directe dans l'article.
-- **monétisation:** affiliation builder (Elementor Pro)
-- **maillage interne suggéré:** creer-un-site-wordpress, meilleur-theme-wordpress
-
 ### 15. Rank Math ou Yoast : quel plugin SEO pour WordPress
 - **status:** todo
 - **slug:** rank-math-ou-yoast
@@ -141,6 +132,11 @@ sans lien affilié ne porte PAS de mention :
 ---
 
 ## Publiés
+
+### Elementor ou Gutenberg : quel éditeur choisir [2026]
+- **status:** done — 2026-08-09
+- **slug:** elementor-ou-gutenberg
+- **mot-clé principal:** elementor ou gutenberg / elementor avis (volume à valider, concurrence moyenne) — Elementor Pro cité sans lien (affiliation non renseignée), donc pas de mention de transparence
 
 ### Site WordPress piraté : que faire (et comment l'éviter) [2026]
 - **status:** done — 2026-08-06
