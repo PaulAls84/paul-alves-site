@@ -3,6 +3,13 @@
 Cette routine publie **un article de blog tous les 3 jours** (8h) de façon
 autonome, à partir d'un backlog de sujets validés SEO.
 
+**Où elle tourne :** dans le **cloud** (routine Claude Code, cron `9 6 */3 * *` UTC),
+depuis le 2026-08-12. Elle ne dépend donc plus du Mac allumé. L'environnement
+cloud n'a **ni `OPENAI_API_KEY` ni connecteurs MCP** (Search Console / Cuik) :
+les couvertures sont celles de la charte, et si le backlog `todo` est vide la
+routine s'arrête en le signalant au lieu de chercher de nouveaux mots-clés.
+Gestion des routines : <https://claude.ai/code/routines>.
+
 ## Procédure exécutée à chaque run
 
 1. **Lire le backlog** : ouvrir [`automation/content-plan.md`](./content-plan.md)

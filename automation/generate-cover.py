@@ -32,13 +32,35 @@ GOLD = (212, 164, 74)     # #d4a44a
 CREAM = (250, 247, 242)   # #faf7f2
 MUTED = (180, 190, 205)
 
-SERIF_PATH = "/System/Library/Fonts/Supplemental/Didot.ttc"
-SANS_PATH = "/System/Library/Fonts/Avenir Next.ttc"
+# Plusieurs candidats par famille : macOS d'abord (poste de Paul), puis les
+# polices Linux courantes pour que la routine cloud produise la même couverture.
+SERIF_PATH = [
+    "/System/Library/Fonts/Supplemental/Didot.ttc",
+    "/System/Library/Fonts/Supplemental/Georgia.ttf",
+    "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf",
+    "/usr/share/fonts/truetype/liberation/LiberationSerif-Bold.ttf",
+    "/usr/share/fonts/truetype/freefont/FreeSerifBold.ttf",
+]
+SANS_PATH = [
+    "/System/Library/Fonts/Avenir Next.ttc",
+    "/System/Library/Fonts/Supplemental/Arial.ttf",
+    "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+    "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
+    "/usr/share/fonts/truetype/freefont/FreeSans.ttf",
+]
 
 
-def _font(path, size):
-    try:
-        return ImageFont.truetype(path, size)
+def _font(paths, size):
+    """Première police disponible parmi `paths` (str ou liste), à la taille voulue."""
+    if isinstance(paths, str):
+        paths = [paths]
+    for path in paths:
+        try:
+            return ImageFont.truetype(path, size)
+        except Exception:
+            continue
+    try:  # Pillow >= 10.1 sait redimensionner la police par défaut
+        return ImageFont.load_default(size)
     except Exception:
         return ImageFont.load_default()
 
