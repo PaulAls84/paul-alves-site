@@ -16,15 +16,6 @@ Données de volume : Google Ads Keyword Planner (France, FR), relevé 2026-06-30
 
 Volumes : estimations à valider au Keyword Planner (France, FR) au prochain relevé.
 
-### 15. Rank Math ou Yoast : quel plugin SEO pour WordPress
-- **status:** todo
-- **slug:** rank-math-ou-yoast
-- **mot-clé principal:** yoast ou rank math / plugin seo wordpress (volume à valider, concurrence moyenne)
-- **catégorie:** Plugins
-- **angle:** cœur de métier de Paul — comparatif honnête + configuration recommandée pas à pas, avec SEOPress en alternative française.
-- **monétisation:** affiliation SEO (Rank Math Pro, SEOPress)
-- **maillage interne suggéré:** seo-wordpress, meilleur-plugin-wordpress
-
 ### 16. WP Rocket : avis et guide de configuration
 - **status:** todo
 - **slug:** wp-rocket-avis
@@ -132,6 +123,11 @@ sans lien affilié ne porte PAS de mention :
 ---
 
 ## Publiés
+
+### Rank Math ou Yoast : quel plugin SEO pour WordPress [2026]
+- **status:** done — 2026-08-12
+- **slug:** rank-math-ou-yoast
+- **mot-clé principal:** yoast ou rank math / plugin seo wordpress (volume à valider, concurrence moyenne) — Rank Math Pro et SEOPress cités sans lien (affiliation non renseignée), donc pas de mention de transparence
 
 ### Elementor ou Gutenberg : quel éditeur choisir [2026]
 - **status:** done — 2026-08-09
