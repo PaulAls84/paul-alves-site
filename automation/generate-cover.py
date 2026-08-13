@@ -2,28 +2,41 @@
 """Génère une couverture d'article (1200x800) dans la charte Paul Alves.
 
 Usage :
-    python3 automation/generate-cover.py "<titre>" "<catégorie>" "<chemin_sortie.jpg>"
+    python3 automation/generate-cover.py "<titre>" "<catégorie>" "<chemin_sortie.jpg>" [config.json]
 
-Comportement :
-- Si la variable d'environnement OPENAI_API_KEY est définie, une image de fond
-  est générée par IA (palette navy/or, sans texte), puis on superpose un voile
-  navy + un cadre or + la catégorie + le titre pour garder la cohérence de marque.
-- Sinon (ou en cas d'erreur API), on retombe sur une couverture pleine charte
-  générée localement avec Pillow. La routine ne doit JAMAIS échouer faute d'image.
+Comportement (routine auto) :
+1. **Vignette « YouTube-style »** (pipeline principal) : une config est déduite
+   automatiquement du titre et de la catégorie — badge, titre découpé en
+   3 lignes percutantes, sous-titre, étapes et visuel thématique (serveur,
+   bouclier, PageSpeed, SERP, match « X vs Y »…) choisi par mots-clés.
+   Rendu HTML/CSS via Chrome/Chromium headless (cf. cover_template.py).
+   Un fichier `config.json` optionnel permet d'affiner : toute clé fournie
+   (`badge`, `lines` [[texte, "cream"|"gold", taille]…], `sub`, `steps`,
+   `notif`, `preset`, `visual`) remplace la valeur déduite.
+2. **Repli charte** : si Chrome est introuvable (environnement cloud minimal)
+   ou si le rendu échoue, on retombe sur la couverture sobre générée avec
+   Pillow (fond navy + titre serif, optionnellement fond IA si
+   OPENAI_API_KEY est défini). La routine ne doit JAMAIS échouer faute d'image.
 
-Dépendances : Pillow (déjà présent). Aucune dépendance réseau tierce (urllib stdlib).
+Dans tous les cas, deux fichiers sont produits : <slug>.jpg (og:image) et
+<slug>.webp (affichage site).
 """
 from __future__ import annotations
 
 import base64
 import json
 import os
+import re
 import sys
 import textwrap
 import urllib.request
+from datetime import date
 from io import BytesIO
 
 from PIL import Image, ImageDraw, ImageFont
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from cover_template import PRESETS, lines, make_vs_visual, render_cover, steps  # noqa: E402
 
 W, H = 1200, 800
 NAVY = (10, 29, 54)       # #0a1d36
@@ -49,6 +62,195 @@ SANS_PATH = [
     "/usr/share/fonts/truetype/freefont/FreeSans.ttf",
 ]
 
+
+# ---------------------------------------------------------------------------
+# Pipeline principal : vignette YouTube-style auto-composée
+# ---------------------------------------------------------------------------
+
+# Ordre important : le premier motif qui matche le titre gagne.
+PRESET_KEYWORDS = [
+    (r"pirat", "shield"),
+    (r"sécuris|securis", "shield"),
+    (r"sauvegard", "backup"),
+    (r"vitesse|rapide|accélér|acceler|performance", "speed"),
+    (r"prix|coûte|coute|budget|tarif", "budget"),
+    (r"migr", "migrate"),
+    (r"refonte", "revamp"),
+    (r"maintenance|entretenir", "dashboard"),
+    (r"boutique|woocommerce|e-commerce|commerce", "shop"),
+    (r"plugin|extension", "plugins"),
+    (r"thème|theme", "themes"),
+    (r"hébergeur|hebergeur|hébergement|hebergement|héberger|heberger", "server"),
+    (r"seo|référenc|referenc|google", "serp"),
+    (r"rgpd|cookie|mentions légales", "shield"),
+]
+
+BADGE_KEYWORDS = [
+    (r"pirat", "URGENCE"),
+    (r"comparatif|meilleur|classement", "COMPARATIF"),
+    (r"sécuris|securis", "SÉCURITÉ"),
+    (r"vitesse|accélér|acceler|performance", "PERFORMANCE"),
+    (r"prix|coûte|coute|budget|tarif", "BUDGET"),
+    (r"guide", "GUIDE COMPLET"),
+]
+
+BADGE_BY_CATEGORY = {
+    "WordPress": "LE GUIDE",
+    "SEO": "SEO",
+    "Plugins": "SÉLECTION",
+    "Maintenance": "MAINTENANCE",
+}
+
+# Couleurs de marque pour les colonnes du match « X vs Y ».
+VS_COLORS = {
+    "wordpress": "#0e2444",
+    "gutenberg": "#0073aa",
+    "elementor": "#e2498a",
+    "divi": "#7c3aed",
+    "wix": "#0f9bd7",
+    "shopify": "#5e8e3e",
+    "yoast": "#a4286a",
+    "rank math": "#6d28d9",
+    "squarespace": "#1c1c1c",
+}
+
+
+def _clean(text: str) -> str:
+    """Retire les tags [2026] et les espaces/ponctuations superflus."""
+    text = re.sub(r"\[[^\]]*\]", "", text)
+    return re.sub(r"\s+", " ", text).strip(" \t:;—–-|")
+
+
+def _line_size(text: str, gold: bool) -> int:
+    """Taille de police pour que la ligne (Arial Black ~0.80×taille/char) tienne."""
+    cap = 118 if gold else 84
+    return max(42, min(cap, int(620 / (0.80 * max(1, len(text))))))
+
+
+def _pick_gold(ls: list[str]) -> int:
+    """Ligne à passer en or : la plus « accroche », jamais un simple WORDPRESS."""
+    if len(ls) == 1:
+        return 0
+    mid = len(ls) // 2 if len(ls) == 3 else 1
+    if ls[mid].strip("?! ").upper() != "WORDPRESS":
+        return mid
+    for i in range(len(ls) - 1, -1, -1):
+        if ls[i].strip("?! ").upper() != "WORDPRESS":
+            return i
+    return mid
+
+
+def auto_config(title: str, category: str) -> dict:
+    """Déduit une config de vignette complète depuis le titre et la catégorie."""
+    low = title.lower()
+    year_m = re.search(r"\[(\d{4})\]", title)
+    year = year_m.group(1) if year_m else str(date.today().year)
+
+    # Découpe titre principal / traîne (après « : »)
+    main, _, tail = title.partition(":")
+    main, tail = _clean(main), _clean(tail)
+
+    # Titre trop long : bascule la fin dans le sous-titre
+    moved = ""
+    if len(main) > 30:
+        m = re.search(r"\s(sans|pour|avec|et)\s", main)
+        if m:
+            moved = main[m.start() + 1:]
+            main = main[:m.start()]
+
+    # Mode « X vs Y » ?
+    vs_m = re.fullmatch(r"(.{2,16})\s+ou\s+(.{2,16})", main, flags=re.IGNORECASE)
+
+    # Préréglage visuel par mots-clés
+    preset_key = "site"
+    if vs_m:
+        preset_key = "vs"
+    else:
+        for pat, key in PRESET_KEYWORDS:
+            if re.search(pat, low):
+                preset_key = key
+                break
+    preset = PRESETS[preset_key]
+
+    # Lignes du titre
+    if vs_m:
+        a, b = vs_m.group(1).strip(), vs_m.group(2).strip()
+        title_lines = [
+            (a.upper(), "cream", min(70, int(620 / (0.80 * len(a))))),
+            ("VS", "gold", 118),
+            (b.upper(), "cream", min(70, int(620 / (0.80 * len(b))))),
+        ]
+        visual = make_vs_visual(
+            a, b,
+            VS_COLORS.get(a.lower(), "#0e2444"),
+            VS_COLORS.get(b.lower(), "#0f9bd7"),
+        )
+    else:
+        wrapped = [main.upper()]
+        for width in range(10, 25):
+            wrapped = textwrap.wrap(main.upper(), width) or wrapped
+            if len(wrapped) <= 3:
+                break
+        gold_i = _pick_gold(wrapped)
+        title_lines = [
+            (t, "gold" if i == gold_i else "cream", _line_size(t, i == gold_i))
+            for i, t in enumerate(wrapped)
+        ]
+        visual = preset["visual"]
+
+    # Badge
+    badge_label = "LE MATCH" if vs_m else None
+    if badge_label is None:
+        for pat, label in BADGE_KEYWORDS:
+            if re.search(pat, low):
+                badge_label = label
+                break
+    if badge_label is None:
+        badge_label = BADGE_BY_CATEGORY.get(category, category.upper() or "LE GUIDE")
+
+    # Sous-titre : traîne du titre si exploitable, sinon celui du preset
+    sub = moved or tail
+    sub = sub[:1].lower() + sub[1:] if sub else ""
+    if not 8 <= len(sub) <= 44:
+        sub = preset["sub"]
+
+    return {
+        "badge": f"{badge_label} · {year}",
+        "title": lines(*title_lines),
+        "sub": sub,
+        "steps": steps(*preset["steps"]),
+        "notif": tuple(preset["notif"]),
+        "visual": visual,
+    }
+
+
+def apply_overrides(cfg: dict, path: str) -> dict:
+    """Applique un config.json optionnel (clés : badge, lines, sub, steps, notif, preset, visual)."""
+    with open(path) as f:
+        over = json.load(f)
+    if "preset" in over:
+        p = PRESETS[over["preset"]]
+        cfg.update({
+            "sub": p["sub"],
+            "steps": steps(*p["steps"]),
+            "notif": tuple(p["notif"]),
+            "visual": p["visual"],
+        })
+    if "lines" in over:
+        cfg["title"] = lines(*[tuple(l) for l in over["lines"]])
+    if "steps" in over:
+        cfg["steps"] = steps(*over["steps"])
+    if "notif" in over:
+        cfg["notif"] = tuple(over["notif"])
+    for key in ("badge", "sub", "visual"):
+        if key in over:
+            cfg[key] = over[key]
+    return cfg
+
+
+# ---------------------------------------------------------------------------
+# Repli : couverture charte Pillow (ex-pipeline, conservé tel quel)
+# ---------------------------------------------------------------------------
 
 def _font(paths, size):
     """Première police disponible parmi `paths` (str ou liste), à la taille voulue."""
@@ -96,7 +298,6 @@ def ai_background(title: str) -> Image.Image | None:
             data = json.loads(resp.read())
         b64 = data["data"][0]["b64_json"]
         img = Image.open(BytesIO(base64.b64decode(b64))).convert("RGB")
-        # Recadrage 3:2 -> 1200x800
         img = img.resize((1200, 800)) if img.size != (W, H) else img
         return img
     except Exception as e:  # réseau, quota, format inattendu...
@@ -128,7 +329,8 @@ def base_canvas(bg: Image.Image | None) -> Image.Image:
     return img
 
 
-def render(title: str, category: str, out: str) -> None:
+def render_charte(title: str, category: str, out: str) -> None:
+    """Couverture sobre pleine charte (repli sans Chrome)."""
     img = base_canvas(ai_background(title))
     d = ImageDraw.Draw(img)
 
@@ -157,18 +359,29 @@ def render(title: str, category: str, out: str) -> None:
     d.text((90, H - 95), "Développeur Web & Consultant SEO — Soissons",
            font=sans_sm, fill=MUTED)
 
-    # JPG : sert d'og:image / donnée structurée (aperçus sociaux fiables en JPG).
     img.save(out, "JPEG", quality=88)
-    # WebP : version légère utilisée pour l'AFFICHAGE sur le site (helper webpCover).
-    import os as _os
-    webp_out = _os.path.splitext(out)[0] + ".webp"
-    img.save(webp_out, "WEBP", quality=80)
-    print(f"[cover] OK {out} + {webp_out} ({W}x{H})")
+    img.save(os.path.splitext(out)[0] + ".webp", "WEBP", quality=80)
+
+
+def render(title: str, category: str, out: str, config_path: str | None = None) -> None:
+    try:
+        cfg = auto_config(title, category)
+        if config_path:
+            cfg = apply_overrides(cfg, config_path)
+        if render_cover(cfg, out):
+            print(f"[cover] OK vignette {out} + .webp ({W}x{H})")
+            return
+        print("[cover] Chrome indisponible -> couverture charte", file=sys.stderr)
+    except Exception as e:  # le pipeline vignette ne doit jamais bloquer la routine
+        print(f"[cover] pipeline vignette en échec ({e}) -> couverture charte", file=sys.stderr)
+    render_charte(title, category, out)
+    print(f"[cover] OK charte {out} + .webp ({W}x{H})")
 
 
 if __name__ == "__main__":
     if len(sys.argv) < 4:
-        print('Usage: generate-cover.py "<titre>" "<catégorie>" "<sortie.jpg>"',
+        print('Usage: generate-cover.py "<titre>" "<catégorie>" "<sortie.jpg>" [config.json]',
               file=sys.stderr)
         sys.exit(1)
-    render(sys.argv[1], sys.argv[2], sys.argv[3])
+    render(sys.argv[1], sys.argv[2], sys.argv[3],
+           sys.argv[4] if len(sys.argv) > 4 else None)

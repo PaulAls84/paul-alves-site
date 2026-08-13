@@ -75,9 +75,19 @@ Gestion des routines : <https://claude.ai/code/routines>.
    ```
    python3 automation/generate-cover.py "<titre>" "<catégorie>" "public/images/blog/<slug>.jpg"
    ```
-   Si `OPENAI_API_KEY` est défini dans l'environnement, l'image de fond est
-   générée par IA puis habillée à la charte ; sinon une couverture charte est
-   produite localement. Dans les deux cas un fichier valide est créé.
+   Le pipeline principal produit une **vignette « YouTube-style »** (badge,
+   titre 3 lignes, sous-titre, étapes, visuel thématique) : la config est
+   déduite automatiquement du titre/catégorie et rendue via Chrome headless
+   (cf. `automation/cover_template.py`). Pour affiner une vignette (choix du
+   visuel, lignes du titre…), passer un `config.json` en 4ᵉ argument — clés
+   possibles : `preset` (site, shop, server, ranking, plugins, themes, speed,
+   budget, revamp, backup, shield, serp, dashboard, migrate, vs), `badge`,
+   `lines`, `sub`, `steps`, `notif`, `visual`.
+   **Repli garanti** : si Chrome/Chromium est introuvable (environnement cloud
+   minimal), une couverture charte sobre est produite avec Pillow (fond IA en
+   plus si `OPENAI_API_KEY` est défini). Dans tous les cas un fichier valide
+   est créé — Paul peut ensuite régénérer la vignette stylée en local :
+   `python3 automation/generate-cover.py` (mêmes arguments) sur son Mac.
    Le script génère **deux fichiers** : `<slug>.jpg` (og:image / réseaux sociaux)
    **et** `<slug>.webp` (version légère affichée sur le site). La frontmatter
    garde `image: /images/blog/<slug>.jpg` ; l'affichage bascule automatiquement
