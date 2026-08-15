@@ -16,15 +16,6 @@ Données de volume : Google Ads Keyword Planner (France, FR), relevé 2026-06-30
 
 Volumes : estimations à valider au Keyword Planner (France, FR) au prochain relevé.
 
-### 16. WP Rocket : avis et guide de configuration
-- **status:** todo
-- **slug:** wp-rocket-avis
-- **mot-clé principal:** wp rocket avis / wp rocket (volume à valider, concurrence moyenne)
-- **catégorie:** Plugins
-- **angle:** avis d'utilisateur réel avec avant/après mesuré sur un vrai site (captures PageSpeed = preuve d'expérience directe), puis réglages recommandés section par section.
-- **monétisation:** affiliation performance (WP Rocket — top priorité du plan)
-- **maillage interne suggéré:** optimiser-vitesse-site-wordpress
-
 ### 17. WordPress ou Shopify : que choisir pour vendre en ligne
 - **status:** todo
 - **slug:** wordpress-ou-shopify
@@ -123,6 +114,11 @@ sans lien affilié ne porte PAS de mention :
 ---
 
 ## Publiés
+
+### WP Rocket : mon avis et le guide de configuration [2026]
+- **status:** done — 2026-08-15
+- **slug:** wp-rocket-avis
+- **mot-clé principal:** wp rocket avis / wp rocket (volume à valider, concurrence moyenne) — WP Rocket et Imagify cités SANS lien (affiliation non renseignée), donc pas de mention de transparence. À reprendre quand le lien affilié WP Rocket sera rempli.
 
 ### Rank Math ou Yoast : quel plugin SEO pour WordPress [2026]
 - **status:** done — 2026-08-12
