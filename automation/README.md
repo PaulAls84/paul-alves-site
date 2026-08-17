@@ -1,10 +1,16 @@
 # Routine de rédaction automatique d'articles
 
-Cette routine publie **un article de blog tous les 3 jours** (8h) de façon
-autonome, à partir d'un backlog de sujets validés SEO.
+Cette routine publie **une dizaine d'articles par mois** de façon autonome, à
+partir d'un backlog de sujets validés SEO.
+
+**Cadence volontairement irrégulière** (depuis le 2026-08-17) : les jours de
+publication sont espacés de 2 à 4 jours au lieu d'un métronome à 3 jours. Le
+volume est inchangé ; c'est la **régularité mécanique** qui constituait un signal
+de contenu produit en masse, pas la quantité. Ne pas « re-régulariser » ce cron
+en le trouvant bizarre : l'irrégularité est le but.
 
 **Où elle tourne :** dans le **cloud** (routine Claude Code, cron
-`9 6 3,6,9,12,15,18,21,24,27,30 * *` UTC ≈ 8h09 Paris), depuis le 2026-08-12.
+`9 6 1,4,8,11,14,18,21,25,28,30 * *` UTC ≈ 8h09 Paris), depuis le 2026-08-12.
 Elle ne dépend donc plus du Mac allumé.
 Gestion des routines : <https://claude.ai/code/routines>.
 
@@ -50,10 +56,42 @@ Ce que l'environnement cloud a (constaté le 2026-08-17, Ubuntu 24.04, root) :
      Une frontmatter invalide casse la lecture de l'article. (La lecture du site
      est désormais résiliente — un article fautif s'auto-exclut — mais l'article
      concerné ne s'affichera pas. Donc valider le YAML.)
-   - Corps : intro accroche (problème → promesse), sections `##`/`###`, gras,
-     listes, au moins un tableau si pertinent, citations `>`, `## Conclusion`,
-     `## FAQ` (3-4 questions en gras). Cible : 1200-1800 mots, ton pro et direct,
-     français. S'inspirer du style des articles déjà publiés.
+   - **Encart « En bref » — tout premier élément du corps**, avant l'intro. C'est
+     un simple blockquote Markdown dont la première ligne est `**En bref**`, suivi
+     de 3 à 5 puces qui **répondent directement** à la question du titre. Le
+     lecteur pressé doit avoir sa réponse sans défiler ; c'est aussi la zone que
+     Google peut reprendre en extrait enrichi. Ne pas y mettre de teasing (« nous
+     allons voir que… ») : donner le verdict.
+     ```
+     > **En bref**
+     >
+     > - **Ce qu'il est vraiment** : …
+     > - **Mon verdict** : oui si …, non si …
+     > - **Le piège classique** : …
+     ```
+     Le style « carte » est automatique : le CSS cible le premier blockquote de
+     l'article (`.article-content > article > blockquote:first-child` dans
+     `src/styles/global.css`). Donc **un seul** blockquote en tête, et les
+     citations éventuelles vont plus bas dans le corps.
+   - **Voix : la première personne.** Les articles sont signés Paul Alves,
+     artisan WordPress à Soissons : écrire « je », « mon avis », « ce que
+     j'applique ». Pas de « nous » d'entreprise, pas de ton neutre d'encyclopédie.
+   - **Exemples de cas concrets obligatoires.** Chaque article doit descendre dans
+     le concret au moins deux fois : un cas de figure précis plutôt qu'un conseil
+     abstrait (« un site vitrine sur mutualisé avec quarante extensions actives »,
+     « une boutique de 800 références qui migre »), avec ce qu'on fait et ce qu'on
+     obtient. Les conseils génériques sans illustration sont ce qui rend un article
+     interchangeable — donc invisible.
+   - ⚠️ **Mais jamais de vécu inventé.** Lire `automation/cas-clients.md` avant de
+     rédiger : c'est la seule source autorisée pour une expérience vécue (chiffres
+     relevés, cas client, statistiques du type « un site sur trois »). Si le
+     fichier n'a rien sur le sujet, les cas concrets doivent être présentés comme
+     des **situations types**, pas comme des souvenirs. La voix est celle de Paul ;
+     les faits doivent rester vrais.
+   - Puis : intro accroche (problème → promesse), sections `##`/`###`, gras,
+     listes, au moins un tableau si pertinent, `## Conclusion`, `## FAQ` (3-4
+     questions en gras). Cible : 1200-1800 mots, ton pro et direct, français.
+     S'inspirer du style des articles déjà publiés.
    - **Maillage interne** : le maillage est désormais **automatique au build**
      (`src/lib/internal-links.ts`) — il transforme les mots-clés d'un article
      apparaissant dans les autres en liens (max 3/article). Pour que le nouvel

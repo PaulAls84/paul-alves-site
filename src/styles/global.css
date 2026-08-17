@@ -362,6 +362,35 @@ footer { background: var(--navy-2); color: rgba(255,255,255,.7); padding: 64px 0
   border-left: 3px solid var(--gold); padding-left: 20px;
   color: var(--ink-2); font-style: italic; margin: 2em 0;
 }
+/* Encart « En bref » : le tout premier blockquote de l'article sert de réponse
+   rapide au lecteur (et de cible potentielle pour les extraits enrichis). Rendu
+   en carte, pas en citation — donc ni italique ni barre latérale.
+   Markdoc enveloppe le corps dans un <article> interne, d'où les deux chemins. */
+.article-content > article > blockquote:first-child,
+.article-content > blockquote:first-child {
+  border-left: none;
+  border-top: 3px solid var(--gold);
+  background: var(--cream-2);
+  border-radius: 0 0 8px 8px;
+  padding: 22px 26px 6px;
+  margin: 0 0 2.4em;
+  font-style: normal;
+  color: var(--ink);
+}
+.article-content > article > blockquote:first-child > p:first-child > strong:first-child,
+.article-content > blockquote:first-child > p:first-child > strong:first-child {
+  display: block;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: .5em;
+}
+.article-content > article > blockquote:first-child ul,
+.article-content > blockquote:first-child ul { margin-bottom: 1.1em; }
+.article-content > article > blockquote:first-child li,
+.article-content > blockquote:first-child li { margin-bottom: .35em; }
 .article-content code {
   background: var(--cream-2); padding: 2px 6px; border-radius: 3px;
   font-size: .9em; font-family: monospace;
