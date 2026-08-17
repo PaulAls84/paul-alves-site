@@ -12,7 +12,14 @@ anchors:
   - constructeur de pages
 ---
 
-C'est probablement la première vraie décision technique que vous prendrez sur votre site : avec quoi allez-vous construire vos pages ? D'un côté, **Gutenberg**, l'éditeur natif de WordPress, gratuit, intégré, de plus en plus puissant. De l'autre, **Elementor**, le constructeur visuel le plus installé au monde, qui promet de tout dessiner à la souris sans jamais toucher au code. Les deux camps ont leurs militants, et le débat tourne souvent au réflexe idéologique : « Elementor, c'est lourd » contre « Gutenberg, c'est limité ». Ce n'est ni l'un ni l'autre. Je construis des sites avec les deux depuis des années, et le choix se joue rarement sur la technique pure : il dépend de qui va gérer le site après la mise en ligne, du niveau de design attendu et du budget de maintenance. Voici les vraies différences, sans militantisme.
+> **En bref**
+>
+> - **Gutenberg** : gratuit, léger, intégré au cœur de WordPress. Le choix par défaut raisonnable pour la majorité des projets.
+> - **Elementor** : imbattable pour dessiner vite un design ambitieux sans coder, au prix d'un abonnement et de ressources supplémentaires.
+> - **Les trois questions qui tranchent** : qui gère le site au quotidien, quel niveau de design est attendu, combien de temps le site doit vivre.
+> - **À savoir avant de s'engager** : quitter Elementor plus tard oblige à refaire les pages. La dépendance est réelle.
+
+C'est probablement la première vraie décision technique que vous prendrez sur votre site : avec quoi allez-vous construire vos pages ? D'un côté, **Gutenberg**, l'éditeur natif de WordPress, gratuit, intégré, de plus en plus puissant. De l'autre, **Elementor**, le constructeur visuel le plus installé au monde, qui promet de tout dessiner à la souris sans jamais toucher au code. Les deux camps ont leurs militants, et le débat tourne souvent au réflexe idéologique : « Elementor, c'est lourd » contre « Gutenberg, c'est limité ». Ce n'est ni l'un ni l'autre. Le choix se joue rarement sur la technique pure : il dépend de qui va gérer le site après la mise en ligne, du niveau de design attendu et du budget de maintenance. Voici les vraies différences, sans militantisme.
 
 ## Elementor et Gutenberg : deux philosophies opposées
 
@@ -44,7 +51,7 @@ Sa force, c'est la **liberté de design immédiate**. Ce qui demande du CSS ou u
 
 ### Performance : l'écart est réel, mais pas rédhibitoire
 
-C'est le reproche le plus fréquent fait à Elementor, et il est fondé : le constructeur charge ses propres feuilles de style et scripts sur chaque page. Sur des pages équivalentes — même contenu, même hébergement, même thème léger —, l'écart que je constate en pratique tourne autour de **200 à 400 Ko de ressources supplémentaires** et de quelques dixièmes de seconde sur le rendu initial. Ce n'est pas anodin, mais ce n'est pas non plus une condamnation.
+C'est le reproche le plus fréquent fait à Elementor, et il est fondé : le constructeur charge ses propres feuilles de style et scripts sur chaque page. Sur des pages équivalentes — même contenu, même hébergement, même thème léger —, l'ordre de grandeur généralement observé tourne autour de **200 à 400 Ko de ressources supplémentaires** et de quelques dixièmes de seconde sur le rendu initial. À vérifier sur votre propre site : le chiffre dépend beaucoup du thème et des widgets utilisés. Ce n'est pas anodin, mais ce n'est pas non plus une condamnation.
 
 Trois précisions honnêtes :
 
@@ -66,13 +73,13 @@ Gutenberg, lui, produit du HTML standard commenté. Changez de thème, désactiv
 
 > Choisir Elementor, c'est accepter un mariage. Choisir Gutenberg, c'est rester propriétaire de son contenu.
 
-## Ce que je constate en conditions réelles
+## Ce que ça donne en conditions réelles
 
-Sur les projets que je livre, la répartition est assez nette.
+En pratique, la répartition est assez nette.
 
-**Ce que les clients gèrent réellement après la livraison.** Une personne non technique qui doit publier un article ou modifier un texte s'en sort mieux avec Gutenberg : l'interface est sobre et il y a peu de façons de casser quelque chose. Sur Elementor, la même personne déplace involontairement une section, dérègle une marge, et m'appelle. La puissance a un prix : la surface d'erreur.
+**Ce que les clients gèrent réellement après la livraison.** Une personne non technique qui doit publier un article ou modifier un texte s'en sort mieux avec Gutenberg : l'interface est sobre et il y a peu de façons de casser quelque chose. Sur Elementor, la même personne déplace involontairement une section, dérègle une marge, et il faut repasser derrière. La puissance a un prix : la surface d'erreur.
 
-**Le temps de construction.** Pour une page d'accueil un peu travaillée — sections en quinconce, superpositions, arrière-plans, appels à l'action —, Elementor me fait gagner un temps considérable. Le même rendu sous Gutenberg demande soit un thème très bien conçu, soit du CSS personnalisé.
+**Le temps de construction.** Pour une page d'accueil un peu travaillée — sections en quinconce, superpositions, arrière-plans, appels à l'action —, Elementor fait gagner un temps considérable. Le même rendu sous Gutenberg demande soit un thème très bien conçu, soit du CSS personnalisé.
 
 **La maintenance dans la durée.** Les sites Gutenberg vieillissent mieux. Une mise à jour majeure de WordPress ne les inquiète pas, puisqu'ils utilisent le cœur du système. Les sites Elementor exigent une vigilance supplémentaire : il faut suivre les mises à jour du constructeur, tester avant de valider, et parfois attendre un correctif. Rien d'ingérable, mais c'est du temps à budgéter.
 
