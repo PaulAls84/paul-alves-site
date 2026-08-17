@@ -73,6 +73,9 @@ PRESET_KEYWORDS = [
     (r"sécuris|securis", "shield"),
     (r"sauvegard", "backup"),
     (r"vitesse|rapide|accélér|acceler|performance", "speed"),
+    # Avant `plugin` : un plugin de cache relève du visuel « vitesse », pas du
+    # visuel générique « plugins » (cas WP Rocket, LiteSpeed, W3 Total Cache…).
+    (r"cache|wp rocket|litespeed|w3 total|web vitals|lazy", "speed"),
     (r"prix|coûte|coute|budget|tarif", "budget"),
     (r"migr", "migrate"),
     (r"refonte", "revamp"),
@@ -88,6 +91,7 @@ PRESET_KEYWORDS = [
 BADGE_KEYWORDS = [
     (r"pirat", "URGENCE"),
     (r"comparatif|meilleur|classement", "COMPARATIF"),
+    (r"\bavis\b|\btest\b|vaut-il", "AVIS TESTÉ"),
     (r"sécuris|securis", "SÉCURITÉ"),
     (r"vitesse|accélér|acceler|performance", "PERFORMANCE"),
     (r"prix|coûte|coute|budget|tarif", "BUDGET"),
