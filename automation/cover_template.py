@@ -10,9 +10,11 @@ Utilisée par :
 """
 from __future__ import annotations
 
+import glob
 import os
 import shutil
 import subprocess
+import sys
 import tempfile
 
 from PIL import Image
@@ -257,6 +259,55 @@ def build_html(cfg: dict) -> str:
     )
 
 
+def _chrome_cache_dir() -> str:
+    """Dossier où l'on dépose un Chrome téléchargé (surchargeable via env)."""
+    return os.environ.get(
+        "CHROME_CACHE_DIR",
+        os.path.join(os.path.expanduser("~"), ".cache", "paul-alves-covers"),
+    )
+
+
+def _cached_download() -> str | None:
+    """Chrome déjà téléchargé par une exécution précédente, s'il y en a un."""
+    pattern = os.path.join(_chrome_cache_dir(), "chrome-headless-shell", "*", "*",
+                           "chrome-headless-shell")
+    hits = sorted(p for p in glob.glob(pattern) if os.access(p, os.X_OK))
+    return hits[-1] if hits else None
+
+
+def _download_chrome() -> str | None:
+    """Télécharge un chrome-headless-shell via npx (~15 s).
+
+    Sert dans l'environnement cloud de la routine : Ubuntu 24.04 n'y fournit
+    aucun Chrome utilisable (le paquet `chromium` n'est qu'un stub snap, et
+    snap ne tourne pas en conteneur). Le téléchargement passe par
+    registry.npmjs.org, autorisé dans le bac à sable. Poser
+    `COVER_NO_DOWNLOAD=1` pour l'interdire et forcer le repli charte.
+    """
+    if os.environ.get("COVER_NO_DOWNLOAD"):
+        return None
+    if shutil.which("npx") is None:
+        return None
+    print("[cover] Chrome absent -> téléchargement de chrome-headless-shell…",
+          file=sys.stderr)
+    try:
+        proc = subprocess.run(
+            ["npx", "--yes", "@puppeteer/browsers", "install",
+             "chrome-headless-shell@stable", "--path", _chrome_cache_dir()],
+            capture_output=True, text=True, timeout=600,
+        )
+    except Exception as e:
+        print(f"[cover] téléchargement impossible ({e})", file=sys.stderr)
+        return None
+    # stdout attendu : "chrome-headless-shell@<version> <chemin absolu>"
+    for line in proc.stdout.splitlines():
+        _, _, path = line.strip().partition(" ")
+        if path and os.path.exists(path):
+            return path
+    print(f"[cover] téléchargement échoué (code {proc.returncode})", file=sys.stderr)
+    return None
+
+
 def find_chrome() -> str | None:
     """Binaire Chrome/Chromium disponible, ou None (→ repli charte)."""
     env = os.environ.get("CHROME_BIN")
@@ -269,7 +320,7 @@ def find_chrome() -> str | None:
         path = shutil.which(name)
         if path:
             return path
-    return None
+    return _cached_download() or _download_chrome()
 
 
 def render_cover(cfg: dict, out_jpg: str) -> bool:

@@ -3,12 +3,26 @@
 Cette routine publie **un article de blog tous les 3 jours** (8h) de façon
 autonome, à partir d'un backlog de sujets validés SEO.
 
-**Où elle tourne :** dans le **cloud** (routine Claude Code, cron `9 6 */3 * *` UTC),
-depuis le 2026-08-12. Elle ne dépend donc plus du Mac allumé. L'environnement
-cloud n'a **ni `OPENAI_API_KEY` ni connecteurs MCP** (Search Console / Cuik) :
-les couvertures sont celles de la charte, et si le backlog `todo` est vide la
-routine s'arrête en le signalant au lieu de chercher de nouveaux mots-clés.
+**Où elle tourne :** dans le **cloud** (routine Claude Code, cron
+`9 6 3,6,9,12,15,18,21,24,27,30 * *` UTC ≈ 8h09 Paris), depuis le 2026-08-12.
+Elle ne dépend donc plus du Mac allumé.
 Gestion des routines : <https://claude.ai/code/routines>.
+
+Ce que l'environnement cloud a (constaté le 2026-08-17, Ubuntu 24.04, root) :
+- **Pas de Chrome** et impossible d'en installer par `apt` (le paquet
+  `chromium` n'est qu'un stub snap, et snap ne tourne pas en conteneur). C'est
+  ce qui a fait tomber le run du 15/08 sur la couverture charte.
+  `cover_template.find_chrome()` télécharge donc lui-même un
+  `chrome-headless-shell` via `npx @puppeteer/browsers` (~15 s, une fois par
+  run). Aucune action à faire ; poser `COVER_NO_DOWNLOAD=1` pour l'interdire.
+- **Polices déjà présentes** (DejaVu, Liberation, Noto Color Emoji) : accents,
+  graisses et emojis des vignettes sortent correctement.
+- **Pas de Pillow** au départ → la routine l'installe
+  (`pip install --break-system-packages pillow`, ~3 s).
+- **Pas de connecteurs MCP** (Search Console / Cuik) : si le backlog `todo` est
+  vide, la routine s'arrête et le signale au lieu de chercher des mots-clés.
+- Une `OPENAI_API_KEY` **est** présente, mais l'appel images renvoie `429`.
+  Sans importance : le fond IA ne concerne que le repli charte, pas la vignette.
 
 ## Procédure exécutée à chaque run
 
@@ -83,11 +97,13 @@ Gestion des routines : <https://claude.ai/code/routines>.
    possibles : `preset` (site, shop, server, ranking, plugins, themes, speed,
    budget, revamp, backup, shield, serp, dashboard, migrate, vs), `badge`,
    `lines`, `sub`, `steps`, `notif`, `visual`.
-   **Repli garanti** : si Chrome/Chromium est introuvable (environnement cloud
-   minimal), une couverture charte sobre est produite avec Pillow (fond IA en
-   plus si `OPENAI_API_KEY` est défini). Dans tous les cas un fichier valide
-   est créé — Paul peut ensuite régénérer la vignette stylée en local :
-   `python3 automation/generate-cover.py` (mêmes arguments) sur son Mac.
+   **Chrome** : s'il n'y en a pas sur la machine (cas du cloud), le script en
+   télécharge un automatiquement (~15 s). **Repli garanti** : si même ça échoue
+   (pas de réseau, pas de `npx`), une couverture charte sobre est produite avec
+   Pillow. Dans tous les cas un fichier valide est créé — et Paul peut
+   régénérer la vignette stylée en local avec les mêmes arguments.
+   Après génération, **vérifier l'image produite** : la sortie doit dire
+   `OK vignette` et non `OK charte`.
    Le script génère **deux fichiers** : `<slug>.jpg` (og:image / réseaux sociaux)
    **et** `<slug>.webp` (version légère affichée sur le site). La frontmatter
    garde `image: /images/blog/<slug>.jpg` ; l'affichage bascule automatiquement
