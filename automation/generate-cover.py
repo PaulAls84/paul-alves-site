@@ -88,10 +88,19 @@ PRESET_KEYWORDS = [
     (r"rgpd|cookie|mentions légales", "shield"),
 ]
 
+# Article d'avis / de test : sert au badge ET à neutraliser la notification.
+REVIEW_PAT = r"\bavis\b|\btest\b|vaut-il"
+
+# Carte de notification pour ces articles : aucun chiffre, aucune promesse de
+# résultat. Les notifications des presets annoncent souvent une performance
+# (« -2,4 s gagnées », « Position nº1 ») : décoratif ailleurs, mais sur un avis
+# ça se lit comme une mesure relevée alors qu'on n'en a aucune.
+REVIEW_NOTIF = ("gold", "★", "Avis détaillé", "points forts et limites")
+
 BADGE_KEYWORDS = [
     (r"pirat", "URGENCE"),
     (r"comparatif|meilleur|classement", "COMPARATIF"),
-    (r"\bavis\b|\btest\b|vaut-il", "AVIS TESTÉ"),
+    (REVIEW_PAT, "AVIS TESTÉ"),
     (r"sécuris|securis", "SÉCURITÉ"),
     (r"vitesse|accélér|acceler|performance", "PERFORMANCE"),
     (r"prix|coûte|coute|budget|tarif", "BUDGET"),
@@ -218,12 +227,14 @@ def auto_config(title: str, category: str) -> dict:
     if not 8 <= len(sub) <= 44:
         sub = preset["sub"]
 
+    notif = REVIEW_NOTIF if re.search(REVIEW_PAT, low) else tuple(preset["notif"])
+
     return {
         "badge": f"{badge_label} · {year}",
         "title": lines(*title_lines),
         "sub": sub,
         "steps": steps(*preset["steps"]),
-        "notif": tuple(preset["notif"]),
+        "notif": notif,
         "visual": visual,
     }
 
