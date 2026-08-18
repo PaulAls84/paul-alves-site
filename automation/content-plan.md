@@ -108,9 +108,9 @@ sans lien affilié ne porte PAS de mention :
 ## Publiés
 
 ### WordPress ou Shopify : que choisir pour vendre en ligne en [2026] ?
-- **status:** done — 2026-08-18
+- **status:** done 2026-08-18
 - **slug:** wordpress-ou-shopify
-- **mot-clé principal:** shopify ou wordpress / woocommerce ou shopify (volume à valider, concurrence moyenne) — aucun service lié en affiliation (liens non renseignés), donc pas de mention de transparence
+- **mot-clé principal:** shopify ou wordpress / woocommerce ou shopify (volume à valider, concurrence moyenne), aucun service lié en affiliation (liens non renseignés), donc pas de mention de transparence
 
 ### WP Rocket : mon avis et le guide de configuration [2026]
 - **status:** done 2026-08-15
