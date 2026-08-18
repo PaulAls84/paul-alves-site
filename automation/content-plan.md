@@ -16,14 +16,6 @@ Données de volume : Google Ads Keyword Planner (France, FR), relevé 2026-06-30
 
 Volumes : estimations à valider au Keyword Planner (France, FR) au prochain relevé.
 
-### 17. WordPress ou Shopify : que choisir pour vendre en ligne
-- **status:** todo
-- **slug:** wordpress-ou-shopify
-- **mot-clé principal:** shopify ou wordpress / woocommerce ou shopify (volume à valider, concurrence moyenne)
-- **catégorie:** WordPress
-- **angle:** symétrique e-commerce de wordpress-ou-wix : coûts réels, liberté vs simplicité, par profil de vendeur.
-- **maillage interne suggéré:** creer-boutique-woocommerce, hebergement-woocommerce
-
 ### 18. Mettre à jour WordPress sans rien casser
 - **status:** todo
 - **slug:** mise-a-jour-wordpress
@@ -114,6 +106,11 @@ sans lien affilié ne porte PAS de mention :
 ---
 
 ## Publiés
+
+### WordPress ou Shopify : que choisir pour vendre en ligne en [2026] ?
+- **status:** done — 2026-08-18
+- **slug:** wordpress-ou-shopify
+- **mot-clé principal:** shopify ou wordpress / woocommerce ou shopify (volume à valider, concurrence moyenne) — aucun service lié en affiliation (liens non renseignés), donc pas de mention de transparence
 
 ### WP Rocket : mon avis et le guide de configuration [2026]
 - **status:** done — 2026-08-15
