@@ -54,9 +54,9 @@ Ce que l'environnement cloud a (constaté le 2026-08-17, Ubuntu 24.04, root) :
    - **RÈGLE YAML CRITIQUE** : toute valeur contenant `:`, `"`, `[`, `]` ou
      commençant par un caractère spécial **doit être entre guillemets doubles**.
      Une frontmatter invalide casse la lecture de l'article. (La lecture du site
-     est désormais résiliente — un article fautif s'auto-exclut — mais l'article
+     est désormais résiliente (un article fautif s'auto-exclut), mais l'article
      concerné ne s'affichera pas. Donc valider le YAML.)
-   - **Encart « En bref » — tout premier élément du corps**, avant l'intro. C'est
+   - **Encart « En bref », tout premier élément du corps**, avant l'intro. C'est
      un simple blockquote Markdown dont la première ligne est `**En bref**`, suivi
      de 3 à 5 puces qui **répondent directement** à la question du titre. Le
      lecteur pressé doit avoir sa réponse sans défiler ; c'est aussi la zone que
@@ -76,12 +76,19 @@ Ce que l'environnement cloud a (constaté le 2026-08-17, Ubuntu 24.04, root) :
    - **Voix : la première personne.** Les articles sont signés Paul Alves,
      artisan WordPress à Soissons : écrire « je », « mon avis », « ce que
      j'applique ». Pas de « nous » d'entreprise, pas de ton neutre d'encyclopédie.
+   - **Aucun tiret cadratin (—) ni tiret demi-cadratin (–) en incise.** C'est une
+     signature de texte généré : ne jamais en écrire, ni dans le corps, ni dans le
+     titre, la description, les intertitres ou les puces. Utiliser à la place la
+     virgule, les deux-points, le point-virgule, les parenthèses ou un point.
+     Le tiret demi-cadratin reste toléré uniquement pour un intervalle
+     (« 2 – 4 semaines »). Avant de committer, vérifier :
+     `grep -n '—' src/content/blog/<slug>/index.mdoc` doit ne rien renvoyer.
    - **Exemples de cas concrets obligatoires.** Chaque article doit descendre dans
      le concret au moins deux fois : un cas de figure précis plutôt qu'un conseil
      abstrait (« un site vitrine sur mutualisé avec quarante extensions actives »,
      « une boutique de 800 références qui migre »), avec ce qu'on fait et ce qu'on
      obtient. Les conseils génériques sans illustration sont ce qui rend un article
-     interchangeable — donc invisible.
+     interchangeable, donc invisible.
    - ⚠️ **Mais jamais de vécu inventé.** Lire `automation/cas-clients.md` avant de
      rédiger : c'est la seule source autorisée pour une expérience vécue (chiffres
      relevés, cas client, statistiques du type « un site sur trois »). Si le
@@ -93,7 +100,7 @@ Ce que l'environnement cloud a (constaté le 2026-08-17, Ubuntu 24.04, root) :
      questions en gras). Cible : 1200-1800 mots, ton pro et direct, français.
      S'inspirer du style des articles déjà publiés.
    - **Maillage interne** : le maillage est désormais **automatique au build**
-     (`src/lib/internal-links.ts`) — il transforme les mots-clés d'un article
+     (`src/lib/internal-links.ts`) : il transforme les mots-clés d'un article
      apparaissant dans les autres en liens (max 3/article). Pour que le nouvel
      article **reçoive** des liens entrants, remplir son champ `anchors` dans la
      frontmatter YAML : 2 à 4 mots-clés/phrases distinctifs, en privilégiant
@@ -115,7 +122,7 @@ Ce que l'environnement cloud a (constaté le 2026-08-17, Ubuntu 24.04, root) :
      `content-plan.md`. Pour chaque service cité dont le lien affilié est
      renseigné (≠ `<À REMPLIR>`), le lier avec `rel="sponsored nofollow"`.
      La **mention de transparence** ne s'ajoute que si l'article contient au
-     moins un vrai lien affilié — jamais « préventivement ».
+     moins un vrai lien affilié, jamais « préventivement ».
      Si un lien vaut `<À REMPLIR>`, citer le service **sans lien** (ne JAMAIS
      inventer ni deviner un lien affilié).
      **Quand Paul remplit ses liens affiliés** : repasser sur les articles déjà
@@ -131,14 +138,14 @@ Ce que l'environnement cloud a (constaté le 2026-08-17, Ubuntu 24.04, root) :
    titre 3 lignes, sous-titre, étapes, visuel thématique) : la config est
    déduite automatiquement du titre/catégorie et rendue via Chrome headless
    (cf. `automation/cover_template.py`). Pour affiner une vignette (choix du
-   visuel, lignes du titre…), passer un `config.json` en 4ᵉ argument — clés
+   visuel, lignes du titre…), passer un `config.json` en 4ᵉ argument, clés
    possibles : `preset` (site, shop, server, ranking, plugins, themes, speed,
    budget, revamp, backup, shield, serp, dashboard, migrate, vs), `badge`,
    `lines`, `sub`, `steps`, `notif`, `visual`.
    **Chrome** : s'il n'y en a pas sur la machine (cas du cloud), le script en
    télécharge un automatiquement (~15 s). **Repli garanti** : si même ça échoue
    (pas de réseau, pas de `npx`), une couverture charte sobre est produite avec
-   Pillow. Dans tous les cas un fichier valide est créé — et Paul peut
+   Pillow. Dans tous les cas un fichier valide est créé, et Paul peut
    régénérer la vignette stylée en local avec les mêmes arguments.
    Après génération, **vérifier l'image produite** : la sortie doit dire
    `OK vignette` et non `OK charte`.
@@ -148,7 +155,7 @@ Ce que l'environnement cloud a (constaté le 2026-08-17, Ubuntu 24.04, root) :
    sur le `.webp` via le helper `webpCover`. **Committer les deux fichiers.**
 
 5. **Mettre à jour le backlog** : passer l'entrée de `status: todo` à
-   `status: done — <date>` et la déplacer dans la section « Publiés ».
+   `status: done <date>` et la déplacer dans la section « Publiés ».
 
 6. **Vérifier puis publier** :
    - Idéalement, lancer `npm run build` pour confirmer que le site compile.
@@ -175,4 +182,4 @@ la routine (ne jamais la committer) :
 ```
 export OPENAI_API_KEY="sk-..."
 ```
-Sans clé, la couverture charte sert de repli — la routine reste fonctionnelle.
+Sans clé, la couverture charte sert de repli : la routine reste fonctionnelle.

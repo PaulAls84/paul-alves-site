@@ -22,7 +22,7 @@ from PIL import Image
 W, H = 1200, 800
 
 # Polices : macOS d'abord (poste de Paul), puis équivalents Linux (routine
-# cloud) — DejaVu/Liberation en gras 900 restent percutants pour le titre.
+# cloud) : DejaVu/Liberation en gras 900 restent percutants pour le titre.
 TEMPLATE = """<meta charset="utf-8">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -595,7 +595,7 @@ PRESETS: dict[str, dict] = {
   <div class="serp-res win">
     <span class="rank1">Nº1</span>
     <div class="surl">votre-site.fr</div>
-    <div class="stitle">Votre site — ici</div>
+    <div class="stitle">Votre site ici</div>
     <div class="gbar" style="width:85%"></div>
   </div>
   <div class="serp-res">

@@ -19,7 +19,7 @@ anchors:
 > - **La contrepartie** : la qualité du résultat dépend entièrement de votre rigueur, à commencer par les fiches produits.
 > - **À tester avant l'ouverture** : deux moyens de paiement et un vrai passage de commande de bout en bout.
 
-Vous avez des produits à vendre et vous ne voulez pas louer votre boutique à une plateforme qui prélève une commission sur chaque commande. WooCommerce répond exactement à ce besoin : c'est une extension gratuite qui transforme un site WordPress en véritable boutique en ligne, sans abonnement mensuel imposé et sans limite de catalogue. En contrepartie, c'est vous qui assemblez les pièces — et c'est là que beaucoup de projets s'égarent, entre extensions inutiles et tunnel de paiement mal réglé. Ce guide déroule les étapes dans le bon ordre, de l'installation à la première commande, pour que votre boutique soit en ligne et opérationnelle sans détour inutile.
+Vous avez des produits à vendre et vous ne voulez pas louer votre boutique à une plateforme qui prélève une commission sur chaque commande. WooCommerce répond exactement à ce besoin : c'est une extension gratuite qui transforme un site WordPress en véritable boutique en ligne, sans abonnement mensuel imposé et sans limite de catalogue. En contrepartie, c'est vous qui assemblez les pièces, et c'est là que beaucoup de projets s'égarent, entre extensions inutiles et tunnel de paiement mal réglé. Ce guide déroule les étapes dans le bon ordre, de l'installation à la première commande, pour que votre boutique soit en ligne et opérationnelle sans détour inutile.
 
 ## Ce qu'il faut avoir avant de commencer
 
@@ -39,7 +39,7 @@ Depuis l'administration WordPress, rendez-vous dans **Extensions → Ajouter une
 
 Il vous demande successivement l'**adresse de votre boutique** (elle sert au calcul des taxes et des frais de port), le **secteur d'activité**, le **type de produits** que vous vendez (physiques, numériques, services), puis quelques **détails d'activité**. Prenez le temps de répondre précisément : ces réponses conditionnent les réglages par défaut.
 
-À la fin de l'assistant, WooCommerce crée automatiquement les pages indispensables : **Boutique**, **Panier**, **Validation de commande** et **Mon compte**. Vérifiez leur présence dans **Pages** — si l'une manque, vous la recréerez depuis **WooCommerce → État → Outils**.
+À la fin de l'assistant, WooCommerce crée automatiquement les pages indispensables : **Boutique**, **Panier**, **Validation de commande** et **Mon compte**. Vérifiez leur présence dans **Pages** : si l'une manque, vous la recréerez depuis **WooCommerce → État → Outils**.
 
 ### Les réglages à ne pas négliger
 
@@ -54,7 +54,7 @@ Dans **WooCommerce → Réglages**, quelques onglets méritent une attention par
 
 WooCommerce fonctionne avec n'importe quel thème WordPress, mais tous ne gèrent pas correctement les pages boutique. Deux approches se distinguent.
 
-La première consiste à utiliser un **thème léger et compatible WooCommerce** — Astra, GeneratePress, Kadence ou le thème officiel Storefront — puis à le personnaliser. Ces thèmes sont rapides, sobres, et intègrent nativement les gabarits de boutique.
+La première consiste à utiliser un **thème léger et compatible WooCommerce** (Astra, GeneratePress, Kadence ou le thème officiel Storefront) puis à le personnaliser. Ces thèmes sont rapides, sobres, et intègrent nativement les gabarits de boutique.
 
 La seconde consiste à partir d'un **thème e-commerce plus complet**, livré avec des démos de boutique prêtes à importer. C'est plus rapide visuellement, souvent plus lourd techniquement.
 
@@ -95,7 +95,7 @@ Vous pouvez aussi activer le **virement bancaire** ou le **paiement à la livrai
 Trois points de vigilance :
 
 1. **Testez chaque moyen de paiement en mode test** avant l'ouverture, puis refaites une commande réelle de bout en bout.
-2. **Vérifiez les e-mails transactionnels** : confirmation de commande, expédition, facture. Ils partent depuis WordPress et finissent parfois en spam — une extension SMTP règle le problème.
+2. **Vérifiez les e-mails transactionnels** : confirmation de commande, expédition, facture. Ils partent depuis WordPress et finissent parfois en spam : une extension SMTP règle le problème.
 3. **N'accumulez pas les passerelles** : deux moyens de paiement bien réglés valent mieux que six approximatifs.
 
 ## Étape 5 : régler la livraison
@@ -103,7 +103,7 @@ Trois points de vigilance :
 Dans **Réglages → Expédition**, WooCommerce raisonne par **zones**. Créez une zone par ensemble géographique (France métropolitaine, Union européenne, reste du monde) et attribuez-lui ses méthodes :
 
 - **Tarif forfaitaire** : un montant fixe, simple et lisible.
-- **Livraison gratuite**, éventuellement conditionnée à un montant minimum de commande — un excellent levier de panier moyen.
+- **Livraison gratuite**, éventuellement conditionnée à un montant minimum de commande, un excellent levier de panier moyen.
 - **Retrait sur place**, si vous avez un point de vente.
 
 Pour des frais calculés au réel par transporteur (Colissimo, Mondial Relay, Chronopost), il faudra une extension dédiée. Commencez simple : un forfait clair convertit souvent mieux qu'un calcul exact mais opaque.
@@ -124,7 +124,7 @@ Avant d'annoncer l'ouverture, déroulez cette liste :
 
 - **Empiler les extensions** : chaque plugin ajoute des requêtes. Sur WooCommerce, la sobriété est une performance.
 - **Négliger les photos produits** : mal cadrées ou non compressées, elles plombent à la fois la conversion et la vitesse.
-- **Compliquer le tunnel** : compte obligatoire, champs superflus, étapes multiples — autant de paniers abandonnés.
+- **Compliquer le tunnel** : compte obligatoire, champs superflus, étapes multiples, autant de paniers abandonnés.
 - **Oublier les frais de port** dans le calcul de marge, et vendre à perte sans le savoir.
 - **Lancer sans avoir testé un vrai paiement**, et découvrir le problème sur la première commande d'un client.
 
@@ -141,7 +141,7 @@ L'extension WooCommerce est gratuite et le restera. Les coûts d'une boutique vi
 Il n'y a pas de limite fonctionnelle : des boutiques WooCommerce gèrent plusieurs dizaines de milliers de références. La contrainte réelle est le serveur. Au-delà de quelques milliers de produits, ou avec beaucoup de variations, il faut un hébergement puissant, une base de données bien optimisée et un cache correctement configuré pour rester rapide.
 
 **Faut-il savoir coder pour créer une boutique WooCommerce ?**
-Non. L'installation, la configuration, les produits, les paiements et la livraison se règlent entièrement depuis l'interface WordPress. Savoir coder devient utile pour des personnalisations poussées — modifier le tunnel de commande, créer un affichage produit spécifique — mais une boutique complète et professionnelle se monte sans écrire une ligne de code.
+Non. L'installation, la configuration, les produits, les paiements et la livraison se règlent entièrement depuis l'interface WordPress. Savoir coder devient utile pour des personnalisations poussées (modifier le tunnel de commande, créer un affichage produit spécifique), mais une boutique complète et professionnelle se monte sans écrire une ligne de code.
 
 **Combien de temps faut-il pour ouvrir une boutique WooCommerce ?**
 L'installation technique et la configuration de base prennent une journée. Le vrai travail, c'est le contenu : photographier les produits, rédiger les fiches, définir les règles de livraison, préparer les mentions légales. Comptez une à trois semaines pour un lancement propre avec un catalogue de quelques dizaines de références, en travaillant à temps partiel dessus.

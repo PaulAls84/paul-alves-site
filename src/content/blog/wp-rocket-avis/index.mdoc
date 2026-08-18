@@ -14,7 +14,7 @@ anchors:
 
 > **En bref**
 >
-> - **Ce qu'il est vraiment** : un plugin de cache doublé d'une boîte à outils front-end. Rien d'exclusif — des extensions gratuites couvrent les mêmes fonctions.
+> - **Ce qu'il est vraiment** : un plugin de cache doublé d'une boîte à outils front-end. Rien d'exclusif : des extensions gratuites couvrent les mêmes fonctions.
 > - **Ce que vous achetez pour 59 €** : du temps de configuration et une marge d'erreur réduite, pas une technologie unique.
 > - **Mon verdict** : oui pour un site vitrine sur mutualisé quand on n'a pas envie de toucher à la technique ; non si votre hébergeur fournit déjà LiteSpeed ou son propre cache.
 > - **Le piège classique** : l'activer d'un clic et ne jamais ouvrir l'onglet « Optimisation des fichiers ». C'est là que se trouve l'essentiel du gain.
@@ -38,15 +38,15 @@ Tout cela existe séparément, gratuitement, dans d'autres extensions. Ce que vo
 
 Soyons factuels sur les ordres de grandeur, parce que c'est là que les avis en ligne dérapent. Sur un site vitrine hébergé en mutualisé correct, **sans aucun cache au départ**, l'activation seule de WP Rocket divise typiquement par deux à trois le temps de réponse serveur (le TTFB) et fait gagner plusieurs dizaines de points au score mobile de PageSpeed Insights. C'est spectaculaire, mais ce n'est pas WP Rocket qui est spectaculaire : n'importe quel cache correctement branché produirait un effet comparable.
 
-Sur un site qui dispose **déjà** d'un cache — LiteSpeed Cache chez un hébergeur LiteSpeed, ou le cache serveur d'une offre infogérée —, le gain est faible, parfois nul. Le vrai apport se situe alors sur les optimisations front-end : le retardement du JavaScript et la suppression du CSS inutilisé, qui déplacent réellement l'aiguille sur le LCP.
+Sur un site qui dispose **déjà** d'un cache (LiteSpeed Cache chez un hébergeur LiteSpeed, ou le cache serveur d'une offre infogérée), le gain est faible, parfois nul. Le vrai apport se situe alors sur les optimisations front-end : le retardement du JavaScript et la suppression du CSS inutilisé, qui déplacent réellement l'aiguille sur le LCP.
 
-Et il y a ce que WP Rocket ne compensera jamais : un hébergement saturé, un thème lourd, quarante extensions actives, une page d'accueil qui charge huit images de 2 Mo. Le score remonte alors de quelques points et retombe dès qu'un visiteur arrive sur une page non mise en cache. La méthode complète pour traiter ces causes de fond est dans mon guide pour [optimiser la vitesse de votre site WordPress](/optimiser-vitesse-site-wordpress/) — et le premier levier reste presque toujours l'[hébergement WordPress](/hebergement-wordpress/).
+Et il y a ce que WP Rocket ne compensera jamais : un hébergement saturé, un thème lourd, quarante extensions actives, une page d'accueil qui charge huit images de 2 Mo. Le score remonte alors de quelques points et retombe dès qu'un visiteur arrive sur une page non mise en cache. La méthode complète pour traiter ces causes de fond est dans mon guide pour [optimiser la vitesse de votre site WordPress](/optimiser-vitesse-site-wordpress/), et le premier levier reste presque toujours l'[hébergement WordPress](/hebergement-wordpress/).
 
 ## Les points forts
 
 **L'interface.** C'est le vrai argument de vente, et il est mérité. Sept onglets, des cases à cocher, une explication en français sous chaque option. Là où W3 Total Cache demande de comprendre ce qu'est un opcode cache, WP Rocket demande de savoir lire. Pour un non-technicien, c'est la différence entre un plugin utilisé et un plugin abandonné.
 
-**Les réglages par défaut sont sûrs.** Dès l'activation, le cache des pages, le chargement différé et le préchargement sont actifs, et ces trois-là ne cassent pratiquement jamais un site. Vous ne pouvez pas faire de dégât en l'installant sans rien toucher — vous vous privez juste de la moitié du bénéfice.
+**Les réglages par défaut sont sûrs.** Dès l'activation, le cache des pages, le chargement différé et le préchargement sont actifs, et ces trois-là ne cassent pratiquement jamais un site. Vous ne pouvez pas faire de dégât en l'installant sans rien toucher : vous vous privez juste de la moitié du bénéfice.
 
 **Le support en français.** L'éditeur est français, le support répond en français et vite. Sur un conflit entre le cache et une extension de réservation ou un tunnel WooCommerce, c'est une valeur réelle.
 
@@ -60,7 +60,7 @@ Et il y a ce que WP Rocket ne compensera jamais : un hébergement saturé, un th
 
 **Les optimisations agressives cassent des choses.** C'est le point que les articles affiliés oublient de mentionner. Le regroupement du CSS/JS, le retardement du JavaScript et surtout la suppression du CSS inutilisé provoquent régulièrement des effets de bord : menu déroulant qui ne s'ouvre plus, carrousel figé, bouton d'ajout au panier inerte. Ces options sont désactivées par défaut pour cette raison, et elles se testent **une par une**.
 
-**Il fait doublon avec certains hébergements.** Chez un hébergeur LiteSpeed ou sur la plupart des offres infogérées, un cache serveur tourne déjà — souvent plus efficace que le cache PHP d'une extension. Payer WP Rocket pour désactiver la moitié de ses fonctions n'a guère de sens.
+**Il fait doublon avec certains hébergements.** Chez un hébergeur LiteSpeed ou sur la plupart des offres infogérées, un cache serveur tourne déjà, souvent plus efficace que le cache PHP d'une extension. Payer WP Rocket pour désactiver la moitié de ses fonctions n'a guère de sens.
 
 ## WP Rocket face aux alternatives gratuites
 
@@ -91,7 +91,7 @@ C'est l'onglet sensible. Dans l'ordre :
 1. **Minifier le CSS** puis tester le rendu. Sans problème visuel, on continue.
 2. **Optimiser le chargement du CSS** → choisir « Supprimer les CSS inutilisés ». C'est l'option la plus rentable sur le score mobile, et la plus risquée. Vérifiez ensuite le menu, le pied de page et les pages de formulaire.
 3. **Minifier le JavaScript**, puis **Charger le JavaScript en différé**.
-4. **Retarder l'exécution du JavaScript** : très efficace, mais excluez ce qui doit s'exécuter tout de suite — scripts de panier, de réservation, de bandeau cookies.
+4. **Retarder l'exécution du JavaScript** : très efficace, mais excluez ce qui doit s'exécuter tout de suite (scripts de panier, de réservation, de bandeau cookies).
 
 Si une fonctionnalité casse, ne désactivez pas tout l'onglet : ajoutez le fichier concerné dans les exclusions.
 
@@ -101,7 +101,7 @@ Activez le **chargement différé des images et des iframes**, ainsi que le remp
 
 ### Fichiers avancés, base de données, CDN
 
-Renseignez les **URL à ne jamais mettre en cache** : panier, commande, compte client, espace membre. Sur WooCommerce, WP Rocket les exclut automatiquement, mais vérifiez. Côté base de données, un nettoyage des révisions, des brouillons automatiques et des transients expirés une fois par mois suffit — **faites une sauvegarde avant le premier passage**, l'opération est irréversible. L'onglet CDN, lui, sert à brancher un réseau de diffusion (Cloudflare, BunnyCDN) : utile pour une audience internationale ou un gros volume d'images, superflu pour un site local.
+Renseignez les **URL à ne jamais mettre en cache** : panier, commande, compte client, espace membre. Sur WooCommerce, WP Rocket les exclut automatiquement, mais vérifiez. Côté base de données, un nettoyage des révisions, des brouillons automatiques et des transients expirés une fois par mois suffit ; **faites une sauvegarde avant le premier passage**, l'opération est irréversible. L'onglet CDN, lui, sert à brancher un réseau de diffusion (Cloudflare, BunnyCDN) : utile pour une audience internationale ou un gros volume d'images, superflu pour un site local.
 
 Dernier point souvent mal compris : **WP Rocket ne compresse aucune image**. Il les charge de façon différée, c'est tout. La compression et la conversion en WebP relèvent d'une extension dédiée comme **Imagify** (même éditeur), ShortPixel ou Smush.
 
@@ -117,7 +117,7 @@ WP Rocket est cité ici sans lien affilié. Pour le reste de mes critères de s�
 
 ## Conclusion
 
-WP Rocket mérite sa réputation, mais pas pour la raison qu'on croit. Il n'accélère pas mieux que ses concurrents gratuits : il rend l'optimisation **accessible** à quelqu'un qui n'a ni le temps ni l'envie de comprendre les subtilités du cache. C'est ce confort que vous payez 59 € par an, et pour un professionnel dont le site est un outil de travail, c'est un bon achat. Deux réserves : si votre hébergeur tourne sous LiteSpeed, l'alternative gratuite est équivalente ; et si votre site est lent à cause de son hébergement ou de son thème, aucun plugin de cache ne réglera le problème de fond. Installez-le, prenez une heure pour le configurer onglet par onglet, testez après chaque bloc — et mesurez avant/après avec PageSpeed Insights plutôt que de vous fier à votre impression.
+WP Rocket mérite sa réputation, mais pas pour la raison qu'on croit. Il n'accélère pas mieux que ses concurrents gratuits : il rend l'optimisation **accessible** à quelqu'un qui n'a ni le temps ni l'envie de comprendre les subtilités du cache. C'est ce confort que vous payez 59 € par an, et pour un professionnel dont le site est un outil de travail, c'est un bon achat. Deux réserves : si votre hébergeur tourne sous LiteSpeed, l'alternative gratuite est équivalente ; et si votre site est lent à cause de son hébergement ou de son thème, aucun plugin de cache ne réglera le problème de fond. Installez-le, prenez une heure pour le configurer onglet par onglet, testez après chaque bloc, et mesurez avant/après avec PageSpeed Insights plutôt que de vous fier à votre impression.
 
 ## FAQ
 
@@ -125,7 +125,7 @@ WP Rocket mérite sa réputation, mais pas pour la raison qu'on croit. Il n'acc�
 Non. Il n'existe ni version gratuite ni version d'essai : la licence démarre autour de 59 € par an pour un site. L'éditeur propose en revanche une garantie de remboursement de 14 jours, ce qui permet de tester sans risque financier réel. Les alternatives gratuites crédibles sont LiteSpeed Cache (si votre serveur est compatible) et WP Super Cache.
 
 **Peut-on cumuler WP Rocket avec un autre plugin de cache ?**
-Non, jamais. Deux extensions qui mettent les pages en cache en parallèle produisent des pages obsolètes, des styles manquants et des comportements incohérents très difficiles à diagnostiquer. Désinstallez l'ancien plugin avant d'activer le nouveau. Le cache serveur de votre hébergeur, lui, peut coexister — WP Rocket le détecte généralement.
+Non, jamais. Deux extensions qui mettent les pages en cache en parallèle produisent des pages obsolètes, des styles manquants et des comportements incohérents très difficiles à diagnostiquer. Désinstallez l'ancien plugin avant d'activer le nouveau. Le cache serveur de votre hébergeur, lui, peut coexister, WP Rocket le détecte généralement.
 
 **Mon site s'est cassé après l'activation, que faire ?**
 Videz le cache, puis désactivez les options de l'onglet « Optimisation des fichiers » une par une, en testant à chaque fois. Dans 90 % des cas, le coupable est la suppression du CSS inutilisé, le regroupement des fichiers ou le retardement du JavaScript. Plutôt que de tout désactiver, ajoutez le fichier fautif dans les exclusions prévues à cet effet.

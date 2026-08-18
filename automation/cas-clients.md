@@ -1,4 +1,4 @@
-# Cas réels — la matière première des articles
+# Cas réels : la matière première des articles
 
 Les articles sont écrits à la **première personne** (« je »). Pour que ce « je »
 reste honnête, la routine ne peut affirmer une expérience vécue que si elle est
@@ -9,7 +9,7 @@ reste honnête, la routine ne peut affirmer une expérience vécue que si elle e
 1. Les cas listés sous « Cas réels » sont utilisables librement : chiffres,
    contexte, résultats. C'est du vécu de Paul.
 2. Si la section « Cas réels » ne contient rien d'utile pour le sujet, écris
-   quand même en « je » — c'est la voix de Paul sur son site — mais **uniquement
+   quand même en « je » (c'est la voix de Paul sur son site), mais **uniquement
    sur des faits vérifiables** : ce que fait un logiciel, un tarif public, une
    bonne pratique, un comportement documenté.
 3. Illustre alors avec des **situations types présentées comme telles** :
@@ -17,7 +17,7 @@ reste honnête, la routine ne peut affirmer une expérience vécue que si elle e
    extensions actives… ». C'est concret, utile, et ça n'invente aucun fait.
 4. Tu n'écris **JAMAIS** : « j'ai eu un client qui… », un nom de client, un score
    PageSpeed relevé, un délai constaté, un pourcentage de gain mesuré, ni
-   « je retrouve ça sur un site sur trois » — sauf si le cas est écrit ci-dessous.
+   « je retrouve ça sur un site sur trois », sauf si le cas est écrit ci-dessous.
    Une statistique d'expérience inventée est un mensonge au lecteur, et c'est
    exactement ce que Google cherche à distinguer d'une vraie expertise.
 5. En cas de doute sur une affirmation : passe à la formulation impersonnelle et
@@ -37,7 +37,7 @@ Copier ce bloc sous « Cas réels » et remplir en style télégraphique :
 ```
 
 Pas besoin de phrases : la routine se charge de la rédaction. Trois ou quatre cas
-suffisent à changer la nature du blog — c'est le seul apport qu'aucune génération
+suffisent à changer la nature du blog : c'est le seul apport qu'aucune génération
 automatique ne peut remplacer.
 
 ## Cas réels

@@ -1,7 +1,7 @@
 ---
 import QRCode from 'qrcode'
 
-// vCard encodée directement dans le QR — iOS/Android proposent d'ajouter le contact immédiatement
+// vCard encodée directement dans le QR : iOS/Android proposent d'ajouter le contact immédiatement
 const vcardData = `BEGIN:VCARD
 VERSION:3.0
 FN:Paul Alves
@@ -28,7 +28,7 @@ const qrSVG = await QRCode.toString(vcardData, {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Paul Alves — Contact</title>
+  <title>Paul Alves | Contact</title>
   <meta name="robots" content="noindex, nofollow" />
   <link rel="icon" type="image/png" href="/assets/logo-mark.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -68,13 +68,13 @@ export const POST: APIRoute = async ({ request }) => {
         </div>
 
         <p style="margin-top:32px;font-size:12px;color:#6b7a8d;border-top:1px solid #e6e0d4;padding-top:16px;">
-          Pour répondre, clique simplement sur "Répondre" — la réponse partira directement à ${esc(email)}.
+          Pour répondre, clique simplement sur "Répondre" : la réponse partira directement à ${esc(email)}.
         </p>
       </div>
     `
 
     const text = [
-      `Nouveau message du formulaire de contact — paul-alves.fr`,
+      `Nouveau message du formulaire de contact | paul-alves.fr`,
       ``,
       `De      : ${nom}`,
       `Email   : ${email}`,
@@ -90,14 +90,14 @@ export const POST: APIRoute = async ({ request }) => {
 
     const [emailResult] = await Promise.all([
       resend.emails.send({
-        from: `Paul Alves — Contact <${fromEmail}>`,
+        from: `Paul Alves | Contact <${fromEmail}>`,
         to: [toEmail],
         replyTo: email,
-        subject: `[Contact] ${sujet} — ${nom}`,
+        subject: `[Contact] ${sujet} | ${nom}`,
         html,
         text,
       }),
-      // Ajout dans Systeme.io sans tag — non bloquant
+      // Ajout dans Systeme.io sans tag, non bloquant
       systemeKey
         ? fetch('https://api.systeme.io/api/contacts', {
             method: 'POST',

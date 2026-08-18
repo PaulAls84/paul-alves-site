@@ -16,7 +16,7 @@ function escapeRegExp(s: string): string {
 
 /**
  * Regex qui matche la phrase entière (insensible à la casse), en s'assurant
- * qu'elle n'est pas collée à d'autres lettres/chiffres — évite de lier
+ * qu'elle n'est pas collée à d'autres lettres/chiffres, évite de lier
  * "SEO" à l'intérieur de "SEOptimisation". Les accents sont gérés via \p{L}.
  */
 function buildMatcher(phrase: string): RegExp {

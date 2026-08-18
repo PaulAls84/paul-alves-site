@@ -19,7 +19,7 @@ anchors:
 > - **Ne restaurez pas trop vite** : une sauvegarde antérieure peut déjà contenir la porte dérobée.
 > - **La vraie question, une fois le calme revenu** : pourquoi c'était possible.
 
-Vous tapez l'adresse de votre site et vous atterrissez sur une page de pharmacie en ligne. Ou Google affiche un bandeau rouge « Ce site peut être piraté ». Ou votre hébergeur vous écrit qu'il a suspendu votre compte pour envoi massif de spam. Dans tous les cas, le constat est le même et la sensation aussi : votre outil de travail vous a échappé, et vous ne savez pas par où commencer. Bonne nouvelle : une infection WordPress se traite. Dans l'immense majorité des cas, il ne s'agit pas d'une attaque ciblée mais d'un script automatisé qui a exploité une faille connue — donc d'un problème documenté, avec une procédure de résolution éprouvée. Voici cette procédure, dans l'ordre où il faut l'appliquer, sans y passer trois semaines.
+Vous tapez l'adresse de votre site et vous atterrissez sur une page de pharmacie en ligne. Ou Google affiche un bandeau rouge « Ce site peut être piraté ». Ou votre hébergeur vous écrit qu'il a suspendu votre compte pour envoi massif de spam. Dans tous les cas, le constat est le même et la sensation aussi : votre outil de travail vous a échappé, et vous ne savez pas par où commencer. Bonne nouvelle : une infection WordPress se traite. Dans l'immense majorité des cas, il ne s'agit pas d'une attaque ciblée mais d'un script automatisé qui a exploité une faille connue, donc d'un problème documenté, avec une procédure de résolution éprouvée. Voici cette procédure, dans l'ordre où il faut l'appliquer, sans y passer trois semaines.
 
 ## Reconnaître un site WordPress piraté
 
@@ -51,7 +51,7 @@ Cela paraît contre-intuitif de sauvegarder un site infecté, mais c'est indispe
 
 ### 3. Changer tous les mots de passe
 
-Tous, sans exception : comptes administrateurs WordPress, accès FTP/SFTP, base de données, panneau de l'hébergeur, et compte email associé. Un attaquant qui garde un accès valide réinfectera le site dans les heures suivant votre nettoyage — c'est la cause n°1 des « re-piratages ».
+Tous, sans exception : comptes administrateurs WordPress, accès FTP/SFTP, base de données, panneau de l'hébergeur, et compte email associé. Un attaquant qui garde un accès valide réinfectera le site dans les heures suivant votre nettoyage : c'est la cause n°1 des « re-piratages ».
 
 Profitez-en pour supprimer les comptes administrateurs illégitimes et invalider toutes les sessions actives.
 
@@ -71,9 +71,9 @@ Un fichier PHP présent dans `wp-content/uploads` est presque toujours malveilla
 
 Deux stratégies, selon votre situation.
 
-**La restauration** — si vous disposez d'une [sauvegarde de votre site WordPress](/sauvegarde-wordpress/) antérieure à l'infection et que vous savez la dater, c'est la voie la plus rapide et la plus sûre. Restaurez, puis passez directement à l'étape 6. Attention : restaurer une sauvegarde postérieure à l'intrusion ne fait que réinstaller le problème.
+**La restauration.** Si vous disposez d'une [sauvegarde de votre site WordPress](/sauvegarde-wordpress/) antérieure à l'infection et que vous savez la dater, c'est la voie la plus rapide et la plus sûre. Restaurez, puis passez directement à l'étape 6. Attention : restaurer une sauvegarde postérieure à l'intrusion ne fait que réinstaller le problème.
 
-**Le nettoyage manuel** — sans sauvegarde exploitable, il faut reconstruire proprement :
+**Le nettoyage manuel.** Sans sauvegarde exploitable, il faut reconstruire proprement :
 
 1. Réinstaller le cœur de WordPress depuis une archive officielle (en écrasant `wp-admin` et `wp-includes`, jamais `wp-content`)
 2. Supprimer puis réinstaller le thème et toutes les extensions depuis leurs sources officielles
@@ -101,7 +101,7 @@ Dans la pratique, presque tous les piratages tiennent à trois causes :
 - **Un mot de passe faible ou réutilisé**, cassé par force brute ou récupéré dans une fuite de données sur un autre service
 - **Un composant « nulled »**, c'est-à-dire une version piratée d'un plugin premium, quasi systématiquement livrée avec une porte dérobée
 
-Le point commun : aucune de ces causes ne relève de la fatalité technique. Ce sont des décisions — reporter une mise à jour, réutiliser un mot de passe, télécharger un thème payant gratuitement.
+Le point commun : aucune de ces causes ne relève de la fatalité technique. Ce sont des décisions : reporter une mise à jour, réutiliser un mot de passe, télécharger un thème payant gratuitement.
 
 ### Le plan de prévention minimal
 
@@ -111,17 +111,17 @@ Après le nettoyage vient la partie qui évite de tout recommencer dans six mois
 2. **Double authentification** sur tous les comptes administrateurs
 3. **Limitation des tentatives de connexion** pour neutraliser la force brute
 4. **Sauvegardes automatiques et externalisées**, dont vous avez testé la restauration au moins une fois
-5. **Une extension de sécurité** avec pare-feu et scan planifié — une seule, pas trois
+5. **Une extension de sécurité** avec pare-feu et scan planifié, une seule, pas trois
 
 > Un nettoyage sans durcissement, c'est repeindre une porte qu'on laisse ouverte.
 
 ### Faut-il externaliser ?
 
-Un nettoyage complet représente facilement une journée de travail pour quelqu'un qui sait où chercher — bien davantage pour quelqu'un qui découvre. Et le risque d'une porte dérobée oubliée est réel : c'est ce qui explique les sites « nettoyés » trois fois de suite. Si votre site génère du chiffre d'affaires, ou si vous n'êtes pas certain de savoir lire un fichier PHP, l'intervention d'un professionnel est plus économique qu'elle n'en a l'air. Un contrat de maintenance, lui, déplace le problème en amont : mises à jour suivies, sauvegardes vérifiées, surveillance active.
+Un nettoyage complet représente facilement une journée de travail pour quelqu'un qui sait où chercher, bien davantage pour quelqu'un qui découvre. Et le risque d'une porte dérobée oubliée est réel : c'est ce qui explique les sites « nettoyés » trois fois de suite. Si votre site génère du chiffre d'affaires, ou si vous n'êtes pas certain de savoir lire un fichier PHP, l'intervention d'un professionnel est plus économique qu'elle n'en a l'air. Un contrat de maintenance, lui, déplace le problème en amont : mises à jour suivies, sauvegardes vérifiées, surveillance active.
 
 ## Conclusion
 
-Un site WordPress piraté n'est pas une fatalité, mais il exige de la méthode et de la rigueur dans l'ordre des opérations : couper l'accès, sauvegarder l'état infecté, changer tous les identifiants, cartographier l'infection, nettoyer ou restaurer, vérifier, puis demander la levée de la pénalité Google. L'erreur la plus coûteuse consiste à nettoyer les symptômes sans changer les accès ni corriger la faille d'origine — le site est alors réinfecté en quelques heures. Et une fois le calme revenu, la vraie question n'est plus « comment réparer ? » mais « pourquoi était-ce possible ? ». Des mises à jour appliquées à temps, une double authentification et des sauvegardes externalisées testées coûtent quelques dizaines d'euros par an. Un piratage, lui, se compte en jours d'indisponibilité, en référencement perdu et en confiance entamée.
+Un site WordPress piraté n'est pas une fatalité, mais il exige de la méthode et de la rigueur dans l'ordre des opérations : couper l'accès, sauvegarder l'état infecté, changer tous les identifiants, cartographier l'infection, nettoyer ou restaurer, vérifier, puis demander la levée de la pénalité Google. L'erreur la plus coûteuse consiste à nettoyer les symptômes sans changer les accès ni corriger la faille d'origine : le site est alors réinfecté en quelques heures. Et une fois le calme revenu, la vraie question n'est plus « comment réparer ? » mais « pourquoi était-ce possible ? ». Des mises à jour appliquées à temps, une double authentification et des sauvegardes externalisées testées coûtent quelques dizaines d'euros par an. Un piratage, lui, se compte en jours d'indisponibilité, en référencement perdu et en confiance entamée.
 
 ## FAQ
 

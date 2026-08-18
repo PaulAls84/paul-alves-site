@@ -7,7 +7,7 @@ export default config({
   },
   ui: {
     brand: {
-      name: 'Paul Alves — Studio',
+      name: 'Paul Alves Studio',
     },
   },
   collections: {

@@ -6,7 +6,7 @@ Usage :
 
 Comportement (routine auto) :
 1. **Vignette « YouTube-style »** (pipeline principal) : une config est déduite
-   automatiquement du titre et de la catégorie — badge, titre découpé en
+   automatiquement du titre et de la catégorie : badge, titre découpé en
    3 lignes percutantes, sous-titre, étapes et visuel thématique (serveur,
    bouclier, PageSpeed, SERP, match « X vs Y »…) choisi par mots-clés.
    Rendu HTML/CSS via Chrome/Chromium headless (cf. cover_template.py).
@@ -371,7 +371,7 @@ def render_charte(title: str, category: str, out: str) -> None:
 
     # Signature
     d.text((90, H - 130), "paul-alves.fr", font=sans_sm, fill=GOLD)
-    d.text((90, H - 95), "Développeur Web & Consultant SEO — Soissons",
+    d.text((90, H - 95), "Développeur Web & Consultant SEO à Soissons",
            font=sans_sm, fill=MUTED)
 
     img.save(out, "JPEG", quality=88)

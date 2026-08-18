@@ -26,7 +26,7 @@ ARTICLES = [
         "title": lines(("CRÉER SA", "cream", 72), ("BOUTIQUE", "gold", 102), ("EN LIGNE", "cream", 88)),
         "sub": 'avec <b class="purple">WooCommerce</b>, sans commission',
         "steps": steps("Installer", "Configurer", "Vendre"),
-        "notif": ("", "✓", "Nouvelle commande !", "Sac artisanal — 49,90 €"),
+        "notif": ("", "✓", "Nouvelle commande !", "Sac artisanal, 49,90 €"),
         "visual": """
 <div class="browser">
   <div class="bbar">
@@ -329,7 +329,7 @@ ARTICLES = [
   <div class="serp-res win">
     <span class="rank1">Nº1</span>
     <div class="surl">votre-site.fr</div>
-    <div class="stitle">Votre site — ici</div>
+    <div class="stitle">Votre site ici</div>
     <div class="gbar" style="width:85%"></div>
   </div>
   <div class="serp-res">

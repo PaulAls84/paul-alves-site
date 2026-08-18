@@ -15,7 +15,7 @@ interface Props {
 }
 
 const {
-  title = 'Paul Alves — Développeur Web & Consultant SEO à Soissons',
+  title = 'Paul Alves | Développeur Web & Consultant SEO à Soissons',
   description = "J'aide les entreprises à se développer en ligne grâce à des sites web sur mesure, rapides et optimisés pour le SEO.",
   image = '/assets/og-home.jpg',
   schema,
@@ -147,7 +147,7 @@ const personSchema = JSON.stringify({
   <!-- Google Search Console vérification -->
   {gscId && <meta name="google-site-verification" content={gscId} />}
 
-  <!-- Fonts — chargement non bloquant (preload + bascule onload) pour accélérer le 1er rendu -->
+  <!-- Fonts : chargement non bloquant (preload + bascule onload) pour accélérer le 1er rendu -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" />
@@ -156,14 +156,14 @@ const personSchema = JSON.stringify({
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" />
   </noscript>
 
-  <!-- Schema.org — LocalBusiness + Person (toutes les pages) -->
+  <!-- Schema.org : LocalBusiness + Person (toutes les pages) -->
   <script type="application/ld+json" set:html={localBusinessSchema} />
   <script type="application/ld+json" set:html={personSchema} />
 
-  <!-- Schema.org — spécifique à la page (Article, FAQ, etc.) -->
+  <!-- Schema.org : spécifique à la page (Article, FAQ, etc.) -->
   {schema && <script type="application/ld+json" set:html={schema} />}
 
-  <!-- Google tag (gtag.js) avec Consent Mode v2 — denied par défaut -->
+  <!-- Google tag (gtag.js) avec Consent Mode v2 : denied par défaut -->
   {gaId && (
     <>
       <script define:vars={{ gaId }}>

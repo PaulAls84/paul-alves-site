@@ -292,7 +292,7 @@ footer { background: var(--navy-2); color: rgba(255,255,255,.7); padding: 64px 0
   margin-bottom: 20px;
 }
 /* Logo footer : on inverse le bleu en blanc (le gold deviendra blanc aussi
-   mais reste lisible — on garde une identité monochrome propre sur fond navy) */
+   mais reste lisible, on garde une identité monochrome propre sur fond navy) */
 .footer-brand img {
   width: 200px; height: auto; display: block;
   margin-left: 0;          /* aligné à gauche, même X que les paragraphes en dessous */
@@ -364,7 +364,7 @@ footer { background: var(--navy-2); color: rgba(255,255,255,.7); padding: 64px 0
 }
 /* Encart « En bref » : le tout premier blockquote de l'article sert de réponse
    rapide au lecteur (et de cible potentielle pour les extraits enrichis). Rendu
-   en carte, pas en citation — donc ni italique ni barre latérale.
+   en carte, pas en citation, donc ni italique ni barre latérale.
    Markdoc enveloppe le corps dans un <article> interne, d'où les deux chemins. */
 .article-content > article > blockquote:first-child,
 .article-content > blockquote:first-child {
@@ -461,7 +461,7 @@ footer { background: var(--navy-2); color: rgba(255,255,255,.7); padding: 64px 0
   .nav-links.open a { padding: 12px 0; border-bottom: 1px solid var(--line); }
   .nav-cta-desktop { display: none; }
   .mobile-toggle { display: block; }
-  /* CTAs dans le menu mobile — visibles seulement quand le menu est ouvert */
+  /* CTAs dans le menu mobile : visibles seulement quand le menu est ouvert */
   .nav-links.open .nav-mobile-ctas {
     display: flex; flex-direction: column; gap: 10px;
     padding: 16px 0 4px; width: 100%;
