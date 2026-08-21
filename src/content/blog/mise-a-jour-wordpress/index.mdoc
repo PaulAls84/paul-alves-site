@@ -1,0 +1,114 @@
+---
+title: "Mettre à jour WordPress sans rien casser : la procédure [2026]"
+description: "Sauvegarde, préproduction, ordre des opérations, retour en arrière : la procédure que j'applique pour mettre à jour WordPress sans casser un site en production."
+publishedAt: '2026-08-21'
+featured: false
+category: Maintenance
+image: /images/blog/mise-a-jour-wordpress.jpg
+anchors:
+  - mise à jour WordPress
+  - mises à jour
+  - mises à jour maîtrisées
+  - retour en arrière
+---
+
+> **En bref**
+>
+> - **La règle numéro un** : une sauvegarde complète et restaurable avant de toucher au moindre bouton. Pas après, pas « la semaine dernière ».
+> - **L'ordre compte** : le cœur d'abord, les extensions ensuite (une par une quand elles sont critiques), le thème en dernier, avec une vérification entre les étapes sensibles.
+> - **Préproduction indispensable si** : boutique en ligne, paiement, réservation, thème sur mesure. Pour un petit site vitrine, une sauvegarde et une intervention en heures creuses suffisent.
+> - **Le piège classique** : cocher « Tout sélectionner » et lancer les douze mises à jour d'un coup. Si le site casse, vous ne savez plus laquelle est en cause.
+> - **Le retour en arrière** : décidez comment vous l'assurerez **avant** de commencer. Sans plan de repli, ce n'est pas une mise à jour, c'est un pari.
+
+Vous vous connectez à votre tableau de bord, et la pastille rouge affiche onze mises à jour en attente. Vous savez qu'il faut les faire, mais la dernière fois, quelque chose s'est mal passé : une page de travers, un formulaire de contact muet, ou pire, l'écran blanc. Alors vous repoussez. Et pendant ce temps, chaque correctif de sécurité non appliqué devient une porte laissée ouverte, dont la description est publique.
+
+Le problème n'est pas la mise à jour, c'est de la faire sans filet : improvisée un vendredi à 18 h sur le site de production, elle est risquée ; encadrée, elle ne l'est plus. Voici la procédure que j'applique, du site vitrine à la boutique.
+
+## Pourquoi une mise à jour casse parfois un site
+
+Un site WordPress n'est pas un logiciel, c'est un assemblage : le cœur, un thème, une poignée d'extensions écrites par des éditeurs différents, posés sur une version de PHP choisie par l'hébergeur. La casse vient presque toujours des mêmes causes :
+
+- **Une incompatibilité entre deux extensions** qui touchent la même zone : le cache, le SEO ou le tunnel de commande.
+- **Un thème ou une extension abandonné** par son auteur, resté bloqué sur des fonctions supprimées depuis dans le cœur.
+- **Une version de PHP trop ancienne** sur le serveur, ou trop récente pour un code non maintenu.
+- **Des modifications faites directement dans les fichiers du thème**, écrasées à la première mise à jour faute de thème enfant.
+
+Ces incidents ne sont donc pas aléatoires : ils sont prévisibles, donc évitables, à condition de regarder ce qu'on met à jour au lieu de cliquer en série. WordPress fournit bien un garde-fou (depuis la version 5.2, une erreur fatale bascule le site en mode récupération et prévient l'administrateur par e-mail), mais il ne couvre pas les régressions visuelles.
+
+## Les trois préalables, avant de toucher au bouton
+
+### 1. Une sauvegarde complète, et surtout restaurable
+
+C'est le seul point non négociable de cet article. Une sauvegarde couvre **les fichiers et la base de données**, elle est stockée **ailleurs que sur le serveur du site**, et vous savez la restaurer : une archive que vous n'avez jamais su remonter ne vaut rien le jour où vous en avez besoin. Des outils comme UpdraftPlus, Duplicator ou les sauvegardes proposées par la plupart des hébergeurs font le travail ; j'ai détaillé ce qui distingue une vraie stratégie d'une simple case cochée dans mon guide sur la [sauvegarde WordPress](/sauvegarde-wordpress/).
+
+Le réflexe qui change tout : déclencher une sauvegarde **manuelle juste avant** la session, même si l'automatique tourne toutes les nuits. Vous voulez revenir à l'état d'il y a dix minutes, pas d'il y a quatorze heures.
+
+### 2. Savoir ce que vous mettez à jour
+
+Deux minutes de lecture évitent deux heures de réparation. Sur l'écran des mises à jour, chaque extension propose un lien « Voir les détails de la version ». Ce qui m'intéresse :
+
+- **La nature de la version.** Un correctif en 3.4.1 se pose sans hésiter ; un passage de la 3.x à la 4.0 est un changement majeur, souvent accompagné de fonctions supprimées.
+- **Les versions de WordPress et de PHP requises.** Une extension qui exige PHP 8.1 sur un serveur resté en 7.4 tombera immédiatement.
+- **La date de la dernière mise à jour.** Une extension figée depuis deux ans est un problème futur.
+
+### 3. Une préproduction quand l'enjeu le justifie
+
+Une préproduction est une copie complète du site, sur une adresse privée, où l'on applique les mises à jour avant de les passer en ligne. Beaucoup d'hébergeurs proposent ce clone en un clic ; sinon, une extension comme WP Staging fait l'affaire. Faut-il systématiquement passer par là ? Non : sur un site vitrine de cinq pages avec quatre extensions courantes, elle coûte plus de temps qu'elle n'en fait gagner. Voici comment je tranche.
+
+| Type de site | Préproduction | Approche |
+|---|---|---|
+| Vitrine simple, extensions courantes | Facultative | Sauvegarde + mise à jour en heures creuses |
+| Site avec formulaires, réservation, adhésion | Recommandée | Test des parcours clés après mise à jour |
+| Boutique WooCommerce | Indispensable | Aucune mise à jour directe en production |
+| Thème sur mesure ou extensions premium liées | Indispensable | Tests fonctionnels avant passage en ligne |
+
+## L'ordre des opérations
+
+L'ordre n'est pas une coquetterie : les extensions et les thèmes se déclarent compatibles avec une version du cœur, pas l'inverse. On monte la fondation avant l'étage.
+
+1. **Le cœur de WordPress.** Les versions mineures (5.9.1 vers 5.9.2) sont des correctifs de sécurité, appliqués automatiquement par défaut. Les versions majeures méritent une vérification juste après.
+2. **Les extensions**, en commençant par les moins critiques. Celles qui touchent au paiement, au cache, au SEO ou à la sécurité passent **une par une**, avec un coup d'œil au site entre chaque.
+3. **Le thème** en dernier, une fois le socle stable. S'il a été modifié sans thème enfant, arrêtez-vous ici : la mise à jour effacera ces modifications.
+4. **Les traductions**, sans enjeu, à la fin.
+
+Entre les étapes, la vérification doit être courte mais toujours la même : la page d'accueil, une page intérieure, le formulaire de contact (envoyé pour de vrai), et pour une boutique, une commande test. Regardez le site **déconnecté** ou en navigation privée : connecté en administrateur, vous ne voyez pas ce que voient vos visiteurs, notamment à cause du cache.
+
+## Deux situations types
+
+**Le cas le plus fréquent : le site vitrine sur mutualisé, une trentaine d'extensions actives, plus aucune mise à jour depuis un an.** Le réflexe naturel est de tout passer d'un coup. C'est exactement ce qu'il ne faut pas faire : si le site casse, il y a trente suspects. Ce que je fais : sauvegarde manuelle, puis clone en préproduction, parce qu'un an de retard cumule des changements majeurs. Avant de mettre à jour, je fais le tri : les extensions inutilisées ou abandonnées sont désinstallées, pas mises à jour. Une extension désactivée mais toujours présente reste un fichier accessible sur le serveur, donc une surface d'attaque, comme je l'explique dans mon article sur la [sécurité d'un site WordPress](/securiser-site-wordpress/). Le cœur passe ensuite, puis les extensions restantes par petits paquets, les sensibles isolées. Ce qu'on obtient : un site à jour, un inventaire propre, et une prochaine session de dix minutes au lieu d'une demi-journée.
+
+**Le deuxième cas classique : la boutique WooCommerce en activité, avec extensions de livraison et de paiement.** Ici, la production ne se touche jamais directement : une mise à jour ratée sur une vitrine, c'est une page moche ; sur une boutique, c'est un tunnel de commande interrompu et des paniers perdus pendant que vous cherchez la cause. Ce que je fais : clone en préproduction, mise à jour de WooCommerce **et** de ses extensions dans le même passage (elles se suivent en versions et se déclarent compatibles entre elles), puis une commande test complète, du panier à la confirmation. Le passage en production se fait sur le créneau le plus creux, jamais un vendredi soir. Ce qu'on obtient : le risque déplacé sur une copie, et une fenêtre d'incident réduite à quelques minutes surveillées.
+
+## Prévoir le retour en arrière avant d'en avoir besoin
+
+Une procédure de mise à jour n'est complète que si elle sait s'annuler. Trois niveaux de repli, du plus fin au plus radical :
+
+- **Désactiver l'extension fautive.** Si l'administration est inaccessible, renommez son dossier dans `wp-content/plugins/` via FTP : WordPress la désactive tout seul.
+- **Revenir à la version précédente.** L'extension gratuite WP Rollback le permet pour tout ce qui provient du répertoire officiel ; pour une extension premium, la version antérieure se télécharge depuis le compte client de l'éditeur.
+- **Restaurer la sauvegarde.** Le filet ultime, celui pour lequel vous avez pris deux minutes au début.
+
+Attention : si des commandes ou des messages sont arrivés depuis la sauvegarde, restaurer la base de données les fera disparaître. Sur une boutique, on préfère donc désactiver l'extension coupable plutôt que de restaurer en bloc.
+
+## Faut-il activer les mises à jour automatiques ?
+
+Depuis la version 5.5, WordPress permet de les activer extension par extension. Mon avis, sans dogme : **oui pour les correctifs de sécurité du cœur** et pour les extensions simples et très largement installées sur un site vitrine ; **non sur une boutique**, et non pour tout ce qui touche au paiement, au cache ou au thème. Sur ces briques, je préfère un rendez-vous mensuel maîtrisé à une mise à jour qui se déclenche à 3 h du matin sans personne pour vérifier derrière. L'automatisation retire la charge mentale, pas le besoin de vérifier : c'est le rôle d'un suivi régulier, celui que je décris dans mon guide de la [maintenance WordPress](/maintenance-wordpress/).
+
+## Conclusion
+
+Mettre à jour WordPress sans rien casser tient en quatre gestes : sauvegarder juste avant, lire ce qu'on installe, respecter l'ordre (cœur, extensions, thème) et savoir revenir en arrière. La préproduction, elle, est affaire de proportion : indispensable sur une boutique, superflue sur une vitrine de cinq pages.
+
+Le vrai danger n'a jamais été la mise à jour, c'est son report. Un site figé depuis un an finit par être piraté ou par devenir impossible à faire évoluer. Le meilleur moment pour reprendre la main, c'est maintenant, sur un site qui fonctionne encore.
+
+## FAQ
+
+**Faut-il mettre à jour WordPress immédiatement à chaque nouvelle version ?**
+Pour les correctifs de sécurité, oui : la faille corrigée devient publique au moment de la publication, ce qui la rend exploitable en masse. Pour une version majeure, attendre quelques jours que les éditeurs d'extensions publient leurs versions compatibles est raisonnable. Attendre des mois n'apporte aucune sécurité, seulement du retard.
+
+**Mon site est cassé après une mise à jour, que faire en premier ?**
+Ne restaurez pas tout de suite. Identifiez le coupable en désactivant les extensions mises à jour, si besoin en renommant leur dossier dans `wp-content/plugins/` par FTP. Consultez aussi l'e-mail envoyé par WordPress en mode récupération : il nomme souvent le fichier fautif. La restauration complète reste le dernier recours, car elle efface les données arrivées entre-temps.
+
+**Puis-je mettre à jour un thème que j'ai personnalisé ?**
+Seulement si les personnalisations vivent dans un thème enfant ou une extension dédiée. Si le `functions.php` ou les gabarits du thème parent ont été modifiés directement, la mise à jour les écrasera. Créez d'abord le thème enfant, transférez-y les modifications, puis mettez à jour le parent.
+
+**À quelle fréquence organiser ses mises à jour ?**
+Un rendez-vous mensuel est un bon rythme pour un site vitrine, complété par une intervention immédiate en cas de faille critique annoncée sur une extension installée. Une boutique en activité gagne à passer à une fréquence bimensuelle.

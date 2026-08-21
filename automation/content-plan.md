@@ -16,14 +16,6 @@ Données de volume : Google Ads Keyword Planner (France, FR), relevé 2026-06-30
 
 Volumes : estimations à valider au Keyword Planner (France, FR) au prochain relevé.
 
-### 18. Mettre à jour WordPress sans rien casser
-- **status:** todo
-- **slug:** mise-a-jour-wordpress
-- **mot-clé principal:** mise à jour wordpress (volume à valider, concurrence faible)
-- **catégorie:** Maintenance
-- **angle:** procédure pro (sauvegarde, staging, ordre des mises à jour, rollback), argumentaire naturel pour les forfaits maintenance.
-- **maillage interne suggéré:** maintenance-wordpress, sauvegarde-wordpress
-
 ### 19. RGPD et WordPress : mettre son site en conformité
 - **status:** todo
 - **slug:** rgpd-wordpress
@@ -106,6 +98,11 @@ sans lien affilié ne porte PAS de mention :
 ---
 
 ## Publiés
+
+### Mettre à jour WordPress sans rien casser : la procédure [2026]
+- **status:** done — 2026-08-21
+- **slug:** mise-a-jour-wordpress
+- **mot-clé principal:** mise à jour wordpress (volume à valider, concurrence faible), aucun service lié en affiliation (liens non renseignés), donc pas de mention de transparence
 
 ### WordPress ou Shopify : que choisir pour vendre en ligne en [2026] ?
 - **status:** done 2026-08-18
