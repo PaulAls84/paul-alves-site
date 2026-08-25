@@ -1,0 +1,108 @@
+---
+title: "RGPD et WordPress : mettre son site en conformité [2026]"
+description: "Bandeau cookies, formulaires, politique de confidentialité, registre des traitements : la checklist concrète que j'applique pour mettre un site WordPress en conformité, sans jargon juridique."
+publishedAt: '2026-08-25'
+featured: false
+category: WordPress
+image: /images/blog/rgpd-wordpress.jpg
+anchors:
+  - conformité RGPD
+  - bandeau cookies
+  - politique de confidentialité
+  - RGPD
+---
+
+> **En bref**
+>
+> - **Ce que ça demande vraiment** : savoir quelles données votre site collecte, ne déposer aucun cookie non essentiel avant accord, informer clairement, et pouvoir répondre à une demande de suppression.
+> - **Le minimum vital sur un site vitrine** : bandeau cookies conforme, politique de confidentialité, mentions légales, durées de conservation définies pour les formulaires, registre des traitements.
+> - **Pour qui c'est simple** : un site vitrine sans mesure d'audience invasive peut être conforme en une demi-journée de travail.
+> - **Pour qui c'est un vrai chantier** : boutique en ligne, newsletter, publicité, outils tiers en cascade. Là, il faut cartographier avant d'installer quoi que ce soit.
+> - **Le piège classique** : installer une extension de bandeau cookies, la laisser en réglages par défaut, et croire le site conforme. Le bandeau qui s'affiche pendant que les scripts se chargent déjà ne protège rien.
+
+Vous avez un site WordPress qui tourne, un formulaire de contact, peut-être une newsletter, et cette question qui revient sans se régler : est-ce que je suis en règle ? Le sujet a mauvaise réputation, parce qu'il est raconté soit par des juristes qui parlent en articles de loi, soit par des vendeurs d'extensions qui promettent la conformité en un clic.
+
+Je ne suis pas juriste, et cet article n'est pas un avis juridique. C'est la checklist technique que j'applique quand je livre ou reprends un site : ce qu'il faut regarder, dans quel ordre, et où sont les pièges qui font qu'un site se croit conforme alors qu'il ne l'est pas.
+
+## Ce que le RGPD demande, en pratique
+
+Le règlement européen s'applique depuis mai 2018 à toute structure qui traite des données personnelles, sans seuil de taille ni de chiffre d'affaires. Une donnée personnelle, c'est tout ce qui permet d'identifier quelqu'un, directement ou non : un nom, un e-mail, une adresse IP, un identifiant de cookie. Pour un site web, l'essentiel tient en cinq obligations :
+
+- **Ne collecter que le nécessaire**, et pour une finalité précise.
+- **Obtenir un consentement libre et éclairé** quand c'est la base légale retenue, notamment pour les cookies non essentiels et la prospection commerciale.
+- **Informer clairement** les personnes : qui traite, quoi, pourquoi, combien de temps.
+- **Fixer et respecter des durées de conservation** au lieu de tout garder indéfiniment.
+- **Permettre l'exercice des droits** : accès, rectification, effacement, opposition, portabilité, avec une réponse sous un mois.
+
+Deux précisions utiles. Les mentions légales ne viennent pas du RGPD mais de la LCEN : elles sont obligatoires pour tout site professionnel français, RGPD ou pas. Et le risque réel pour une TPE n'est pas l'amende spectaculaire réservée aux grands acteurs, c'est la mise en demeure après un signalement de visiteur ou de concurrent, puis le temps qu'il faut pour tout reprendre dans l'urgence.
+
+## Étape 1 : l'inventaire, avant toute extension
+
+C'est l'étape que tout le monde saute, et c'est la seule qui compte vraiment. Avant d'installer le moindre bandeau, listez ce que votre site collecte réellement. Sur un site WordPress, les sources sont presque toujours les mêmes :
+
+| Source | Données concernées | Point de vigilance |
+|---|---|---|
+| Formulaire de contact | Nom, e-mail, message, IP | Les messages sont-ils stockés en base ou seulement envoyés par e-mail ? |
+| Commentaires | Nom, e-mail, IP, cookie | WordPress dépose un cookie si la case est cochée |
+| Newsletter | E-mail, consentement | Preuve de l'opt-in à conserver |
+| Mesure d'audience | Identifiant, IP, parcours | Exemptée de consentement seulement sous conditions strictes |
+| Boutique WooCommerce | Identité, adresse, commandes | Durées légales de conservation à distinguer par finalité |
+| Scripts tiers (cartes, vidéos, polices, captcha) | IP, empreinte navigateur | Se chargent souvent avant tout consentement |
+
+Cette dernière ligne piège le plus de sites. Une carte intégrée, une vidéo en lecture directe, des polices appelées à distance ou un captcha tiers transmettent des données dès l'ouverture de la page, sans que personne ait cliqué sur quoi que ce soit. La bonne pratique : héberger les polices sur votre propre serveur (c'est aussi meilleur pour la vitesse), et ne charger les contenus intégrés qu'après accord, ce que les bonnes extensions de consentement savent faire avec un blocage préalable.
+
+## Étape 2 : le bandeau cookies, et ce que la CNIL regarde
+
+Les règles françaises sur les cookies sont précises et se vérifient en trente secondes sur n'importe quel site :
+
+- **Aucun dépôt avant le choix**, sauf pour les cookies strictement nécessaires au fonctionnement (session, panier, sécurité).
+- **Refuser doit être aussi simple qu'accepter** : un bouton « Tout refuser » au même niveau que « Tout accepter », dès le premier écran. Un bandeau où refuser demande d'ouvrir un panneau de réglages n'est pas conforme.
+- **Le consentement doit être positif** : pas de case précochée, pas de « en poursuivant votre navigation, vous acceptez ».
+- **Il doit être révocable** aussi facilement qu'il a été donné, via un lien permanent accessible sur toutes les pages.
+- **La preuve du consentement se conserve**, et la CNIL recommande de redemander le choix au bout de six mois.
+
+Côté outils, plusieurs extensions font correctement le travail : Complianz, CookieYes, Real Cookie Banner, ou les solutions françaises Axeptio et tarteaucitron.js. Leur vrai différenciateur n'est pas le design du bandeau, c'est leur capacité à **bloquer réellement les scripts avant consentement**. Une extension qui affiche un message pendant que la mesure d'audience tourne déjà donne l'apparence de la conformité, pas la conformité. Le test est immédiat : ouvrez votre site en navigation privée et regardez les cookies déposés dans l'inspecteur du navigateur avant de cliquer sur quoi que ce soit. S'il y en a d'autres que ceux de session, le blocage ne fonctionne pas.
+
+Sur la mesure d'audience, la CNIL prévoit une exemption de consentement pour les statistiques strictement limitées, correctement configurées et non recoupées avec d'autres traitements. Peu de configurations par défaut y répondent. Quant aux outils américains, le cadre de transfert transatlantique a changé plusieurs fois depuis 2020 et reste contesté : si ce point vous expose, une solution hébergée en Europe évite de dépendre de la prochaine décision.
+
+## Étape 3 : les formulaires et la durée de conservation
+
+Un formulaire conforme tient en quatre points : ne demander que les champs utiles, indiquer à quoi servent les données avec un lien vers la politique de confidentialité, obtenir un consentement distinct si l'adresse alimente aussi une newsletter, et définir une durée de conservation.
+
+Attention au comportement réel de votre extension. Certaines n'envoient qu'un e-mail et ne stockent rien ; d'autres archivent chaque message en base de données par défaut. Dans le second cas, vous constituez sans y penser un fichier qui grossit depuis des années, que personne ne purge et qui part avec la base au premier incident.
+
+Pour la newsletter, l'opt-in est explicite : case à cocher non précochée, désinscription en un clic dans chaque envoi, preuve de l'inscription conservée. La prospection entre professionnels obéit à un régime plus souple sur le consentement, mais l'information et le droit d'opposition restent dus dans tous les cas.
+
+## Deux situations types
+
+**Le cas le plus fréquent : le site vitrine d'artisan, un formulaire de contact, une mesure d'audience installée il y a trois ans et jamais reconfigurée, aucun bandeau.** Ce que je fais : inventaire des scripts chargés, rapatriement des polices en local, installation d'une extension de consentement avec blocage préalable activé, rédaction de la politique de confidentialité à partir de l'inventaire, ajout d'une durée de conservation sur les messages du formulaire et purge de l'historique accumulé. Ce qu'on obtient : un site conforme sur les points contrôlables en quelques minutes par un visiteur, en une demi-journée de travail, et souvent quelques dizaines de kilo-octets de moins à charger au passage.
+
+**Le deuxième cas classique : la boutique WooCommerce avec newsletter, publicité et suivi de conversion.** Ici, l'inventaire n'est plus une formalité : comptes clients, commandes, factures, paniers abandonnés, pixels publicitaires, chaque finalité ayant sa propre durée. Ce que je fais : je cartographie d'abord finalité par finalité, je distingue ce qui relève d'une obligation légale de conservation (les factures) de ce qui relève du consentement (le suivi publicitaire), je vérifie que les pixels sont bien conditionnés au consentement, et je m'assure que l'export et la suppression de compte client fonctionnent pour de vrai. Ce qu'on obtient : un registre qui tient debout, et surtout la capacité de répondre à une demande de suppression sans y passer une journée.
+
+## Les pages et le registre
+
+WordPress intègre depuis la version 4.9.6 des outils souvent ignorés : un générateur de page de politique de confidentialité, et surtout un export et un effacement des données personnelles par adresse e-mail, dans le menu Outils. Ils ne font pas tout le travail, mais ils couvrent une partie des demandes d'exercice de droits sans développement.
+
+Votre politique de confidentialité doit refléter votre site réel, pas un modèle copié : responsable du traitement, données collectées, finalités, bases légales, durées, destinataires (dont votre hébergeur et vos outils tiers), droits et moyen de les exercer, contact de la CNIL. Un modèle générique qui mentionne des traitements que vous n'avez pas est aussi problématique qu'une page absente.
+
+Le registre des traitements, enfin, fait peur pour rien. La CNIL publie un modèle de registre simplifié en tableau. Pour un site vitrine, il tient en trois ou quatre lignes : contacts, newsletter, statistiques, éventuellement clients. Il n'est pas public, il se tient à disposition en cas de contrôle. C'est un document de quinze minutes qui prouve, mieux que n'importe quel bandeau, que le sujet a été traité sérieusement. Je le range avec les accès et la documentation du site, au même endroit que le reste du suivi technique décrit dans mon guide de la [maintenance WordPress](/maintenance-wordpress/).
+
+## Conclusion
+
+La conformité RGPD d'un site WordPress ne se joue pas dans le choix de l'extension, elle se joue dans l'inventaire fait avant. Savoir ce que votre site collecte, bloquer ce qui se charge sans accord, écrire des durées de conservation et pouvoir les appliquer : le reste suit naturellement.
+
+Si vous partez de zéro, traitez le sujet au moment de la construction plutôt qu'après coup, comme j'y invite dans mon guide pour [créer un site WordPress](/creer-un-site-wordpress/) : intégrer le consentement dès le départ coûte une heure, le rattraper sur un site vivant en coûte cinq. Et pour les cas sensibles, un DPO ou un avocat spécialisé reste le bon interlocuteur : la partie technique, elle, est à votre portée.
+
+## FAQ
+
+**Un simple site vitrine est-il concerné par le RGPD ?**
+Oui, dès qu'il collecte la moindre donnée personnelle, et un formulaire de contact suffit. Il n'existe pas de seuil d'exemption lié à la taille de l'entreprise. En revanche, l'effort attendu est proportionné : pour un site vitrine, il se limite à un bandeau conforme, des pages d'information justes, des durées de conservation et un registre simplifié.
+
+**Un bandeau cookies suffit-il à être conforme ?**
+Non, et c'est le malentendu le plus répandu. Le bandeau ne traite que les traceurs. Il ne dit rien de vos formulaires, de vos durées de conservation, de votre registre ni de votre capacité à répondre à une demande de suppression. Un site avec un bandeau parfait et un fichier de contacts jamais purgé n'est pas en règle.
+
+**Faut-il nommer un DPO ?**
+La désignation n'est obligatoire que dans des cas précis : organisme public, suivi à grande échelle, ou traitement à grande échelle de données sensibles. Une TPE avec un site vitrine n'est pas concernée, mais elle doit tout de même identifier en interne qui répond aux demandes des visiteurs.
+
+**Combien de temps puis-je conserver les messages reçus via mon formulaire ?**
+Le règlement ne fixe pas de durée chiffrée : c'est à vous de définir une durée justifiée par la finalité, puis de la respecter. Pour un contact commercial, un repère courant est de douze à trente-six mois après le dernier échange. L'essentiel est d'écrire cette durée dans votre politique de confidentialité et de purger réellement, pas de choisir le chiffre parfait.

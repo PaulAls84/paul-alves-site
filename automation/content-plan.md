@@ -16,14 +16,6 @@ Données de volume : Google Ads Keyword Planner (France, FR), relevé 2026-06-30
 
 Volumes : estimations à valider au Keyword Planner (France, FR) au prochain relevé.
 
-### 19. RGPD et WordPress : mettre son site en conformité
-- **status:** todo
-- **slug:** rgpd-wordpress
-- **mot-clé principal:** rgpd wordpress / bandeau cookies wordpress (volume à valider, concurrence faible)
-- **catégorie:** WordPress
-- **angle:** spécificité française peu concurrentielle : checklist concrète : bandeau cookies, formulaires, mentions légales, registre. Ton pratique, pas juridique.
-- **maillage interne suggéré:** creer-un-site-wordpress, maintenance-wordpress
-
 ### 20. Référencement local : faire apparaître son entreprise sur Google
 - **status:** todo
 - **slug:** referencement-local
@@ -98,6 +90,11 @@ sans lien affilié ne porte PAS de mention :
 ---
 
 ## Publiés
+
+### RGPD et WordPress : mettre son site en conformité [2026]
+- **status:** done — 2026-08-25
+- **slug:** rgpd-wordpress
+- **mot-clé principal:** rgpd wordpress / bandeau cookies wordpress (volume à valider, concurrence faible), aucun service lié en affiliation (liens non renseignés), donc pas de mention de transparence
 
 ### Mettre à jour WordPress sans rien casser : la procédure [2026]
 - **status:** done — 2026-08-21
