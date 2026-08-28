@@ -16,13 +16,9 @@ Données de volume : Google Ads Keyword Planner (France, FR), relevé 2026-06-30
 
 Volumes : estimations à valider au Keyword Planner (France, FR) au prochain relevé.
 
-### 20. Référencement local : faire apparaître son entreprise sur Google
-- **status:** todo
-- **slug:** referencement-local
-- **mot-clé principal:** référencement local / google my business (volume à valider, concurrence moyenne)
-- **catégorie:** SEO
-- **angle:** guide pour TPE/artisans (cible clientèle de Paul) : fiche Google Business Profile, avis, pages locales, cas clients à l'appui.
-- **maillage interne suggéré:** seo-wordpress, prix-site-wordpress
+**La file est vide.** Il faut la réalimenter (analyse de mots-clés Cuik / Search
+Console, puis ajout de nouvelles entrées `status: todo` ici) avant le prochain
+run, sinon la routine ne publiera rien.
 
 ---
 
@@ -90,6 +86,11 @@ sans lien affilié ne porte PAS de mention :
 ---
 
 ## Publiés
+
+### Référencement local : faire apparaître son entreprise sur Google [2026]
+- **status:** done — 2026-08-28
+- **slug:** referencement-local
+- **mot-clé principal:** référencement local / google my business (volume à valider, concurrence moyenne), aucun service lié en affiliation (liens non renseignés), donc pas de mention de transparence. Cas présentés comme des situations types : `cas-clients.md` est vide.
 
 ### RGPD et WordPress : mettre son site en conformité [2026]
 - **status:** done — 2026-08-25
