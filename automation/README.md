@@ -43,7 +43,9 @@ Ce que l'environnement cloud a (constaté le 2026-08-17, Ubuntu 24.04, root) :
 
 3. **Rédiger l'article** dans `src/content/blog/<slug>/index.mdoc`, au format
    exact des articles existants :
-   - Frontmatter YAML : `title` (avec `[2026]`), `description`, `publishedAt`
+   - Frontmatter YAML : `title` (**60 caractères maximum**, mot-clé en tête,
+     l'année en clair « 2026 » si elle a du sens, **jamais entre crochets** : Google
+     tronque au-delà de 60 caractères et le suffixe `[2026]` fait « généré »), `description`, `publishedAt`
      (date du jour), `featured: false`, `category`, `image: /images/blog/<slug>.jpg`,
      `anchors` (voir « Maillage interne » ci-dessous).
    - **`category` doit être l'une des valeurs de la liste fixe** (champ select

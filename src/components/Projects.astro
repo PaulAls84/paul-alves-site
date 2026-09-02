@@ -1,47 +1,74 @@
 ---
-const projects = [
-  {
-    img: '/images/stock/photo-1460925895917-afdab827c52f.webp',
-    title: 'Site vitrine',
-    desc: 'Design moderne & responsive',
-    href: '#',
-  },
-  {
-    img: '/images/stock/photo-1551288049-bebda4e38f71.webp',
-    title: 'SEO technique',
-    desc: 'Audit & optimisation complète',
-    href: '#',
-  },
-  {
-    img: '/images/stock/photo-1556742049-0cfed4f6a45d.webp',
-    title: 'SEO Local',
-    desc: 'Fiche Google & visibilité locale',
-    href: '#',
-  },
-  {
-    img: '/images/stock/photo-1531973576160-7125cd663d86.webp',
-    title: 'Site e-commerce',
-    desc: 'Boutique en ligne performante',
-    href: '#',
-  },
-]
+// Une seule réalisation, mais réelle et documentée : nosamisleschiens.fr,
+// le site de Paul (voir la page À propos). Les autres projets seront ajoutés
+// quand Paul aura fourni captures, contexte et chiffres réels.
 ---
 
 <section id="realisations" class="projects">
   <div class="wrap">
-    <p class="section-eyebrow">Réalisations</p>
-    <h2 class="section-title">Quelques projets récents</h2>
-    <div class="projects-grid">
-      {projects.map(p => (
-        <a href={p.href} class="project">
-          <div class="project-img">
-            <img src={p.img} alt={p.title} width="300" height="315" />
-          </div>
-          <h4>{p.title}</h4>
-          <p>{p.desc}</p>
-          <span class="project-link">Voir le projet &nbsp;→</span>
-        </a>
-      ))}
+    <p class="section-eyebrow">Réalisation</p>
+    <h2 class="section-title">Un site construit de zéro, jusqu'au million de visiteurs</h2>
+    <div class="case-grid">
+      <a href="/a-propos/" class="case-img" aria-label="Voir le parcours de Paul Alves">
+        <img
+          src="/assets/nosamisleschiens-card.webp"
+          alt="Page d'accueil de nosamisleschiens.fr, le blog canin créé par Paul Alves"
+          width="600" height="380"
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
+      <div class="case-body">
+        <span class="case-category">Blog éditorial, SEO, monétisation</span>
+        <h3>nosamisleschiens.fr</h3>
+        <p>
+          Lancé en 2012 sans budget ni formation, ce site canin a dépassé le million de
+          visiteurs organiques par an. Tout ce que je propose aujourd'hui aux entreprises,
+          je l'ai d'abord appliqué et mesuré ici : recherche de mots-clés, maillage interne,
+          vitesse de chargement, acquisition de liens.
+        </p>
+        <ul class="case-facts">
+          <li><strong>+1M</strong> visiteurs organiques par an</li>
+          <li><strong>100 %</strong> de trafic SEO, sans publicité</li>
+          <li><strong>2012</strong> année de lancement</li>
+        </ul>
+        <a href="/a-propos/" class="project-link">Lire le parcours complet &nbsp;→</a>
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  .case-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .case-img {
+    display: block;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 18px 40px rgba(10, 29, 54, .14);
+  }
+  .case-img img { width: 100%; height: auto; display: block; transition: transform .4s; }
+  .case-img:hover img { transform: scale(1.03); }
+  .case-category {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .case-body h3 { font-family: var(--serif); font-size: 28px; margin: 0 0 14px; }
+  .case-body p { color: var(--muted); line-height: 1.65; margin: 0 0 18px; }
+  .case-facts { list-style: none; padding: 0; margin: 0 0 22px; display: grid; gap: 8px; }
+  .case-facts li { font-size: 15px; }
+  .case-facts strong { color: var(--navy); font-family: var(--serif); font-size: 20px; margin-right: 6px; }
+  @media (max-width: 860px) {
+    .case-grid { grid-template-columns: 1fr; gap: 28px; }
+    .case-body h3 { font-size: 24px; }
+  }
+</style>

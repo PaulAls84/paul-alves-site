@@ -16,9 +16,87 @@ Données de volume : Google Ads Keyword Planner (France, FR), relevé 2026-06-30
 
 Volumes : estimations à valider au Keyword Planner (France, FR) au prochain relevé.
 
-**La file est vide.** Il faut la réalimenter (analyse de mots-clés Cuik / Search
-Console, puis ajout de nouvelles entrées `status: todo` ici) avant le prochain
-run, sinon la routine ne publiera rien.
+Réalimentée le 2026-09-02 (Keyword Planner France via Cuik + Search Console 06-08/2026).
+
+### 21. Erreur WordPress : erreur 500, erreur critique, page blanche, que faire
+- **status:** todo
+- **slug:** erreur-wordpress
+- **mot-clé principal:** erreur 500 wordpress (110/mois) + erreur critique wordpress (40/mois) + erreur 404 wordpress (90/mois), concurrence faible à moyenne
+- **catégorie:** Maintenance
+- **angle:** guide de dépannage par symptôme (500, 503, erreur critique, page blanche, connexion base de données, 404 en série) : cause probable, diagnostic en 5 minutes, correctif, et quand appeler un pro. Argumentaire naturel pour la maintenance et les interventions d'urgence.
+- **maillage interne suggéré:** maintenance-wordpress, mise-a-jour-wordpress, site-wordpress-pirate
+
+### 22. Audit SEO WordPress : la checklist complète pour trouver ce qui bloque
+- **status:** todo
+- **slug:** audit-seo-wordpress
+- **mot-clé principal:** audit seo wordpress (390/mois) + audit technique seo (590/mois) + audit seo site (320/mois), concurrence faible
+- **catégorie:** SEO
+- **angle:** la méthode d'audit en 6 blocs (indexation, technique, vitesse, on-page, contenu, popularité) avec les outils gratuits (Search Console, PageSpeed, Screaming Frog). Page pivot vers l'offre « Audit offert » (Cal.eu) : un CTA discret en fin d'article.
+- **maillage interne suggéré:** seo-wordpress, optimiser-vitesse-site-wordpress, rank-math-ou-yoast
+
+### 23. Core Web Vitals : comprendre LCP, INP et CLS et les améliorer sur WordPress
+- **status:** todo
+- **slug:** core-web-vitals
+- **mot-clé principal:** core web vitals (1 000/mois), concurrence faible
+- **catégorie:** SEO
+- **angle:** vulgarisation des 3 métriques 2026 (LCP, INP, CLS), comment les lire dans Search Console et PageSpeed, puis les correctifs WordPress concrets (images, cache, polices, JS tiers). Renvoie vers l'article vitesse (position 13) pour le renforcer.
+- **maillage interne suggéré:** optimiser-vitesse-site-wordpress, wp-rocket-avis, hebergement-wordpress
+
+### 24. Plugin de cache WordPress : WP Rocket, WP Super Cache, LiteSpeed ou W3 Total Cache
+- **status:** todo
+- **slug:** plugin-cache-wordpress
+- **mot-clé principal:** cache wordpress (110/mois) + plugin cache wordpress (70/mois) + wp super cache (110/mois) + wp fastest cache (110/mois), concurrence faible
+- **catégorie:** Plugins
+- **angle:** comparatif honnête gratuit vs payant, par type d'hébergement (LiteSpeed Cache si hébergeur LiteSpeed, sinon WP Rocket ou Super Cache). Tableau de synthèse. Affiliation WP Rocket si le lien est renseigné.
+- **maillage interne suggéré:** wp-rocket-avis, optimiser-vitesse-site-wordpress, meilleur-plugin-wordpress
+
+### 25. Site WordPress multilingue : WPML, Polylang ou Weglot
+- **status:** todo
+- **slug:** wordpress-multilingue
+- **mot-clé principal:** site multilingue wordpress (110/mois) + wordpress multilingue (70/mois) + wpml (90/mois) + weglot wordpress (50/mois), concurrence moyenne
+- **catégorie:** Plugins
+- **angle:** comparatif des 3 solutions (coût, SEO hreflang, traduction auto vs manuelle, WooCommerce) avec un tableau par profil (vitrine, e-commerce, blog). Affiliation Weglot / WPML si liens renseignés.
+- **maillage interne suggéré:** meilleur-plugin-wordpress, seo-wordpress, creer-boutique-woocommerce
+
+### 26. Fiche d'établissement Google : la créer, l'optimiser et la faire réactiver si elle est suspendue
+- **status:** todo
+- **slug:** fiche-etablissement-google
+- **mot-clé principal:** créer une fiche google my business (590/mois) + fiche google suspendue (210/mois) + fiche établissement google (2 900/mois), concurrence faible
+- **catégorie:** SEO
+- **angle:** guide opérationnel pour TPE/artisans : création pas à pas, validation, les 8 champs qui comptent, avis, posts, et la procédure de réactivation d'une fiche suspendue (sujet peu couvert). Complète l'article référencement local sans le doublonner (renvoi explicite).
+- **maillage interne suggéré:** referencement-local, seo-wordpress, prix-site-wordpress
+
+### 27. Formulaire de contact WordPress : quel plugin choisir et comment l'installer
+- **status:** todo
+- **slug:** formulaire-contact-wordpress
+- **mot-clé principal:** formulaire de contact wordpress (110/mois) + formulaire wordpress (70/mois) + plugin formulaire wordpress (20/mois), concurrence moyenne
+- **catégorie:** Plugins
+- **angle:** comparatif Contact Form 7, WPForms, Fluent Forms, Gravity Forms + formulaire natif des builders ; installation, anti-spam (Turnstile, honeypot), envoi fiable des mails (SMTP), RGPD. Tableau de synthèse.
+- **maillage interne suggéré:** meilleur-plugin-wordpress, rgpd-wordpress, creer-un-site-wordpress
+
+### 28. Recherche de mots-clés : la méthode pour trouver ceux qui rapportent
+- **status:** todo
+- **slug:** recherche-mots-cles
+- **mot-clé principal:** recherche de mots clés (320/mois) + mots clés seo (480/mois) + trouver des mots clés (260/mois), concurrence moyenne
+- **catégorie:** SEO
+- **angle:** méthode pratique pour une PME : intention de recherche, longue traîne, outils gratuits (Search Console, Keyword Planner, suggestions Google) puis payants, et comment transformer une liste en plan de pages. Illustrer avec des situations types (artisan local, e-commerce de niche).
+- **maillage interne suggéré:** seo-wordpress, referencement-local, audit-seo-wordpress
+
+### 29. Backlinks : comment obtenir des liens de qualité sans se faire pénaliser
+- **status:** todo
+- **slug:** backlinks
+- **mot-clé principal:** backlinks (2 400/mois) + backlinks de qualité (70/mois) + backlink toxique (50/mois), concurrence moyenne
+- **catégorie:** SEO
+- **angle:** ce qu'est un bon lien en 2026, les 6 techniques réalistes pour une PME (annuaires locaux, partenaires, presse locale, contenu de référence, liens cassés, mentions non liées), ce qu'il faut éviter (achat massif, PBN) et comment auditer son profil de liens.
+- **maillage interne suggéré:** seo-wordpress, audit-seo-wordpress, recherche-mots-cles
+
+### 30. Développeur WordPress freelance : comment le choisir et combien ça coûte
+- **status:** todo
+- **slug:** developpeur-wordpress-freelance
+- **mot-clé principal:** développeur wordpress freelance (140/mois) + developpeur freelance wordpress (140/mois), concurrence moyenne
+- **catégorie:** WordPress
+- **angle:** page à intention commerciale : freelance vs agence vs plateforme (Malt), grille de tarifs réalistes (TJM, forfaits), les 7 questions à poser avant de signer, les signaux d'alerte. Renvoi naturel vers la page Services et le rendez-vous offert. Ne jamais dénigrer la concurrence nommément.
+- **maillage interne suggéré:** prix-site-wordpress, creer-un-site-wordpress, maintenance-wordpress
 
 ---
 
@@ -88,17 +166,17 @@ sans lien affilié ne porte PAS de mention :
 ## Publiés
 
 ### Référencement local : faire apparaître son entreprise sur Google [2026]
-- **status:** done — 2026-08-28
+- **status:** done : 2026-08-28
 - **slug:** referencement-local
 - **mot-clé principal:** référencement local / google my business (volume à valider, concurrence moyenne), aucun service lié en affiliation (liens non renseignés), donc pas de mention de transparence. Cas présentés comme des situations types : `cas-clients.md` est vide.
 
 ### RGPD et WordPress : mettre son site en conformité [2026]
-- **status:** done — 2026-08-25
+- **status:** done : 2026-08-25
 - **slug:** rgpd-wordpress
 - **mot-clé principal:** rgpd wordpress / bandeau cookies wordpress (volume à valider, concurrence faible), aucun service lié en affiliation (liens non renseignés), donc pas de mention de transparence
 
 ### Mettre à jour WordPress sans rien casser : la procédure [2026]
-- **status:** done — 2026-08-21
+- **status:** done : 2026-08-21
 - **slug:** mise-a-jour-wordpress
 - **mot-clé principal:** mise à jour wordpress (volume à valider, concurrence faible), aucun service lié en affiliation (liens non renseignés), donc pas de mention de transparence
 

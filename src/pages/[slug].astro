@@ -101,7 +101,9 @@ const articleData = {
   "description": post.description ?? '',
   "datePublished": post.publishedAt ?? '',
   "dateModified": post.updatedAt ?? post.publishedAt ?? '',
-  "url": `https://paul-alves.fr/${slug}`,
+  "url": `https://paul-alves.fr/${slug}/`,
+  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://paul-alves.fr/${slug}/` },
+  ...(post.image ? { "image": `https://paul-alves.fr${post.image}` } : {}),
   "author": {
     "@type": "Person",
     "name": "Paul Alves",
@@ -144,6 +146,7 @@ const articleSchema = JSON.stringify(faqData ? [articleData, faqData] : articleD
   title={title}
   description={post.description ?? ''}
   image={post.image ?? '/assets/og-home.jpg'}
+  imageHeight={post.image ? 800 : 630}
   schema={articleSchema}
   ogType="article"
   publishedAt={post.publishedAt ?? undefined}

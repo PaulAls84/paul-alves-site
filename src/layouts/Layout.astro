@@ -7,6 +7,8 @@ interface Props {
   title?: string
   description?: string
   image?: string
+  imageWidth?: number
+  imageHeight?: number
   schema?: string
   ogType?: 'website' | 'article'
   publishedAt?: string
@@ -18,6 +20,8 @@ const {
   title = 'Paul Alves | Développeur Web & Consultant SEO à Soissons',
   description = "J'aide les entreprises à se développer en ligne grâce à des sites web sur mesure, rapides et optimisés pour le SEO.",
   image = '/assets/og-home.jpg',
+  imageWidth = 1200,
+  imageHeight = 630,
   schema,
   ogType = 'website',
   publishedAt,
@@ -39,7 +43,7 @@ const localBusinessSchema = JSON.stringify({
   "description": "Développeur Web & Consultant SEO freelance basé à Soissons. Création de sites WordPress sur mesure, refonte, optimisation SEO et performances. Disponible partout en France.",
   "url": siteURL,
   "logo": `${siteURL}/assets/logo-full.png`,
-  "image": `${siteURL}/assets/photo-paul.png`,
+  "image": `${siteURL}/assets/logo-full.png`,
   "email": "hello@paul-alves.fr",
   "telephone": "+33656666684",
   "priceRange": "€€",
@@ -86,7 +90,6 @@ const personSchema = JSON.stringify({
   "jobTitle": "Développeur Web & Consultant SEO",
   "description": "Freelance spécialisé WordPress et SEO. A généré plus d'un million de visiteurs organiques sur son propre blog avant d'accompagner les entreprises dans leur développement web et leur référencement.",
   "url": siteURL,
-  "image": `${siteURL}/assets/photo-paul.png`,
   "email": "hello@paul-alves.fr",
   "telephone": "+33656666684",
   "address": {
@@ -125,8 +128,8 @@ const personSchema = JSON.stringify({
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content={imageURL} />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
+  <meta property="og:image:width" content={String(imageWidth)} />
+  <meta property="og:image:height" content={String(imageHeight)} />
   <meta property="og:url" content={canonicalURL} />
   <meta property="og:type" content={ogType} />
   <meta property="og:locale" content="fr_FR" />
