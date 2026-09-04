@@ -18,14 +18,6 @@ Volumes : estimations à valider au Keyword Planner (France, FR) au prochain rel
 
 Réalimentée le 2026-09-02 (Keyword Planner France via Cuik + Search Console 06-08/2026).
 
-### 21. Erreur WordPress : erreur 500, erreur critique, page blanche, que faire
-- **status:** todo
-- **slug:** erreur-wordpress
-- **mot-clé principal:** erreur 500 wordpress (110/mois) + erreur critique wordpress (40/mois) + erreur 404 wordpress (90/mois), concurrence faible à moyenne
-- **catégorie:** Maintenance
-- **angle:** guide de dépannage par symptôme (500, 503, erreur critique, page blanche, connexion base de données, 404 en série) : cause probable, diagnostic en 5 minutes, correctif, et quand appeler un pro. Argumentaire naturel pour la maintenance et les interventions d'urgence.
-- **maillage interne suggéré:** maintenance-wordpress, mise-a-jour-wordpress, site-wordpress-pirate
-
 ### 22. Audit SEO WordPress : la checklist complète pour trouver ce qui bloque
 - **status:** todo
 - **slug:** audit-seo-wordpress
@@ -164,6 +156,11 @@ sans lien affilié ne porte PAS de mention :
 ---
 
 ## Publiés
+
+### Erreur WordPress : 500, erreur critique, page blanche
+- **status:** done : 2026-09-04
+- **slug:** erreur-wordpress
+- **mot-clé principal:** erreur 500 wordpress (110/mois) + erreur critique wordpress (40/mois) + erreur 404 wordpress (90/mois), concurrence faible à moyenne. Aucun service lié en affiliation (liens non renseignés), donc pas de mention de transparence. Cas présentés comme des situations types : `cas-clients.md` est toujours vide.
 
 ### Référencement local : faire apparaître son entreprise sur Google [2026]
 - **status:** done : 2026-08-28

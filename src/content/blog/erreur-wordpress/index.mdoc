@@ -1,0 +1,144 @@
+---
+title: "Erreur WordPress : 500, erreur critique, page blanche"
+description: "Erreur 500, erreur critique, écran blanc, connexion à la base de données, 404 en série : le diagnostic par symptôme et les correctifs que j'applique pour remettre un site WordPress en ligne."
+publishedAt: '2026-09-04'
+featured: false
+category: Maintenance
+image: /images/blog/erreur-wordpress.jpg
+anchors:
+  - erreur 500
+  - erreur critique
+  - page blanche
+  - mode débogage
+---
+
+> **En bref**
+>
+> - **Le suspect numéro un est presque toujours une extension ou le thème.** Erreur 500, erreur critique et écran blanc sont trois façons d'afficher la même chose : du code PHP qui s'est arrêté net.
+> - **Le premier geste n'est jamais de bidouiller** : sauvegarder l'état actuel, puis activer le mode débogage pour lire le message d'erreur réel au lieu de deviner.
+> - **Le diagnostic tient en cinq minutes** : désactiver les extensions en bloc, basculer sur un thème par défaut, réactiver une par une. Le fautif se désigne tout seul.
+> - **Les exceptions** : « erreur lors de la connexion à la base de données » et l'erreur 503 viennent du serveur ou d'une mise à jour interrompue, pas d'une extension.
+> - **Le piège classique** : restaurer une sauvegarde tout de suite. Vous effacez les commandes et les messages arrivés depuis, sans avoir compris la cause.
+
+Votre site affichait ses pages ce matin. Cet après-midi, il ne montre plus qu'un fond blanc, un message en anglais ou une phrase laconique qui parle d'« erreur critique ». Rien n'indique quoi faire, et l'administration est souvent inaccessible elle aussi.
+
+Ces pannes n'ont pourtant rien de mystérieux. WordPress produit un nombre limité de symptômes, chacun renvoyant à un petit ensemble de causes probables. Le vrai piège est de modifier des fichiers au hasard avant d'avoir identifié laquelle. Voici ma méthode de dépannage, symptôme par symptôme.
+
+## Les trois réflexes avant toute intervention
+
+### 1. Sauvegarder l'état actuel, même cassé
+
+Sauvegarder un site en panne paraît absurde, et pourtant. Vous allez modifier des fichiers, parfois la base de données : si une manipulation aggrave la situation, vous devez pouvoir revenir à l'état « cassé mais connu ». La plupart des hébergeurs proposent un instantané en un clic. Si vous n'avez aucune sauvegarde récente, c'est le premier sujet à traiter une fois le site en ligne, et j'explique ce qui fait une vraie stratégie dans mon guide sur la [sauvegarde WordPress](/sauvegarde-wordpress/).
+
+### 2. Activer le mode débogage pour voir le vrai message
+
+Un écran blanc est un message d'erreur que PHP a refusé d'afficher. Pour le récupérer, on modifie `wp-config.php` à la racine du site, par FTP ou depuis le gestionnaire de fichiers de l'hébergeur :
+
+```php
+define( 'WP_DEBUG', true );
+define( 'WP_DEBUG_LOG', true );
+define( 'WP_DEBUG_DISPLAY', false );
+```
+
+Cette combinaison écrit les erreurs dans `wp-content/debug.log` sans les afficher aux visiteurs. Le fichier donne le chemin exact du code fautif : `wp-content/plugins/nom-de-l-extension/fichier.php`, ligne tant. Vous passez de « mon site ne marche plus » à « l'extension Y appelle une fonction qui n'existe plus ». Repassez ces constantes à `false` une fois la panne réglée.
+
+### 3. Vérifier si c'est vous, ou tout le monde
+
+Videz le cache du navigateur et testez depuis le réseau mobile : un site en ligne peut sembler mort à cause d'un cache local. Regardez aussi la page d'état de votre hébergeur, car une panne serveur ne se répare pas depuis WordPress.
+
+## Erreur 500 : le fourre-tout du serveur
+
+L'erreur 500 (« Internal Server Error ») signifie que le serveur a rencontré un problème qu'il ne sait pas décrire. C'est le message le plus fréquent et le moins bavard. Quatre causes en couvrent l'essentiel.
+
+**Un fichier `.htaccess` corrompu.** Renommez-le en `.htaccess-old` par FTP et rechargez le site. S'il revient, le fichier était en cause : dans l'administration, Réglages puis Permaliens, Enregistrer sans rien changer, et WordPress en régénère un propre.
+
+**La mémoire PHP épuisée.** Dans `wp-config.php`, avant la ligne « That's all, stop editing » :
+
+```php
+define( 'WP_MEMORY_LIMIT', '256M' );
+```
+
+Si l'hébergeur plafonne plus bas, la valeur ne sera pas suivie et il faudra passer par son support.
+
+**Une version de PHP inadaptée.** Une extension qui exige PHP 8.1 sur un serveur resté en 7.4 tombe immédiatement, et l'inverse est vrai pour du code ancien sur PHP 8.3. La version se change en deux clics chez la plupart des hébergeurs.
+
+**Une extension ou un thème fautif.** Le suspect le plus courant, et le protocole est décrit plus bas.
+
+## Erreur critique et écran blanc
+
+« Une erreur critique est survenue sur ce site » est une bonne nouvelle déguisée. Depuis la version 5.2, WordPress détecte les erreurs fatales, bascule en mode récupération et envoie un e-mail à l'administrateur. Cet e-mail contient deux choses précieuses : le nom du fichier fautif, donc de l'extension ou du thème responsable, et un lien de connexion qui ouvre l'administration avec le composant en cause neutralisé. Consultez cette boîte mail, indésirables compris. Si l'adresse enregistrée n'est plus valide, ce qui arrive souvent après un changement de prestataire, vous perdez ce filet et devez repasser par le mode débogage.
+
+L'écran blanc est le même incident, mais sans message, parce que l'affichage des erreurs est désactivé et que le mode récupération n'a pas pris la main. Un détail oriente le diagnostic : si le site public est blanc mais que `/wp-admin/` répond, la panne vient du thème ou d'une extension active côté visiteur. Si les deux sont blancs, cherchez du côté d'une extension chargée partout ou d'un `functions.php` modifié.
+
+## Le protocole de désactivation, cinq minutes chrono
+
+Ce protocole vaut pour l'erreur 500, l'erreur critique et l'écran blanc. Il consiste à isoler le coupable au lieu de le deviner.
+
+1. **Avec accès à l'administration** : désactivez toutes les extensions d'un coup. Le site revient ? Réactivez-les une par une en rechargeant entre chaque. Celle qui fait tout retomber est votre coupable.
+2. **Sans accès** : par FTP, renommez le dossier `wp-content/plugins` en `plugins-off`, ce qui les désactive toutes. Rendez ensuite au dossier son nom d'origine et renommez les sous-dossiers un par un pour le même test.
+3. **Si le site reste cassé sans extensions** : le thème est en cause. Renommez son dossier dans `wp-content/themes/` et WordPress bascule sur un thème par défaut s'il en trouve un. C'est pour cela que je conseille de garder un thème « Twenty » installé, même inutilisé.
+4. **Si le site reste cassé sans extensions ni thème** : le problème est dans le cœur. Remplacer les dossiers `wp-admin` et `wp-includes` par ceux d'une archive fraîche de WordPress règle les fichiers corrompus sans toucher au contenu.
+
+Une fois le coupable identifié, ne vous contentez pas de le supprimer. Regardez sa page sur le répertoire officiel : si la dernière mise à jour date de trois ans, c'est une bombe à retardement à remplacer, pas à réactiver.
+
+## Erreur lors de la connexion à la base de données
+
+Celle-ci sort du lot : aucune extension n'en est responsable. Trois pistes, dans cet ordre.
+
+**Des identifiants devenus faux.** Les constantes `DB_NAME`, `DB_USER`, `DB_PASSWORD` et `DB_HOST` de `wp-config.php` doivent correspondre exactement à ce que déclare le panneau de l'hébergeur. C'est la cause quasi systématique après une migration.
+
+**Le serveur MySQL injoignable.** Fréquent en mutualisé quand il est saturé, et généralement temporaire. Le support de l'hébergeur confirmera en une minute.
+
+**Une table corrompue.** WordPress intègre un outil de réparation qu'on active en ajoutant temporairement `define( 'WP_ALLOW_REPAIR', true );` dans `wp-config.php`, puis en visitant `/wp-admin/maint/repair.php`. Cette page reste accessible sans connexion tant que la constante est active : retirez-la dès la réparation terminée.
+
+## Erreur 503 et 404 en série
+
+Un message de maintenance qui ne disparaît jamais vient d'une mise à jour interrompue : WordPress crée un fichier `.maintenance` à la racine pendant l'opération et le supprime à la fin. S'il reste, supprimez-le par FTP. Une 503 sans ce fichier indique un serveur qui ne répond plus, et se traite avec l'hébergeur.
+
+Quand des pages existantes renvoient toutes une 404 alors que l'accueil fonctionne, ce sont les permaliens qui sont en cause, pas votre contenu : Réglages, Permaliens, Enregistrer force la réécriture des règles. À ne pas confondre avec des 404 sur quelques URL seulement, apparues après une refonte : ce ne sont pas des erreurs à réparer mais des redirections à créer, sujet de mon guide sur la [migration d'un site WordPress](/migrer-site-wordpress/).
+
+## Le tableau de correspondance
+
+| Symptôme | Cause la plus probable | Premier geste |
+|---|---|---|
+| Erreur 500 | Extension, `.htaccess`, mémoire PHP | Renommer `.htaccess`, puis désactiver les extensions |
+| Erreur critique | Erreur fatale PHP d'une extension ou du thème | Lire l'e-mail de mode récupération |
+| Page blanche | Erreur fatale sans affichage | Activer `WP_DEBUG_LOG` et lire `debug.log` |
+| Connexion base de données | Identifiants ou serveur MySQL | Vérifier `wp-config.php`, puis l'hébergeur |
+| 503 permanent | Mise à jour interrompue | Supprimer le fichier `.maintenance` |
+| 404 sur toutes les pages | Permaliens ou `.htaccess` | Réenregistrer les permaliens |
+| Site lent puis 500 par intermittence | Ressources serveur saturées | Regarder les logs et l'offre d'hébergement |
+
+## Deux situations types
+
+**Le cas le plus fréquent : un site vitrine sur mutualisé, une trentaine d'extensions actives, qui tombe en erreur critique juste après une mise à jour groupée.** Ce que je fais : je récupère l'e-mail de mode récupération, qui nomme le fichier fautif et donc l'extension concernée, et je me connecte avec le lien qu'il contient. L'extension est neutralisée, le site est déjà revenu. Je regarde ensuite sa fiche sur le répertoire officiel : soit une version correctrice est sortie et je l'applique, soit l'extension est abandonnée et je lui cherche un remplaçant. Ce qu'on obtient : un site en ligne en quelques minutes, et la cause traitée plutôt que contournée. C'est aussi la meilleure illustration de pourquoi je déconseille de cocher « Tout sélectionner » sur l'écran des mises à jour, comme je l'explique dans mon article sur la [mise à jour de WordPress](/mise-a-jour-wordpress/).
+
+**Le deuxième cas classique : une boutique WooCommerce qui affiche par intermittence une erreur 500 aux heures de forte affluence, alors que rien n'a été modifié.** Désactiver les extensions ne donne rien, puisque le site fonctionne le reste du temps. Ce que je fais : je lis les logs d'erreur PHP du serveur, pas ceux de WordPress, et j'y cherche les mentions de mémoire épuisée ou de temps d'exécution dépassé. Une boutique consomme bien plus qu'une vitrine, et une offre mutualisée d'entrée de gamme finit par plafonner. Je relève la limite mémoire, j'allège les tâches planifiées les plus gourmandes, et si le plafond vient de l'hébergeur, la réponse est un changement d'offre. Ce qu'on obtient : une panne intermittente requalifiée en problème de dimensionnement, sujet de mon guide sur l'[hébergement WordPress](/hebergement-wordpress/).
+
+## Quand arrêter et appeler quelqu'un
+
+Trois situations où continuer seul coûte plus cher que de déléguer :
+
+- **Vous n'avez pas de sauvegarde exploitable.** Chaque manipulation devient irréversible.
+- **Le site génère du chiffre d'affaires.** Une heure de tunnel de commande cassé se chiffre vite.
+- **Vous voyez des signes d'intrusion** : fichiers inconnus à la racine, redirections vers des sites étrangers, comptes administrateurs que vous n'avez pas créés. Ce n'est plus un dépannage mais un nettoyage, décrit dans mon article sur le [site WordPress piraté](/site-wordpress-pirate/).
+
+## Conclusion
+
+Une erreur WordPress n'est presque jamais une fatalité technique : c'est un composant qui s'arrête et un message qu'on ne lit pas. La méthode reste la même quel que soit le symptôme : sauvegarder l'état actuel, lire l'erreur réelle avec le mode débogage, isoler par désactivation, puis corriger la cause au lieu de la contourner.
+
+Le meilleur dépannage reste celui qu'on n'a pas à faire. Un site sauvegardé, tenu à jour, avec un inventaire d'extensions raisonnable et un hébergement adapté à sa charge tombe rarement et se relève vite. C'est ce que couvre un contrat de [maintenance WordPress](/maintenance-wordpress/), en général moins cher qu'une intervention d'urgence un vendredi soir.
+
+## FAQ
+
+**J'ai une erreur 500 et aucun accès FTP, que faire ?**
+Tous les hébergeurs proposent un gestionnaire de fichiers dans leur panneau client, qui permet les mêmes actions : renommer `.htaccess`, renommer le dossier `plugins`, éditer `wp-config.php`. Si vous n'avez pas non plus ces accès, commencez par les récupérer auprès de la personne qui a créé le site.
+
+**Faut-il restaurer une sauvegarde dès que le site tombe ?**
+Rarement en premier. Une restauration efface tout ce qui est arrivé depuis : commandes, messages, comptes clients, articles. Sur une boutique, la perte peut dépasser celle causée par la panne. Identifiez et désactivez d'abord le composant fautif ; la restauration reste le dernier recours, quand la cause est introuvable ou qu'il y a corruption.
+
+**Le mode débogage est-il dangereux sur un site en ligne ?**
+Pas configuré comme plus haut, avec `WP_DEBUG_DISPLAY` à `false` : les erreurs partent dans un fichier journal au lieu de s'afficher aux visiteurs. Ce qu'il ne faut jamais faire, c'est laisser les messages d'erreur visibles publiquement : ils révèlent des chemins de fichiers et des versions logicielles utiles à un attaquant.
+
+**Pourquoi le site casse-t-il souvent après une mise à jour ?**
+Parce qu'un site WordPress assemble du code écrit par des éditeurs différents, et qu'une extension figée depuis deux ans finit par appeler une fonction supprimée du cœur. La parade n'est pas de cesser les mises à jour, ce qui expose à des failles connues, mais de faire le tri dans les extensions et de les passer par petits lots.
