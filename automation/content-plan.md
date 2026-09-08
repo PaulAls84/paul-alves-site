@@ -18,14 +18,6 @@ Volumes : estimations à valider au Keyword Planner (France, FR) au prochain rel
 
 Réalimentée le 2026-09-02 (Keyword Planner France via Cuik + Search Console 06-08/2026).
 
-### 22. Audit SEO WordPress : la checklist complète pour trouver ce qui bloque
-- **status:** todo
-- **slug:** audit-seo-wordpress
-- **mot-clé principal:** audit seo wordpress (390/mois) + audit technique seo (590/mois) + audit seo site (320/mois), concurrence faible
-- **catégorie:** SEO
-- **angle:** la méthode d'audit en 6 blocs (indexation, technique, vitesse, on-page, contenu, popularité) avec les outils gratuits (Search Console, PageSpeed, Screaming Frog). Page pivot vers l'offre « Audit offert » (Cal.eu) : un CTA discret en fin d'article.
-- **maillage interne suggéré:** seo-wordpress, optimiser-vitesse-site-wordpress, rank-math-ou-yoast
-
 ### 23. Core Web Vitals : comprendre LCP, INP et CLS et les améliorer sur WordPress
 - **status:** todo
 - **slug:** core-web-vitals
@@ -156,6 +148,11 @@ sans lien affilié ne porte PAS de mention :
 ---
 
 ## Publiés
+
+### Audit SEO WordPress : la checklist complète en 6 blocs
+- **status:** done : 2026-09-08
+- **slug:** audit-seo-wordpress
+- **mot-clé principal:** audit seo wordpress (390/mois) + audit technique seo (590/mois) + audit seo site (320/mois), concurrence faible. Aucun service lié en affiliation (liens non renseignés), donc pas de mention de transparence. CTA discret vers l'audit offert (page contact). Cas présentés comme des situations types : `cas-clients.md` est toujours vide.
 
 ### Erreur WordPress : 500, erreur critique, page blanche
 - **status:** done : 2026-09-04

@@ -1,0 +1,139 @@
+---
+title: "Audit SEO WordPress : la checklist complète en 6 blocs"
+description: "Un audit SEO WordPress ne sert à rien s'il produit une liste de 200 alertes. Voici la méthode en 6 blocs que j'applique, les outils gratuits qui suffisent et l'ordre de priorité pour corriger."
+publishedAt: '2026-09-08'
+featured: false
+category: SEO
+image: /images/blog/audit-seo-wordpress.jpg
+anchors:
+  - audit SEO
+  - audit technique
+  - checklist SEO
+  - audit de votre site
+---
+
+> **En bref**
+>
+> - **Un audit SEO répond à une seule question** : qu'est-ce qui empêche ce site d'être trouvé, et dans quel ordre le corriger. Pas « voici 217 alertes ».
+> - **Six blocs, toujours dans cet ordre** : indexation, technique, vitesse, on page, contenu, popularité. Un blocage d'indexation rend tout le reste inutile.
+> - **Les outils gratuits suffisent** pour un site vitrine ou une petite boutique : Search Console, PageSpeed Insights, la version gratuite de Screaming Frog.
+> - **Faites-le vous-même** si le site fait moins de 100 pages et que l'administration WordPress ne vous fait pas peur. Déléguez après une refonte, une migration, ou une chute de trafic inexpliquée.
+> - **Le piège classique** : corriger les alertes faciles du plugin SEO pendant que le vrai problème (une page bloquée, un site trop lent, zéro contenu sur le sujet) reste intact.
+
+Un site qui ne décolle pas ne pose jamais une seule question, il en pose vingt. Le contenu ? L'hébergement ? Le plugin SEO mal réglé ? Un concurrent trop installé ? Sans méthode, on répond par des travaux au hasard : on compresse trois images, on bourre des titres de mots-clés, et six mois plus tard rien n'a bougé.
+
+L'audit sert à remplacer ces vingt questions par une liste courte de causes probables, classées par impact. Voici ma méthode en six blocs, les outils qui suffisent, et l'ordre dans lequel corriger.
+
+## Ce qu'un audit doit produire
+
+Un bon audit tient en une page, pas en un rapport de quarante. Il dit trois choses : ce qui bloque aujourd'hui, ce qui limite la progression, ce qui peut attendre. Méfiez-vous du rapport automatique en 200 points : les outils notent tout au même niveau, une balise `alt` manquante y pèse autant qu'une page stratégique interdite d'indexation. Le tri, aucun outil ne le fait à votre place.
+
+## Bloc 1 : l'indexation, avant tout le reste
+
+Tant qu'une page n'est pas indexée, tout le travail d'optimisation dessus vaut zéro. C'est donc toujours mon premier bloc.
+
+**Les vérifications :**
+
+- Dans WordPress, Réglages puis Lecture : la case « Demander aux moteurs de recherche de ne pas indexer ce site » doit être décochée. Laissée cochée après une mise en ligne, c'est le blocage le plus banal qui soit.
+- Dans la Search Console, rapport Indexation des pages : combien de pages sont indexées, et surtout quelles raisons figurent dans « Non indexées ». « Exclue par la balise noindex » et « Bloquée par le fichier robots.txt » sont des décisions, volontaires ou non, pas des accidents de Google.
+- Le fichier `robots.txt`, à l'adresse `votresite.fr/robots.txt` : pas de `Disallow: /` global.
+- Le sitemap XML est soumis dans la Search Console, et son nombre d'URL découvertes correspond à ce que vous attendez. Une recherche `site:votresite.fr` complète la photo.
+
+**Le point qui trompe le plus de monde** : « Détectée, actuellement non indexée » n'est pas un bug. C'est Google qui a vu la page et jugé qu'elle ne valait pas la place. La réponse n'est pas de resoumettre l'URL dix fois, c'est le bloc 5.
+
+## Bloc 2 : la technique
+
+Une fois l'indexation acquise, on regarde la structure du site. La version gratuite de Screaming Frog explore jusqu'à 500 URL, ce qui couvre la grande majorité des sites vitrines et des petits catalogues.
+
+Ce que je cherche dans le crawl :
+
+- **Les codes de réponse** : 404 internes, chaînes de redirections sur trois sauts, 500 intermittentes qui trahissent un serveur à bout de souffle.
+- **Les doublons** : une même page accessible en HTTP et en HTTPS, avec et sans `www`, avec et sans barre oblique finale. Une seule version répond, les autres redirigent en 301.
+- **Les balises canoniques** cohérentes, et pas une canonique pointant vers l'accueil sur toutes les pages, ce qui arrive avec certains thèmes mal configurés.
+- **Les pages orphelines** : au sitemap, mais qu'aucun lien interne ne relie au site. Google les trouve mal, les visiteurs jamais.
+- **HTTPS partout**, sans contenu mixte (une image appelée en HTTP dans une page en HTTPS).
+
+Sur WordPress, une source récurrente de pages inutiles indexées : les archives d'étiquettes et les pages d'auteur d'un site à auteur unique. On les désindexe dans les réglages du plugin SEO, sujet de mon comparatif [Rank Math ou Yoast](/rank-math-ou-yoast/).
+
+## Bloc 3 : la vitesse
+
+Deux plans à ne pas confondre. PageSpeed Insights donne un score de laboratoire, simulé, utile pour diagnostiquer. La Search Console remonte les données de terrain issues des vrais visiteurs Chrome, et ce sont celles qui comptent pour Google. Les trois seuils officiels :
+
+| Métrique | Ce qu'elle mesure | Seuil « bon » |
+|---|---|---|
+| LCP | Affichage du plus gros élément visible | 2,5 s ou moins |
+| INP | Réactivité aux interactions | 200 ms ou moins |
+| CLS | Stabilité visuelle pendant le chargement | 0,1 ou moins |
+
+Dans l'audit, je note surtout d'où vient le problème : hébergement mutualisé saturé, images servies en pleine résolution, empilement de scripts tiers, thème qui charge une bibliothèque entière pour trois animations. Le correctif diffère complètement selon le cas, et je les détaille dans mon guide pour [optimiser la vitesse d'un site WordPress](/optimiser-vitesse-site-wordpress/).
+
+## Bloc 4 : l'on page
+
+Ce bloc se traite page par page, en commençant par les dix pages les plus stratégiques. Pour chacune : une balise titre unique avec le mot-clé en tête et sous 60 caractères, une méta description qui donne envie de cliquer (elle ne fait pas le classement, elle fait le taux de clic), un seul H1 suivi d'une hiérarchie H2 et H3 qui épouse la logique du texte et non la taille de police souhaitée, des images avec un `alt` descriptif, des liens internes dans les deux sens.
+
+Un signal simple dans la Search Console : deux pages qui ressortent sur la même requête. C'est de la cannibalisation, on fusionne en une page plus solide et on redirige l'ancienne.
+
+## Bloc 5 : le contenu
+
+C'est le bloc que les audits techniques survolent, et souvent celui qui explique tout. Trois questions :
+
+**Le site couvre-t-il les sujets que ses clients tapent ?** Un artisan dont la page « Services » liste douze prestations n'a aucune chance sur les recherches précises. Une page par prestation change la donne.
+
+**Chaque page répond-elle à la bonne intention ?** Une page commerciale ne se positionnera pas sur une requête où Google n'affiche que des guides pratiques, et l'inverse est vrai aussi. Regardez ce que Google affiche déjà sur la requête visée : c'est la réponse la plus fiable, et elle est gratuite.
+
+**Les pages anciennes sont-elles encore justes ?** Dans la Search Console, sur douze mois, repérez celles dont les impressions baissent. Mettre à jour un contenu coûte moins cher qu'en écrire un nouveau et rapporte souvent plus vite.
+
+## Bloc 6 : la popularité
+
+Dernier bloc, le plus lent à bouger. Sur le profil de liens entrants, le nombre est secondaire, la pertinence est tout : quelques liens depuis des sites du même secteur ou du même territoire valent mieux qu'un lot d'annuaires génériques.
+
+Sur un site local, deux points vérifiables en une demi-heure : la fiche d'établissement Google est-elle complète et cohérente avec les coordonnées du site, et le nom, l'adresse et le téléphone sont-ils écrits partout à l'identique ? C'est la base du [référencement local](/referencement-local/).
+
+## La boîte à outils, version gratuite
+
+| Outil | Ce qu'il donne | Limite |
+|---|---|---|
+| Google Search Console | Indexation, requêtes réelles, Core Web Vitals de terrain | Données à partir de la validation du site |
+| PageSpeed Insights | Diagnostic de vitesse page par page | Mesure de laboratoire, à recouper |
+| Screaming Frog | Crawl technique complet | 500 URL en version gratuite |
+| Google Analytics ou Matomo | Comportement des visiteurs | Ne dit rien du positionnement |
+
+Pour un site vitrine, cette liste suffit. Les outils payants servent à l'analyse concurrentielle et au suivi de positions, pas à trouver ce qui bloque.
+
+## Deux situations types
+
+**Le cas le plus fréquent : un site vitrine refait il y a six mois, dont le trafic n'est jamais revenu au niveau d'avant.** Ce que je fais : bloc 1, et je compare les pages indexées avec la liste des anciennes URL. Après une refonte, deux causes reviennent sans cesse, la case « ne pas indexer » restée cochée depuis la préproduction, et les anciennes adresses qui renvoient en 404 faute de plan de redirections. Ce qu'on obtient : une cause identifiée en une heure et un correctif dont les effets se voient en quelques semaines, sans avoir écrit une ligne de contenu. C'est le sujet de mon guide sur la [migration d'un site WordPress](/migrer-site-wordpress/).
+
+**Le deuxième cas classique : une petite boutique WooCommerce de quelques centaines de références, plugin SEO au vert partout et zéro trafic sur les fiches produits.** Ce que je fais : je vérifie que les fiches sont indexées, puis je lis le contenu réel de dix d'entre elles. Quand la description est celle du fournisseur, reprise à l'identique par vingt autres revendeurs, il n'y a rien à optimiser parce qu'il n'y a rien d'original à classer. La réponse tient au bloc 5 : réécrire les fiches qui comptent, en commençant par celles qui ont déjà des impressions dans la Search Console. Ce qu'on obtient : un chantier borné à trente fiches au lieu de huit cents, priorisé par les données.
+
+## Par quoi commencer
+
+Quand tout paraît rouge, cet ordre de priorité fonctionne :
+
+1. Ce qui empêche l'indexation. Impact immédiat, correction souvent en quelques minutes.
+2. Les erreurs techniques qui touchent beaucoup de pages : redirections, doublons, 404 internes.
+3. La vitesse, si les données de terrain sont mauvaises.
+4. Les dix pages stratégiques, en on page et en contenu.
+5. Le reste du contenu, page par page, puis la popularité, en continu.
+
+Un audit qui ne débouche pas sur cette liste ordonnée n'est pas terminé.
+
+## Conclusion
+
+Un audit SEO n'est pas un examen de passage, c'est un tri. Six blocs, toujours dans le même ordre, et la discipline de ne pas se jeter sur les corrections faciles avant d'avoir vérifié que les pages sont dans l'index. Le temps ne passe pas dans la collecte, que les outils gratuits font très bien, mais dans l'interprétation : décider ce qui compte pour ce site, avec son marché et ses moyens.
+
+Si vous voulez un avis extérieur sur le vôtre, je propose un audit offert et sans engagement, à réserver depuis la [page contact](/contact/). Et pour les fondations sur lesquelles cet audit s'appuie, mon guide sur le [SEO WordPress](/seo-wordpress/) reprend le sujet de zéro.
+
+## FAQ
+
+**Combien de temps prend un audit SEO WordPress ?**
+Deux à trois heures pour un site vitrine d'une trentaine de pages si vous connaissez les outils, une bonne journée pour un catalogue de plusieurs centaines de références.
+
+**Peut-on faire un audit SEO gratuitement ?**
+Oui, pour l'essentiel. Search Console, PageSpeed Insights et la version gratuite de Screaming Frog couvrent les six blocs. Les outils payants apportent surtout l'analyse des concurrents et le suivi de positions.
+
+**À quelle fréquence refaire un audit ?**
+Un point complet par an suffit sur un site stable, avec une vérification systématique après tout événement structurant : refonte, migration, changement de thème. Entre deux audits, une visite hebdomadaire à la Search Console détecte les dérives assez tôt.
+
+**Un audit SEO garantit-il de meilleures positions ?**
+Non, et personne ne peut le garantir. Un audit identifie des causes et donne un ordre de travail. Ce sont les corrections, puis le temps que met Google à les prendre en compte, qui font bouger les positions. Se méfier de toute promesse de résultat chiffrée.
