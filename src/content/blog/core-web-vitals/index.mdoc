@@ -1,0 +1,118 @@
+---
+title: "Core Web Vitals : comprendre et corriger sur WordPress"
+description: "LCP, INP, CLS : ce que mesurent vraiment les Core Web Vitals, où lire vos vrais chiffres, et les correctifs WordPress qui font bouger l'aiguille, dans l'ordre où je les applique."
+publishedAt: '2026-09-11'
+featured: false
+category: SEO
+image: /images/blog/core-web-vitals.jpg
+anchors:
+  - Core Web Vitals
+  - LCP
+  - INP
+  - CLS
+---
+
+> **En bref**
+>
+> - **Trois métriques, trois seuils** : LCP sous 2,5 s (vitesse d'affichage), INP sous 200 ms (réactivité), CLS sous 0,1 (stabilité visuelle).
+> - **Le chiffre qui compte n'est pas celui de PageSpeed Insights** : Google juge sur les données de terrain de vos vrais visiteurs, remontées dans la Search Console sur 28 jours glissants.
+> - **Pour qui c'est prioritaire** : les sites qui se battent à armes égales sur une requête, et le e-commerce. Pour qui ça l'est moins : un site sans contenu ni notoriété, où les Vitals ne changeront rien au classement.
+> - **Le trio de correctifs qui règle la majorité des cas WordPress** : images dimensionnées et servies en WebP, un cache correctement configuré, un hébergement à la hauteur.
+> - **Le piège classique** : courir après le 100/100 en laboratoire pendant que les données de terrain restent au rouge, parce que le vrai problème est un serveur lent ou un script tiers.
+
+Vous ouvrez la Search Console, l'onglet « Signaux web essentiels » affiche une courbe rouge, et personne ne vous dit clairement quoi corriger en premier. C'est le moment où beaucoup installent un plugin d'optimisation de plus, cochent tout, et cassent leur affichage sans gagner un point.
+
+Les Core Web Vitals sont pourtant moins compliqués que leur réputation : trois mesures, trois seuils, et une poignée de causes qui reviennent toujours sur WordPress. Voici comment je les lis et dans quel ordre je les corrige.
+
+## Ce que mesurent réellement les trois métriques
+
+| Métrique | Ce qu'elle mesure | Bon | À améliorer | Mauvais |
+|---|---|---|---|---|
+| LCP | Temps d'affichage du plus gros élément visible | 2,5 s ou moins | 2,5 à 4 s | plus de 4 s |
+| INP | Délai de réponse visuelle après une interaction | 200 ms ou moins | 200 à 500 ms | plus de 500 ms |
+| CLS | Déplacements inattendus du contenu pendant le chargement | 0,1 ou moins | 0,1 à 0,25 | plus de 0,25 |
+
+**LCP (Largest Contentful Paint)** chronomètre l'instant où le plus gros bloc visible de la page s'affiche. Sur un site vitrine, c'est presque toujours l'image d'en-tête ou le titre de la page d'accueil. Ce n'est pas le chargement complet de la page, c'est le moment où le visiteur voit quelque chose de significatif.
+
+**INP (Interaction to Next Paint)** a remplacé l'ancien FID en mars 2024, et c'est une bonne nouvelle : FID ne mesurait que le délai avant le traitement de la première interaction, INP mesure le temps que met l'écran à répondre, sur toutes les interactions de la visite. Un menu qui met une demi-seconde à s'ouvrir se voit désormais dans les chiffres.
+
+**CLS (Cumulative Layout Shift)** note les sauts de mise en page. C'est la bannière de cookies qui pousse le texte vers le bas, la publicité qui s'insère après coup, l'image sans dimensions déclarées qui décale tout quand elle arrive. C'est la métrique la plus agaçante pour le visiteur et souvent la plus simple à corriger.
+
+## Laboratoire ou terrain : ne pas confondre les deux chiffres
+
+C'est la confusion qui fait perdre le plus de temps. PageSpeed Insights donne deux blocs sur la même page, et ils ne disent pas la même chose.
+
+Le bloc du haut, quand il existe, vient du rapport CrUX : ce sont des mesures collectées chez les vrais utilisateurs de Chrome ayant accepté le partage, agrégées au 75e centile sur 28 jours glissants. C'est **ce bloc qui compte pour Google**, et c'est celui qui alimente le rapport de la Search Console.
+
+Le bloc du bas est une simulation Lighthouse, faite à l'instant, sur une machine et une connexion normalisées. Elle ne sert pas à juger votre site, elle sert à diagnostiquer : la liste « Opportunités » vous dit quel fichier bloque l'affichage et quelle image pèse trop lourd.
+
+Deux conséquences pratiques. Un site à faible trafic n'aura pas de données de terrain du tout, et devra se contenter du laboratoire. Et après une correction, comptez jusqu'à quatre semaines avant que la courbe de terrain bouge vraiment, le temps que la fenêtre glissante se renouvelle. Ne jugez pas un correctif au bout de trois jours.
+
+## Où lire vos chiffres, gratuitement
+
+- **Search Console, rapport « Signaux web essentiels »** : la vue d'ensemble, séparée mobile et ordinateur, avec les URL regroupées par type de page.
+- **PageSpeed Insights** : le détail page par page, terrain et laboratoire côte à côte.
+- **L'extension Web Vitals de Chrome** : les trois valeurs en direct pendant votre navigation, y compris l'élément exact responsable du LCP.
+
+Pour un site vitrine ou une petite boutique, ces outils suffisent. Aucun abonnement n'est nécessaire pour savoir ce qui cloche.
+
+## Corriger le LCP
+
+Dans l'immense majorité des cas WordPress, le LCP se joue sur trois choses.
+
+**Le temps de réponse du serveur.** Rien ne s'affiche tant que le serveur n'a pas répondu. Un mutualisé d'entrée de gamme, une version de PHP ancienne ou une base de données jamais nettoyée pèsent avant même que la première image ne se charge. Le cache de page règle ce point pour les visiteurs anonymes, en servant une version déjà construite. C'est le sujet de mon guide sur l'[hébergement WordPress](/hebergement-wordpress/) et de mon avis sur [WP Rocket](/wp-rocket-avis/).
+
+**L'image de bandeau.** Elle doit être dimensionnée à la taille réelle de son emplacement, compressée, servie en WebP, et surtout **pas** en chargement paresseux. Le `lazy loading` appliqué à l'image du haut est un cas d'école : le plugin fait bien son travail, et retarde précisément l'élément que Google chronomètre. Toutes les extensions sérieuses proposent d'exclure les images de la première zone visible.
+
+**Les polices et le CSS bloquants.** Une police appelée chez un tiers ajoute une connexion externe avant le premier rendu du texte. Héberger les polices localement, se limiter à deux graisses et utiliser `font-display: swap` retire cet obstacle.
+
+## Corriger l'INP
+
+L'INP est une affaire de JavaScript, presque exclusivement. Le fil d'exécution du navigateur est unique : pendant qu'il traite un script, il ne peut pas redessiner l'écran, et le clic du visiteur attend.
+
+Les suspects habituels : les scripts tiers (chat en direct, pixel publicitaire, carte interactive, outil de statistiques), les carrousels et animations fournis par le thème, et l'empilement d'extensions qui chargent leur JavaScript sur toutes les pages.
+
+Ce que j'applique dans l'ordre : différer ce qui n'est pas nécessaire au premier écran, charger les widgets tiers seulement à l'interaction ou au défilement, et retirer les extensions dont personne ne se sert plutôt que les désactiver. Sur un site chargé, une extension comme Asset CleanUp ou Perfmatters coupe les scripts page par page, ce qui est souvent plus efficace qu'un réglage global.
+
+## Corriger le CLS
+
+C'est la métrique la moins coûteuse à améliorer.
+
+- Déclarez `width` et `height` sur toutes les images et les iframes, pour que le navigateur réserve la place avant l'arrivée du fichier.
+- Réservez un espace fixe aux blocs injectés après coup : bannière de consentement, encart d'avis, publicité.
+- Choisissez une police de repli aux métriques proches, pour éviter le ressaut de texte au moment du remplacement.
+- Bannissez les éléments qui s'insèrent au-dessus du contenu déjà lu, comme un bandeau apparaissant trois secondes après l'ouverture.
+
+## Deux situations types
+
+**Le cas le plus fréquent : un site vitrine sur mutualisé, une trentaine de pages, un thème à constructeur de pages et une quinzaine d'extensions.** La Search Console affiche du rouge sur le LCP mobile, et le propriétaire vient d'acheter un plugin d'optimisation. Ce que je fais : je regarde d'abord quel élément est le LCP avec l'extension Web Vitals, et c'est l'image du bandeau, exportée en pleine résolution depuis une banque d'images et passée en chargement paresseux par le plugin. Je la redimensionne à la largeur réelle d'affichage, je la sers en WebP, je l'exclus du `lazy loading`, puis j'active le cache de page. Ce qu'on obtient : le laboratoire réagit tout de suite, la courbe de terrain suit sur le mois qui vient, et aucun réglage agressif de minification n'a été nécessaire.
+
+**Le deuxième cas classique : une boutique WooCommerce de quelques centaines de références, INP dans le orange sur mobile.** Le réflexe est d'accuser WooCommerce. Ce que je fais : j'ouvre la cascade de chargement d'une fiche produit et je liste ce qui n'est pas du site, chat en direct, deux pixels publicitaires, un outil d'avis clients, une carte de magasin chargée partout. Puis je vérifie ce que chaque extension charge sur les fiches, sachant que le formulaire de contact et le diaporama d'accueil n'y ont rien à faire. Ce qu'on obtient : moins de JavaScript exécuté à l'ouverture, un fil d'exécution disponible pour répondre aux clics, et une remise à plat qui profite aussi au LCP. Le détail des techniques est dans mon guide pour [optimiser la vitesse d'un site WordPress](/optimiser-vitesse-site-wordpress/).
+
+## Quelle importance leur donner, honnêtement
+
+Les Core Web Vitals sont un signal de classement confirmé par Google, mais un signal parmi beaucoup d'autres. Ils départagent des pages de pertinence comparable, ils ne compensent pas un contenu qui ne répond pas à la requête.
+
+En revanche, ils se répercutent directement sur ce que vit le visiteur, et l'enjeu est commercial autant que SEO : un tunnel de commande qui saute et qui traîne se paye en paniers abandonnés, que Google regarde ou non. C'est pourquoi je place ce chantier en troisième position dans mon [audit SEO WordPress](/audit-seo-wordpress/), après l'indexation et la technique, mais avant le travail page par page.
+
+## Conclusion
+
+Trois métriques, trois seuils, et une règle de méthode : mesurer sur le terrain, diagnostiquer en laboratoire, corriger une cause à la fois. Sur WordPress, la grande majorité des cas se règle sans expertise rare, avec des images à la bonne taille, un cache en place, un hébergement correct et un peu de ménage dans le JavaScript.
+
+Ce qui coûte cher, c'est l'inverse : empiler les options sans savoir laquelle agit, puis passer une soirée à comprendre pourquoi le menu ne s'ouvre plus. Changez un réglage à la fois, vérifiez l'affichage, et laissez aux données de terrain le temps de répondre.
+
+Si votre rapport Search Console est au rouge et que vous ne savez pas par quel bout le prendre, je propose un audit offert et sans engagement depuis la [page contact](/contact/).
+
+## FAQ
+
+**Quels sont les trois Core Web Vitals et leurs seuils ?**
+LCP (affichage) sous 2,5 secondes, INP (réactivité) sous 200 millisecondes, CLS (stabilité visuelle) sous 0,1. Ces valeurs s'apprécient au 75e centile des visites réelles, mobile et ordinateur séparément.
+
+**Combien de temps avant de voir le résultat d'une correction ?**
+Le score de laboratoire bouge immédiatement, les données de terrain jusqu'à quatre semaines plus tard, puisque la Search Console s'appuie sur une fenêtre glissante de 28 jours. C'est normal, et ce n'est pas le signe que le correctif ne fonctionne pas.
+
+**Un plugin de cache suffit-il à passer au vert ?**
+Souvent pour le LCP, rarement pour l'INP, jamais pour le CLS. Le cache agit sur le temps de réponse du serveur ; la réactivité dépend du JavaScript exécuté et la stabilité visuelle dépend de votre mise en page.
+
+**Mon site n'a pas de données de terrain dans PageSpeed Insights, est-ce grave ?**
+Non. Cela signifie que le trafic Chrome mesurable est insuffisant pour produire un échantillon. Appuyez-vous sur le diagnostic de laboratoire et sur les bonnes pratiques, les données apparaîtront quand l'audience augmentera.

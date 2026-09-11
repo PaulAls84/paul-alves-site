@@ -18,14 +18,6 @@ Volumes : estimations à valider au Keyword Planner (France, FR) au prochain rel
 
 Réalimentée le 2026-09-02 (Keyword Planner France via Cuik + Search Console 06-08/2026).
 
-### 23. Core Web Vitals : comprendre LCP, INP et CLS et les améliorer sur WordPress
-- **status:** todo
-- **slug:** core-web-vitals
-- **mot-clé principal:** core web vitals (1 000/mois), concurrence faible
-- **catégorie:** SEO
-- **angle:** vulgarisation des 3 métriques 2026 (LCP, INP, CLS), comment les lire dans Search Console et PageSpeed, puis les correctifs WordPress concrets (images, cache, polices, JS tiers). Renvoie vers l'article vitesse (position 13) pour le renforcer.
-- **maillage interne suggéré:** optimiser-vitesse-site-wordpress, wp-rocket-avis, hebergement-wordpress
-
 ### 24. Plugin de cache WordPress : WP Rocket, WP Super Cache, LiteSpeed ou W3 Total Cache
 - **status:** todo
 - **slug:** plugin-cache-wordpress
@@ -148,6 +140,11 @@ sans lien affilié ne porte PAS de mention :
 ---
 
 ## Publiés
+
+### Core Web Vitals : comprendre et corriger sur WordPress
+- **status:** done : 2026-09-11
+- **slug:** core-web-vitals
+- **mot-clé principal:** core web vitals (1 000/mois), concurrence faible. Aucun service lié en affiliation (liens non renseignés), donc pas de mention de transparence. Maillage vers optimiser-vitesse-site-wordpress, wp-rocket-avis, hebergement-wordpress, audit-seo-wordpress. Cas présentés comme des situations types : `cas-clients.md` est toujours vide.
 
 ### Audit SEO WordPress : la checklist complète en 6 blocs
 - **status:** done : 2026-09-08
