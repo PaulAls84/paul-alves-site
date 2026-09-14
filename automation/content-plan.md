@@ -18,14 +18,6 @@ Volumes : estimations à valider au Keyword Planner (France, FR) au prochain rel
 
 Réalimentée le 2026-09-02 (Keyword Planner France via Cuik + Search Console 06-08/2026).
 
-### 24. Plugin de cache WordPress : WP Rocket, WP Super Cache, LiteSpeed ou W3 Total Cache
-- **status:** todo
-- **slug:** plugin-cache-wordpress
-- **mot-clé principal:** cache wordpress (110/mois) + plugin cache wordpress (70/mois) + wp super cache (110/mois) + wp fastest cache (110/mois), concurrence faible
-- **catégorie:** Plugins
-- **angle:** comparatif honnête gratuit vs payant, par type d'hébergement (LiteSpeed Cache si hébergeur LiteSpeed, sinon WP Rocket ou Super Cache). Tableau de synthèse. Affiliation WP Rocket si le lien est renseigné.
-- **maillage interne suggéré:** wp-rocket-avis, optimiser-vitesse-site-wordpress, meilleur-plugin-wordpress
-
 ### 25. Site WordPress multilingue : WPML, Polylang ou Weglot
 - **status:** todo
 - **slug:** wordpress-multilingue
@@ -140,6 +132,11 @@ sans lien affilié ne porte PAS de mention :
 ---
 
 ## Publiés
+
+### Plugin de cache WordPress : lequel choisir en 2026
+- **status:** done : 2026-09-14
+- **slug:** plugin-cache-wordpress
+- **mot-clé principal:** cache wordpress (110/mois) + plugin cache wordpress (70/mois) + wp super cache (110/mois) + wp fastest cache (110/mois), concurrence faible. Comparatif LiteSpeed Cache / WP Rocket / WP Super Cache / W3 Total Cache, arbitré par le type de serveur. WP Rocket cité SANS lien affilié (lien non renseigné), donc pas de mention de transparence : à reprendre quand le lien sera rempli. Maillage vers wp-rocket-avis, optimiser-vitesse-site-wordpress, hebergement-wordpress, hebergement-woocommerce, core-web-vitals, sauvegarde-wordpress. Cas présentés comme des situations types : `cas-clients.md` est toujours vide.
 
 ### Core Web Vitals : comprendre et corriger sur WordPress
 - **status:** done : 2026-09-11
