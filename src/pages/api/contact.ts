@@ -31,8 +31,8 @@ export const POST: APIRoute = async ({ request }) => {
 
     // ── Resend ───────────────────────────────────────
     const apiKey = import.meta.env.RESEND_API_KEY
-    const toEmail   = import.meta.env.CONTACT_TO_EMAIL   ?? 'hello@paul-alves.fr'
-    const fromEmail = import.meta.env.CONTACT_FROM_EMAIL ?? 'hello@paul-alves.fr'
+    const toEmail   = import.meta.env.CONTACT_TO_EMAIL   ?? 'contact@paul-alves.fr'
+    const fromEmail = import.meta.env.CONTACT_FROM_EMAIL ?? 'contact@paul-alves.fr'
 
     if (!apiKey) {
       console.error('[contact] RESEND_API_KEY manquante')
@@ -123,7 +123,7 @@ export const POST: APIRoute = async ({ request }) => {
     const { error } = emailResult
     if (error) {
       console.error('[contact] Resend error', error)
-      return new Response(JSON.stringify({ error: 'Erreur d\'envoi. Réessayez ou écris-moi directement à hello@paul-alves.fr.' }), {
+      return new Response(JSON.stringify({ error: 'Erreur d\'envoi. Réessayez ou écris-moi directement à contact@paul-alves.fr.' }), {
         status: 502, headers: { 'Content-Type': 'application/json' },
       })
     }
