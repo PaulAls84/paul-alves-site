@@ -1,0 +1,39 @@
+---
+// Suivi des conversions GA4 (événements clés).
+// - window.track(name, params) : helper utilisé par les formulaires et Cal.com
+// - Clics délégués : tel: → phone_click, mailto: → email_click,
+//   [data-cal-link] → booking_cta_click
+// Les événements passent par gtag et respectent le Consent Mode (Layout.astro).
+---
+<script>
+  const w = window as any
+
+  w.track = (name: string, params: Record<string, unknown> = {}) => {
+    if (typeof w.gtag === 'function') w.gtag('event', name, params)
+  }
+
+  // Emplacement du lien : nav, hero, barre mobile, footer, ou id de section
+  function locate(el: Element): string {
+    if (el.closest('#mobile-bar')) return 'mobile_bar'
+    if (el.closest('nav, header')) return 'nav'
+    if (el.closest('footer')) return 'footer'
+    const section = el.closest('section[id], section[class], aside')
+    return section?.id || section?.classList[0] || 'page'
+  }
+
+  document.addEventListener('click', (e) => {
+    const el = (e.target as Element | null)?.closest('a, button')
+    if (!el) return
+    const href = el.getAttribute('href') ?? ''
+    const link_location = locate(el)
+    const link_text = (el.textContent ?? '').trim().replace(/\s+/g, ' ').slice(0, 60)
+
+    if (href.startsWith('tel:')) {
+      w.track('phone_click', { link_location, link_text })
+    } else if (href.startsWith('mailto:')) {
+      w.track('email_click', { link_location, link_text })
+    } else if (el.hasAttribute('data-cal-link')) {
+      w.track('booking_cta_click', { link_location, link_text })
+    }
+  }, { capture: true })
+</script>

@@ -53,6 +53,7 @@
         msg.style.color = '#2d7a3a'
         msg.textContent = '✓ Merci ! Vous êtes bien inscrit à la newsletter.'
         form.reset()
+        ;(window as any).track?.('sign_up', { method: 'newsletter' })
       } else {
         msg.style.color = '#c0392b'
         msg.textContent = data.error ?? 'Une erreur est survenue. Réessayez.'

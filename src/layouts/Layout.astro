@@ -2,6 +2,8 @@
 import '../styles/global.css'
 import MobileBar from '../components/MobileBar.astro'
 import CookieBanner from '../components/CookieBanner.astro'
+import CalLoader from '../components/CalLoader.astro'
+import Tracking from '../components/Tracking.astro'
 
 interface Props {
   title?: string
@@ -194,5 +196,7 @@ const personSchema = JSON.stringify({
   <slot />
   <MobileBar />
   <CookieBanner />
+  <CalLoader />
+  <Tracking />
 </body>
 </html>

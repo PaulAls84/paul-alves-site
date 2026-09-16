@@ -3,7 +3,6 @@ import Layout from '../layouts/Layout.astro'
 import Nav from '../components/Nav.astro'
 import CTABand from '../components/CTABand.astro'
 import Footer from '../components/Footer.astro'
-import CalLoader from '../components/CalLoader.astro'
 
 import { createReader } from '@keystatic/core/reader'
 import keystaticConfig from '../../keystatic.config'
@@ -687,4 +686,3 @@ const articleSchema = JSON.stringify(faqData ? [articleData, faqData] : articleD
   }
 </script>
 
-<CalLoader />

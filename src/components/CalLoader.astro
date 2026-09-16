@@ -33,7 +33,13 @@
           p(cal, ar)
         }
       })(window, 'https://app.cal.eu/embed/embed.js', 'init')
-      ;(window as any).Cal('init', 'audit-offert', { origin: 'https://cal.eu' })
+      const w = window as any
+      w.Cal('init', 'audit-offert', { origin: 'https://cal.eu' })
+      // Conversion GA4 : rendez-vous confirmé dans la popup
+      w.Cal.ns['audit-offert']('on', {
+        action: 'bookingSuccessfulV2',
+        callback: () => w.track?.('book_appointment', { method: 'cal_com', event_type: 'audit-offert' }),
+      })
     }
 
     const events = ['pointerdown', 'touchstart', 'keydown', 'scroll', 'mousemove'] as const

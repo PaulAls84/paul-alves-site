@@ -2,7 +2,6 @@
 import Layout from '../layouts/Layout.astro'
 import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
-import CalLoader from '../components/CalLoader.astro'
 
 const sujets = [
   'Création de site WordPress',
@@ -184,7 +183,54 @@ const sujets = [
   <Footer />
 </Layout>
 
-<CalLoader />
+<script>
+  // ── Formulaire ───────────────────────────────────
+  const form    = document.getElementById('contactForm') as HTMLFormElement
+  const btn     = document.getElementById('submitBtn') as HTMLButtonElement
+  const msgBox  = document.getElementById('formMsg') as HTMLElement
+  const btnHTML = btn.innerHTML
+
+  function setMsg(text: string, type: 'success' | 'error') {
+    msgBox.textContent = text
+    msgBox.className = `form-msg form-msg--${type}`
+  }
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    if (!form.checkValidity()) {
+      setMsg('Merci de remplir les champs obligatoires avec une adresse email valide.', 'error')
+      return
+    }
+    btn.disabled = true
+    btn.textContent = 'Envoi en cours…'
+    msgBox.className = 'form-msg'
+    msgBox.textContent = ''
+
+    try {
+      const payload = Object.fromEntries(new FormData(form)) as Record<string, string>
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      const json = await res.json()
+
+      if (res.ok && json.success) {
+        setMsg('✓ Message envoyé ! Je vous réponds sous 24h.', 'success')
+        ;(window as any).track?.('generate_lead', { form_name: 'contact', form_subject: payload.sujet })
+        form.reset()
+      } else {
+        setMsg(json.error ?? 'Une erreur est survenue. Réessayez.', 'error')
+      }
+    } catch {
+      setMsg('Problème réseau. Vérifiez votre connexion et réessayez.', 'error')
+    } finally {
+      btn.disabled = false
+      btn.innerHTML = btnHTML
+    }
+  })
+</script>
+
 
 <style>
   /* ── Hero ─────────────────────────────────────── */
