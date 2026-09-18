@@ -18,14 +18,6 @@ Volumes : estimations à valider au Keyword Planner (France, FR) au prochain rel
 
 Réalimentée le 2026-09-02 (Keyword Planner France via Cuik + Search Console 06-08/2026).
 
-### 25. Site WordPress multilingue : WPML, Polylang ou Weglot
-- **status:** todo
-- **slug:** wordpress-multilingue
-- **mot-clé principal:** site multilingue wordpress (110/mois) + wordpress multilingue (70/mois) + wpml (90/mois) + weglot wordpress (50/mois), concurrence moyenne
-- **catégorie:** Plugins
-- **angle:** comparatif des 3 solutions (coût, SEO hreflang, traduction auto vs manuelle, WooCommerce) avec un tableau par profil (vitrine, e-commerce, blog). Affiliation Weglot / WPML si liens renseignés.
-- **maillage interne suggéré:** meilleur-plugin-wordpress, seo-wordpress, creer-boutique-woocommerce
-
 ### 26. Fiche d'établissement Google : la créer, l'optimiser et la faire réactiver si elle est suspendue
 - **status:** todo
 - **slug:** fiche-etablissement-google
@@ -132,6 +124,11 @@ sans lien affilié ne porte PAS de mention :
 ---
 
 ## Publiés
+
+### Site WordPress multilingue : WPML, Polylang ou Weglot
+- **status:** done : 2026-09-18
+- **slug:** wordpress-multilingue
+- **mot-clé principal:** site multilingue wordpress (110/mois) + wordpress multilingue (70/mois) + wpml (90/mois) + weglot wordpress (50/mois), concurrence moyenne. Comparatif WPML / Polylang / Weglot arbitré par le modèle (traduction stockée en base contre service externe), plus TranslatePress et multisite cités en alternatives. Weglot et WPML ne figurent pas dans le tableau d'affiliation : cités SANS lien, donc pas de mention de transparence, à reprendre si les liens sont renseignés. Maillage vers seo-wordpress, creer-boutique-woocommerce, meilleur-plugin-wordpress, maintenance-wordpress, sauvegarde-wordpress, optimiser-vitesse-site-wordpress, rgpd-wordpress. Cas présentés comme des situations types : `cas-clients.md` est toujours vide.
 
 ### Plugin de cache WordPress : lequel choisir en 2026
 - **status:** done : 2026-09-14

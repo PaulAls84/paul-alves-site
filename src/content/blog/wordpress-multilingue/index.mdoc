@@ -1,0 +1,134 @@
+---
+title: "Site WordPress multilingue : WPML, Polylang ou Weglot"
+description: "Traduire son site WordPress : le comparatif honnête de WPML, Polylang et Weglot. Coût réel, SEO et hreflang, traduction automatique, WooCommerce, et le choix selon votre profil."
+publishedAt: '2026-09-18'
+featured: false
+category: Plugins
+image: /images/blog/wordpress-multilingue.jpg
+anchors:
+  - site multilingue
+  - WPML
+  - Polylang
+  - Weglot
+---
+
+> **En bref**
+>
+> - **Polylang** : le bon choix par défaut pour un site vitrine. La version gratuite traduit déjà pages, articles, menus et catégories, et le contenu reste dans votre base de données.
+> - **WPML** : payant uniquement, mais le plus complet dès qu'il y a une boutique, des champs personnalisés partout ou plusieurs traducteurs à coordonner.
+> - **Weglot** : le plus rapide à mettre en route, quasiment sans configuration, mais c'est un abonnement mensuel indexé sur le nombre de mots, et les traductions vivent chez l'éditeur.
+> - **Le piège classique** : croire qu'une traduction automatique non relue va vous ouvrir un marché. Elle vous ouvre surtout des pages que personne ne lit jusqu'au bout.
+> - **Ce qu'aucun des trois ne fera** : décider quelles pages méritent d'être traduites. Un site de trente pages n'a presque jamais besoin de trente pages en anglais.
+
+« On voudrait ajouter l'anglais sur le site » : la demande a l'air anodine, et c'est pourtant l'une des décisions les plus structurantes qu'on puisse prendre sur un site WordPress. Selon la solution retenue, vous multipliez le contenu de votre base de données, ou vous vous engagez dans un abonnement qui grossira avec votre site.
+
+Les trois noms qui reviennent sont toujours les mêmes : WPML, Polylang et Weglot. Ils ne coûtent pas la même chose et surtout ils ne s'adressent pas au même type de site. Voici comment je tranche, avec les vrais défauts de chacun.
+
+## Deux façons très différentes de traduire un site
+
+Avant de comparer des prix, il faut comprendre qu'il existe deux philosophies opposées, et que le choix se joue en grande partie là.
+
+**La traduction stockée dans votre site**, principe de Polylang et de WPML. Chaque page traduite est un contenu WordPress à part entière, relié à sa version originale. Vous possédez vos traductions, vous les modifiez dans l'éditeur habituel, elles partent dans vos [sauvegardes](/sauvegarde-wordpress/) et elles survivent à l'arrêt de l'abonnement. En contrepartie : votre base double ou triple de volume, et chaque contenu doit être traduit explicitement.
+
+**La traduction servie par un service externe**, principe de Weglot. L'extension détecte le texte affiché, l'envoie chez l'éditeur, et sert les versions traduites sur un sous-domaine ou un sous-répertoire dédié. L'installation prend un quart d'heure et couvre tout le site d'un coup. En contrepartie : vos traductions sont hébergées chez un tiers, et le jour où vous arrêtez de payer, les pages traduites disparaissent.
+
+Ce n'est pas un détail technique, c'est une question de propriété, et c'est la question que je pose en premier, avant même celle du budget.
+
+## Polylang : le gratuit qui suffit plus souvent qu'on ne croit
+
+Polylang est développé en France, et sa version gratuite est réellement utilisable en production : traduction des articles, des pages, des catégories, des étiquettes, des menus et des widgets, gestion des URL par répertoire ou par sous-domaine, et balises `hreflang` générées automatiquement. Pour un site vitrine bilingue, c'est souvent tout ce qu'il faut.
+
+Son fonctionnement est simple : chaque langue est un contenu séparé, relié aux autres par un sélecteur de langue. Vous pouvez donc avoir une page « Tarifs » en français et une page « Pricing » en anglais qui ne disent pas exactement la même chose, ce qui est souvent souhaitable.
+
+Ses limites sont nettes. La version gratuite ne traduit pas les chaînes venues de certaines extensions ni les champs personnalisés complexes ; il faut la version Pro, autour de 99 € par an pour un site, et un module WooCommerce facturé à part. Pas de traduction automatique intégrée non plus : tout se saisit à la main. Et l'interface est utilitaire, elle suppose que vous ayez compris la logique « un contenu par langue ».
+
+## WPML : le plus complet, et le plus lourd
+
+WPML n'a pas de version gratuite. Les offres publiques démarrent autour de 39 $ la première année pour un usage blog, mais la seule réellement exploitable sur un site d'entreprise est l'offre CMS, autour de 99 $ la première année, avec un renouvellement moins cher. Vérifiez les tarifs à jour avant de décider : ils bougent régulièrement.
+
+Ce que vous payez est réel. WPML traduit à peu près tout ce qu'un site peut contenir : contenus, taxonomies, menus, chaînes des extensions et des thèmes, champs personnalisés, formulaires, et surtout WooCommerce (produits, variations, attributs, catégories, devises) via son module dédié, qui reste la solution la plus mature pour une boutique multilingue. Il ajoute une vraie gestion de projet : file de traduction, attribution à un traducteur, suivi de l'avancement, crédits de traduction automatique via DeepL ou Google.
+
+Ses défauts sont connus et je les annonce toujours. C'est l'extension la plus gourmande des trois : elle ajoute ses propres tables et des jointures supplémentaires sur presque chaque requête, ce qui se sent sur un hébergement mutualisé modeste. Elle s'installe en plusieurs modules qu'il faut activer séparément. Et la désinstaller proprement après des mois d'utilisation n'est pas une opération anodine : prévoyez une sauvegarde et un environnement de test.
+
+## Weglot : le plus rapide, le plus cher à la longue
+
+Weglot est un service français qui a choisi l'angle inverse : vous connectez une clé d'API, vous choisissez vos langues, et le site est traduit dans la foulée, y compris les textes que vous aviez oubliés. Les pages traduites sont servies sur des URL distinctes et indexables, avec les `hreflang` posés correctement, et vous pouvez ensuite corriger chaque phrase dans un éditeur visuel.
+
+Pour une mise en ligne rapide, c'est imbattable, et c'est la seule des trois solutions qui traduit sans effort les textes injectés par un constructeur de pages ou une extension récalcitrante.
+
+Le modèle économique est le point à regarder de près. Le palier gratuit est limité (quelques milliers de mots, une seule langue), puis les abonnements sont mensuels et indexés sur le nombre de mots traduits et de langues. Un site vitrine tient dans les premières offres ; un catalogue de plusieurs centaines de fiches change de palier très vite, et la facture ne s'arrête jamais. S'ajoute la dépendance : les traductions étant stockées chez l'éditeur, l'arrêt de l'abonnement fait disparaître les versions traduites.
+
+### Et les autres ?
+
+**TranslatePress** est la troisième voie à connaître : gratuit pour l'essentiel, traduction dans un aperçu visuel du site, payant autour de 99 € par an. **Un multisite WordPress**, un site par langue, se défend pour une organisation qui veut des contenus vraiment différents par pays, mais c'est un choix d'infrastructure : trois fois plus de mises à jour et de [maintenance](/maintenance-wordpress/).
+
+## Le tableau de synthèse
+
+| Critère | Polylang | WPML | Weglot |
+|---|---|---|---|
+| Version gratuite | Oui, utilisable | Non | Palier très limité |
+| Prix indicatif | ~99 €/an (Pro) | ~99 $/an (CMS) | Abonnement mensuel selon le volume |
+| Où vivent les traductions | Votre base | Votre base | Serveurs de l'éditeur |
+| Temps de mise en route | Moyen | Long | Très court |
+| Traduction automatique | Via module | Incluse (crédits) | Native, sur tout le site |
+| Chaînes des extensions | Version Pro | Complet | Automatique |
+| WooCommerce | Module payant | Le plus abouti | Front correct, e-mails non couverts |
+| Balises hreflang | Oui | Oui | Oui |
+| Impact sur les performances | Faible à modéré | Le plus élevé | Faible côté serveur |
+| Réversibilité | Bonne | Délicate | Perte des traductions |
+
+## Ce que le SEO multilingue exige, quel que soit l'outil
+
+Les trois solutions posent les bases correctement, mais aucune ne dispense des règles de fond, détaillées dans mon [guide du SEO WordPress](/seo-wordpress/) :
+
+- **Une URL distincte par langue**, en sous-répertoire (`/en/`) ou en sous-domaine. Un site qui change de langue sans changer d'URL n'est pas indexable en deux langues, quel que soit le rendu à l'écran.
+- **Des balises `hreflang` réciproques**, incluant la version d'origine et une valeur `x-default`.
+- **Un sitemap qui contient les pages traduites.** Vérifiez-le une fois en ligne, c'est l'oubli le plus fréquent.
+- **Des métadonnées traduites** : titre et description, pas seulement le corps de la page.
+- **De la traduction relue.** Google ne pénalise pas la traduction automatique en soi, mais une page mal traduite ne retient personne, et cela finit toujours par se voir dans les statistiques.
+
+## Deux situations types
+
+**Le cas le plus fréquent : un site vitrine d'une vingtaine de pages qui veut ajouter l'anglais pour une clientèle étrangère occasionnelle.** Le réflexe est de traduire l'intégralité du site. Ce que je fais : je ramène le périmètre à ce qui sert vraiment, en général la page d'accueil, une ou deux pages de services, la page contact et les mentions légales, soit cinq pages. Polylang en version gratuite suffit, les traductions sont relues par un humain, et le sélecteur de langue est placé dans l'en-tête. Ce qu'on obtient : un site bilingue propre, sans abonnement supplémentaire, sans contenu fantôme, et un blog qui reste en français seulement, ce qui est parfaitement admissible pour Google.
+
+**Le deuxième cas classique : une boutique WooCommerce de plusieurs centaines de références qui veut vendre en français, anglais et allemand.** C'est là que le choix devient coûteux dans les deux sens. Une solution facturée au mot change de palier tarifaire dès qu'on additionne les fiches produit, les variations et les descriptions courtes ; une solution stockée en base multiplie les lignes et fait travailler le serveur davantage. Ce que je fais : je pars sur WPML avec son module WooCommerce, parce que c'est le seul à gérer proprement les attributs, les variations et les catégories de produits, et je prévois un hébergement à la hauteur, avec du cache objet, comme expliqué dans mon guide pour [créer une boutique WooCommerce](/creer-boutique-woocommerce/). Ce qu'on obtient : un catalogue réellement traduit et indexable, au prix d'une installation plus longue et d'une vigilance sur les performances.
+
+## Ma recommandation par profil
+
+- **Site vitrine bilingue, budget serré** : Polylang gratuit, traductions relues à la main.
+- **Site vitrine pressé, plusieurs langues d'un coup** : Weglot, en acceptant l'abonnement et la dépendance.
+- **Boutique WooCommerce multilingue** : WPML avec le module WooCommerce, sans hésiter.
+- **Site d'entreprise avec des traducteurs externes** : WPML, pour sa file de traduction.
+- **Non-technicien qui veut traduire en voyant le rendu** : TranslatePress.
+- **Filiales avec des contenus vraiment différents par pays** : un multisite, en connaissance de cause.
+
+## Les erreurs qui coûtent cher
+
+> Traduire automatiquement 300 pages en trois langues, c'est créer 900 pages que personne ne relira jamais. Le jour où il faudra corriger une mention légale, elle sera fausse en trois langues.
+
+Les autres pièges, dans l'ordre où je les rencontre :
+
+1. **Changer de solution après six mois.** Passer de Weglot à Polylang signifie recréer les traductions ; passer de WPML à autre chose laisse des résidus en base. Décidez une fois, correctement.
+2. **Oublier les contenus invisibles** : formulaires, messages d'erreur, e-mails de commande, textes du thème. C'est ce qui fait qu'un site « traduit » reste à moitié en français.
+3. **Traduire le blog entier par principe.** Le blog est un investissement éditorial ; en double, c'est un coût double pour un trafic rarement doublé.
+4. **Négliger l'impact sur la vitesse.** Une base qui triple sur un mutualisé modeste se ressent : le sujet est traité dans mon guide pour [optimiser la vitesse de votre site WordPress](/optimiser-vitesse-site-wordpress/).
+5. **Installer deux extensions multilingues en parallèle** pour comparer. Elles se disputent les URL et les `hreflang` : testez sur une copie, jamais en production.
+
+## Conclusion
+
+Il n'y a pas de meilleure extension multilingue dans l'absolu, il y a un modèle qui correspond à votre situation. Pour une vitrine dont vous voulez posséder les traductions, Polylang fait le travail sans rien coûter. Pour une boutique ou une structure de contenu complexe, WPML reste le plus solide malgré son poids. Et si la priorité est d'être en ligne en trois langues cette semaine, Weglot y arrivera, à condition d'accepter l'abonnement et la dépendance qui va avec.
+
+Le vrai arbitrage est en amont de l'outil : décidez quelles pages méritent une seconde langue, et qui les relira. Une poignée de pages traduites correctement vaut mieux qu'un site entier traduit par une machine. Pour le reste de la boîte à outils, j'ai rassemblé mes choix dans mon comparatif des [meilleurs plugins WordPress](/meilleur-plugin-wordpress/).
+
+Ni WPML, ni Polylang, ni Weglot ne sont cités ici avec un lien affilié.
+
+## FAQ
+
+**Peut-on traduire un site WordPress sans extension ?**
+Oui, en installant un site par langue (multisite ou installations séparées). C'est viable pour une structure qui veut des contenus réellement différents par pays, mais cela multiplie les mises à jour, les sauvegardes et la surveillance. Pour un site vitrine, une extension coûte beaucoup moins cher en temps.
+
+**La traduction automatique est-elle pénalisée par Google ?**
+Pas en tant que telle. Ce que Google sanctionne, c'est le contenu sans valeur, et une traduction automatique non relue en produit souvent : contresens, ton mécanique, termes métier approximatifs. La bonne méthode est de traduire automatiquement pour dégrossir, puis de faire relire les pages qui comptent par quelqu'un qui parle la langue.
+
+**Faut-il traduire les mentions légales et la politique de confidentialité ?**
+Oui, dès lors que vous vous adressez à des visiteurs étrangers, et c'est aussi valable pour le bandeau de cookies et les formulaires de contact. C'est le premier endroit où un site « multilingue » se révèle ne l'être qu'à moitié, et c'est le plus gênant vis-à-vis du [RGPD](/rgpd-wordpress/).
