@@ -18,14 +18,6 @@ Volumes : estimations à valider au Keyword Planner (France, FR) au prochain rel
 
 Réalimentée le 2026-09-02 (Keyword Planner France via Cuik + Search Console 06-08/2026).
 
-### 26. Fiche d'établissement Google : la créer, l'optimiser et la faire réactiver si elle est suspendue
-- **status:** todo
-- **slug:** fiche-etablissement-google
-- **mot-clé principal:** créer une fiche google my business (590/mois) + fiche google suspendue (210/mois) + fiche établissement google (2 900/mois), concurrence faible
-- **catégorie:** SEO
-- **angle:** guide opérationnel pour TPE/artisans : création pas à pas, validation, les 8 champs qui comptent, avis, posts, et la procédure de réactivation d'une fiche suspendue (sujet peu couvert). Complète l'article référencement local sans le doublonner (renvoi explicite).
-- **maillage interne suggéré:** referencement-local, seo-wordpress, prix-site-wordpress
-
 ### 27. Formulaire de contact WordPress : quel plugin choisir et comment l'installer
 - **status:** todo
 - **slug:** formulaire-contact-wordpress
@@ -124,6 +116,11 @@ sans lien affilié ne porte PAS de mention :
 ---
 
 ## Publiés
+
+### Fiche d'établissement Google : créer, optimiser, réactiver
+- **status:** done : 2026-09-21
+- **slug:** fiche-etablissement-google
+- **mot-clé principal:** créer une fiche google my business (590/mois) + fiche google suspendue (210/mois) + fiche établissement google (2 900/mois), concurrence faible. Guide opérationnel TPE/artisans : création, validation (dont la vidéo), champs qui comptent, avis et posts, puis la procédure complète de réactivation d'une fiche suspendue (tableau des motifs). Renvoi explicite vers referencement-local pour la stratégie d'ensemble, sans doublonner sa section fiche. Aucun service lié en affiliation (liens non renseignés), donc pas de mention de transparence. Maillage vers referencement-local et seo-wordpress. Cas présentés comme des situations types : `cas-clients.md` est toujours vide.
 
 ### Site WordPress multilingue : WPML, Polylang ou Weglot
 - **status:** done : 2026-09-18
