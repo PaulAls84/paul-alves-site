@@ -1,0 +1,140 @@
+---
+title: "Formulaire de contact WordPress : quel plugin choisir"
+description: "Contact Form 7, WPForms, Fluent Forms ou Gravity Forms : le comparatif honnête, l'installation pas à pas, l'anti-spam qui marche et le réglage SMTP sans lequel vos messages n'arrivent jamais."
+publishedAt: '2026-09-25'
+featured: false
+category: Plugins
+image: /images/blog/formulaire-contact-wordpress.jpg
+anchors:
+  - formulaire de contact
+  - plugin de formulaire
+  - Contact Form 7
+  - WPForms
+---
+
+> **En bref**
+>
+> - **La réponse courte** : pour un site vitrine classique, Fluent Forms ou WPForms Lite. Les deux sont gratuits, se construisent à la souris, et suffisent à 90 % des besoins.
+> - **Pour qui Contact Form 7** : un site simple, tenu par quelqu'un qui n'a pas peur d'un champ de code. Gratuit, éprouvé, mais aucune interface visuelle et aucun enregistrement des messages sans extension complémentaire.
+> - **Pour qui le payant se justifie** : formulaires longs à logique conditionnelle, paiement en ligne, devis en plusieurs étapes, connexion à un CRM. Là, Gravity Forms ou les versions Pro tiennent la route.
+> - **Le piège classique** : croire que le problème vient du plugin alors que les messages partent bien mais finissent en spam. Neuf pannes sur dix se règlent avec un envoi SMTP authentifié, pas en changeant d'extension.
+> - **Ce qu'aucun plugin ne fait pour vous** : la conformité RGPD. Case de consentement, durée de conservation et mention dans la politique de confidentialité restent votre responsabilité.
+
+Le formulaire de contact est la pièce la plus banale d'un site professionnel, et celle qui tombe en panne le plus silencieusement. Personne ne vous prévient qu'il ne fonctionne plus : les demandes cessent simplement d'arriver, et on met parfois des semaines à s'en apercevoir.
+
+C'est aussi un choix qu'on fait une fois et qu'on garde des années, parce que changer d'extension veut dire refaire chaque formulaire. Autant le faire correctement. Voici comment je tranche entre les quatre extensions sérieuses du marché, et surtout les trois réglages qui décident si vos messages arrivent vraiment.
+
+## Ce qu'un formulaire doit savoir faire
+
+Le cahier des charges minimal tient en cinq points : envoyer une notification fiable à la bonne adresse, enregistrer les messages en base pour ne rien perdre si l'e-mail se perd, filtrer le spam sans punir le visiteur, confirmer visiblement l'envoi par une page de remerciement mesurable, et rester conforme au RGPD.
+
+Tout le reste (logique conditionnelle, paiement, formulaires en plusieurs étapes) relève de besoins métier plus avancés. C'est précisément ce qui sépare les versions gratuites des versions payantes.
+
+## Les quatre extensions, sans complaisance
+
+### Contact Form 7
+
+La plus ancienne et la plus installée. Gratuite, sans version payante, sans relance commerciale dans l'administration, et d'une légèreté que personne n'égale.
+
+Son fonctionnement est resté fidèle à son époque : on décrit le formulaire dans un champ de texte, avec des balises du type `[text* votre-nom]`, puis on colle un shortcode dans la page. Pas de construction visuelle, pas d'aperçu. Rapide pour quelqu'un à l'aise, mur infranchissable pour le client qui voudra ajouter un champ six mois plus tard.
+
+Deux limites à connaître. **Les messages ne sont pas enregistrés** : si l'e-mail se perd, la demande est perdue avec lui, sauf à installer Flamingo, l'extension compagnon du même auteur. Et le rendu par défaut est brut, à styler soi-même. En face, elle ne ralentit pratiquement rien et ne vous vendra jamais rien.
+
+### WPForms
+
+Le constructeur visuel le plus répandu. La version Lite est gratuite et couvre un formulaire de contact standard : glisser-déposer des champs, modèles prêts à l'emploi, notifications, confirmation, protection anti-spam intégrée.
+
+C'est l'extension que je conseille le plus souvent à quelqu'un qui gérera son site seul, parce que l'interface est en français et que personne n'a besoin d'une documentation pour ajouter un champ. Le revers est commercial : l'administration pousse activement vers les offres payantes, et des fonctions banales ailleurs (enregistrement des entrées en base, logique conditionnelle, champ de téléversement) sont réservées aux versions Pro, facturées à l'année par palier de fonctionnalités.
+
+### Fluent Forms
+
+Le meilleur rapport fonctions/prix du lot, et ma préférence par défaut sur un site vitrine. La version gratuite propose le constructeur visuel, l'enregistrement des entrées, la logique conditionnelle et un anti-spam correct, c'est-à-dire des choses que ses concurrents réservent à leurs offres payantes.
+
+Elle est aussi plus légère que la moyenne, ses scripts n'étant chargés que sur les pages qui contiennent réellement un formulaire. Ses vraies faiblesses : une communauté plus petite, donc moins de tutoriels en français, et une interface qui expose beaucoup d'options d'un coup.
+
+### Gravity Forms
+
+Pas de version gratuite, licence annuelle obligatoire. C'est l'outil des formulaires qui font du travail : devis calculés, inscriptions avec conditions, connexions à des systèmes tiers, extensions officielles nombreuses et maintenues.
+
+Pour un simple « nom, e-mail, message », c'est surdimensionné et vous paierez une licence pour trois champs. Pour un formulaire de demande de devis en cinq étapes qui alimente un CRM, c'est l'option la plus solide et la mieux documentée.
+
+### Et les formulaires natifs des constructeurs de pages ?
+
+Elementor Pro et Divi proposent leur propre module de formulaire. C'est pratique : même interface, même style, rien à installer de plus. C'est aussi un piège à moyen terme. Vos formulaires deviennent **prisonniers du constructeur** : le jour où vous changez de thème ou abandonnez le builder, ils disparaissent avec lui. Les fonctions de gestion (entrées, exports, filtres anti-spam) restent par ailleurs en retrait face à une extension dédiée. Je les réserve à un formulaire ponctuel, jamais au formulaire de contact principal.
+
+## Le tableau de synthèse
+
+| | Contact Form 7 | WPForms Lite | Fluent Forms | Gravity Forms |
+|---|---|---|---|---|
+| Prix | Gratuit | Gratuit, Pro payant | Gratuit, Pro payant | Payant uniquement |
+| Construction visuelle | Non | Oui | Oui | Oui |
+| Entrées enregistrées | Via Flamingo | Version Pro | Version gratuite | Oui |
+| Logique conditionnelle | Non | Version Pro | Version gratuite | Oui |
+| Poids sur le site | Très léger | Moyen | Léger | Moyen |
+| Facilité pour un non-technicien | Faible | Très bonne | Bonne | Bonne |
+| Pour qui | Site simple, profil technique | Site vitrine géré par son propriétaire | Site vitrine exigeant | Formulaires métier, devis, CRM |
+
+## Installer un formulaire qui fonctionne vraiment
+
+La procédure est la même quelle que soit l'extension retenue :
+
+1. **Installez une seule extension** de formulaire depuis Extensions > Ajouter. En empiler deux ajoute des scripts pour rien.
+2. **Partez d'un modèle « contact »** et retirez les champs inutiles. Chaque champ supplémentaire fait baisser le taux de remplissage, et le RGPD impose de ne collecter que le nécessaire.
+3. **Réglez la notification.** Destinataire : une adresse sur votre domaine. Expéditeur : une adresse **de votre domaine également**, jamais celle du visiteur (c'est la cause la plus fréquente de rejet par les serveurs de messagerie). Champ « Répondre à » : l'e-mail saisi dans le formulaire.
+4. **Activez l'enregistrement des entrées** si l'extension le permet, et **configurez une page de remerciement** dédiée plutôt qu'un simple message : elle est mesurable dans vos statistiques.
+5. **Testez depuis une adresse externe** au site, pas depuis votre propre boîte, et regardez aussi le dossier indésirables.
+
+## L'e-mail qui n'arrive pas : le vrai sujet
+
+C'est de loin le premier motif d'appel sur un formulaire. Et dans la plupart des cas, le formulaire fonctionne parfaitement.
+
+Par défaut, WordPress envoie ses messages via la fonction `mail()` de PHP, depuis le serveur d'hébergement, sans authentification. Les filtres des messageries, Gmail et Outlook en tête, considèrent ce type d'envoi comme suspect : le message part, mais atterrit en indésirables, ou est rejeté silencieusement. Certains hébergeurs mutualisés bloquent même complètement cette fonction.
+
+La solution est toujours la même : **faire partir les e-mails par un envoi SMTP authentifié**, avec une extension comme FluentSMTP (gratuite), WP Mail SMTP ou Post SMTP. Vous y renseignez un compte d'envoi (celui de votre hébergeur, de votre messagerie professionnelle, ou d'un service d'envoi transactionnel), et les messages partent alors d'un expéditeur identifié.
+
+Complétez par les trois enregistrements DNS qui prouvent que vous avez le droit d'envoyer au nom de votre domaine : **SPF**, **DKIM** et **DMARC**. Votre hébergeur ou votre fournisseur de messagerie documente les valeurs à poser. C'est vingt minutes de travail, une fois, et cela règle le problème de façon durable.
+
+## Anti-spam : ce qui marche, ce qui gêne
+
+Trois couches, à activer dans cet ordre :
+
+- **Le honeypot** : un champ invisible que les robots remplissent et pas les humains. Aucun effet sur le visiteur, intégré à la plupart des extensions, à activer systématiquement.
+- **Cloudflare Turnstile** : un test invisible dans la grande majorité des cas, gratuit, et sans les questions de transfert de données que pose reCAPTCHA. C'est mon choix par défaut aujourd'hui.
+- **Akismet** : analyse le contenu du message plutôt que l'expéditeur. Gratuit pour un usage personnel, payant pour un site commercial.
+
+Ce que j'évite : le reCAPTCHA « cochez la case », qui fait perdre des demandes réelles, et toute question piège du type « combien font 7 + 3 », qui arrête les humains pressés bien plus sûrement que les robots. Un formulaire doit filtrer sans punir celui qui veut vous écrire.
+
+## RGPD : quatre points à ne pas rater
+
+Un formulaire collecte des données personnelles, donc les règles s'appliquent. Le détail est dans mon guide [RGPD et WordPress](/rgpd-wordpress/) ; pour le formulaire lui-même, retenez ceci :
+
+- **Une case de consentement non pré-cochée**, avec un lien vers la politique de confidentialité, et une case distincte pour la newsletter : un consentement ne vaut que pour une finalité.
+- **Le minimum de champs.** Demander une date de naissance pour un devis de peinture ne se justifie pas.
+- **Une durée de conservation bornée** : les entrées s'accumulent indéfiniment si personne ne fait le ménage, prévoyez une purge annuelle.
+- **La mention du service anti-spam** utilisé, puisqu'il traite des données du visiteur.
+
+## Deux situations types
+
+**Le cas le plus fréquent : le site vitrine dont les messages ne sont jamais arrivés.** Un artisan constate qu'il ne reçoit plus rien depuis des mois, alors que le formulaire affiche bien « Merci, votre message a été envoyé ». L'expéditeur configuré est l'adresse du visiteur, et l'envoi passe par la fonction `mail()` de PHP sur un mutualisé. Ce qu'on fait : on bascule l'expéditeur sur une adresse du domaine, on installe une extension SMTP branchée sur la messagerie professionnelle, on pose SPF et DKIM, et on active l'enregistrement des entrées. Ce qu'on obtient : des notifications qui arrivent en boîte de réception, et une copie de chaque demande consultable dans l'administration même en cas de problème de messagerie.
+
+**L'autre cas classique : le formulaire noyé sous le spam.** Un site reçoit tant de messages automatiques que les vraies demandes passent inaperçues, avec pour seule protection un calcul à résoudre qui décourage aussi les visiteurs. Ce qu'on fait : on retire le calcul, on active le honeypot, on ajoute Turnstile et on réduit le formulaire à quatre champs. Ce qu'on obtient : une boîte de réception lisible, sans obstacle ajouté pour le visiteur légitime.
+
+## Conclusion
+
+Pour un site vitrine, prenez Fluent Forms ou WPForms Lite et n'y pensez plus. Contact Form 7 reste un excellent choix si vous êtes à l'aise techniquement et que la légèreté prime. Gravity Forms se justifie quand le formulaire devient un outil de travail, pas avant.
+
+Mais quelle que soit l'extension, la partie qui décide de tout est ailleurs : un envoi SMTP authentifié, un anti-spam invisible, et une case de consentement propre. C'est là que se gagnent ou se perdent les demandes. Si vous montez votre site en ce moment, la suite logique est mon guide pour [créer un site WordPress](/creer-un-site-wordpress/), et pour le reste de votre installation, ma sélection des [meilleurs plugins WordPress](/meilleur-plugin-wordpress/).
+
+## FAQ
+
+**Faut-il vraiment une extension, ou puis-je mettre mon adresse e-mail sur la page ?**
+Une adresse affichée en clair est collectée par les robots en quelques jours et se retrouve sur des listes de spam. Le formulaire protège votre adresse, structure la demande et vous permet de mesurer vos conversions. Affichez aussi un téléphone, mais gardez le formulaire.
+
+**Mon formulaire affiche « message envoyé » mais je ne reçois rien. D'où ça vient ?**
+Dans la grande majorité des cas, de l'envoi lui-même et non du formulaire. Configurez un envoi SMTP authentifié, mettez une adresse de votre domaine en expéditeur, et vérifiez vos enregistrements SPF et DKIM. Testez ensuite depuis une adresse extérieure au site.
+
+**Contact Form 7 est-il dépassé en 2026 ?**
+Non, il est toujours maintenu et parfaitement fonctionnel. Il est simplement resté un outil pour profils techniques, sans construction visuelle ni enregistrement des messages. C'est un choix de confort, pas de qualité.
+
+**Peut-on changer d'extension de formulaire sans tout casser ?**
+Oui, mais il faut reconstruire les formulaires à la main, remplacer les shortcodes dans les pages et vérifier les notifications. Faites une [sauvegarde](/sauvegarde-wordpress/) avant, gardez l'ancienne extension désactivée quelques jours plutôt que supprimée, et exportez les anciennes entrées si vous en avez besoin.

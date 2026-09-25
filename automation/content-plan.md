@@ -18,14 +18,6 @@ Volumes : estimations à valider au Keyword Planner (France, FR) au prochain rel
 
 Réalimentée le 2026-09-02 (Keyword Planner France via Cuik + Search Console 06-08/2026).
 
-### 27. Formulaire de contact WordPress : quel plugin choisir et comment l'installer
-- **status:** todo
-- **slug:** formulaire-contact-wordpress
-- **mot-clé principal:** formulaire de contact wordpress (110/mois) + formulaire wordpress (70/mois) + plugin formulaire wordpress (20/mois), concurrence moyenne
-- **catégorie:** Plugins
-- **angle:** comparatif Contact Form 7, WPForms, Fluent Forms, Gravity Forms + formulaire natif des builders ; installation, anti-spam (Turnstile, honeypot), envoi fiable des mails (SMTP), RGPD. Tableau de synthèse.
-- **maillage interne suggéré:** meilleur-plugin-wordpress, rgpd-wordpress, creer-un-site-wordpress
-
 ### 28. Recherche de mots-clés : la méthode pour trouver ceux qui rapportent
 - **status:** todo
 - **slug:** recherche-mots-cles
@@ -116,6 +108,11 @@ sans lien affilié ne porte PAS de mention :
 ---
 
 ## Publiés
+
+### Formulaire de contact WordPress : quel plugin choisir
+- **status:** done : 2026-09-25
+- **slug:** formulaire-contact-wordpress
+- **mot-clé principal:** formulaire de contact wordpress (110/mois) + formulaire wordpress (70/mois) + plugin formulaire wordpress (20/mois), concurrence moyenne. Comparatif Contact Form 7 / WPForms Lite / Fluent Forms / Gravity Forms, plus les formulaires natifs d'Elementor et Divi, arbitré par le profil de celui qui gérera le site. Tableau de synthèse, installation pas à pas, envoi SMTP authentifié (SPF/DKIM/DMARC), anti-spam (honeypot, Turnstile, Akismet) et RGPD. Aucun des services cités ne figure au tableau d'affiliation : cités SANS lien, donc pas de mention de transparence. Maillage vers rgpd-wordpress, creer-un-site-wordpress, meilleur-plugin-wordpress, sauvegarde-wordpress. Cas présentés comme des situations types : `cas-clients.md` est toujours vide.
 
 ### Fiche d'établissement Google : créer, optimiser, réactiver
 - **status:** done : 2026-09-21
