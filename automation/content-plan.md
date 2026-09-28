@@ -18,14 +18,6 @@ Volumes : estimations à valider au Keyword Planner (France, FR) au prochain rel
 
 Réalimentée le 2026-09-02 (Keyword Planner France via Cuik + Search Console 06-08/2026).
 
-### 28. Recherche de mots-clés : la méthode pour trouver ceux qui rapportent
-- **status:** todo
-- **slug:** recherche-mots-cles
-- **mot-clé principal:** recherche de mots clés (320/mois) + mots clés seo (480/mois) + trouver des mots clés (260/mois), concurrence moyenne
-- **catégorie:** SEO
-- **angle:** méthode pratique pour une PME : intention de recherche, longue traîne, outils gratuits (Search Console, Keyword Planner, suggestions Google) puis payants, et comment transformer une liste en plan de pages. Illustrer avec des situations types (artisan local, e-commerce de niche).
-- **maillage interne suggéré:** seo-wordpress, referencement-local, audit-seo-wordpress
-
 ### 29. Backlinks : comment obtenir des liens de qualité sans se faire pénaliser
 - **status:** todo
 - **slug:** backlinks
@@ -108,6 +100,11 @@ sans lien affilié ne porte PAS de mention :
 ---
 
 ## Publiés
+
+### Recherche de mots-clés : trouver ceux qui rapportent
+- **status:** done : 2026-09-28
+- **slug:** recherche-mots-cles
+- **mot-clé principal:** recherche de mots clés (320/mois) + mots clés seo (480/mois) + trouver des mots clés (260/mois), concurrence moyenne. Méthode pour une PME : les quatre intentions de recherche, la Search Console et les suggestions Google avant tout outil payant, le Keyword Planner et ses limites, la longue traîne (tableau comparatif), puis la transformation de la liste en plan de pages en quatre étapes. Aucun service lié en affiliation (liens non renseignés), donc pas de mention de transparence : Semrush, Ahrefs et Ubersuggest sont cités SANS lien. Maillage vers audit-seo-wordpress, seo-wordpress, referencement-local. Cas présentés comme des situations types (artisan local, boutique de niche) : `cas-clients.md` est toujours vide.
 
 ### Formulaire de contact WordPress : quel plugin choisir
 - **status:** done : 2026-09-25
