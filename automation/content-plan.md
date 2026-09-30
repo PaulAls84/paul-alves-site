@@ -18,14 +18,6 @@ Volumes : estimations à valider au Keyword Planner (France, FR) au prochain rel
 
 Réalimentée le 2026-09-02 (Keyword Planner France via Cuik + Search Console 06-08/2026).
 
-### 29. Backlinks : comment obtenir des liens de qualité sans se faire pénaliser
-- **status:** todo
-- **slug:** backlinks
-- **mot-clé principal:** backlinks (2 400/mois) + backlinks de qualité (70/mois) + backlink toxique (50/mois), concurrence moyenne
-- **catégorie:** SEO
-- **angle:** ce qu'est un bon lien en 2026, les 6 techniques réalistes pour une PME (annuaires locaux, partenaires, presse locale, contenu de référence, liens cassés, mentions non liées), ce qu'il faut éviter (achat massif, PBN) et comment auditer son profil de liens.
-- **maillage interne suggéré:** seo-wordpress, audit-seo-wordpress, recherche-mots-cles
-
 ### 30. Développeur WordPress freelance : comment le choisir et combien ça coûte
 - **status:** todo
 - **slug:** developpeur-wordpress-freelance
@@ -100,6 +92,11 @@ sans lien affilié ne porte PAS de mention :
 ---
 
 ## Publiés
+
+### Backlinks : obtenir des liens de qualité sans pénalité
+- **status:** done : 2026-09-30
+- **slug:** backlinks
+- **mot-clé principal:** backlinks (2 400/mois) + backlinks de qualité (70/mois) + backlink toxique (50/mois), concurrence moyenne. Ce qu'est un bon lien (pertinence, trafic réel de la page liante, ancre, contexte), les six techniques réalistes pour une PME (annuaires locaux et professionnels, partenaires et fournisseurs, presse locale, contenu de référence, liens cassés, mentions non liées) avec un tableau effort/délai/risque, les pratiques à fuir (packs de liens, PBN, échanges systématiques, sur-optimisation des ancres) et l'audit du profil de liens via la Search Console, avec la réserve de Google sur l'outil de désaveu. Aucun service lié en affiliation (aucun outil SEO cité avec lien), donc pas de mention de transparence. Maillage vers referencement-local, recherche-mots-cles, audit-seo-wordpress, seo-wordpress et la page contact. Cas présentés comme des situations types : `cas-clients.md` est toujours vide.
 
 ### Recherche de mots-clés : trouver ceux qui rapportent
 - **status:** done : 2026-09-28
