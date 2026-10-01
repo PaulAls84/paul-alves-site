@@ -18,13 +18,9 @@ Volumes : estimations à valider au Keyword Planner (France, FR) au prochain rel
 
 Réalimentée le 2026-09-02 (Keyword Planner France via Cuik + Search Console 06-08/2026).
 
-### 30. Développeur WordPress freelance : comment le choisir et combien ça coûte
-- **status:** todo
-- **slug:** developpeur-wordpress-freelance
-- **mot-clé principal:** développeur wordpress freelance (140/mois) + developpeur freelance wordpress (140/mois), concurrence moyenne
-- **catégorie:** WordPress
-- **angle:** page à intention commerciale : freelance vs agence vs plateforme (Malt), grille de tarifs réalistes (TJM, forfaits), les 7 questions à poser avant de signer, les signaux d'alerte. Renvoi naturel vers la page Services et le rendez-vous offert. Ne jamais dénigrer la concurrence nommément.
-- **maillage interne suggéré:** prix-site-wordpress, creer-un-site-wordpress, maintenance-wordpress
+**La file d'attente est vide.** Prochain run : réalimenter le backlog (analyse de
+mots-clés Cuik / Search Console, clusters non encore couverts) avant toute
+publication.
 
 ---
 
@@ -92,6 +88,11 @@ sans lien affilié ne porte PAS de mention :
 ---
 
 ## Publiés
+
+### Développeur WordPress freelance : comment le choisir
+- **status:** done : 2026-10-01
+- **slug:** developpeur-wordpress-freelance
+- **mot-clé principal:** développeur wordpress freelance (140/mois) + developpeur freelance wordpress (140/mois), concurrence moyenne. Page à intention commerciale : comparatif freelance / agence / plateforme (Malt citée sans dénigrement, commission mentionnée sans chiffre inventé), forfait contre TJM, les sept questions à poser avant de signer, six signaux d'alerte. Conflit d'intérêts annoncé en intro (Paul est lui-même freelance) et deuxième cas type où l'agence est le bon choix, pour rester honnête. Tarifs cités : uniquement les tarifs publics de la page Services (création dès 1 500 €, refonte dès 1 200 €, SEO dès 800 €, performances dès 600 €, sécurisation dès 400 €, maintenance 150 €/mois), aucune moyenne de marché inventée. Aucun service lié en affiliation, donc pas de mention de transparence. Maillage vers prix-site-wordpress, maintenance-wordpress, creer-un-site-wordpress, et les pages services et contact. Cas présentés comme des situations types : `cas-clients.md` est toujours vide.
 
 ### Backlinks : obtenir des liens de qualité sans pénalité
 - **status:** done : 2026-09-30
