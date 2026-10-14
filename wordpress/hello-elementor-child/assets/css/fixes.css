@@ -1,0 +1,34 @@
+/* ==== Correctifs Elementor (largeurs, marges, sens des conteneurs flex) ====
+   Elementor applique ces propriétés avec une spécificité supérieure aux
+   classes du site : on les ramène au comportement du site Astro. */
+.elementor.elementor .e-con > .elementor-widget.elementor-widget { width: auto; max-width: none; }
+.elementor.elementor .e-con > .elementor-widget.section-title { max-width: 720px; margin: 0 auto 60px; }
+.e-con.e-flex.e-flex { --flex-direction: row; }
+.elementor-widget-text-editor > .eyebrow { margin-bottom: 18px; }
+.elementor-widget-text-editor > .section-eyebrow { margin-bottom: 16px; }
+.elementor-widget-text-editor > .case-category { margin-bottom: 10px; }
+.about-body .elementor-widget-text-editor > .eyebrow { margin-bottom: 14px; }
+@media (max-width: 560px) {
+  .e-con.e-flex.cta-row { --flex-direction: column; }
+  .elementor.elementor .e-con.cta-row > .elementor-widget.elementor-widget,
+  .elementor.elementor .e-con.hero-ctas > .elementor-widget.elementor-widget { width: 100%; }
+}
+
+/* FAQ (page Services) : widget « Bascule » stylé comme les <details> Astro */
+.faq-list .elementor-toggle .elementor-toggle-item { border-bottom: 1px solid var(--line); margin: 0; }
+.faq-list .elementor-toggle .elementor-toggle-item:first-child { border-top: 1px solid var(--line); }
+.faq-list .elementor-toggle .elementor-tab-title {
+  display: flex; flex-direction: row-reverse; justify-content: space-between; align-items: center; gap: 16px;
+  padding: 22px 0; border: 0; cursor: pointer; font-family: var(--sans); font-weight: 600;
+  font-size: 16px; line-height: 1.6; color: var(--navy); transition: color .15s;
+}
+.faq-list .elementor-toggle .elementor-tab-title .elementor-toggle-title { color: inherit; font: inherit; }
+.faq-list .elementor-toggle .elementor-tab-title:hover,
+.faq-list .elementor-toggle .elementor-tab-title.elementor-active { color: var(--gold); }
+.faq-list .elementor-toggle .elementor-toggle-icon { float: none; width: 20px; display: flex; justify-content: center; color: var(--gold); fill: var(--gold); }
+.faq-list .elementor-toggle .elementor-toggle-icon svg { width: 14px; height: 14px; fill: var(--gold); }
+.faq-list .elementor-toggle .elementor-tab-content { padding: 0 0 22px; border: 0; color: var(--ink-2); font-size: 15px; line-height: 1.75; max-width: 680px; }
+.faq-list .elementor-toggle .elementor-tab-content p { margin: 0; }
+
+/* Mentions légales : paragraphes plus espacés que la politique de confidentialité (comme sur Astro) */
+.pa-mentions-legales .legal-content p { margin-bottom: 16px; }

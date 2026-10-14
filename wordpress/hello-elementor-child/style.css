@@ -1,0 +1,13 @@
+/**
+ * Theme Name: Hello Elementor Child
+ * Description: Thème enfant de paul-alves.fr : reprend le design du site Astro (navy, or, crème ; Playfair Display + Inter). En-tête, pied de page, articles, blog et catégories sont gérés par le thème ; les pages sont construites avec Elementor.
+ * Author:      Paul Alves
+ * Author URI:  https://paul-alves.fr
+ * Template:    hello-elementor
+ * Version:     1.0.0
+ * License:     GNU General Public License v2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain: hello-elementor-child
+ */
+
+/* Les styles du site sont dans assets/css/site.css (généré par wordpress/build/build_css.py). */

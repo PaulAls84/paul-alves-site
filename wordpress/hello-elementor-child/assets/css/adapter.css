@@ -1,0 +1,86 @@
+/* ---------- Base WordPress ---------- */
+.screen-reader-text {
+  border: 0; clip: rect(1px, 1px, 1px, 1px); clip-path: inset(50%);
+  height: 1px; margin: -1px; overflow: hidden; padding: 0;
+  position: absolute !important; width: 1px; word-wrap: normal !important;
+}
+.skip-link:focus {
+  clip: auto; clip-path: none; height: auto; width: auto; z-index: 100000;
+  top: 8px; left: 8px; padding: 12px 18px; background: #fff; color: var(--navy);
+  border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,.2);
+}
+main { display: block; }
+.admin-bar .nav { top: 32px; }
+@media (max-width: 782px) { .admin-bar .nav { top: 46px; } }
+
+/* ---------- Sections Elementor ----------
+   Sur Astro, chaque bloc est un <section> (padding global 96px) ; les
+   conteneurs Elementor de premier niveau sont rendus en <section> aussi. */
+section.e-con { padding: 96px 0; }
+@media (max-width: 980px) { section.e-con { padding: 72px 0; } }
+.pa-accueil #accueil { padding: 0; }
+.pa-accueil #apropos { padding-top: 24px; }
+.pa-shortcode-section { padding: 0 !important; }
+
+/* Boutons Elementor portant les classes .btn du site */
+.elementor-button.btn { display: inline-flex; }
+.elementor-button.btn-gold, .elementor-button.btn-gold:visited,
+.elementor-button.btn-gold:hover, .elementor-button.btn-gold:focus,
+.elementor-button.btn-navy, .elementor-button.btn-navy:visited,
+.elementor-button.btn-navy:hover, .elementor-button.btn-navy:focus,
+.elementor-button.btn-ghost-light, .elementor-button.btn-ghost-light:visited,
+.elementor-button.btn-ghost-light:hover, .elementor-button.btn-ghost-light:focus { color: #fff; }
+.elementor-button.btn-outline, .elementor-button.btn-outline:visited,
+.elementor-button.btn-outline:hover, .elementor-button.btn-outline:focus { color: var(--navy); }
+.elementor-button.btn-gold:hover { background: var(--gold-2); }
+.elementor-button.btn-navy:hover { background: #0d2647; }
+.elementor-button.btn-ghost-light:hover { background: rgba(255,255,255,.08); }
+@media (max-width: 560px) {
+  .cta-row > .elementor-widget, .hero-ctas > .elementor-widget { width: 100%; }
+  .cta-row .elementor-button-wrapper, .hero-ctas .elementor-button-wrapper { display: block; }
+}
+
+/* Widget qui doit occuper l'espace restant dans une carte (flex: 1 d'Astro) */
+.pa-grow { flex: 1 1 auto; }
+
+/* Pages légales : titre et largeur de lecture */
+.wrap.wrap--narrow { max-width: 760px; }
+.legal-h1 .elementor-heading-title { margin-bottom: 48px; }
+section.e-con.legal-section { padding: 80px 0 120px; }
+
+/* Liste à puces avec icône (widget Liste d'icônes) */
+.elementor-icon-list-items { list-style: none; margin: 0; padding: 0; }
+
+/* ---------- Articles (blocs Gutenberg) ---------- */
+/* Encart « En bref » : premier bloc citation de l'article */
+.article-content > .wp-block-quote.en-bref {
+  border-left: none;
+  border-top: 3px solid var(--gold);
+  background: var(--cream-2);
+  border-radius: 0 0 8px 8px;
+  padding: 22px 26px 6px;
+  margin: 0 0 2.4em;
+  font-style: normal;
+  color: var(--ink);
+}
+.article-content > .wp-block-quote.en-bref > p:first-child > strong:first-child {
+  display: block; font-family: var(--sans); font-size: 12px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: .5em;
+}
+.article-content > .wp-block-quote.en-bref ul { margin-bottom: 1.1em; }
+.article-content > .wp-block-quote.en-bref li { margin-bottom: .35em; }
+.article-content .wp-block-quote > :last-child { margin-bottom: 0; }
+
+/* Tableaux : le <figure> de WordPress joue le rôle du conteneur défilant */
+.article-content .wp-block-table {
+  margin: 2em 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.wp-block-table td, .wp-block-table th { border: 0; word-break: normal; }
+.wp-block-table thead { border-bottom: 0; }
+.wp-block-table .has-fixed-layout { table-layout: auto; }
+.article-content .wp-block-code { border: 0; font-family: monospace; font-size: 1em; }
+.article-content .wp-block-separator { border: 0; border-top: 1px solid var(--line); margin: 2em 0; }

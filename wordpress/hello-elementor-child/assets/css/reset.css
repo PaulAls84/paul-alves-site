@@ -1,0 +1,59 @@
+/* ==== Neutralisation d'Elementor (placé AVANT les styles du site) ====
+   Les conteneurs et widgets Elementor ne doivent apporter aucun espacement ni
+   mise en page propre : tout vient des classes du site (wrap, hero-grid…),
+   qui suivent et l'emportent donc à spécificité égale. */
+.e-con,
+.e-con > .e-con-inner {
+  display: block;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: normal;
+  align-items: normal;
+  align-content: normal;
+  gap: normal;
+  padding: 0;
+  margin: 0;
+  width: auto;
+  max-width: none;
+  min-height: 0;
+  text-align: inherit;
+  position: static;
+}
+.elementor-element {
+  align-self: auto;
+  flex-basis: auto;
+  flex-grow: 0;
+  flex-shrink: 1;
+  order: 0;
+}
+.elementor-widget:not(:last-child) { margin-block-end: 0; }
+.elementor-widget { position: static; }
+
+/* Titres Elementor : retour aux styles par défaut du navigateur (comme les
+   <h1>-<h3> du site Astro), les règles du site s'appliquent ensuite.
+   .pa-h-inherit : la classe du site est sur le wrapper, le titre en hérite. */
+.elementor-heading-title { all: revert; }
+.pa-h-inherit .elementor-heading-title {
+  font-family: inherit; font-size: inherit; font-weight: inherit;
+  line-height: inherit; letter-spacing: inherit; text-transform: inherit;
+  color: inherit; margin: 0;
+}
+
+/* Boutons Elementor : le style vient des classes .btn du site */
+.elementor-button {
+  background: none;
+  border-radius: 0;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  padding: 0;
+  fill: currentColor;
+}
+.elementor-button .elementor-button-content-wrapper { display: inline-flex; align-items: center; gap: 8px; }
+.elementor-button .elementor-button-icon svg { width: 1em; height: 1em; }
+
+/* Textes et images */
+.elementor-widget-text-editor > :last-child,
+.elementor-widget-text-editor .elementor-widget-container > :last-child { margin-bottom: 0; }
+.elementor-widget-image { text-align: inherit; }
+.elementor-widget-image img { display: block; }

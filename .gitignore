@@ -12,3 +12,8 @@ dist/
 /Logo-*.psd
 /Logo-*.ai
 /Projet*.png
+
+# Migration WordPress : fichiers générés
+wordpress/build/posts.json
+wordpress/hello-elementor-child.zip
+wordpress/build/__pycache__/
