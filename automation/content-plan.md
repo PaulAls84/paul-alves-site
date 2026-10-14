@@ -19,14 +19,6 @@ Volumes : estimations à valider au Keyword Planner (France, FR) au prochain rel
 Réalimentée le 2026-10-14 (Keyword Planner France via Cuik + Search Console 07-10/2026).
 Sujets choisis parmi les clusters non couverts par les 35 articles déjà publiés.
 
-### 31. Consultant SEO freelance : comment le choisir et ce qu'il doit livrer
-- **status:** todo
-- **slug:** consultant-seo-freelance
-- **mot-clé principal:** consultant seo (2 900/mois) + consultant seo freelance (880/mois) + consultant seo wordpress (390/mois) + consultant seo local (390/mois), concurrence faible
-- **catégorie:** SEO
-- **angle:** page à intention commerciale, pendant SEO de developpeur-wordpress-freelance : ce que fait (et ne fait pas) un consultant SEO, freelance contre agence, les livrables à exiger (audit priorisé, plan d'action, suivi Search Console), les promesses qui doivent alerter (positions garanties, packs de liens), les questions à poser avant de signer. Conflit d'intérêts annoncé en intro (Paul est consultant SEO). Tarifs : uniquement ceux de la page Services (optimisation SEO dès 800 €), aucune moyenne de marché inventée. Ne citer aucun consultant concurrent par son nom.
-- **maillage interne suggéré:** developpeur-wordpress-freelance, audit-seo-wordpress, seo-wordpress, referencement-local, page Services
-
 ### 32. Google Search Console : le guide pour bien démarrer
 - **status:** todo
 - **slug:** google-search-console
@@ -182,6 +174,11 @@ sans lien affilié ne porte PAS de mention :
 ---
 
 ## Publiés
+
+### Consultant SEO freelance : le choisir et ce qu'il livre
+- **status:** done : 2026-10-14
+- **slug:** consultant-seo-freelance
+- **mot-clé principal:** consultant seo (2 900/mois) + consultant seo freelance (880/mois) + consultant seo wordpress (390/mois) + consultant seo local (390/mois), concurrence faible. Pendant SEO de developpeur-wordpress-freelance : les trois gestes du métier (comprendre, prioriser, mesurer), tableau freelance / agence / outil en abonnement, les trois livrables à exiger (audit priorisé, plan d'action chiffré, suivi Search Console) plus la propriété des accès, les modes de facturation, cinq promesses qui doivent alerter (position garantie, packs de liens) et cinq questions à poser avant de signer. Conflit d'intérêts annoncé dès la première phrase (Paul est consultant SEO). Tarifs cités : uniquement ceux de la page Services (optimisation SEO dès 800 €, maintenance 150 €/mois, refonte dès 1 200 €), aucune moyenne de marché inventée, aucun concurrent nommé. Aucun service lié en affiliation, donc pas de mention de transparence. Maillage vers audit-seo-wordpress, seo-wordpress, backlinks, referencement-local, developpeur-wordpress-freelance, et les pages services et contact. Cas présentés comme des situations types (refonte sans redirections, abonnement SEO sans livrable) : `cas-clients.md` est toujours vide.
 
 ### Développeur WordPress freelance : comment le choisir
 - **status:** done : 2026-10-01
