@@ -9,7 +9,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'PA_VERSION', '1.0.0' );
+define( 'PA_VERSION', '1.1.3' );
 define( 'PA_PROD_HOST', 'paul-alves.fr' );
 define( 'PA_GA_ID', 'G-1LX7VWG6KW' );
 define( 'PA_CAL_LINK', 'paul-alves/audit-offert' );

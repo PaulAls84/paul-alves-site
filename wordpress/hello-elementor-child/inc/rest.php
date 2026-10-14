@@ -11,11 +11,84 @@
 
 defined( 'ABSPATH' ) || exit;
 
+/*
+ * L'hébergeur (CDN Hostinger) supprime l'en-tête Authorization avant PHP : sans
+ * lui, les mots de passe d'application (utilisés par la routine de publication)
+ * sont ignorés. On accepte donc aussi l'en-tête X-PA-Authorization, au même
+ * format (« Basic base64(utilisateur:mot de passe d'application) ») ; WordPress
+ * valide ensuite le mot de passe d'application normalement.
+ */
+if ( empty( $_SERVER['HTTP_AUTHORIZATION'] ) && empty( $_SERVER['PHP_AUTH_USER'] ) ) {
+	$pa_auth = '';
+	if ( ! empty( $_SERVER['HTTP_X_PA_AUTHORIZATION'] ) ) {
+		$pa_auth = $_SERVER['HTTP_X_PA_AUTHORIZATION']; // phpcs:ignore
+	} elseif ( ! empty( $_SERVER['REDIRECT_HTTP_AUTHORIZATION'] ) ) {
+		$pa_auth = $_SERVER['REDIRECT_HTTP_AUTHORIZATION']; // phpcs:ignore
+	} elseif ( function_exists( 'getallheaders' ) ) {
+		foreach ( (array) getallheaders() as $pa_name => $pa_value ) {
+			if ( 'authorization' === strtolower( $pa_name ) ) {
+				$pa_auth = $pa_value;
+			}
+		}
+	}
+	if ( $pa_auth ) {
+		$_SERVER['HTTP_AUTHORIZATION'] = $pa_auth;
+		if ( 0 === stripos( $pa_auth, 'basic ' ) ) {
+			$pa_pair = explode( ':', (string) base64_decode( substr( $pa_auth, 6 ) ), 2 ); // phpcs:ignore
+			if ( 2 === count( $pa_pair ) ) {
+				$_SERVER['PHP_AUTH_USER'] = $pa_pair[0];
+				$_SERVER['PHP_AUTH_PW']   = $pa_pair[1];
+				// Une extension a pu déterminer l'utilisateur avant le chargement du
+				// thème (donc sans ces identifiants) : on force une nouvelle évaluation.
+				if ( isset( $GLOBALS['current_user'] ) && ! $GLOBALS['current_user']->exists() ) {
+					$GLOBALS['current_user'] = null;
+				}
+			}
+		}
+	}
+}
+
+/*
+ * Validation directe du mot de passe d'application transmis dans
+ * X-PA-Authorization, au cas où l'utilisateur aurait déjà été déterminé avant
+ * le chargement du thème. Le mot de passe est vérifié par WordPress
+ * (wp_authenticate_application_password), comme pour l'en-tête standard.
+ */
+add_filter( 'determine_current_user', function ( $user_id ) {
+	if ( $user_id || empty( $_SERVER['HTTP_X_PA_AUTHORIZATION'] ) ) {
+		return $user_id;
+	}
+	$header = (string) $_SERVER['HTTP_X_PA_AUTHORIZATION']; // phpcs:ignore
+	if ( 0 !== stripos( $header, 'basic ' ) ) {
+		return $user_id;
+	}
+	$pair = explode( ':', (string) base64_decode( substr( $header, 6 ) ), 2 ); // phpcs:ignore
+	if ( 2 !== count( $pair ) ) {
+		return $user_id;
+	}
+	$user = wp_authenticate_application_password( null, $pair[0], $pair[1] );
+	return ( $user instanceof WP_User ) ? $user->ID : $user_id;
+}, 30 );
+
 add_action( 'rest_api_init', function () {
 	register_rest_route( 'pa/v1', '/contact', array(
 		'methods'             => 'POST',
 		'callback'            => 'pa_rest_contact',
 		'permission_callback' => '__return_true',
+	) );
+	// Diagnostic : quels en-têtes d'authentification parviennent à PHP (noms seulement).
+	register_rest_route( 'pa/v1', '/auth-check', array(
+		'methods'             => 'GET',
+		'permission_callback' => '__return_true',
+		'callback'            => function () {
+			$keys = array( 'HTTP_AUTHORIZATION', 'REDIRECT_HTTP_AUTHORIZATION', 'PHP_AUTH_USER', 'HTTP_X_PA_AUTHORIZATION' );
+			$out  = array();
+			foreach ( $keys as $k ) {
+				$out[ $k ] = ! empty( $_SERVER[ $k ] );
+			}
+			$out['user_id'] = get_current_user_id();
+			return $out;
+		},
 	) );
 	register_rest_route( 'pa/v1', '/newsletter', array(
 		'methods'             => 'POST',

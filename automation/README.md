@@ -1,5 +1,11 @@
 # Routine de rédaction automatique d'articles
 
+> **Depuis le 14/10/2026, le site est sur WordPress.** Ce dépôt n'est plus le
+> site : c'est la boîte à outils de la routine (procédure, backlog, couvertures,
+> archive Markdown des articles). La publication se fait **directement sur
+> WordPress** avec `automation/publish-wordpress.py` (étape 6). Vercel et le
+> site Astro ne sont plus la cible.
+
 Cette routine publie **une dizaine d'articles par mois** de façon autonome, à
 partir d'un backlog de sujets validés SEO.
 
@@ -38,8 +44,10 @@ Ce que l'environnement cloud a (constaté le 2026-08-17, Ubuntu 24.04, root) :
      vide et s'arrêter.
 
 2. **Garde-fou anti-doublon** : vérifier qu'aucun dossier
-   `src/content/blog/<slug>/` n'existe déjà pour ce slug. Si collision, marquer
-   l'entrée `done` (déjà couverte) et passer à la suivante.
+   `src/content/blog/<slug>/` n'existe déjà pour ce slug, **ni aucun article
+   WordPress** avec ce slug (Paul peut publier directement dans WordPress) :
+   `curl -s "$WP_URL/wp-json/wp/v2/posts?slug=<slug>"` doit renvoyer `[]`.
+   Si collision, marquer l'entrée `done` (déjà couverte) et passer à la suivante.
 
 3. **Rédiger l'article** dans `src/content/blog/<slug>/index.mdoc`, au format
    exact des articles existants :
@@ -71,10 +79,9 @@ Ce que l'environnement cloud a (constaté le 2026-08-17, Ubuntu 24.04, root) :
      > - **Mon verdict** : oui si …, non si …
      > - **Le piège classique** : …
      ```
-     Le style « carte » est automatique : le CSS cible le premier blockquote de
-     l'article (`.article-content > article > blockquote:first-child` dans
-     `src/styles/global.css`). Donc **un seul** blockquote en tête, et les
-     citations éventuelles vont plus bas dans le corps.
+     Le style « carte » est automatique : le premier blockquote devient un bloc
+     citation WordPress avec la classe `en-bref`, stylé par le thème. Donc **un
+     seul** blockquote en tête, et les citations éventuelles vont plus bas.
    - **Voix : la première personne.** Les articles sont signés Paul Alves,
      artisan WordPress à Soissons : écrire « je », « mon avis », « ce que
      j'applique ». Pas de « nous » d'entreprise, pas de ton neutre d'encyclopédie.
@@ -101,8 +108,8 @@ Ce que l'environnement cloud a (constaté le 2026-08-17, Ubuntu 24.04, root) :
      listes, au moins un tableau si pertinent, `## Conclusion`, `## FAQ` (3-4
      questions en gras). Cible : 1200-1800 mots, ton pro et direct, français.
      S'inspirer du style des articles déjà publiés.
-   - **Maillage interne** : le maillage est désormais **automatique au build**
-     (`src/lib/internal-links.ts`) : il transforme les mots-clés d'un article
+   - **Maillage interne** : le maillage est **automatique à la publication**
+     (`automation/render-article.mjs`) : il transforme les mots-clés d'un article
      apparaissant dans les autres en liens (max 3/article). Pour que le nouvel
      article **reçoive** des liens entrants, remplir son champ `anchors` dans la
      frontmatter YAML : 2 à 4 mots-clés/phrases distinctifs, en privilégiant
@@ -159,16 +166,31 @@ Ce que l'environnement cloud a (constaté le 2026-08-17, Ubuntu 24.04, root) :
 5. **Mettre à jour le backlog** : passer l'entrée de `status: todo` à
    `status: done <date>` et la déplacer dans la section « Publiés ».
 
-6. **Vérifier puis publier** :
-   - Idéalement, lancer `npm run build` pour confirmer que le site compile.
-   - **N'ajouter QUE les fichiers de l'article** (jamais `git add -A`/`git add .` :
-     un autre travail en cours dans le dossier serait embarqué par erreur) :
+6. **Publier sur WordPress** :
+   - Installer les dépendances du rendu si besoin : `npm ci --ignore-scripts`
+     (seuls `@markdoc/markdoc` et `js-yaml` servent).
+   - Publier :
+     ```
+     python3 automation/publish-wordpress.py <slug>
+     ```
+     Le script rend l'article (maillage interne compris), le convertit en blocs
+     Gutenberg, envoie la couverture `.jpg` dans la médiathèque, crée l'article
+     (catégorie, extrait, image à la une, titre et description Rank Math) et
+     vérifie que la page publique répond 200. La sortie doit finir par
+     `[wp] OK article publié : <url>`. **Sinon, ne pas marquer l'entrée `done`**
+     et signaler l'erreur en tête du compte-rendu.
+   - Il a besoin de `WP_URL`, `WP_USER` et `WP_APP_PASSWORD` dans
+     l'environnement de la routine (jamais dans le dépôt).
+   - Les articles déjà en ligne ne sont pas modifiés : Paul peut les retoucher
+     dans WordPress sans risque d'écrasement.
+
+7. **Archiver dans le dépôt** (sert de source au maillage interne et à
+   l'historique) :
+   - **N'ajouter QUE les fichiers de l'article** (jamais `git add -A`/`git add .`) :
      ```
      git add src/content/blog/<slug>/ public/images/blog/<slug>.jpg public/images/blog/<slug>.webp automation/content-plan.md
      ```
-   - Committer et **pousser sur `main`**. Vercel rebuild et met l'article en ligne
-     automatiquement (le repo doit rester PUBLIC, cf. plan Vercel Hobby).
-   - Message de commit : `Blog : <titre> (routine auto)`.
+   - Committer et pousser sur `main`. Message : `Blog : <titre> (routine auto)`.
 
 ## Réalimenter le backlog
 
