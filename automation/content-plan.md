@@ -16,11 +16,105 @@ Données de volume : Google Ads Keyword Planner (France, FR), relevé 2026-06-30
 
 Volumes : estimations à valider au Keyword Planner (France, FR) au prochain relevé.
 
-Réalimentée le 2026-09-02 (Keyword Planner France via Cuik + Search Console 06-08/2026).
+Réalimentée le 2026-10-14 (Keyword Planner France via Cuik + Search Console 07-10/2026).
+Sujets choisis parmi les clusters non couverts par les 35 articles déjà publiés.
 
-**La file d'attente est vide.** Prochain run : réalimenter le backlog (analyse de
-mots-clés Cuik / Search Console, clusters non encore couverts) avant toute
-publication.
+### 31. Consultant SEO freelance : comment le choisir et ce qu'il doit livrer
+- **status:** todo
+- **slug:** consultant-seo-freelance
+- **mot-clé principal:** consultant seo (2 900/mois) + consultant seo freelance (880/mois) + consultant seo wordpress (390/mois) + consultant seo local (390/mois), concurrence faible
+- **catégorie:** SEO
+- **angle:** page à intention commerciale, pendant SEO de developpeur-wordpress-freelance : ce que fait (et ne fait pas) un consultant SEO, freelance contre agence, les livrables à exiger (audit priorisé, plan d'action, suivi Search Console), les promesses qui doivent alerter (positions garanties, packs de liens), les questions à poser avant de signer. Conflit d'intérêts annoncé en intro (Paul est consultant SEO). Tarifs : uniquement ceux de la page Services (optimisation SEO dès 800 €), aucune moyenne de marché inventée. Ne citer aucun consultant concurrent par son nom.
+- **maillage interne suggéré:** developpeur-wordpress-freelance, audit-seo-wordpress, seo-wordpress, referencement-local, page Services
+
+### 32. Google Search Console : le guide pour bien démarrer
+- **status:** todo
+- **slug:** google-search-console
+- **mot-clé principal:** search console google (2 900/mois) + google search console seo (90/mois) + google search console gratuit (50/mois), concurrence faible (le terme « google search console » seul est surtout navigationnel)
+- **catégorie:** SEO
+- **angle:** guide pratique pour un propriétaire de site : ajouter et valider son site (propriété domaine ou préfixe d'URL), envoyer le sitemap, lire le rapport Performances (requêtes, pages, CTR, position), repérer les pages non indexées et leurs motifs, inspecter une URL, les erreurs fréquentes. Captures décrites en texte, pas d'images inventées.
+- **maillage interne suggéré:** audit-seo-wordpress, recherche-mots-cles, seo-wordpress, sitemap-wordpress
+
+### 33. Maillage interne : la méthode pour relier vos pages et mieux ranker
+- **status:** todo
+- **slug:** maillage-interne
+- **mot-clé principal:** maillage interne (590/mois) + maillage interne seo (320/mois) + seo maillage interne (110/mois), concurrence faible
+- **catégorie:** SEO
+- **angle:** à quoi sert le maillage (exploration, transmission de popularité, parcours lecteur), structure en silos ou pages piliers, choix des ancres, nombre de liens raisonnable, pages orphelines, outils pour l'auditer (Search Console liens internes, crawler gratuit), et comment faire sur WordPress (liens manuels, blocs « articles liés », limites des plugins de maillage automatique).
+- **maillage interne suggéré:** seo-wordpress, recherche-mots-cles, audit-seo-wordpress, backlinks
+
+### 34. Balise title et meta description : les écrire pour gagner des clics
+- **status:** todo
+- **slug:** balise-title-meta-description
+- **mot-clé principal:** meta description (720/mois) + balise title (260/mois) + méta description (170/mois) + metadescription wordpress (90/mois) + meta title et meta description (50/mois), concurrence faible
+- **catégorie:** SEO
+- **angle:** rôle de chacune (la title compte pour le classement, la meta description pour le clic), longueurs utiles en pixels et caractères, pourquoi Google réécrit parfois, formules qui fonctionnent par type de page (accueil, service, article, fiche produit), erreurs fréquentes (doublons, bourrage de mots-clés), et où les renseigner sur WordPress (Rank Math, Yoast). Exemples réécrits avant/après présentés comme des situations types.
+- **maillage interne suggéré:** rank-math-ou-yoast, seo-wordpress, audit-seo-wordpress, recherche-mots-cles
+
+### 35. SEO e-commerce : référencer sa boutique WooCommerce
+- **status:** todo
+- **slug:** seo-e-commerce
+- **mot-clé principal:** seo e commerce (590/mois) + seo site e commerce (50/mois) + optimisation site e commerce (40/mois), concurrence moyenne
+- **catégorie:** SEO
+- **angle:** les spécificités d'une boutique : architecture catégories/produits, fiches produits uniques (pas de description fournisseur copiée), pages catégories rédigées, filtres et pagination (duplication, indexation), produits en rupture, données structurées Product, vitesse. Focus WooCommerce, PrestaShop et Shopify cités pour comparaison sans les dénigrer.
+- **maillage interne suggéré:** creer-boutique-woocommerce, hebergement-woocommerce, wordpress-ou-shopify, seo-wordpress, core-web-vitals
+
+### 36. Données structurées : le guide SEO pour WordPress
+- **status:** todo
+- **slug:** donnees-structurees
+- **mot-clé principal:** données structurées (590/mois) + donnees structurees (210/mois) + données structurées seo (140/mois), concurrence faible (attention : une partie des recherches vient de l'enseignement SNT, cibler l'intention SEO)
+- **catégorie:** SEO
+- **angle:** ce que sont les données structurées (schema.org, JSON-LD), ce qu'elles apportent réellement (résultats enrichis possibles, jamais garantis), les types utiles pour une PME (Organization, LocalBusiness, Article, FAQ, Product, Breadcrumb), comment les ajouter sur WordPress (Rank Math, Yoast, manuellement), et comment les tester (outil de test des résultats enrichis, rapports Search Console).
+- **maillage interne suggéré:** seo-wordpress, rank-math-ou-yoast, referencement-local, seo-e-commerce
+
+### 37. Sitemap XML WordPress : le créer, l'envoyer, le corriger
+- **status:** todo
+- **slug:** sitemap-wordpress
+- **mot-clé principal:** sitemap wordpress (480/mois) + sitemap xml wordpress (480/mois) + sitemap yoast seo (30/mois), concurrence faible
+- **catégorie:** SEO
+- **angle:** ce qu'est un sitemap et ce qu'il ne fait pas (il n'oblige pas Google à indexer), le sitemap natif de WordPress (wp-sitemap.xml) contre celui de Rank Math ou Yoast (ne jamais en garder deux), quoi exclure (pages de remerciement, archives inutiles), l'envoi dans la Search Console et la lecture des erreurs « URL envoyée non indexée ».
+- **maillage interne suggéré:** google-search-console, rank-math-ou-yoast, seo-wordpress, audit-seo-wordpress
+
+### 38. Nom de domaine : choisir et acheter le bon pour un site pro
+- **status:** todo
+- **slug:** nom-de-domaine
+- **mot-clé principal:** trouver un nom de domaine (320/mois) + extension du nom de domaine (170/mois) + choisir un nom de domaine (110/mois) + nom de domaine pour site internet (110/mois), concurrence élevée sur les annonces mais intention informationnelle
+- **catégorie:** WordPress
+- **monétisation:** affiliation
+- **angle:** les critères d'un bon nom (court, prononçable, sans tiret si possible, marque plutôt que mot-clé), .fr ou .com et les autres extensions, vérifier la disponibilité et les droits de marque, où l'acheter (bureau d'enregistrement ou hébergeur), prix réels publics, renouvellement, et le piège classique : le domaine enregistré au nom du prestataire. Hébergeurs et registraires cités selon le tableau d'affiliation (sans lien tant que `<À REMPLIR>`).
+- **maillage interne suggéré:** creer-un-site-wordpress, hebergement-wordpress, meilleur-hebergeur-wordpress, migrer-site-wordpress
+
+### 39. Rédaction web SEO : écrire des pages qui se positionnent
+- **status:** todo
+- **slug:** redaction-web-seo
+- **mot-clé principal:** rédaction seo (480/mois) + rédaction web seo freelance (480/mois) + rédaction web seo (320/mois) + rédacteur seo (260/mois), concurrence faible
+- **catégorie:** SEO
+- **angle:** méthode pour écrire une page utile et bien positionnée : intention de recherche d'abord, plan à partir des questions réelles, titres, paragraphes courts, champ lexical sans bourrage, éléments qui font la différence (exemples, tableaux, réponse directe en tête), mise à jour des contenus. Position honnête sur les textes générés par IA : utiles comme brouillon, jamais publiés sans relecture et apport réel.
+- **maillage interne suggéré:** recherche-mots-cles, balise-title-meta-description, maillage-interne, seo-wordpress
+
+### 40. Google Analytics 4 sur WordPress : l'installer proprement (et légalement)
+- **status:** todo
+- **slug:** google-analytics-wordpress
+- **mot-clé principal:** google analytics wordpress (140/mois) + google analytics wp (140/mois) + monsterinsight (140/mois), concurrence faible
+- **catégorie:** Plugins
+- **angle:** les trois façons d'installer GA4 (Site Kit de Google, MonsterInsights, balise manuelle), le consentement obligatoire (bandeau cookies, Consent Mode v2), les événements utiles pour une PME (formulaire envoyé, clic téléphone, prise de rendez-vous), et les alternatives sans cookie (Matomo, Plausible) à citer sans lien.
+- **maillage interne suggéré:** rgpd-wordpress, meilleur-plugin-wordpress, google-search-console
+
+### 41. Landing page WordPress : créer une page qui convertit
+- **status:** todo
+- **slug:** landing-page-wordpress
+- **mot-clé principal:** landing page wordpress (140/mois) + landing page wp (140/mois), concurrence moyenne
+- **catégorie:** WordPress
+- **angle:** ce qui distingue une landing page d'une page classique (un seul objectif, une seule action), la structure qui convertit (promesse, preuves, objections, appel à l'action), avec quoi la construire sur WordPress (éditeur de blocs, Elementor, thème léger), la vitesse et le suivi des conversions. Aucune preuve sociale inventée dans les exemples.
+- **maillage interne suggéré:** elementor-ou-gutenberg, meilleur-theme-wordpress, optimiser-vitesse-site-wordpress, google-analytics-wordpress
+
+### 42. Paiement WooCommerce : Stripe, PayPal ou les deux ?
+- **status:** todo
+- **slug:** paiement-woocommerce
+- **mot-clé principal:** woocommerce stripe (140/mois) + plugin stripe woocommerce + paiement en plusieurs fois stripe (longue traîne), concurrence moyenne
+- **catégorie:** WordPress
+- **angle:** comparatif des passerelles pour une boutique française : WooCommerce Stripe, PayPal Payments, solutions bancaires françaises, frais publics à citer uniquement depuis les grilles officielles (vérifier, ne jamais inventer), 3D Secure, paiement en plusieurs fois, et les erreurs de configuration fréquentes (mode test oublié, webhooks).
+- **maillage interne suggéré:** creer-boutique-woocommerce, hebergement-woocommerce, seo-e-commerce, securiser-site-wordpress
 
 ---
 
