@@ -1,0 +1,127 @@
+---
+title: "Google Search Console : le guide pour bien démarrer"
+description: "Ajouter son site, envoyer son sitemap, lire le rapport Performances et comprendre pourquoi une page n'est pas indexée : le guide pratique de la Search Console, outil gratuit et indispensable."
+publishedAt: '2026-11-02'
+featured: false
+category: SEO
+image: /images/blog/google-search-console.jpg
+anchors:
+  - Google Search Console
+  - rapport Performances
+  - pages non indexées
+  - inspection d'URL
+---
+
+> **En bref**
+>
+> - **Ce que c'est vraiment** : le seul outil qui vous dit ce que Google voit de votre site. Gratuit, officiel, sans version payante, et sans équivalent. Ce n'est pas un outil d'analyse d'audience comme Analytics : il s'arrête à la page de résultats.
+> - **Mon verdict** : à installer avant toute autre action SEO, même si vous ne comptez rien optimiser cette année. Elle ne remonte pas dans le passé, donc chaque semaine sans elle est une semaine de données perdue.
+> - **Pour qui oui** : tout site, du site vitrine de trois pages à la boutique de mille références. Dix minutes d'installation.
+> - **Pour qui non** : personne, mais inutile d'y passer vos journées. Deux rapports suffisent à 90 % des décisions, Performances et Indexation des pages.
+> - **Le piège classique** : valider la propriété en « préfixe d'URL » sur une seule variante du site, et ne mesurer qu'un quart de son trafic réel. Validez le domaine entier.
+
+La plupart des propriétaires de sites que je rencontre pilotent leur référencement à l'aveugle. Ils savent que le téléphone sonne moins qu'avant, ou qu'un concurrent apparaît avant eux, mais ils ne savent pas sur quelles recherches leur site est affiché, lesquelles rapportent des clics, ni combien de leurs pages Google a réellement acceptées.
+
+La Search Console répond à ces trois questions, gratuitement. C'est l'outil que j'ouvre en premier sur chaque site dont je m'occupe, avant le moindre audit technique. Voici comment la mettre en place et, surtout, ce qu'il faut y regarder.
+
+## Ce que la Search Console fait, et ce qu'elle ne fait pas
+
+Elle vous montre votre site du point de vue de Google : les requêtes sur lesquelles vous êtes affiché, votre position, vos clics, les pages indexées et les motifs de refus, les problèmes de vitesse mesurés sur vos vrais visiteurs, les liens entrants détectés.
+
+Elle ne fait pas le reste : elle ignore ce que les visiteurs font une fois arrivés (c'est le rôle de Google Analytics), n'affiche rien pour Bing, et n'améliore aucun classement par elle-même. C'est un tableau de bord, pas un levier.
+
+Deux limites à connaître dès le départ :
+
+- **Les données commencent le jour de l'installation.** Aucun historique rétroactif. Un site en ligne depuis cinq ans qui installe la Search Console aujourd'hui démarre à zéro.
+- **Les chiffres sont échantillonnés.** Les requêtes très rares sont masquées par confidentialité, donc le total des clics par requête ne colle jamais exactement au total général. Ce n'est pas un bug.
+
+## Ajouter et valider son site
+
+À la création d'une propriété, Google propose deux formats. Le choix compte plus qu'il n'y paraît.
+
+| | Propriété de domaine | Préfixe d'URL |
+|---|---|---|
+| Ce qu'elle couvre | Le domaine et tous ses sous-domaines, en HTTP et HTTPS | Une seule adresse exacte |
+| Validation | Enregistrement DNS (champ TXT) | Fichier HTML, balise meta, Analytics, Tag Manager |
+| Mon conseil | À privilégier dans tous les cas | Utile pour suivre un répertoire isolé |
+
+**Prenez la propriété de domaine.** Un site accessible en `exemple.fr` et `www.exemple.fr` validé en préfixe d'URL sur une seule des deux variantes ne vous montrera qu'une partie des données, et vous croirez votre trafic en baisse alors qu'il est juste ailleurs.
+
+La validation par DNS se fait chez votre registraire ou votre hébergeur : vous ajoutez un champ TXT dans la zone du domaine, avec la valeur fournie par Google. Comptez quelques minutes à quelques heures de propagation. Si vous n'avez pas accès à cette zone, c'est le moment de vérifier qui détient réellement votre nom de domaine.
+
+Sur WordPress, l'alternative la plus simple reste l'extension officielle Site Kit de Google, ou le champ prévu par votre plugin SEO : Rank Math comme Yoast proposent de coller le code de validation sans toucher au thème. Évitez de l'ajouter à la main dans un fichier du thème, elle disparaîtrait à la prochaine mise à jour.
+
+## Envoyer son sitemap
+
+Une fois la propriété validée, allez dans Sitemaps et déclarez l'adresse de votre plan de site. WordPress en génère un nativement à `/wp-sitemap.xml`, et les plugins SEO le remplacent par le leur, souvent `/sitemap_index.xml`. **N'en gardez qu'un seul actif** : deux sitemaps concurrents envoient des signaux contradictoires et compliquent inutilement le diagnostic. Le sujet mérite à lui seul un article, tant il est source de diagnostics faussés.
+
+Un sitemap accélère la découverte de vos URL. Il n'oblige pas Google à les indexer. C'est la confusion la plus fréquente, et elle explique à elle seule une bonne part des messages « URL envoyée non indexée ».
+
+## Les deux rapports qui servent vraiment
+
+### Performances : vos vraies requêtes
+
+Un onglet Requêtes qui vaut tous les outils payants pour commencer : la liste des recherches qui ont affiché votre site, avec clics, impressions, CTR et position moyenne.
+
+Ce que j'y cherche en priorité :
+
+- **Les positions 8 à 20 avec des impressions** : vous existez sur ces requêtes sans être visible. Pousser une page de la position 12 à la position 5 est presque toujours plus rapide et plus rentable que d'écrire une page neuve.
+- **Beaucoup d'impressions, très peu de clics** : votre titre et votre description ne donnent pas envie de cliquer. C'est une réécriture de deux lignes, pas un chantier, et l'un des gains les plus rapides du [SEO sur WordPress](/seo-wordpress/).
+- **Les requêtes auxquelles aucune page ne répond vraiment** : Google vous affiche sur un sujet que vous n'avez fait qu'effleurer. C'est un plan de contenu offert, et le meilleur point de départ d'une [recherche de mots-clés](/recherche-mots-cles/).
+
+Passez la plage à 12 mois : sur 28 jours, une variation saisonnière ressemble à une catastrophe.
+
+### Indexation des pages : qui est accepté, qui est refusé
+
+Ce rapport sépare les pages indexées de celles qui ne le sont pas, en donnant un motif pour chacune. Les motifs qui reviennent le plus souvent :
+
+| Motif | Ce qu'il signifie | Faut-il agir ? |
+|---|---|---|
+| Exclue par la balise noindex | Une décision, prise par vous ou par votre thème | Oui si la page devait être indexée |
+| Bloquée par le fichier robots.txt | Exploration interdite | Oui, vérifier le fichier |
+| Détectée, actuellement non indexée | Google a vu la page et ne l'a pas retenue | Oui, mais côté contenu |
+| Explorée, actuellement non indexée | Lue, jugée insuffisante ou trop proche d'une autre | Oui, côté contenu |
+| Autre page avec balise canonique correcte | Doublon volontairement regroupé | Non, en général |
+| Introuvable (404) | Lien interne ou sitemap qui pointe dans le vide | Oui, corriger ou rediriger |
+
+Le réflexe à perdre : resoumettre dix fois une URL « détectée, actuellement non indexée ». Google ne l'a pas manquée, il l'a écartée. La réponse est dans la page, pas dans le bouton.
+
+### L'inspection d'URL, pour les cas précis
+
+Collez une adresse dans la barre du haut et vous obtenez l'état exact de cette page : indexée ou non, date du dernier passage, canonique retenue par Google, et un test en direct qui montre le code HTML réellement reçu. C'est l'outil que j'utilise pour trancher les cas ambigus, quand personne ne sait si le problème vient du serveur, du thème ou du plugin SEO. Le bouton « Demander une indexation » sert après une correction réelle, pas comme rituel.
+
+## Deux situations types
+
+**Le cas le plus fréquent : la refonte qui fait disparaître la moitié des pages.** Un site vitrine refait à neuf, nouvelles URL, anciennes adresses non redirigées. Dans les semaines qui suivent, le rapport Indexation voit grimper les « Introuvable (404) », et le rapport Performances perd ses requêtes une à une. Ce qu'on fait : on exporte la liste des 404 depuis la Search Console, on la croise avec l'ancien plan de site, on met en place une redirection 301 ancienne adresse vers nouvelle adresse équivalente, puis on contrôle le résultat par inspection d'URL. Ce qu'on obtient : les anciennes URL cessent de renvoyer une erreur et transmettent leur antériorité, au lieu de laisser Google conclure que les pages ont disparu. C'est exactement le contrôle que je détaille dans mon guide pour [migrer un site WordPress](/migrer-site-wordpress/).
+
+**L'autre cas classique : le site qui n'a jamais été validé qu'en préfixe d'URL.** Propriété créée sur `https://www.exemple.fr` seule, alors que le site répond aussi sans `www` et que c'est cette version-là que Google a retenue comme canonique. Résultat : des rapports presque vides, et la conclusion fausse que le site ne reçoit aucune visibilité. Ce qu'on fait : on crée une propriété de domaine validée par champ DNS, on vérifie qu'une seule variante du site répond en 200 et que les autres redirigent, puis on laisse quelques jours de données s'accumuler. Ce qu'on obtient : un périmètre de mesure qui correspond enfin au site réel, condition de base avant toute décision SEO.
+
+## Les erreurs que je vois le plus souvent
+
+- **Confondre une alerte et une urgence.** La plupart des messages de la Search Console sont informatifs. Une page de mentions légales non indexée n'est pas un problème.
+- **Ignorer les rapports Ergonomie mobile et Core Web Vitals.** Ils reposent sur les données de terrain de vos vrais visiteurs, celles qui comptent pour Google, bien plus que le score simulé de PageSpeed Insights. J'en détaille la lecture dans mon article sur les [Core Web Vitals](/core-web-vitals/).
+- **Ne jamais y retourner.** Un passage de dix minutes par mois suffit : variation des clics sur 3 mois, nouvelles erreurs d'indexation, nouveaux messages. C'est le minimum que j'inclus dans toute [maintenance WordPress](/maintenance-wordpress/) sérieuse.
+- **Laisser la propriété au nom du prestataire.** Gardez un compte Google à vous comme propriétaire principal, et déléguez des accès aux intervenants.
+
+## Conclusion
+
+La Search Console ne fera pas monter votre site, mais sans elle vous travaillez sans retour d'information. Installez-la aujourd'hui en propriété de domaine, envoyez votre sitemap, puis prenez l'habitude de regarder deux choses : les requêtes où vous êtes proche de la première page, et les pages que Google refuse d'indexer. Ces deux listes contiennent la quasi-totalité de vos chantiers utiles pour les mois à venir.
+
+Si les rapports vous paraissent illisibles ou si le trafic a chuté sans explication, c'est précisément le genre de lecture que je fais dans un [audit SEO WordPress](/audit-seo-wordpress/).
+
+## FAQ
+
+**La Search Console est-elle vraiment gratuite ?**
+Oui, entièrement, sans version payante ni limite de taille de site. Il faut seulement un compte Google.
+
+**Combien de temps avant d'avoir des données ?**
+Les premiers chiffres apparaissent en général sous 48 à 72 heures, et il faut deux à trois semaines pour que les tendances deviennent lisibles. Les données ne remontent jamais avant la date d'installation.
+
+**Faut-il la Search Console si j'ai déjà Google Analytics ?**
+Oui, les deux ne mesurent pas la même chose. Analytics observe le comportement des visiteurs sur votre site, la Search Console observe votre présence dans les résultats de recherche, y compris les affichages sans clic qu'Analytics ne voit jamais.
+
+**Mon site n'est pas indexé du tout, que vérifier en premier ?**
+Dans WordPress, Réglages puis Lecture : la case qui demande aux moteurs de ne pas indexer le site doit être décochée. Ensuite le fichier `robots.txt`, puis les réglages d'indexation de votre plugin SEO. C'est le premier bloc de tout diagnostic.
+
+**Dois-je demander une indexation à chaque publication ?**
+Ce n'est pas nécessaire si votre sitemap est à jour : Google découvre les nouvelles pages seul. L'outil reste utile pour accélérer la prise en compte d'une correction importante sur une page existante.

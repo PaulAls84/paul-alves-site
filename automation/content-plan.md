@@ -19,14 +19,6 @@ Volumes : estimations à valider au Keyword Planner (France, FR) au prochain rel
 Réalimentée le 2026-10-14 (Keyword Planner France via Cuik + Search Console 07-10/2026).
 Sujets choisis parmi les clusters non couverts par les 35 articles déjà publiés.
 
-### 32. Google Search Console : le guide pour bien démarrer
-- **status:** todo
-- **slug:** google-search-console
-- **mot-clé principal:** search console google (2 900/mois) + google search console seo (90/mois) + google search console gratuit (50/mois), concurrence faible (le terme « google search console » seul est surtout navigationnel)
-- **catégorie:** SEO
-- **angle:** guide pratique pour un propriétaire de site : ajouter et valider son site (propriété domaine ou préfixe d'URL), envoyer le sitemap, lire le rapport Performances (requêtes, pages, CTR, position), repérer les pages non indexées et leurs motifs, inspecter une URL, les erreurs fréquentes. Captures décrites en texte, pas d'images inventées.
-- **maillage interne suggéré:** audit-seo-wordpress, recherche-mots-cles, seo-wordpress, sitemap-wordpress
-
 ### 33. Maillage interne : la méthode pour relier vos pages et mieux ranker
 - **status:** todo
 - **slug:** maillage-interne
@@ -174,6 +166,11 @@ sans lien affilié ne porte PAS de mention :
 ---
 
 ## Publiés
+
+### Google Search Console : le guide pour bien démarrer
+- **status:** done : 2026-11-02
+- **slug:** google-search-console
+- **mot-clé principal:** search console google (2 900/mois) + google search console seo (90/mois) + google search console gratuit (50/mois), concurrence faible. Guide pratique pour un propriétaire de site : ce que l'outil fait et ne fait pas (deux limites, pas d'historique rétroactif et données échantillonnées), tableau propriété de domaine contre préfixe d'URL avec recommandation explicite du domaine, validation DNS et alternatives WordPress (Site Kit, champ du plugin SEO), envoi du sitemap et rappel qu'un sitemap n'oblige pas à indexer, les deux rapports utiles (Performances : positions 8-20, fort taux d'impressions et peu de clics, requêtes sans page dédiée ; Indexation des pages avec tableau des six motifs fréquents et s'il faut agir), l'inspection d'URL, les erreurs fréquentes. Aucun service lié en affiliation, donc pas de mention de transparence. Maillage vers seo-wordpress, recherche-mots-cles, audit-seo-wordpress, core-web-vitals, maintenance-wordpress, migrer-site-wordpress. Les liens vers sitemap-wordpress, balise-title-meta-description, nom-de-domaine et google-analytics-wordpress ont été retirés : ces articles sont encore au backlog (services et sujets cités sans lien). Cas présentés comme des situations types (refonte sans redirections, propriété validée sur une seule variante du domaine) : `cas-clients.md` est toujours vide.
 
 ### Consultant SEO freelance : le choisir et ce qu'il livre
 - **status:** done : 2026-10-14
