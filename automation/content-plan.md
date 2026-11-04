@@ -19,14 +19,6 @@ Volumes : estimations à valider au Keyword Planner (France, FR) au prochain rel
 Réalimentée le 2026-10-14 (Keyword Planner France via Cuik + Search Console 07-10/2026).
 Sujets choisis parmi les clusters non couverts par les 35 articles déjà publiés.
 
-### 33. Maillage interne : la méthode pour relier vos pages et mieux ranker
-- **status:** todo
-- **slug:** maillage-interne
-- **mot-clé principal:** maillage interne (590/mois) + maillage interne seo (320/mois) + seo maillage interne (110/mois), concurrence faible
-- **catégorie:** SEO
-- **angle:** à quoi sert le maillage (exploration, transmission de popularité, parcours lecteur), structure en silos ou pages piliers, choix des ancres, nombre de liens raisonnable, pages orphelines, outils pour l'auditer (Search Console liens internes, crawler gratuit), et comment faire sur WordPress (liens manuels, blocs « articles liés », limites des plugins de maillage automatique).
-- **maillage interne suggéré:** seo-wordpress, recherche-mots-cles, audit-seo-wordpress, backlinks
-
 ### 34. Balise title et meta description : les écrire pour gagner des clics
 - **status:** todo
 - **slug:** balise-title-meta-description
@@ -166,6 +158,11 @@ sans lien affilié ne porte PAS de mention :
 ---
 
 ## Publiés
+
+### Maillage interne : relier vos pages pour mieux ranker
+- **status:** done : 2026-11-04
+- **slug:** maillage-interne
+- **mot-clé principal:** maillage interne (590/mois) + maillage interne seo (320/mois) + seo maillage interne (110/mois), concurrence faible. Les quatre effets distincts du maillage (exploration, transmission de popularité, compréhension du sujet via l'ancre, parcours lecteur) posés comme filtre de décision ; position assumée en faveur des pages piliers plutôt que des silos rigides, avec trois règles opérationnelles (trois clics depuis l'accueil, au moins un lien contextuel entrant par page importante, les pages qui rapportent reçoivent le plus de liens) ; règles d'ancres (descriptive, variée, une ancre pour une seule destination) ; tableau des six emplacements de lien (corps de texte, fil d'Ariane, menu, blocs « articles liés », pied de page, barre latérale) avec ce qu'ils apportent et leur point de vigilance ; les pages orphelines traitées comme chantier prioritaire et la méthode pour les isoler ; mise en œuvre WordPress (liens manuels dans l'éditeur de blocs, fil d'Ariane Rank Math/Yoast, blocs d'articles liés) ; position honnête et argumentée sur les plugins de maillage : la suggestion (Rank Math, Link Whisper cités sans lien) est utile, le remplacement automatique de mots-clés ne l'est pas (ancres identiques, liens hors contexte, dépendance si injection à l'affichage) ; audit avec trois sources gratuites (Search Console, crawler gratuit, recoupement sitemap). Faits vérifiables uniquement : disparition de la consigne des 100 liens par page, traitement du nofollow depuis 2009 (fin du sculptage de PageRank), un sitemap ne garantit pas l'indexation. Aucun chiffre de performance ni promesse de résultat, y compris sur la vignette. Aucun service lié en affiliation, donc pas de mention de transparence. Maillage vers seo-wordpress, recherche-mots-cles, audit-seo-wordpress, backlinks, et la page contact. Cas présentés comme des situations types (site vitrine dont tous les liens viennent du menu, boutique de 800 références reliée seulement par la pagination) : `cas-clients.md` est toujours vide.
 
 ### Google Search Console : le guide pour bien démarrer
 - **status:** done : 2026-11-02
