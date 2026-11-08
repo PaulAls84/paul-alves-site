@@ -19,14 +19,6 @@ Volumes : estimations à valider au Keyword Planner (France, FR) au prochain rel
 Réalimentée le 2026-10-14 (Keyword Planner France via Cuik + Search Console 07-10/2026).
 Sujets choisis parmi les clusters non couverts par les 35 articles déjà publiés.
 
-### 34. Balise title et meta description : les écrire pour gagner des clics
-- **status:** todo
-- **slug:** balise-title-meta-description
-- **mot-clé principal:** meta description (720/mois) + balise title (260/mois) + méta description (170/mois) + metadescription wordpress (90/mois) + meta title et meta description (50/mois), concurrence faible
-- **catégorie:** SEO
-- **angle:** rôle de chacune (la title compte pour le classement, la meta description pour le clic), longueurs utiles en pixels et caractères, pourquoi Google réécrit parfois, formules qui fonctionnent par type de page (accueil, service, article, fiche produit), erreurs fréquentes (doublons, bourrage de mots-clés), et où les renseigner sur WordPress (Rank Math, Yoast). Exemples réécrits avant/après présentés comme des situations types.
-- **maillage interne suggéré:** rank-math-ou-yoast, seo-wordpress, audit-seo-wordpress, recherche-mots-cles
-
 ### 35. SEO e-commerce : référencer sa boutique WooCommerce
 - **status:** todo
 - **slug:** seo-e-commerce
@@ -158,6 +150,11 @@ sans lien affilié ne porte PAS de mention :
 ---
 
 ## Publiés
+
+### Balise title et meta description : gagner des clics
+- **status:** done : 2026-11-08
+- **slug:** balise-title-meta-description
+- **mot-clé principal:** meta description (720/mois) + balise title (260/mois) + méta description (170/mois) + metadescription wordpress (90/mois) + meta title et meta description (50/mois), concurrence faible. Les deux balises séparées par leur rôle réel : la title compte pour le classement et pour le clic, la meta description n'entre pas dans le calcul du classement (Google le confirme régulièrement) et ne joue que sur le taux de clic ; distinction explicite avec le H1 et explication de la confusion propre à WordPress (le titre de l'éditeur alimente les deux par défaut) ; tableau des longueurs utiles (50-60 caractères soit environ 600 px pour la title, 140-155 pour la description, coût du suffixe « | Nom du site ») avec le rappel que Google compte des pixels, pas des caractères ; section sur la réécriture par Google (droit de remplacer le titre affiché depuis 2021, cas typiques, extrait construit à partir du passage qui répond à la requête) présentée comme normale et documentée, avec le signal d'alerte d'une réécriture systématique ; tableau de formules par type de page (accueil, prestation, article, fiche produit, catégorie) et trois réflexes (une seule intention, un chiffre vrai, ne pas promettre ce que la page ne contient pas) ; quatre erreurs prioritaires (doublons, bourrage de mots-clés, title écrite pour soi, perte des champs au changement de plugin SEO) ; mise en œuvre WordPress (encart par page, modèles par type de contenu avec variables, éditeur en masse de Yoast, vérification d'une seule balise title dans le code source). Aucun chiffre de performance, aucune statistique d'expérience, aucun pourcentage de réécriture avancé. Aucun service lié en affiliation, donc pas de mention de transparence. Maillage vers google-search-console, audit-seo-wordpress, recherche-mots-cles, rank-math-ou-yoast, seo-wordpress, maillage-interne. Cas présentés comme des situations types (site vitrine dont toutes les pages portent le même titre, boutique de 800 références aux descriptions recopiées du fournisseur) : `cas-clients.md` est toujours vide.
 
 ### Maillage interne : relier vos pages pour mieux ranker
 - **status:** done : 2026-11-04
