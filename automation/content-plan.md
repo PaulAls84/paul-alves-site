@@ -19,14 +19,6 @@ Volumes : estimations à valider au Keyword Planner (France, FR) au prochain rel
 Réalimentée le 2026-10-14 (Keyword Planner France via Cuik + Search Console 07-10/2026).
 Sujets choisis parmi les clusters non couverts par les 35 articles déjà publiés.
 
-### 35. SEO e-commerce : référencer sa boutique WooCommerce
-- **status:** todo
-- **slug:** seo-e-commerce
-- **mot-clé principal:** seo e commerce (590/mois) + seo site e commerce (50/mois) + optimisation site e commerce (40/mois), concurrence moyenne
-- **catégorie:** SEO
-- **angle:** les spécificités d'une boutique : architecture catégories/produits, fiches produits uniques (pas de description fournisseur copiée), pages catégories rédigées, filtres et pagination (duplication, indexation), produits en rupture, données structurées Product, vitesse. Focus WooCommerce, PrestaShop et Shopify cités pour comparaison sans les dénigrer.
-- **maillage interne suggéré:** creer-boutique-woocommerce, hebergement-woocommerce, wordpress-ou-shopify, seo-wordpress, core-web-vitals
-
 ### 36. Données structurées : le guide SEO pour WordPress
 - **status:** todo
 - **slug:** donnees-structurees
@@ -150,6 +142,11 @@ sans lien affilié ne porte PAS de mention :
 ---
 
 ## Publiés
+
+### SEO e-commerce : référencer sa boutique WooCommerce
+- **status:** done : 2026-11-11
+- **slug:** seo-e-commerce
+- **mot-clé principal:** seo e commerce (590/mois) + seo site e commerce (50/mois) + optimisation site e commerce (40/mois), concurrence moyenne. Angle d'arbitrage plutôt que checklist : décider quelles pages doivent exister et lesquelles doivent être indexées quand le catalogue est trop gros pour être traité en entier. Priorité assumée aux pages catégories plutôt qu'aux fiches produits (requêtes larges et commerciales, pages vides de contenu dans une boutique standard), avec le détail de ce qu'on y met (H1 sur la requête, texte court au-dessus de la grille, texte développé en dessous, liens vers les sous-catégories, title et description manuelles) ; architecture en trois clics et stabilité des préfixes d'URL WooCommerce ; décision tranchée sur les étiquettes produits (vraies pages de destination ou `noindex`, jamais indexées sans contenu) ; description fournisseur traitée sans dramatisation (pas de pénalité pour duplication entre boutiques, mais Google retient une version et rien ne le pousse à retenir la vôtre) avec une méthode par priorité décroissante partant des 20 % de références qui font le chiffre ; chantier filtres/tri/pagination (canonique + `noindex` sur les combinaisons, exception d'une sous-catégorie dédiée pour une demande récurrente, pagination explorable avec canonique autoréférente, lecture du rapport Indexation) ; arbre de décision rupture/arrêt produit (301 vers remplaçant, 301 vers catégorie parente, 410) contre le réflexe de suppression ; balisage Product natif de WooCommerce complété par Rank Math ou Yoast, avec le rappel que les résultats enrichis sont possibles et jamais garantis ; tableau comparatif honnête WooCommerce / PrestaShop / Shopify (points forts ET limites, structure d'URL imposée côté Shopify) concluant que le choix se joue sur le modèle économique, pas sur le SEO. Aucun chiffre de performance, aucun score relevé, aucune statistique d'expérience. Aucun service lié en affiliation, donc pas de mention de transparence. Maillage vers creer-boutique-woocommerce, hebergement-woocommerce, wordpress-ou-shopify, seo-wordpress, core-web-vitals, google-search-console et la page contact. Cas présentés comme des situations types (boutique de 800 références sur mutualisé au catalogue importé d'un fichier fournisseur, boutique de niche de 40 références aux textes fournisseur recopiés) : `cas-clients.md` est toujours vide.
 
 ### Balise title et meta description : gagner des clics
 - **status:** done : 2026-11-08

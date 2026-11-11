@@ -1,0 +1,118 @@
+---
+title: "SEO e-commerce : référencer sa boutique WooCommerce"
+description: "Architecture, pages catégories, fiches produits, filtres, ruptures de stock : la méthode pour référencer une boutique WooCommerce sans se perdre dans la technique."
+publishedAt: '2026-11-11'
+featured: false
+category: SEO
+image: /images/blog/seo-e-commerce.jpg
+anchors:
+  - SEO e-commerce
+  - référencer une boutique en ligne
+  - pages catégories
+  - SEO de votre boutique
+---
+
+> **En bref**
+>
+> - **Le levier le plus rentable n'est pas la fiche produit** : ce sont les pages catégories, qui captent les recherches larges et commerciales du type « chaussures de randonnée femme ».
+> - **Mon ordre de travail** : architecture d'abord, pages catégories ensuite, fiches produits après, technique des filtres en parallèle.
+> - **Le piège le plus coûteux** : laisser les filtres et le tri générer des milliers d'URL que Google explore à la place de votre catalogue.
+> - **À ne pas faire** : supprimer la page d'un produit en rupture. Vous perdez son historique et les liens qui pointent dessus.
+> - **La description fournisseur copiée** n'est pas pénalisée, elle est simplement ignorée : rien ne pousse Google à retenir votre version plutôt qu'une autre.
+
+Votre boutique est en ligne, le catalogue est complet, les photos sont propres, et Google n'envoie presque personne. C'est la situation la plus fréquente en e-commerce, et la cause est rarement un défaut technique spectaculaire. Le plus souvent, la boutique a été référencée comme un site vitrine : on a soigné la page d'accueil, rempli les balises, installé une extension SEO, et on attend. Or une boutique pose des problèmes qu'un site de cinq pages n'a pas : des centaines d'URL quasi identiques, des pages générées automatiquement par les filtres, un catalogue qui bouge chaque semaine, et des pages catégories vides de contenu.
+
+Voici la méthode que j'applique, dans l'ordre où elle produit des résultats. Les exemples sont pris sur WooCommerce, mais la logique vaut pour n'importe quelle boutique.
+
+## L'architecture : la décision qui conditionne le reste
+
+Je veux un chemin court et prévisible de l'accueil au produit : **accueil, catégorie, sous-catégorie si nécessaire, produit**. Trois clics pour atteindre n'importe quelle référence est un bon objectif. Côté WooCommerce, les préfixes d'URL par défaut (`/produit/`, `/categorie-produit/`) sont parfaitement viables : ce qui compte n'est pas leur forme mais leur **stabilité**, car les changer plus tard impose un plan de redirections.
+
+En revanche, je tranche systématiquement sur un point : **les étiquettes produits**. WooCommerce crée une archive indexable pour chaque étiquette, et une boutique qui en empile trente se retrouve avec trente pages sans contenu qui concurrencent ses propres catégories. Soit vous en faites de vraies pages de destination avec du texte et une intention identifiée, soit vous les passez en `noindex` dans Rank Math ou Yoast. Les laisser indexées sans contenu est le mauvais choix par défaut.
+
+## Les pages catégories : le levier le plus sous-exploité
+
+C'est le point sur lequel j'insiste le plus. Quand quelqu'un cherche « vélo électrique ville », il ne cherche pas un modèle précis : il cherche une sélection. La page qui répond à cette requête est une page catégorie, pas une fiche produit. Ces requêtes larges concentrent l'essentiel du volume commercial, et dans une boutique standard, la page correspondante est une grille de vignettes avec un titre et rien d'autre.
+
+Ce que je mets sur une page catégorie qui doit se positionner :
+
+- **Un H1 qui reprend la requête**, pas le nom interne de la catégorie.
+- **Un texte court au-dessus de la grille**, 100 à 200 mots : ce que contient la sélection, pour qui, ce qui distingue les gammes.
+- **Un texte développé sous la grille**, 300 à 600 mots : critères de choix, erreurs fréquentes, questions des clients. C'est là que se joue la pertinence.
+- **Des liens vers les sous-catégories et deux ou trois guides du blog**, pour que la page ne soit pas un cul-de-sac.
+- **Une balise title et une méta description écrites à la main.**
+
+WooCommerce accepte le HTML dans la description de catégorie, mais son emplacement dépend du thème : vérifiez que le texte sort bien avant ou après la grille, et non masqué.
+
+## Les fiches produits : sortir de la description fournisseur
+
+Reprendre le texte du fournisseur n'entraîne aucune pénalité. Le problème est plus définitif : face à quarante boutiques qui publient le même paragraphe, Google en retient une ou deux, et rien ne le pousse à choisir la vôtre. Ma méthode, par priorité décroissante :
+
+1. **Traiter d'abord les 20 % de références qui font le chiffre.** Réécrire 800 fiches est un projet qui ne finit jamais ; en réécrire 150 est un chantier d'un mois.
+2. **Écrire ce que le fournisseur n'écrit pas** : à qui le produit convient, à qui il ne convient pas, ce qu'il faut vérifier avant d'acheter, les tailles qui taillent petit.
+3. **Garder les caractéristiques techniques en tableau**, sans les paraphraser : elles servent à comparer, pas à lire.
+4. **Soigner les attributs et variations** : un nom lisible vaut mieux que « Variation 3 ».
+5. **Nommer et décrire les images** : un fichier `IMG_4471.jpg` sans attribut `alt` ne dit rien, ni à Google, ni à un lecteur d'écran.
+
+## Filtres, tri et pagination : là où le budget d'exploration se perd
+
+C'est le chantier propre à l'e-commerce, et celui que les extensions SEO ne règlent pas seules. Un filtre couleur, un filtre taille, un filtre prix et un tri produisent une combinatoire d'URL du type `?filter_couleur=rouge&orderby=price` : des milliers de pages qui n'apportent aucun trafic et consomment de l'exploration.
+
+Ce que j'applique :
+
+- **Les URL de tri et de filtre ne sont pas indexables** : canonique vers la catégorie propre et `noindex` sur les combinaisons. La plupart des extensions de filtres sérieuses proposent ce réglage.
+- **Exception assumée** : si une combinaison correspond à une vraie demande récurrente (« chaussures de randonnée femme imperméables »), elle mérite une sous-catégorie à part entière, avec son URL propre et son texte. Pas un filtre indexé.
+- **La pagination reste explorable** : les pages 2, 3, 4 accessibles par un lien `<a href>` réel, pas par un bouton JavaScript, et une canonique qui pointe vers elles-mêmes, pas vers la page 1.
+- **Je surveille le résultat** dans le rapport Indexation de la [Google Search Console](/google-search-console/) : un gonflement des URL « découvertes, actuellement non indexées » est le symptôme typique d'une fuite par les filtres.
+
+## Produits en rupture et produits supprimés
+
+Le réflexe de gestion est de supprimer. C'est presque toujours une perte sèche.
+
+- **Rupture temporaire** : gardez la page en ligne, affichez clairement la disponibilité, proposez une alerte de retour en stock et des alternatives.
+- **Produit arrêté avec un remplaçant** : redirection 301 vers le remplaçant, jamais vers la page d'accueil, qui ne répond à rien.
+- **Produit arrêté sans remplaçant** : redirection 301 vers la catégorie parente, ou suppression franche en 410 si la page n'a ni trafic ni lien entrant.
+
+## Balisage Product et vitesse
+
+**Les données structurées.** WooCommerce génère nativement un balisage `Product` en JSON-LD sur les fiches (nom, image, prix, disponibilité) : l'essentiel est déjà là, et Rank Math ou le module WooCommerce SEO de Yoast le complètent. Deux points d'honnêteté : les résultats enrichis sont **possibles, jamais garantis**, et un balisage qui annonce un prix différent de celui affiché est une erreur détectable.
+
+**La vitesse.** Une boutique est plus lourde qu'un site vitrine, et ni le panier ni le tunnel de commande ne peuvent être servis depuis un cache de page : l'hébergement compte donc davantage, sujet que je détaille dans l'article sur l'[hébergement WooCommerce](/hebergement-woocommerce/). Les [Core Web Vitals](/core-web-vitals/) restent un signal parmi beaucoup d'autres, mais ici l'argument n'a pas besoin d'être SEO : un tunnel de commande qui traîne se paye en paniers abandonnés.
+
+## Deux situations types
+
+**Le cas le plus fréquent : une boutique de 800 références sur mutualisé, catalogue importé d'un fichier fournisseur, trafic organique concentré sur l'accueil et la marque.** Ce que je fais : je laisse les fiches de côté au premier passage et je traite les huit catégories principales une par une, avec un vrai texte au-dessus et en dessous de la grille, une title écrite à la main et des liens vers les sous-catégories. En parallèle, étiquettes produits en `noindex` et indexation des filtres bloquée. Ce qu'on obtient : un nombre d'URL indexables qui baisse fortement, huit pages qui ont enfin un contenu à faire valoir sur des requêtes commerciales larges, et une exploration concentrée sur le catalogue réel.
+
+**Le deuxième cas classique : une boutique de niche, 40 références, textes fournisseur recopiés, des concurrents qui vendent exactement les mêmes produits.** L'architecture n'est pas le problème : avec 40 produits, tout est à deux clics. Ce que je fais : je réécris les 40 fiches, parce que c'est faisable, en ajoutant ce que le fabricant ne dit pas, l'usage auquel le produit convient, ses limites, le comparatif avec les deux autres références du catalogue. Puis deux guides d'achat qui pointent vers les fiches. Ce qu'on obtient : les seules pages du marché qui ne soient pas interchangeables, ce qui est la condition pour exister quand le produit, lui, est le même partout.
+
+## WooCommerce, PrestaShop, Shopify : ce que la plateforme change
+
+Moins qu'on ne le croit : les trois permettent de bien référencer une boutique, elles placent seulement les contraintes ailleurs.
+
+| Plateforme | Points forts SEO | Limites à connaître |
+|---|---|---|
+| WooCommerce | Contrôle total des URL, gabarits et balisage ; écosystème SEO mature ; blog intégré | Tout est à régler soi-même ; la performance dépend de l'hébergement et des extensions |
+| PrestaShop | Pensé pour le catalogue ; gestion fine des attributs et déclinaisons | Moins d'extensions SEO, personnalisation plus technique |
+| Shopify | Rapide par défaut, infrastructure gérée, aucune maintenance | Structure d'URL imposée (`/products/`, `/collections/`), peu de latitude sur gabarits et pagination |
+
+Le choix se joue sur le modèle économique et sur l'autonomie souhaitée, pas sur le SEO. Je développe la comparaison dans [WordPress ou Shopify](/wordpress-ou-shopify/).
+
+## Conclusion
+
+Le SEO d'une boutique n'est pas du SEO classique appliqué à plus de pages. C'est un travail d'arbitrage : quelles pages doivent exister, lesquelles doivent être indexées, et où placer l'effort de rédaction quand le catalogue est trop gros pour être traité en entier. Si je ne devais garder que trois actions : écrire de vrais textes sur les pages catégories, empêcher les filtres de générer des URL indexables, et réécrire les fiches des produits qui font le chiffre.
+
+Si vous partez de zéro, le socle est dans mon guide pour [créer une boutique WooCommerce](/creer-boutique-woocommerce/), et les fondamentaux dans le guide [SEO WordPress](/seo-wordpress/). Pour un regard extérieur sur votre boutique, je propose un audit offert et sans engagement depuis la [page contact](/contact/).
+
+## FAQ
+
+**Faut-il référencer les fiches produits ou les pages catégories en priorité ?**
+Les pages catégories, dans la quasi-totalité des cas : elles répondent aux requêtes larges et commerciales qui concentrent le volume, et elles sont généralement vides de contenu. Les fiches visent des requêtes précises, souvent de marque ou de référence, avec beaucoup moins de volume chacune.
+
+**Copier la description du fournisseur fait-il pénaliser ma boutique ?**
+Non, il n'existe pas de pénalité pour contenu dupliqué entre boutiques. Le problème est autre : Google retient une version parmi toutes celles qui publient le même texte, et rien ne le pousse à retenir la vôtre. Votre fiche n'est pas punie, elle est ignorée.
+
+**Que faire d'un produit en rupture de stock ?**
+Garder la page en ligne, afficher la disponibilité réelle, proposer une alerte de retour en stock et des alternatives. Ne la supprimez que si le produit est définitivement arrêté, et redirigez alors en 301 vers le remplaçant ou la catégorie parente.
+
+**Les pages de filtres doivent-elles être indexées ?**
+Non par défaut : elles créent des milliers d'URL quasi identiques qui consomment le budget d'exploration. L'exception est une combinaison correspondant à une vraie demande récurrente, et elle mérite alors une sous-catégorie dédiée avec son URL propre, pas un filtre indexé.
