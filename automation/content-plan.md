@@ -19,14 +19,6 @@ Volumes : estimations à valider au Keyword Planner (France, FR) au prochain rel
 Réalimentée le 2026-10-14 (Keyword Planner France via Cuik + Search Console 07-10/2026).
 Sujets choisis parmi les clusters non couverts par les 35 articles déjà publiés.
 
-### 36. Données structurées : le guide SEO pour WordPress
-- **status:** todo
-- **slug:** donnees-structurees
-- **mot-clé principal:** données structurées (590/mois) + donnees structurees (210/mois) + données structurées seo (140/mois), concurrence faible (attention : une partie des recherches vient de l'enseignement SNT, cibler l'intention SEO)
-- **catégorie:** SEO
-- **angle:** ce que sont les données structurées (schema.org, JSON-LD), ce qu'elles apportent réellement (résultats enrichis possibles, jamais garantis), les types utiles pour une PME (Organization, LocalBusiness, Article, FAQ, Product, Breadcrumb), comment les ajouter sur WordPress (Rank Math, Yoast, manuellement), et comment les tester (outil de test des résultats enrichis, rapports Search Console).
-- **maillage interne suggéré:** seo-wordpress, rank-math-ou-yoast, referencement-local, seo-e-commerce
-
 ### 37. Sitemap XML WordPress : le créer, l'envoyer, le corriger
 - **status:** todo
 - **slug:** sitemap-wordpress
@@ -142,6 +134,13 @@ sans lien affilié ne porte PAS de mention :
 ---
 
 ## Publiés
+
+### Données structurées : le guide SEO pour WordPress
+- **status:** done : 2026-11-14
+- **slug:** donnees-structurees
+- **mot-clé principal:** données structurées (590/mois) + donnees structurees (210/mois) + données structurées seo (140/mois), concurrence faible. Intention SEO ciblée explicitement (le trafic « SNT / enseignement » est écarté par l'angle WordPress et entreprise). Distinction posée dès l'intro entre les deux malentendus habituels (levier magique contre bricolage sans effet) ; vocabulaire ramené à deux notions (schema.org le vocabulaire, JSON-LD le format recommandé par Google de préférence aux microdata et RDFa) ; affirmation explicite et répétée que le balisage **n'est pas un facteur de classement** et ne rend qu'**éligible** à un affichage enrichi, jamais garanti ; second gain présenté comme la compréhension de l'entité ; point d'honnêteté sur les formats disparus (restriction des extraits FAQ en août 2023 aux sites gouvernementaux et de santé reconnus, retrait du format HowTo) ; tableau des cinq types utiles à une PME (Organization, LocalBusiness, BreadcrumbList, Article, Product) avec ce qu'ils décrivent et l'affichage possible ; recommandation du sous-type LocalBusiness le plus précis et cohérence stricte nom/adresse/téléphone avec la fiche d'établissement ; mise en œuvre WordPress en trois voies (extension SEO qui construit le graphe, balisage Product natif de WooCommerce, insertion manuelle via gestionnaire d'extraits ou thème enfant) ; chaîne de vérification en trois outils (test des résultats enrichis de Google, validateur schema.org, rapports Améliorations de la Search Console) avec la distinction erreurs/avertissements ; quatre erreurs prioritaires (baliser du contenu non visible = spam exposant à une action manuelle, avis auto-déclarés non affichés depuis 2019 sur LocalBusiness et Organization, empilement d'extensions de schéma, balisage perdu après refonte). Aucun chiffre de performance, aucun score relevé, aucune statistique d'expérience, aucune promesse de résultat, y compris sur la vignette (notification « Résultat enrichi / éligible, jamais garanti »). Aucun service lié en affiliation, donc pas de mention de transparence. Maillage vers fiche-etablissement-google, referencement-local, rank-math-ou-yoast, seo-e-commerce, google-search-console, audit-seo-wordpress, seo-wordpress et la page contact. Lien vers sitemap-wordpress volontairement omis : l'article est encore au backlog. Cas présentés comme des situations types (artisan local au site vitrine de six pages dont l'extension SEO n'a jamais été configurée, boutique de 800 références dont le thème duplique le balisage Product de WooCommerce) : `cas-clients.md` est toujours vide.
+- **catégorie:** SEO
+- **maillage interne suggéré:** seo-wordpress, rank-math-ou-yoast, referencement-local, seo-e-commerce
 
 ### SEO e-commerce : référencer sa boutique WooCommerce
 - **status:** done : 2026-11-11

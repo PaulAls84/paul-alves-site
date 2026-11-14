@@ -1,0 +1,107 @@
+---
+title: "Données structurées : le guide SEO pour WordPress"
+description: "Schema.org, JSON-LD, résultats enrichis : à quoi servent vraiment les données structurées, quels types installer sur un site WordPress, et comment les tester."
+publishedAt: '2026-11-14'
+featured: false
+category: SEO
+image: /images/blog/donnees-structurees.jpg
+anchors:
+  - données structurées
+  - JSON-LD
+  - résultats enrichis
+  - balisage schema.org
+---
+
+> **En bref**
+>
+> - **Ce que c'est vraiment** : un balisage invisible pour le lecteur, qui décrit à Google la nature de votre page (une entreprise, un article, un produit) dans un vocabulaire normalisé, schema.org.
+> - **Ce que ça apporte** : une meilleure compréhension de votre site, et l'éligibilité à des affichages enrichis. Éligibilité seulement : Google ne garantit jamais l'affichage.
+> - **Mon verdict** : oui pour tout le monde sur Organization ou LocalBusiness, Breadcrumb et Article. Oui sur Product si vous vendez. Non aux balisages exotiques qui n'existent plus dans les résultats.
+> - **Pour qui c'est marginal** : un blog personnel sans visée commerciale. Le gain existe, il est faible comparé au reste du travail SEO.
+> - **Le piège classique** : deux sources de balisage sur le même site (le thème et l'extension SEO), qui produisent des entités en double et des erreurs dans la Search Console.
+
+On me pose rarement la question dans ces termes. Elle arrive plutôt sous la forme « pourquoi le concurrent a un fil d'Ariane et des étoiles dans Google, et pas moi ? ». La réponse tient souvent aux données structurées, un sujet coincé entre deux malentendus : pour les uns un levier magique, pour les autres du bricolage sans effet. Ni l'un ni l'autre. C'est une couche d'information utile, simple à mettre en place sur WordPress, et dont il faut connaître les limites pour ne pas perdre du temps sur des formats que Google n'affiche plus.
+
+## Ce que sont les données structurées
+
+Une page web est faite pour un humain : un titre en gros, un prix à côté d'un bouton, une adresse en bas, et vous comprenez tout en une seconde parce que vous interprétez la mise en forme. Un moteur, lui, lit du texte et doit deviner. Les données structurées ajoutent au code une description explicite : « ceci est une entreprise, voici son adresse et ses horaires », « ceci est un produit, voici son prix ».
+
+Deux mots de vocabulaire suffisent :
+
+- **Schema.org** est le vocabulaire : la liste des types disponibles (`Organization`, `Product`, `Article`, `FAQPage`, etc.) et de leurs propriétés, partagée par Google, Microsoft, Yahoo et Yandex.
+- **JSON-LD** est le format d'écriture : un bloc de code glissé dans la page, invisible pour le visiteur. Google le recommande, de préférence aux anciennes syntaxes microdata ou RDFa. Sur WordPress, toutes les extensions SEO sérieuses en produisent : vous n'aurez pas à l'écrire à la main.
+
+Un point à poser tout de suite, parce qu'il évite des déceptions : **le balisage n'est pas un facteur de classement**. Il ne pousse pas une page vers le haut, il la rend compréhensible et éligible à certains affichages, ce qui est autre chose.
+
+## Ce qu'on en obtient réellement
+
+Le premier gain est l'**affichage dans les résultats** : le fil d'Ariane qui remplace l'URL, le prix et la disponibilité sous une fiche produit, l'image d'un article. Ces résultats enrichis ne changent pas votre position, ils changent votre surface visible, donc votre taux de clic. La nuance compte : un balisage correct vous rend **éligible**, et Google décide seul s'il affiche la version enrichie. Toute promesse de résultat garanti est fausse ici.
+
+Le second gain est plus discret et sans doute plus durable : **la compréhension de votre entité**. Déclarer qui vous êtes, où vous êtes et ce que vous vendez aide les moteurs à rattacher le site à l'entreprise réelle.
+
+À signaler par honnêteté : **certains formats ont disparu**. Depuis août 2023, Google a fortement restreint les extraits FAQ, réservés aux sites gouvernementaux et de santé reconnus, et a retiré le format HowTo. Espérer l'accordéon dans les résultats pour un site de PME n'a plus de sens.
+
+## Les types qui comptent pour une PME
+
+Inutile de baliser trente choses : cinq types couvrent la quasi-totalité des besoins d'un site d'entreprise.
+
+| Type | À poser sur | Ce que ça décrit | Affichage possible |
+|---|---|---|---|
+| `Organization` | Tout le site | Nom, logo, site officiel, profils sociaux, contact | Panneau de connaissance, logo associé à la marque |
+| `LocalBusiness` | Site d'entreprise avec adresse | Adresse, horaires, téléphone, zone desservie | Informations locales, cohérence avec la fiche Google |
+| `BreadcrumbList` | Toutes les pages profondes | La hiérarchie accueil, rubrique, page | Fil d'Ariane à la place de l'URL |
+| `Article` | Articles de blog | Titre, auteur, dates, image | Image et dates, éligibilité aux actualités |
+| `Product` | Fiches produits | Prix, devise, disponibilité, avis | Prix et disponibilité sous le résultat |
+
+Une précision sur `LocalBusiness` : prenez le sous type le plus précis qui existe (`Plumber`, `Bakery`, `Electrician`) plutôt que le type générique, et veillez à ce que le nom, l'adresse et le téléphone soient **strictement identiques** à ceux de votre [fiche d'établissement Google](/fiche-etablissement-google/). C'est le socle du [référencement local](/referencement-local/), et l'incohérence y coûte plus cher que l'absence de balisage.
+
+## Comment les ajouter sur WordPress
+
+**Avec une extension SEO.** C'est la voie normale. Rank Math comme Yoast construisent automatiquement un graphe cohérent : l'organisation, le site, la page, l'auteur, le fil d'Ariane, reliés entre eux. Vous avez surtout à remplir les réglages une fois : type d'entité (personne ou organisation), logo, coordonnées, puis le balisage par défaut des articles et des pages. Rank Math expose plus de types en version gratuite ; Yoast est plus sobre et plus guidé. Les deux font le travail, et je détaille la comparaison dans [Rank Math ou Yoast](/rank-math-ou-yoast/).
+
+**Le cas WooCommerce.** WooCommerce génère nativement le balisage `Product` sur les fiches (nom, image, prix, disponibilité) : rien à installer. Le travail consiste à ne pas le casser et à ne pas le dupliquer.
+
+**En manuel.** Pour un cas particulier (un événement, une page de prestation), on insère un bloc JSON-LD via un gestionnaire d'extraits ou un thème enfant, jamais en modifiant le thème directement. Et on note ce qu'on a ajouté : un balisage manuel oublié finit en doublon trois ans plus tard.
+
+## Deux situations types
+
+**Le cas le plus fréquent : un artisan local, site vitrine de six pages, extension SEO installée mais jamais configurée.** Le balisage sort en type générique, sans adresse ni horaires, et le fil d'Ariane n'est pas activé. Ce que je fais : je renseigne l'entité dans les réglages (nom commercial exact, logo, téléphone, adresse), je bascule sur le sous type `LocalBusiness` du métier, j'active le fil d'Ariane et je le pose dans le gabarit pour qu'il soit aussi visible à l'écran, puis j'aligne mot pour mot le nom et l'adresse sur la fiche Google. Ce qu'on obtient : une description cohérente sur tout le site, un fil d'Ariane éligible à l'affichage, et la fin des signaux contradictoires entre le site et la fiche.
+
+**Le deuxième cas classique : une boutique de 800 références dont le thème ajoute son propre balisage `Product`, en plus de celui de WooCommerce et de l'extension SEO.** Résultat : deux ou trois objets produit par fiche, parfois avec des prix qui divergent quand l'un ne tient pas compte des promotions, et un rapport d'améliorations qui se remplit d'avertissements. Ce que je fais : je compte les blocs JSON-LD dans le code source d'une fiche, j'identifie la source de chacun, j'en garde **un seul** (en désactivant l'option correspondante dans le thème ou l'extension, pas en supprimant du code), puis je revalide. Ce qu'on obtient : un objet produit unique, un prix conforme à celui affiché, et des erreurs qui se vident au fil des recrawls. Un chantier d'une heure qui traîne souvent depuis des années, et qui croise les sujets du [SEO e-commerce](/seo-e-commerce/).
+
+## Tester et surveiller
+
+Trois outils :
+
+1. **Le test des résultats enrichis de Google** (`search.google.com/test/rich-results`). Il répond à la seule question qui compte : cette page est-elle éligible, et avec quelles erreurs ? Testez l'URL en ligne, pas le code collé, pour voir ce que Google voit vraiment.
+2. **Le validateur de schema.org** (`validator.schema.org`), qui juge la validité du balisage et non l'éligibilité. Utile pour un type que Google n'exploite pas directement.
+3. **Les rapports de la [Google Search Console](/google-search-console/)**, section Améliorations : la surveillance dans la durée, sur tout le site. Un pic d'erreurs après une mise à jour de thème s'y voit immédiatement, et c'est souvent là qu'on découvre un balisage cassé plusieurs semaines après les faits.
+
+Distinguez les **erreurs** (propriété obligatoire manquante, éligibilité perdue) des **avertissements** (propriété recommandée absente, éligibilité conservée). Les avertissements ne demandent pas tous une action.
+
+## Les erreurs qui coûtent cher
+
+- **Baliser ce qui n'est pas sur la page.** Les règles de Google sont explicites : le balisage doit décrire un contenu visible. Déclarer des avis ou un prix qui n'apparaissent nulle part relève du spam et expose à une action manuelle.
+- **Les avis auto-déclarés.** Depuis 2019, Google n'affiche plus les étoiles issues d'avis qu'une entreprise publie sur elle même pour les types `LocalBusiness` et `Organization`. Un bloc d'avis maison ne produira pas l'étoile convoitée.
+- **Empiler les extensions de schéma.** Une extension SEO, plus une extension dédiée, plus un thème qui en ajoute : le doublon est assuré. Une seule source.
+- **Oublier le balisage après une refonte.** Le changement de thème est le moment classique où tout saute sans que personne s'en aperçoive, et un point que je vérifie dans un [audit SEO](/audit-seo-wordpress/).
+
+## Conclusion
+
+Les données structurées ne sont ni un levier de classement ni un gadget. C'est une mise au propre : dire à un moteur ce que la page contient, pour qu'il n'ait pas à le deviner. Sur WordPress, l'essentiel se règle en une session de travail avec l'extension SEO déjà installée, à condition de la configurer vraiment et de n'avoir qu'une seule source de balisage.
+
+Trois actions si je ne devais en garder que trois : renseigner l'entité du site, activer le fil d'Ariane, vérifier avec le test des résultats enrichis qu'il n'y a qu'un seul objet par page. Le reste se joue ailleurs, dans les fondamentaux du guide [SEO WordPress](/seo-wordpress/). Pour un regard extérieur sur votre site, je propose un audit offert et sans engagement depuis la [page contact](/contact/).
+
+## FAQ
+
+**Les données structurées améliorent-elles le classement dans Google ?**
+Non, pas directement : ce n'est pas un facteur de classement. Elles rendent la page éligible à des affichages enrichis, ce qui peut augmenter le taux de clic, et aident le moteur à comprendre votre entité. L'effet passe par le clic, pas par la position.
+
+**Faut-il encore baliser une FAQ ?**
+Pour l'affichage dans les résultats, l'intérêt a quasiment disparu pour un site de PME depuis la restriction de 2023. Pour la compréhension de la page, le balisage reste propre et sans risque. Si l'extension SEO le propose en une case à cocher, gardez-le ; ne construisez pas une page entière dans l'espoir de l'accordéon.
+
+**Rank Math, Yoast ou une extension dédiée au schéma ?**
+Celle que vous avez déjà, et une seule. Les deux grandes extensions SEO produisent un balisage complet pour un site d'entreprise classique. Une extension dédiée ne se justifie que pour un type qu'elles ne couvrent pas, et il faut alors désactiver la partie correspondante de l'extension SEO.
+
+**Comment savoir si mon site a déjà un balisage ?**
+Passez l'URL de votre accueil et celle d'une page intérieure dans le test des résultats enrichis. En une minute, vous saurez quels types sont détectés, lesquels sont en erreur, et si un objet apparaît en double.
